@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser Buddy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <div class="document-area" id="document-area">
+      <canvas id="doc-canvas" width="700" height="520"></canvas>
+      <div id="capture-overlay">
+        <div id="selection-box"></div>
+      </div>
+    </div>
+    <aside class="buddy-panel">
+      <h1 class="panel-title">Browser Buddy</h1>
+      <div class="panel-actions">
+        <button id="capture-btn">Capture</button>
+        <button id="cancel-btn" disabled>Cancel</button>
+        <button id="copy-btn" disabled>Copy Selected</button>
+      </div>
+      <p id="status-text" class="status-text"></p>
+      <ul id="capture-list" class="capture-list"></ul>
+    </aside>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

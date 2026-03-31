@@ -1,0 +1,243 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --text: #1f2430;
+  --muted: #687083;
+  --line: #d8dce6;
+  --accent: #2f72ff;
+  --tab: #eef2ff;
+}
+
+.panel[data-theme="dark"] {
+  --bg: #161a22;
+  --surface: #202634;
+  --text: #edf1ff;
+  --muted: #aeb7cc;
+  --line: #313a4e;
+  --accent: #7aa2ff;
+  --tab: #262f45;
+}
+
+body {
+  font-family: "Segoe UI", "Noto Sans", sans-serif;
+  height: 100vh;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 12px;
+  gap: 10px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#brand-icon {
+  border-radius: 4px;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.tab-btn {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 9px;
+  height: 34px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: var(--tab);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tab-view {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  flex: 1;
+}
+
+.tab-view.active {
+  display: flex;
+}
+
+.toolbar,
+.view-toggle {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.icon-btn {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.icon-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.icon-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.status-text {
+  min-height: 16px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.notes-list {
+  list-style: none;
+  overflow: auto;
+  display: grid;
+  gap: 8px;
+  min-height: 0;
+}
+
+.notes-list.list {
+  grid-template-columns: 1fr;
+}
+
+.notes-list.grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.note-item {
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 8px;
+  cursor: pointer;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.note-item.selected {
+  border-color: var(--accent);
+}
+
+.note-text {
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.note-image {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.note-meta {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.note-actions {
+  display: flex;
+  gap: 4px;
+  margin-top: auto;
+}
+
+.note-actions .icon-btn {
+  height: 28px;
+  min-width: 28px;
+  font-size: 12px;
+  border-color: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  padding-top: 20px;
+}
+
+.options-group {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 10px;
+  display: grid;
+  gap: 6px;
+}
+
+.options-group h2 {
+  font-size: 13px;
+}
+
+.options-group label {
+  font-size: 12px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.c1 { background: #ffe082; }
+.c2 { background: #ffccbc; }
+.c3 { background: #c8e6c9; }
+.c4 { background: #b3e5fc; }
+.c5 { background: #d1c4e9; }
+.c6 { background: #f8bbd0; }
+
+.panel[data-theme="dark"] .c1 { background: #6f5a1d; }
+.panel[data-theme="dark"] .c2 { background: #6c4138; }
+.panel[data-theme="dark"] .c3 { background: #345e42; }
+.panel[data-theme="dark"] .c4 { background: #2b5464; }
+.panel[data-theme="dark"] .c5 { background: #4b3f69; }
+.panel[data-theme="dark"] .c6 { background: #6a3c53; }
+
+.panel[data-theme="dark"] .note-meta {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.panel[data-theme="dark"] .note-actions .icon-btn {
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
