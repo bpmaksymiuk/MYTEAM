@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untitled - Notepad</title>
+  <link rel="stylesheet" href="window.css">
+</head>
+<body>
+  <main class="notepad-window" role="application" aria-label="Notepad window">
+    <header class="title-bar" aria-label="Title bar">
+      <div class="title-left">
+        <img src="pnp.png" alt="Notepad icon" class="title-icon" width="16" height="16">
+        <h1 id="doc-title">Untitled - Notepad</h1>
+      </div>
+      <div class="window-controls" aria-hidden="true">
+        <button type="button">_</button>
+        <button type="button">□</button>
+        <button id="window-close-btn" type="button">×</button>
+      </div>
+    </header>
+
+    <nav class="menu-bar" aria-label="Menu">
+      <div class="menu-group">
+        <button id="menu-file" class="menu-trigger" type="button" aria-haspopup="true" aria-expanded="false">File</button>
+        <div id="panel-file" class="menu-panel" role="menu" aria-label="File menu">
+          <button id="cmd-new" type="button" role="menuitem">New <span>Ctrl+N</span></button>
+          <button id="cmd-open" type="button" role="menuitem">Open <span>Ctrl+O</span></button>
+          <button id="cmd-save" type="button" role="menuitem">Save <span>Ctrl+S</span></button>
+          <button id="cmd-save-as" type="button" role="menuitem">Save As <span>Ctrl+Shift+S</span></button>
+          <button id="cmd-exit" type="button" role="menuitem">Exit <span>Alt+F4</span></button>
+        </div>
+      </div>
+
+      <div class="menu-group">
+        <button id="menu-edit" class="menu-trigger" type="button" aria-haspopup="true" aria-expanded="false">Edit</button>
+        <div id="panel-edit" class="menu-panel" role="menu" aria-label="Edit menu">
+          <button id="cmd-undo" type="button" role="menuitem">Undo <span>Ctrl+Z</span></button>
+          <button id="cmd-redo" type="button" role="menuitem">Redo <span>Ctrl+Y</span></button>
+          <button id="cmd-cut" type="button" role="menuitem">Cut <span>Ctrl+X</span></button>
+          <button id="cmd-copy" type="button" role="menuitem">Copy <span>Ctrl+C</span></button>
+          <button id="cmd-paste" type="button" role="menuitem">Paste <span>Ctrl+V</span></button>
+          <button id="cmd-delete" type="button" role="menuitem">Delete <span>Del</span></button>
+          <button id="cmd-select-all" type="button" role="menuitem">Select All <span>Ctrl+A</span></button>
+          <button id="cmd-find" type="button" role="menuitem">Find <span>Ctrl+F</span></button>
+          <button id="cmd-replace" type="button" role="menuitem">Replace <span>Ctrl+H</span></button>
+          <button id="cmd-time-date" type="button" role="menuitem">Time/Date <span>F5</span></button>
+        </div>
+      </div>
+
+      <div class="menu-group">
+        <button id="menu-format" class="menu-trigger" type="button" aria-haspopup="true" aria-expanded="false">Format</button>
+        <div id="panel-format" class="menu-panel" role="menu" aria-label="Format menu">
+          <button id="cmd-word-wrap" type="button" role="menuitem">Word Wrap <span id="word-wrap-state">On</span></button>
+        </div>
+      </div>
+
+      <button type="button" class="menu-passive">View</button>
+      <button type="button" class="menu-passive">Help</button>
+    </nav>
+
+    <label for="editor" class="sr-only">Document editor</label>
+    <textarea id="editor" spellcheck="false" aria-label="Notepad text editor"></textarea>
+    <input id="file-open-input" class="hidden" type="file" accept=".txt,text/plain">
+
+    <section id="find-replace-dialog" class="find-dialog hidden" aria-label="Find and replace dialog">
+      <header class="find-title">Find / Replace</header>
+
+      <label for="find-input">Find what</label>
+      <input id="find-input" type="text" autocomplete="off">
+
+      <label id="replace-label" for="replace-input">Replace with</label>
+      <input id="replace-input" type="text" autocomplete="off">
+
+      <div class="find-options">
+        <label><input id="find-match-case" type="checkbox"> Match case</label>
+        <label><input id="find-wrap-around" type="checkbox" checked> Wrap around</label>
+      </div>
+
+      <div class="find-actions">
+        <button id="find-next-btn" type="button">Find Next</button>
+        <button id="replace-btn" type="button">Replace</button>
+        <button id="replace-all-btn" type="button">Replace All</button>
+        <button id="find-close-btn" type="button">Close</button>
+      </div>
+    </section>
+
+    <section id="unsaved-dialog" class="find-dialog hidden" aria-label="Unsaved changes dialog">
+      <header class="find-title">Notepad</header>
+      <p class="dialog-text">Do you want to save changes?</p>
+      <div class="find-actions">
+        <button id="unsaved-yes-btn" type="button">Yes</button>
+        <button id="unsaved-no-btn" type="button">No</button>
+        <button id="unsaved-cancel-btn" type="button">Cancel</button>
+      </div>
+    </section>
+
+    <footer class="status-bar" aria-label="Status bar">
+      <span id="status-indicator">Ln 1, Col 1</span>
+      <span id="autosave-indicator">Autosave: idle</span>
+      <span>UTF-8</span>
+    </footer>
+  </main>
+
+  <script src="window.js"></script>
+</body>
+</html>

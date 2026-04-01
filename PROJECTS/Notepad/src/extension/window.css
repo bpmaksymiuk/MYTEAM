@@ -1,0 +1,224 @@
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #ece9d8;
+  color: #000;
+  font-family: Tahoma, "MS Sans Serif", sans-serif;
+}
+
+.notepad-window {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 30px 30px 1fr 24px;
+  border: 1px solid #7f9db9;
+  background: #f1efe2;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  color: #fff;
+  background: linear-gradient(90deg, #0a246a 0%, #3a6ea5 100%);
+}
+
+.title-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.title-icon {
+  image-rendering: pixelated;
+}
+
+#doc-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.window-controls {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.window-controls button {
+  width: 22px;
+  height: 20px;
+  border: 1px solid #ffffff;
+  background: #c5d9f1;
+  color: #000;
+  font-size: 11px;
+  line-height: 1;
+  padding: 0;
+}
+
+.menu-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+  padding: 4px 6px;
+  border-bottom: 1px solid #b5b5b5;
+  background: #f3f3f3;
+}
+
+.menu-group {
+  position: relative;
+}
+
+.menu-bar button {
+  border: 1px solid transparent;
+  background: transparent;
+  color: #000;
+  font-size: 13px;
+  padding: 2px 7px;
+}
+
+.menu-bar button:focus,
+.menu-bar button:hover,
+.menu-trigger.open {
+  border-color: #7f9db9;
+  background: #dbe7f7;
+  outline: none;
+}
+
+.menu-passive {
+  cursor: default;
+}
+
+.menu-panel {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 24px;
+  min-width: 210px;
+  border: 1px solid #7f9db9;
+  background: #f3f3f3;
+  padding: 2px;
+  z-index: 5;
+}
+
+.menu-panel.open {
+  display: grid;
+}
+
+.menu-panel button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  border: 1px solid transparent;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.menu-panel button span {
+  color: #444;
+  font-size: 12px;
+}
+
+#editor {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: 0;
+  padding: 10px;
+  background: #fff;
+  color: #000;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  line-height: 1.35;
+  outline: none;
+}
+
+.find-dialog {
+  position: absolute;
+  top: 72px;
+  right: 14px;
+  width: 280px;
+  border: 1px solid #7f9db9;
+  background: #f3f3f3;
+  padding: 8px;
+  display: grid;
+  gap: 6px;
+  z-index: 20;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.find-dialog.hidden {
+  display: none;
+}
+
+.find-title {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.find-dialog input[type="text"] {
+  width: 100%;
+  border: 1px solid #7f9db9;
+  background: #fff;
+  color: #000;
+  padding: 4px 6px;
+  font-size: 13px;
+}
+
+.find-options {
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.find-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.find-actions button {
+  border: 1px solid #7f9db9;
+  background: #e8eef7;
+  font-size: 12px;
+  padding: 4px 6px;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #b5b5b5;
+  background: #f3f3f3;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

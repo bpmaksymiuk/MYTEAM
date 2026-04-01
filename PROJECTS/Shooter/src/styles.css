@@ -1,0 +1,79 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: "Rajdhani", "Segoe UI", sans-serif;
+  background: #050709;
+  color: #e8f0ff;
+}
+
+#game-root canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(5, 8, 14, 0.78);
+  z-index: 20;
+}
+
+.overlay.visible { display: flex; }
+
+.overlay button,
+.overlay input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  color: #f5f8ff;
+}
+
+.keybinds {
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 12px;
+  border-radius: 10px;
+  display: grid;
+  gap: 8px;
+  min-width: 220px;
+}
+
+.keybinds label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+#hud {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 10;
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 14px;
+}
+
+#crosshair {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffdf6c;
+  font-size: 26px;
+  z-index: 11;
+  user-select: none;
+  text-shadow: 0 0 8px rgba(255, 223, 108, 0.6);
+}
