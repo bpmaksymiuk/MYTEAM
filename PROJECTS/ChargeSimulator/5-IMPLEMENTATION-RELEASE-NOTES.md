@@ -1,24 +1,29 @@
 RELEASE-NOTES:
-- Version ID: v0.1.0-pipeline-run-2026-04-01
-- Summary of features implemented.
-  - Implemented browser-based simulator in src/index.html, src/styles.css, and src/app.js.
-  - Added charge placement for negative sources and positive sinks with polarity selector and active tool modes.
-  - Added barrier drawing and erasing workflows; implemented particle reflection on barrier collisions.
-  - Added continuous spawning from negative sources while simulation is running.
-  - Added annihilation logic for particles entering positive sink capture radius.
-  - Added live controls for spawn rate, simulation speed, and charge strength.
-  - Added advanced controls for particle lifetime, damping, capture radius, and trail rendering.
-  - Added run/pause, clear scene, reset defaults, and live status/counter readouts.
+- Version ID: v0.1.3
+- Summary of features implemented:
+  - Reworked barrier and obstacle collision resolution to rewind particles to a last-safe position before reflection, removing remaining wall leakage.
+  - Added segment-sweep detection for image obstacles so collisions trigger along full movement paths, not only at final sample points.
 
-TRACEABILITY SUMMARY:
-- Implemented DESIGN IDs:
-  - UC-01.BR-01.ARCH-01.DES-01
-  - UC-02.BR-01.ARCH-01.DES-01
-  - UC-03.BR-01.ARCH-01.DES-01
-  - UC-04.BR-01.ARCH-01.DES-01
-  - UC-05.BR-01.ARCH-01.DES-01
-  - UC-06.BR-01.ARCH-01.DES-01
-  - UC-07.BR-01.ARCH-01.DES-01
-  - UC-08.BR-01.ARCH-01.DES-01
-  - UC-09.BR-01.ARCH-01.DES-01
-  - UC-10.BR-01.ARCH-01.DES-01
+RELEASE-NOTES:
+- Version ID: v0.1.2
+- Summary of features implemented:
+  - Strengthened barrier collision reliability by integrating particle movement in substeps per frame and checking collisions at each substep.
+  - Eliminated remaining fast-path tunneling cases where particles could still skip barrier contact during larger frame deltas.
+
+RELEASE-NOTES:
+- Version ID: v0.1.1
+- Summary of features implemented:
+  - Fixed barrier collision reliability so fast-moving particles no longer tunnel through thin barriers by adding swept path-to-segment intersection checks.
+  - Improved barrier drawing completion when mouse release occurs off-canvas by finalizing draw on global mouse-up and canvas leave.
+
+RELEASE-NOTES:
+- Version ID: v0.1.0
+- Summary of features implemented:
+  - Implemented browser-based Charge Simulator UI in src/index.html and src/styles.css.
+  - Added tool modes for placing positive and negative charges, drawing barriers, and erasing.
+  - Added simulation runtime loop with continuous spawning from negative sources, sink annihilation, and live counters.
+  - Implemented Coulomb-like force updates and inter-particle repulsion with speed and strength controls.
+  - Added advanced controls for damping, capture radius, trails, image collision threshold, and reset defaults.
+  - Added background image loading, obstacle mask generation, and particle bounce collisions against image-defined solids.
+  - Added background preset save/load with named localStorage entries including image data URL and mask threshold.
+  - Added responsive control panel with run/pause, clear particles, and reset all actions.

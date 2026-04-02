@@ -32,17 +32,19 @@ USE CASE:
 
 USE CASE:
 - USE CASE ID: UC-03
-- GOAL: Draw and erase barriers that reflect moving charges.
+- GOAL: Draw and erase barriers and use background-image obstacles that reflect moving charges.
 - ACTOR: Learner/User
 - STEP BY STEP WALKTHROUGH:
 	1. User selects the barrier drawing tool.
 	2. User drags on the canvas to draw one or more line barriers.
-	3. Simulation runs while moving charges encounter barriers.
-	4. On collision, charges bounce off according to reflection rules.
-	5. User switches to erase mode to remove selected barrier lines and test different layouts.
+	3. User optionally loads a background image that contains solid obstacle regions.
+	4. Simulation runs while moving charges encounter barriers and image-defined obstacle regions.
+	5. On collision, charges bounce off according to reflection rules.
+	6. User switches to erase mode to remove selected barrier lines and test different layouts.
 - ACCEPTANCE CRITERIA:
 	- Dragging in Draw Barrier mode creates a visible line segment of minimum usable length.
 	- Particles contacting a barrier reflect and do not continue straight through the segment.
+	- Particles contacting configured solid regions from the loaded background image reflect and do not pass through those regions.
 	- Reflection behavior remains observable at simulation speed 0.5x, 1.0x, and 2.0x.
 	- Erase Barrier mode removes a barrier segment when pointer action occurs near that segment.
 	- Repeating draw and erase for 30 seconds does not freeze UI or break run controls.
@@ -60,6 +62,7 @@ USE CASE:
 - ACCEPTANCE CRITERIA:
 	- With at least one negative source, new particles appear repeatedly while simulation state is Running.
 	- Spawn direction and initial speed are non-zero and remain within configured simulation bounds.
+	- Spawned particles remain active until they are annihilated at a + sink or explicitly cleared/reset by user action.
 	- Switching to Paused stops new particle creation within one second.
 	- Returning to Running resumes particle spawning without page refresh.
 
@@ -74,6 +77,7 @@ USE CASE:
 	4. Visual feedback confirms annihilation (for example, brief effect or count update).
 	5. Simulation continues with remaining and newly spawned charges.
 - ACCEPTANCE CRITERIA:
+	- The + sink interaction is the normal simulation removal path for moving particles.
 	- Particles entering the sink capture radius are removed from active particle count.
 	- A removed particle increments annihilation count exactly once.
 	- During repeated sink captures, simulation continues rendering and controls remain responsive.
@@ -107,8 +111,10 @@ USE CASE:
 	5. User adjusts layout and watches trajectories change accordingly.
 - ACCEPTANCE CRITERIA:
 	- Particles trend toward + sinks and away from - sources in a mixed-polarity scene.
+	- Default force tuning is strong enough that trajectory curvature is clearly observable within one second of spawn in a mixed field.
 	- In dense scenes, nearby particles diverge due to inter-particle repulsion.
 	- Particle motion updates continuously frame to frame without teleport jumps under normal settings.
+	- Particles are not expired by time while simulation is running.
 	- A 60-second run at default settings does not produce numerical instability that halts simulation.
 
 USE CASE:
@@ -118,12 +124,13 @@ USE CASE:
 - STEP BY STEP WALKTHROUGH:
 	1. User opens controls for simulation speed and charge strength.
 	2. User changes speed to slow down or accelerate dynamics.
-	3. User changes charge-strength setting to amplify or reduce interactions.
+	3. User changes charge-strength setting to amplify or reduce interactions around a stronger default baseline.
 	4. Simulator applies updated parameters while running.
 	5. User compares outcomes across parameter combinations.
 - ACCEPTANCE CRITERIA:
 	- Increasing simulation speed produces faster trajectory progression than baseline 1.0x.
 	- Decreasing simulation speed produces slower trajectory progression than baseline 1.0x.
+	- Default charge-strength baseline produces visibly strong attraction/repulsion without requiring user increase.
 	- Increasing charge strength increases curvature and acceleration magnitude of particle motion.
 	- Both controls apply live without clearing placed nodes, barriers, or counters.
 
@@ -133,12 +140,12 @@ USE CASE:
 - ACTOR: Learner/User
 - STEP BY STEP WALKTHROUGH:
 	1. User opens advanced or additional settings.
-	2. User adjusts supported options (for example, particle lifetime, trail visibility, collision radius, or damping).
+	2. User adjusts supported options (for example, trail visibility, capture radius, or damping).
 	3. User applies settings and observes behavior changes.
 	4. User resets selected options to defaults when needed.
 	5. User continues experimentation with updated configuration.
 - ACCEPTANCE CRITERIA:
-	- Advanced controls include at least particle lifetime, damping, capture radius, and trails toggle.
+	- Advanced controls include at least damping, capture radius, and trails toggle.
 	- Changing each advanced control produces an observable behavior change in the simulation.
 	- Reset Defaults restores advanced controls to their documented default values in one action.
 	- Input values remain within control bounds and do not allow invalid out-of-range configuration.
@@ -158,3 +165,35 @@ USE CASE:
 	- Run or Pause state and live counters update within one second of user action.
 	- Attempting to run without a negative source shows a clear guidance message.
 	- A first-time user can complete one basic flow (place source, place sink, run, adjust spawn rate) within 2 minutes using on-screen controls only.
+
+USE CASE:
+- USE CASE ID: UC-11
+- GOAL: Save the currently selected background image and collision-mask configuration for reuse.
+- ACTOR: Learner/User
+- STEP BY STEP WALKTHROUGH:
+	1. User loads a background image into the simulator.
+	2. User configures which parts of the image are treated as solid collision regions.
+	3. User chooses Save Background (or equivalent action) from controls.
+	4. Simulator stores the image reference and collision settings as a reusable preset.
+	5. User receives confirmation that the background preset was saved.
+- ACCEPTANCE CRITERIA:
+	- Saving a configured background persists both the image and obstacle/collision settings in one operation.
+	- Saved background presets are available after page refresh or simulator restart.
+	- Saving without a loaded background shows a clear validation message and does not create an empty preset.
+	- Saving an existing preset name prompts overwrite confirmation or requires a unique name.
+
+USE CASE:
+- USE CASE ID: UC-12
+- GOAL: Load a saved background image preset and have particles bounce from its configured obstacle regions.
+- ACTOR: Learner/User
+- STEP BY STEP WALKTHROUGH:
+	1. User opens the saved-backgrounds list.
+	2. User selects a saved preset.
+	3. Simulator loads the background image and applies stored collision/obstacle settings.
+	4. User runs the simulation and observes particle interactions with the loaded obstacles.
+	5. User switches between presets to compare behavior across different layouts.
+- ACCEPTANCE CRITERIA:
+	- Loading a saved preset restores the same background image and collision settings that were saved.
+	- After load, particles bounce off configured obstacle regions from the image during runtime.
+	- Switching presets replaces the active background and obstacle map without requiring full page reload.
+	- If a saved image asset is missing or invalid, simulator shows a clear error and keeps the previous valid background active.

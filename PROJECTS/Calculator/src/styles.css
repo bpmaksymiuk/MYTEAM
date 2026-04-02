@@ -1,0 +1,123 @@
+:root {
+  --win-bg: #c0c0c0;
+  --dark: #808080;
+  --light: #ffffff;
+  --edge: #000000;
+  --title: #0000a8;
+  --face: #dfdfdf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #0f7f7f;
+  font-family: "MS Sans Serif", "Tahoma", sans-serif;
+}
+
+.win95-window {
+  width: 340px;
+  background: var(--win-bg);
+  border-top: 2px solid var(--light);
+  border-left: 2px solid var(--light);
+  border-right: 2px solid var(--edge);
+  border-bottom: 2px solid var(--edge);
+  box-shadow: 2px 2px 0 #000;
+}
+
+.titlebar {
+  background: var(--title);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+}
+
+.window-buttons {
+  display: flex;
+  gap: 3px;
+}
+
+.box {
+  width: 12px;
+  height: 12px;
+  background: var(--win-bg);
+  border-top: 1px solid var(--light);
+  border-left: 1px solid var(--light);
+  border-right: 1px solid var(--edge);
+  border-bottom: 1px solid var(--edge);
+}
+
+.calculator {
+  padding: 8px;
+}
+
+.memory-indicator {
+  height: 12px;
+  font-size: 11px;
+  color: #111;
+  visibility: hidden;
+}
+
+.memory-indicator.active {
+  visibility: visible;
+}
+
+.display {
+  width: 100%;
+  min-height: 38px;
+  background: #fff;
+  border-top: 2px solid var(--edge);
+  border-left: 2px solid var(--edge);
+  border-right: 2px solid var(--light);
+  border-bottom: 2px solid var(--light);
+  text-align: right;
+  padding: 6px;
+  font-size: 22px;
+  font-family: "Lucida Console", monospace;
+  margin-bottom: 8px;
+}
+
+.pad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.btn {
+  height: 34px;
+  background: var(--face);
+  border-top: 2px solid var(--light);
+  border-left: 2px solid var(--light);
+  border-right: 2px solid var(--dark);
+  border-bottom: 2px solid var(--dark);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn:active,
+.btn.active {
+  border-top: 2px solid var(--dark);
+  border-left: 2px solid var(--dark);
+  border-right: 2px solid var(--light);
+  border-bottom: 2px solid var(--light);
+}
+
+.btn:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+}
+
+.eq {
+  grid-row: span 2;
+  height: auto;
+}

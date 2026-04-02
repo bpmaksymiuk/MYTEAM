@@ -1,59 +1,83 @@
 BUSINESS REQUIREMENT:
-- BR ID: UC-01.BR-01
-- REQUIREMENT STATEMENT: The product shall run as a browser-based web application using standard web technologies without native installation.
-- PRIORITY: HIGH
-- TESTABLE CONDITION: Opening src/index.html in a modern Chromium-based browser loads the simulator UI without runtime errors, with core controls visible at viewport widths of 375px and 1280px.
+- BR ID: BR-01
+- REQUIREMENT STATEMENT: The simulator shall run as a browser-based application using standard web assets from src without native installation.
+- PRIORITY: High
+- TESTABLE CONDITION: Opening src/index.html in a modern browser renders the full simulator interface and interactive controls.
+- RELATED: UC-01
 
 BUSINESS REQUIREMENT:
-- BR ID: UC-02.BR-01
-- REQUIREMENT STATEMENT: The user shall be able to place positive and negative charges on the simulation canvas.
-- PRIORITY: HIGH
-- TESTABLE CONDITION: In Place Charge mode, selecting + or - and clicking the canvas creates a visible node of matching polarity; 20 placements in one session remain responsive.
+- BR ID: BR-02
+- REQUIREMENT STATEMENT: The simulator shall allow placement and removal of positive and negative static charges on the canvas.
+- PRIORITY: High
+- TESTABLE CONDITION: User can place + and - nodes with pointer input and remove nodes with erase mode.
+- RELATED: UC-02
 
 BUSINESS REQUIREMENT:
-- BR ID: UC-03.BR-01
-- REQUIREMENT STATEMENT: The user shall be able to draw and erase barriers, and moving charges shall bounce from these barriers.
-- PRIORITY: HIGH
-- TESTABLE CONDITION: Drawing a barrier segment causes particle reflection at contact and erase mode removes nearby segments; behavior remains stable at 0.5x, 1.0x, and 2.0x simulation speed.
+- BR ID: BR-03
+- REQUIREMENT STATEMENT: The simulator shall support drawn barriers and collision-enabled background image obstacles that reflect moving particles.
+- PRIORITY: High
+- TESTABLE CONDITION: Particles bounce off both user-drawn barrier segments and configured solid image regions.
+- RELATED: UC-03
 
 BUSINESS REQUIREMENT:
-- BR ID: UC-04.BR-01
-- REQUIREMENT STATEMENT: Negative source charges shall spawn moving particles continuously while simulation is running.
-- PRIORITY: HIGH
-- TESTABLE CONDITION: With at least one negative source, particles spawn repeatedly while running, stop within one second after pause, and resume after returning to running.
+- BR ID: BR-04
+- REQUIREMENT STATEMENT: The simulator shall spawn moving particles continuously from negative sources while running.
+- PRIORITY: High
+- TESTABLE CONDITION: With at least one negative source, active particle count increases over time in running state and pauses on pause.
+- RELATED: UC-04
 
 BUSINESS REQUIREMENT:
-- BR ID: UC-05.BR-01
-- REQUIREMENT STATEMENT: Moving particles shall be annihilated when they enter the positive sink capture radius.
-- PRIORITY: HIGH
-- TESTABLE CONDITION: A particle entering capture radius is removed from active count and increments annihilation count exactly once.
+- BR ID: BR-05
+- REQUIREMENT STATEMENT: The simulator shall remove moving particles when they enter positive sink capture radius and increment annihilation counters.
+- PRIORITY: High
+- TESTABLE CONDITION: Particle entering sink radius is removed once and annihilation count increments by exactly one.
+- RELATED: UC-05
 
 BUSINESS REQUIREMENT:
-- BR ID: UC-06.BR-01
-- REQUIREMENT STATEMENT: A spawn-rate slider shall control how frequently particles are emitted from negative sources.
-- PRIORITY: MEDIUM
-- TESTABLE CONDITION: Raising slider value increases observed emission frequency, lowering value decreases it, and changes apply during runtime without reload.
+- BR ID: BR-06
+- REQUIREMENT STATEMENT: The simulator shall expose a spawn-rate control that updates particle emission frequency during runtime.
+- PRIORITY: Medium
+- TESTABLE CONDITION: Slider changes visibly alter particle emission cadence without reload.
+- RELATED: UC-06
 
 BUSINESS REQUIREMENT:
-- BR ID: UC-07.BR-01
-- REQUIREMENT STATEMENT: Particle motion shall follow Coulomb-like interactions: attracted to positives, repelled by negatives, with inter-particle repulsion.
-- PRIORITY: HIGH
-- TESTABLE CONDITION: In mixed-polarity scenes, particles trend toward + and away from -, nearby particles diverge due to inter-particle repulsion, and default 60-second run remains numerically stable.
+- BR ID: BR-07
+- REQUIREMENT STATEMENT: The simulator shall apply Coulomb-like attraction and repulsion for source/sink interactions and inter-particle repulsion.
+- PRIORITY: High
+- TESTABLE CONDITION: Particle trajectories curve toward sinks, away from sources, and diverge in dense local clusters.
+- RELATED: UC-07
 
 BUSINESS REQUIREMENT:
-- BR ID: UC-08.BR-01
-- REQUIREMENT STATEMENT: The UI shall provide runtime controls for simulation speed and charge strength.
-- PRIORITY: MEDIUM
-- TESTABLE CONDITION: Increasing simulation speed accelerates trajectory progression, increasing charge strength increases force-driven curvature, and both changes apply without clearing scene state.
+- BR ID: BR-08
+- REQUIREMENT STATEMENT: The simulator shall allow runtime tuning of simulation speed and charge strength.
+- PRIORITY: Medium
+- TESTABLE CONDITION: Speed and strength controls immediately modify trajectory progression and force magnitude while running.
+- RELATED: UC-08
 
 BUSINESS REQUIREMENT:
-- BR ID: UC-09.BR-01
-- REQUIREMENT STATEMENT: The UI shall provide additional configurable simulation options and reset behavior.
-- PRIORITY: MEDIUM
-- TESTABLE CONDITION: Particle lifetime, damping, capture radius, and trails controls are editable, produce observable behavior change, and reset action restores default values.
+- BR ID: BR-09
+- REQUIREMENT STATEMENT: The simulator shall include advanced options for damping, capture radius, trails visibility, and reset defaults.
+- PRIORITY: Medium
+- TESTABLE CONDITION: Advanced controls mutate behavior, enforce valid bounds, and reset to documented defaults.
+- RELATED: UC-09
 
 BUSINESS REQUIREMENT:
-- BR ID: UC-10.BR-01
-- REQUIREMENT STATEMENT: The interface shall be intuitive and engaging with clear feedback for mode selection and simulation state.
-- PRIORITY: MEDIUM
-- TESTABLE CONDITION: Active tool mode, run or pause state, and counters update within one second of interaction; running without a negative source shows a guidance message.
+- BR ID: BR-10
+- REQUIREMENT STATEMENT: The simulator shall provide intuitive state visibility for active tools, run state, counters, and guidance messaging.
+- PRIORITY: Medium
+- TESTABLE CONDITION: Tool highlights, run/pause state text, and contextual warnings update within one second of user actions.
+- RELATED: UC-10
+
+BUSINESS REQUIREMENT:
+- BR ID: BR-11
+- REQUIREMENT STATEMENT: The simulator shall save selected background image plus collision-mask settings as named reusable presets.
+- PRIORITY: High
+- TESTABLE CONDITION: Saving a background preset persists image + mask config and survives page refresh.
+- RELATED: UC-11
+
+BUSINESS REQUIREMENT:
+- BR ID: BR-12
+- REQUIREMENT STATEMENT: The simulator shall load saved background presets and immediately apply obstacle collisions from loaded settings.
+- PRIORITY: High
+- TESTABLE CONDITION: Loading preset restores image and mask config, then particles bounce from loaded solid regions during simulation.
+- RELATED: UC-12

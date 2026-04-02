@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classic Notepad</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="window" role="application" aria-label="Classic Notepad">
+      <header class="titlebar">
+        <div class="title-left">
+          <img src="pnp.png" alt="Notepad icon" />
+          <span id="window-title">Untitled - Notepad</span>
+        </div>
+        <button id="exit-btn" class="title-btn" aria-label="Close">X</button>
+      </header>
+
+      <nav class="menubar" aria-label="Notepad menu">
+        <button data-menu="file">File</button>
+        <button data-menu="edit">Edit</button>
+        <button data-menu="format">Format</button>
+        <button data-menu="view">View</button>
+        <button data-menu="help">Help</button>
+      </nav>
+
+      <main class="editor-area">
+        <textarea id="editor" spellcheck="false" aria-label="Editor"></textarea>
+      </main>
+
+      <footer class="statusbar">
+        <span id="status-text">Ln 1, Col 1</span>
+        <span id="save-text">Saved</span>
+      </footer>
+    </div>
+
+    <input id="file-open" type="file" accept=".txt,text/plain" hidden />
+
+    <dialog id="find-dialog" class="dialog">
+      <form method="dialog" id="find-form">
+        <h2>Find / Replace</h2>
+        <label>Find what <input id="find-input" type="text" /></label>
+        <label>Replace with <input id="replace-input" type="text" /></label>
+        <label class="inline"><input id="match-case" type="checkbox" /> Match case</label>
+        <label class="inline"><input id="wrap-around" type="checkbox" checked /> Wrap around</label>
+        <div class="dialog-actions">
+          <button type="button" id="find-next">Find Next</button>
+          <button type="button" id="replace-one">Replace</button>
+          <button type="button" id="replace-all">Replace All</button>
+          <button value="cancel">Close</button>
+        </div>
+        <p id="find-status"></p>
+      </form>
+    </dialog>
+
+    <dialog id="confirm-dialog" class="dialog">
+      <form method="dialog" id="confirm-form">
+        <h2>Save changes?</h2>
+        <p>The text has changed. Do you want to save changes?</p>
+        <div class="dialog-actions">
+          <button type="button" id="confirm-save">Yes</button>
+          <button type="button" id="confirm-discard">No</button>
+          <button type="button" id="confirm-cancel">Cancel</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

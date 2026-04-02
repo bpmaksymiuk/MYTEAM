@@ -50,13 +50,29 @@ Shared resource asset rule:
 
 ## Agent Self-Reference Protocol
 
-1. In all pipeline chat responses, an agent must identify itself by role when using first-person phrasing.
-2. Preferred format: `I (the <ROLE>) ...`.
+1. In all pipeline chat responses, an agent must identify itself by role at the start of each message.
+2. Required format: `(<ROLE>) <message text...>`.
 3. Examples:
-   - `I (the Business Analyst) will convert UC records into BR entries.`
-   - `I (the Technical Lead) will produce implementation-ready design records.`
-4. The active role must match the stage currently being executed.
-5. This protocol applies to all stage agents and the Pipeline Controller in both chat updates and final summaries.
+   - `(Business Analyst) I will convert UC records into BR entries.`
+   - `(Technical Lead) I will produce implementation-ready design records.`
+4. The active role label must match the stage currently being executed.
+5. When execution moves to another stage, the role label must explicitly change to the new stage owner.
+6. Stage ownership labels are mandatory in both progress updates and final summaries.
+7. For every full Stage 1-6 pipeline run, chat output must include at least one visible message from each stage owner in execution order: Business Analyst, Architect, Technical Lead, Developer, Tester, then Pipeline Controller.
+8. Pipeline Controller must not narrate Stage 2-6 work as a single-owner monologue; it must surface explicit stage handoffs and stage-owner messages.
+9. This communication contract applies to all projects under PROJECTS/(APPLICATIONNAME).
+
+## Agent Avatar Protocol
+
+1. Each chat message from an agent should include an avatar image when a matching PNG exists in .github/agents.
+2. PNG naming convention: <agent-file-base-name>.png.
+3. Example mapping:
+   - business-analyst.agent.md -> business-analyst.png
+   - technical-lead.agent.md -> technical-lead.png
+4. Message format when PNG exists:
+   - Line 1: Markdown image with repository-relative path, for example: ![Business Analyst](.github/agents/business-analyst.png)
+   - Line 2+: Role-prefixed text in required format: (Business Analyst) ...
+5. If the PNG does not exist, omit the image and keep role-prefixed text format unchanged.
 
 ## Stage Model
 
@@ -65,9 +81,9 @@ Shared resource asset rule:
 | 0. Proposed Business Use Cases (Advisory) | User (validated by BA) | Product idea, constraints | 0-PROPOSED-BUSINESS-USE-CASES.md | File follows use-case schema and records are high quality; this stage never starts the pipeline |
 | 1. Business Use Cases | PO | Product idea, constraints, optional proposals from Stage 0 | 1-BUSINESS-USE-CASES.md | Every use case has complete fields and measurable acceptance criteria |
 | 2. Business Requirements | BA | 1-BUSINESS-USE-CASES.md | 2-BUSINESS-REQUIREMENTS.md | Every use case maps to >=1 BR ID; requirements are atomic and testable |
-| 3. Software Architecture | A | 2-BUSINESS-REQUIREMENTS.md | 3-SOFTWARE-ARCHITECTURE.md | Every BR ID has >=1 ARCHITECTURE entry with explicit decisions and tradeoffs |
-| 4. Technical Design | TL | 2-BUSINESS-REQUIREMENTS.md, 3-SOFTWARE-ARCHITECTURE.md | 4-TECHNICAL-DESIGN.md | Every BR ID has >=1 DESIGN entry with actionable tasks and explicit contracts |
-| 5. Implementation | Developer | 4-TECHNICAL-DESIGN.md | ./src , 5-IMPLEMENTATION-RELEASE-NOTES.md | Implemented changes are traceable to DESIGN IDs and quality checks pass, and version documented here 5-IMPLEMENTATION-RELEASE-NOTES.md with historical information preserved |
+| 3. Software Architecture | A | 2-BUSINESS-REQUIREMENTS.md | 3-SOFTWARE-ARCHITECTURE.md, 3-PARTS LIST.md | Every BR ID has >=1 ARCHITECTURE (AR-XX) entry with explicit decisions and tradeoffs, each AR entry includes explicit RELATED field listing its parent BR and UC, and parts/components are documented in 3-PARTS LIST.md |
+| 4. Technical Design | TL | 2-BUSINESS-REQUIREMENTS.md, 3-SOFTWARE-ARCHITECTURE.md, 3-PARTS LIST.md | 4-TECHNICAL-DESIGN.md | Every AR ID has >=1 IMPLEMENTATION INSTRUCTION (II-XX) entry with GOAL, SKILLSET REQUIRED, actionable implementation steps, and RELATED lineage to UC/BR/AR |
+| 5. Implementation | Developer | 4-TECHNICAL-DESIGN.md | ./src , 5-IMPLEMENTATION-RELEASE-NOTES.md | Implemented changes are traceable to INSTRUCTION IDs and quality checks pass, and version documented here 5-IMPLEMENTATION-RELEASE-NOTES.md with historical information preserved |
 | 6. Verification | Tester | Stages 1-5 artifacts and ./src | 6-TEST-REPORT.md | Critical BR coverage, evidence quality, defects captured, clear PASS or FAIL |
 
 Stage 0 execution policy:
@@ -117,27 +133,47 @@ BUSINESS REQUIREMENT:
 - REQUIREMENT STATEMENT
 - PRIORITY
 - TESTABLE CONDITION
+- RELATED
 
 ### 3-SOFTWARE-ARCHITECTURE.md
 
 Record schema:
 
 ARCHITECTURE:
-- ARCHITECTURE ID
-- COMPONENTS AFFECTED
-- TECHNOLOGY DECISIONS
+- ARCH ID
+- DESCRIPTION
+- TECHNOLOGY DECISION
 - TRADEOFFS
+- RELATED
+
+Architecture record granularity rule:
+1. Each ARCHITECTURE record must contain exactly one TECHNOLOGY DECISION.
+2. If multiple decisions are needed, create multiple ARCHITECTURE records.
+
+### 3-PARTS LIST.md
+
+Record schema:
+
+PART:
+- PART ID
+- PART NAME
+- NOTES
+- RELATED
+
+Parts list rule:
+1. Stage 3 must generate and maintain 3-PARTS LIST.md together with 3-SOFTWARE-ARCHITECTURE.md.
+2. RELATED in each PART record must map to existing upstream IDs (UC/BR/AR as applicable).
 
 ### 4-TECHNICAL-DESIGN.md
 
 Record schema:
 
-TECH-DESIGN:
-- DESIGN ID
-- IMPLEMENTATION TASKS
-- INTERFACES AND DATA CONTRACTS
-- EDGE CASES AND ERROR HANDLING
-- TEST NOTES
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID
+- GOAL
+- SKILLSET REQUIRED
+- IMPLEMENTATION STEPS
+- RELATED
 
 ### 5-IMPLEMENTATION-RELEASE-NOTES.md
 
@@ -169,20 +205,23 @@ PIPELINE EXECUTION:
 1. Use fixed-width hierarchical IDs.
 2. ID formats:
    - USE CASE ID: UC-XX
-   - BUSINESS REQUIREMENT ID: UC-XX.BR-YY
-   - ARCHITECTURE ID: UC-XX.BR-YY.ARCH-ZZ
-   - DESIGN ID: UC-XX.BR-YY.ARCH-ZZ.DES-AA
-3. Parent linkage is derived from identifier prefix; separate parent ID fields are optional and should be avoided unless needed for tooling.
+   - BUSINESS REQUIREMENT ID: BR-XX
+   - ARCHITECTURE ID: AR-XX
+   - INSTRUCTION ID: II-XX
+3. Parent linkage is explicit through RELATED fields in BR, AR, and IMPLEMENTATION INSTRUCTION records.
 4. IDs are immutable after publication.
 5. If scope changes materially, add new IDs instead of renaming existing IDs.
 6. Numbering starts at 01 within each parent scope.
 
 Minimum traceability chain:
 1. Every TEST RESULT.RELATED BR ID maps to an existing BR ID.
-2. Every code change maps to at least one DESIGN ID.
-3. Every DESIGN ID maps to an ARCHITECTURE ID prefix.
-4. Every ARCHITECTURE ID maps to a BR ID prefix.
-5. Every BR ID maps to a USE CASE ID prefix.
+2. Every code change maps to at least one INSTRUCTION ID.
+3. Every INSTRUCTION ID has an explicit RELATED field listing parent UC-YY, BR-ZZ, and AR-AA.
+4. Every INSTRUCTION.RELATED AR-AA value maps to an existing ARCHITECTURE ID.
+5. Every ARCHITECTURE ID has an explicit RELATED field listing its parent BR-XX and UC-YY.
+6. Every BR ID has an explicit RELATED field listing its parent UC-XX.
+7. Every BR's RELATED field value maps to an existing UC-XX in 1-BUSINESS-USE-CASES.md.
+8. Every AR's RELATED field value maps to existing BR-XX and UC-YY records.
 
 ## Quality Gates
 
@@ -195,7 +234,7 @@ Global rules:
 
 Implementation quality bar (Stage 5):
 1. No unresolved diagnostics in modified scope.
-2. No dead references to missing design records.
+2. No dead references to missing implementation instruction records.
 3. Sensitive operations (clipboard, storage, messaging) must include failure handling and user-visible error path.
 
 Verification quality bar (Stage 6):
@@ -210,8 +249,8 @@ Standard flow:
 1. Optionally update 0-PROPOSED-BUSINESS-USE-CASES.md for candidate ideas (advisory only).
 2. Update 1-BUSINESS-USE-CASES.md.
 3. Regenerate 2-BUSINESS-REQUIREMENTS.md.
-4. Regenerate 3-SOFTWARE-ARCHITECTURE.md 
-5. Regenerate 4-TECHNICAL-DESIGN.md.
+4. Regenerate 3-SOFTWARE-ARCHITECTURE.md and 3-PARTS LIST.md.
+5. Regenerate 4-TECHNICAL-DESIGN.md using IMPLEMENTATION INSTRUCTION records from 2-BUSINESS-REQUIREMENTS.md, 3-SOFTWARE-ARCHITECTURE.md, and 3-PARTS LIST.md.
 6. Implement approved design in ./src and document in 5-IMPLEMENTATION-RELEASE-NOTES.md. Preserve historical information in this document and place the new parts at the top. 
 7. Generate and append results in 6-TEST-REPORT.md.
 8. If runtime caveats or non-implemented constraints exist, update per-use-case IMPLEMENTATION COMMENT fields in 1-BUSINESS-USE-CASES.md and mirror them in 5-IMPLEMENTATION-RELEASE-NOTES.md.
@@ -221,6 +260,7 @@ Completion criteria:
 1. All stage gates PASS.
 2. A new PIPELINE EXECUTION record is appended.
 3. Any runtime caveats are explicitly listed in notes.
+4. Pipeline chat includes visible stage-owner handoffs/messages for Stage 2 through Stage 6 plus a final Pipeline Controller gate decision.
 
 ## Failure Handling Loop
 
@@ -255,5 +295,5 @@ Ownership routing:
 A pipeline run is Done only when:
 1. Stages 1-6 all pass their exit gates.
 2. Traceability chain is intact from UC to test evidence.
-3. Source outputs exist in ./src for every in-scope DESIGN ID.
+3. Source outputs exist in ./src for every in-scope INSTRUCTION ID.
 4. 6-TEST-REPORT.md contains a final PASS PIPELINE decision for the run.

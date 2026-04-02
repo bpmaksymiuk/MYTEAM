@@ -1,47 +1,55 @@
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-001.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/extension/manifest.json, src/extension/background.js, src/extension/window.html, src/extension/window.css, src/extension/window.js, src/extension/pnp.png
-- TECHNOLOGY DECISIONS: Use MV3 extension action and keyboard command to open a dedicated popup-type extension window hosting a Notepad-like UI shell with immediate plain-text focus.
-- TRADEOFFS: Pixel-perfect Windows Notepad parity is approximated within browser rendering constraints.
+- ARCH ID: AR-01
+- DESCRIPTION: Use a Chrome extension action popup as the Notepad runtime surface.
+- TECHNOLOGY DECISION: Chrome Extension Manifest V3 popup page using HTML/CSS/JavaScript.
+- TRADEOFFS: Popup lifecycle is ephemeral and constrained in size compared with standalone desktop windows.
+- RELATED: UC-01, BR-01
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-002.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/extension/window.html, src/extension/window.js
-- TECHNOLOGY DECISIONS: Implement File menu command routing in the Notepad window with a centralized new-document reset handler guarded by unsaved-change confirmation.
-- TRADEOFFS: Confirmation UX may use browser modal style rather than native Windows dialog rendering.
+- ARCH ID: AR-02
+- DESCRIPTION: Keep document state in a single in-memory model with dirty tracking and title metadata.
+- TECHNOLOGY DECISION: Central JavaScript state object synchronized to DOM.
+- TRADEOFFS: Single-document scope simplifies behavior but omits multi-document tabs.
+- RELATED: UC-02, BR-02
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-003.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/extension/window.html, src/extension/window.js, src/extension/window.css
-- TECHNOLOGY DECISIONS: Implement plaintext command routing from Edit/Format menus and keyboard handlers (cut/copy/paste/select-all/undo/redo/time-date/delete) with configurable word-wrap mode.
-- TRADEOFFS: Browser text area behavior may differ subtly from native Notepad selection internals.
+- ARCH ID: AR-03
+- DESCRIPTION: Implement editing commands using browser APIs and textarea behavior.
+- TECHNOLOGY DECISION: Textarea-based editor with command handlers and KeyboardEvent interception.
+- TRADEOFFS: Browser command support for redo and clipboard may vary by platform policy.
+- RELATED: UC-03, BR-03
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-004.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/extension/window.html, src/extension/window.js
-- TECHNOLOGY DECISIONS: Use Blob + object URL download flow for Save/Save As and retain active filename metadata in the Notepad window state.
-- TRADEOFFS: Native Save As interactions depend on browser constraints and user download settings.
+- ARCH ID: AR-04
+- DESCRIPTION: Export text files through blob download links generated in popup context.
+- TECHNOLOGY DECISION: UTF-8 Blob plus temporary anchor click for Save/Save As behavior.
+- TRADEOFFS: Browser controls final download path and confirmation UX.
+- RELATED: UC-04, BR-04
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-005.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/extension/window.html, src/extension/window.js
-- TECHNOLOGY DECISIONS: Use hidden file input picker and file.text()-based load pipeline with size validation and state synchronization.
-- TRADEOFFS: Encoding detection beyond UTF-8/ANSI may require additional parser logic.
+- ARCH ID: AR-05
+- DESCRIPTION: Import text files through hidden file input and FileReader.
+- TECHNOLOGY DECISION: accept=.txt file picker with text decoding via File.text().
+- TRADEOFFS: Encoding detection is browser-dependent; ANSI handling is best effort.
+- RELATED: UC-05, BR-05
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-006.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/extension/window.html, src/extension/window.js, src/extension/window.css
-- TECHNOLOGY DECISIONS: Provide a non-blocking in-window find/replace dialog bound to textarea search and replacement services with match-case and wrap-around options.
-- TRADEOFFS: Dialog movement/resizing fidelity may differ from native Win32 behavior.
+- ARCH ID: AR-06
+- DESCRIPTION: Provide find/replace overlay dialog over the editor surface.
+- TECHNOLOGY DECISION: Custom modal-like panel with linear search indices and replace operations.
+- TRADEOFFS: Behavior approximates Notepad but does not replicate native window-level dialog semantics.
+- RELATED: UC-06, BR-06
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-007.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/extension/window.html, src/extension/window.js
-- TECHNOLOGY DECISIONS: Debounced auto-save to chrome.storage.local with snapshot restore on launch and autosave status indicators.
-- TRADEOFFS: Storage quota and async write timing require warning and conflict handling.
+- ARCH ID: AR-07
+- DESCRIPTION: Persist editor runtime snapshot in extension local storage with debounce.
+- TECHNOLOGY DECISION: chrome.storage.local writes after idle timeout and on beforeunload hooks.
+- TRADEOFFS: Storage quota limits require warning and possible graceful degradation.
+- RELATED: UC-07, BR-07
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-008.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/extension/window.html, src/extension/window.js
-- TECHNOLOGY DECISIONS: Centralized close workflow via File->Exit and title-bar close control with custom Yes/No/Cancel unsaved dialog and beforeunload safeguard.
-- TRADEOFFS: Browser window lifecycle may limit exact process-level parity with desktop Notepad.
+- ARCH ID: AR-08
+- DESCRIPTION: Gate close action through explicit confirmation dialog integrated with save routine.
+- TECHNOLOGY DECISION: Custom confirm modal for Save/Discard/Cancel choices prior to window.close().
+- TRADEOFFS: Popup close cannot always be intercepted if browser forcibly closes extension surface.
+- RELATED: UC-08, BR-08

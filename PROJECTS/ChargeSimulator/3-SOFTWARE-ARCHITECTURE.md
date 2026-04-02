@@ -1,59 +1,83 @@
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-01.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/index.html, src/styles.css, src/app.js
-- TECHNOLOGY DECISIONS: Deliver as a single-page browser app using HTML5 Canvas and vanilla JavaScript.
-- TRADEOFFS: Vanilla approach avoids build tooling but requires careful structure for maintainability.
+- ARCH ID: AR-01
+- DESCRIPTION: Host the simulator as a single-page browser application.
+- TECHNOLOGY DECISION: Vanilla HTML, CSS, and JavaScript with a canvas-rendered simulation surface.
+- TRADEOFFS: No framework overhead but requires manual state orchestration and UI wiring.
+- RELATED: UC-01, BR-01
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-02.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/app.js
-- TECHNOLOGY DECISIONS: Use an explicit placement mode and polarity selector to create static source/sink charges.
-- TRADEOFFS: Mode-driven interaction is simple but requires clear visual state to avoid user confusion.
+- ARCH ID: AR-02
+- DESCRIPTION: Model static charges as typed nodes in simulation state.
+- TECHNOLOGY DECISION: Store charge nodes in an in-memory array with polarity and position fields.
+- TRADEOFFS: Simple representation but no built-in persistence unless explicitly serialized.
+- RELATED: UC-02, BR-02
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-03.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/app.js
-- TECHNOLOGY DECISIONS: Represent barriers as line segments and resolve collisions with vector reflection against segment normals.
-- TRADEOFFS: Segment-based collisions are efficient but can miss very high-speed tunneling edge cases.
+- ARCH ID: AR-03
+- DESCRIPTION: Support collisions against both drawn barriers and image-derived solid masks.
+- TECHNOLOGY DECISION: Keep barrier segments in vector list and background obstacle mask in an offscreen pixel map.
+- TRADEOFFS: Pixel mask checks are fast at runtime but can be resolution-dependent.
+- RELATED: UC-03, BR-03
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-04.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/app.js
-- TECHNOLOGY DECISIONS: Maintain per-source spawn timers that emit particles while simulation state is running.
-- TRADEOFFS: Timer-accumulator logic is deterministic but sensitive to large frame-time spikes.
+- ARCH ID: AR-04
+- DESCRIPTION: Spawn mobile particles from negative charge emitters at configurable cadence.
+- TECHNOLOGY DECISION: Use accumulator-based spawn scheduler driven by animation timestep.
+- TRADEOFFS: Deterministic cadence control but burst behavior can occur after long frame delays.
+- RELATED: UC-04, BR-04
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-05.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/app.js
-- TECHNOLOGY DECISIONS: Apply sink capture radius checks each update step and remove captured particles.
-- TRADEOFFS: Radius checks are fast but simplify annihilation to radial zones.
+- ARCH ID: AR-05
+- DESCRIPTION: Remove particles on sink capture and track annihilation metrics.
+- TECHNOLOGY DECISION: Distance-threshold sink capture test integrated into particle update loop.
+- TRADEOFFS: Radius capture is stable but approximates complex field absorption behavior.
+- RELATED: UC-05, BR-05
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-06.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/index.html, src/app.js
-- TECHNOLOGY DECISIONS: Bind spawn-rate range input to simulation config and recompute spawn intervals on input events.
-- TRADEOFFS: Continuous slider updates are responsive but may increase update churn.
+- ARCH ID: AR-06
+- DESCRIPTION: Provide live spawn frequency control.
+- TECHNOLOGY DECISION: Bind slider value to particles-per-second scheduler input.
+- TRADEOFFS: Slider precision is bounded by UI range granularity.
+- RELATED: UC-06, BR-06
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-07.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/app.js
-- TECHNOLOGY DECISIONS: Compute net acceleration from static charges plus pairwise inter-particle repulsion with softening.
-- TRADEOFFS: O(n^2) particle interactions limit max particle counts for smooth frame rates.
+- ARCH ID: AR-07
+- DESCRIPTION: Implement Coulomb-like motion forces from static charges and neighboring particles.
+- TECHNOLOGY DECISION: Per-frame force integration using inverse-distance-squared style weighting with clamped minima.
+- TRADEOFFS: Approximate physics for interactivity; not a physically exact solver.
+- RELATED: UC-07, BR-07
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-08.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/index.html, src/app.js
-- TECHNOLOGY DECISIONS: Expose simulation speed and force scale as live multipliers in the integration loop.
-- TRADEOFFS: High multipliers can reduce physical realism and require damping safeguards.
+- ARCH ID: AR-08
+- DESCRIPTION: Expose speed and strength runtime tuning.
+- TECHNOLOGY DECISION: Multiply simulation dt and force constants using bound slider parameters.
+- TRADEOFFS: Broad tunability can produce unstable dynamics at extreme values if not damped.
+- RELATED: UC-08, BR-08
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-09.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/index.html, src/app.js
-- TECHNOLOGY DECISIONS: Provide advanced controls for lifetime, damping, capture radius, and trails with a reset-to-default action.
-- TRADEOFFS: Extra controls improve experimentation at the cost of UI complexity.
+- ARCH ID: AR-09
+- DESCRIPTION: Maintain advanced options and default reset behavior.
+- TECHNOLOGY DECISION: Central defaults object and validated control synchronization for damping/capture/trails.
+- TRADEOFFS: Requires strict UI-state synchronization to avoid stale values.
+- RELATED: UC-09, BR-09
 
 ARCHITECTURE:
-- ARCHITECTURE ID: UC-10.BR-01.ARCH-01
-- COMPONENTS AFFECTED: src/index.html, src/styles.css, src/app.js
-- TECHNOLOGY DECISIONS: Use a dashboard layout with persistent status bar, highlighted active tool state, and live counters.
-- TRADEOFFS: Rich styling improves engagement but adds visual tuning overhead.
+- ARCH ID: AR-10
+- DESCRIPTION: Keep the interaction model understandable through explicit status and mode indicators.
+- TECHNOLOGY DECISION: Dedicated HUD labels for active tool, run state, and counters with guidance messages.
+- TRADEOFFS: Additional UI state branching but improved usability.
+- RELATED: UC-10, BR-10
+
+ARCHITECTURE:
+- ARCH ID: AR-11
+- DESCRIPTION: Persist background image and mask settings as reusable named presets.
+- TECHNOLOGY DECISION: Save preset payloads (data URL plus mask settings) in browser localStorage JSON.
+- TRADEOFFS: Large images increase storage usage and can approach browser quota.
+- RELATED: UC-11, BR-11
+
+ARCHITECTURE:
+- ARCH ID: AR-12
+- DESCRIPTION: Restore background presets and apply obstacle collision mapping immediately.
+- TECHNOLOGY DECISION: Hydrate image and mask settings from selected preset, rebuild offscreen mask, and bind to collision checks.
+- TRADEOFFS: Corrupted preset assets must be validated to prevent runtime collision-map failures.
+- RELATED: UC-12, BR-12

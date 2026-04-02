@@ -1,23 +1,26 @@
 {
   "manifest_version": 3,
-  "name": "Notepad",
-  "version": "0.0.6",
-  "description": "Notepad-style Chrome extension window.",
+  "name": "Classic Notepad",
+  "version": "0.1.0",
+  "description": "A Notepad-like plain text editor inside a Chrome extension popup.",
   "permissions": [
     "storage"
   ],
-  "background": {
-    "service_worker": "background.js"
-  },
   "action": {
-    "default_title": "Open Notepad"
+    "default_title": "Open Classic Notepad",
+    "default_popup": "popup.html"
   },
   "commands": {
-    "open-notepad-window": {
+    "open_notepad": {
       "suggested_key": {
         "default": "Ctrl+Shift+N"
       },
-      "description": "Open Notepad window"
+      "description": "Open Classic Notepad popup"
     }
+  },
+  "icons": {
+    "16": "pnp.png",
+    "48": "pnp.png",
+    "128": "pnp.png"
   }
 }

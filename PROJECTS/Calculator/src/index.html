@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classic Calculator</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="win95-window" aria-label="Calculator window">
+    <header class="titlebar">
+      <span>Calculator</span>
+      <div class="window-buttons" aria-hidden="true">
+        <span class="box"></span>
+        <span class="box"></span>
+        <span class="box"></span>
+      </div>
+    </header>
+
+    <section class="calculator">
+      <div class="memory-indicator" id="memory-indicator">M</div>
+      <output id="display" class="display" aria-live="polite">0</output>
+
+      <div class="pad" id="pad">
+        <button class="btn cmd" data-cmd="back">Back</button>
+        <button class="btn cmd" data-cmd="ce">CE</button>
+        <button class="btn cmd" data-cmd="c">C</button>
+        <button class="btn op" data-op="/">/</button>
+
+        <button class="btn mem" data-cmd="mc">MC</button>
+        <button class="btn mem" data-cmd="mr">MR</button>
+        <button class="btn mem" data-cmd="ms">MS</button>
+        <button class="btn op" data-op="*">*</button>
+
+        <button class="btn mem" data-cmd="mplus">M+</button>
+        <button class="btn mem" data-cmd="mminus">M-</button>
+        <button class="btn num" data-num="7">7</button>
+        <button class="btn op" data-op="-">-</button>
+
+        <button class="btn num" data-num="8">8</button>
+        <button class="btn num" data-num="9">9</button>
+        <button class="btn num" data-num="4">4</button>
+        <button class="btn op" data-op="+">+</button>
+
+        <button class="btn num" data-num="5">5</button>
+        <button class="btn num" data-num="6">6</button>
+        <button class="btn num" data-num="1">1</button>
+        <button class="btn eq" data-cmd="eq">=</button>
+
+        <button class="btn num" data-num="2">2</button>
+        <button class="btn num" data-num="3">3</button>
+        <button class="btn num" data-num="0">0</button>
+        <button class="btn num" data-cmd="dot">.</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

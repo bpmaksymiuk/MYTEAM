@@ -1,69 +1,83 @@
-TECH-DESIGN:
-- DESIGN ID: UC-01.BR-01.ARCH-01.DES-01
-- IMPLEMENTATION TASKS: Build browser-delivered single page with canvas, controls panel, and script bootstrap.
-- INTERFACES AND DATA CONTRACTS: AppState { running:boolean, canvas:{width:number,height:number} }.
-- EDGE CASES AND ERROR HANDLING: If canvas context cannot initialize, show visible error and disable run controls.
-- TEST NOTES: Open src/index.html and verify app shell and controls render.
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID: II-01
+- GOAL: Build browser-accessible simulator shell.
+- SKILLSET REQUIRED: HTML, CSS, JavaScript
+- IMPLEMENTATION STEPS: Create index.html with canvas and control groups; add responsive styles for mobile and desktop breakpoints; wire bootstrap script.
+- RELATED: UC-01, BR-01, AR-01
 
-TECH-DESIGN:
-- DESIGN ID: UC-02.BR-01.ARCH-01.DES-01
-- IMPLEMENTATION TASKS: Add polarity selector and placement tool; place static charges on canvas pointer interaction.
-- INTERFACES AND DATA CONTRACTS: ChargeNode { id:string, x:number, y:number, polarity:1|-1, role:'sink'|'source' }.
-- EDGE CASES AND ERROR HANDLING: Reject placement near canvas edge margins to prevent clipped markers.
-- TEST NOTES: Place both polarities and verify visual plus/minus markers.
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID: II-02
+- GOAL: Implement positive and negative charge placement/edit behavior.
+- SKILLSET REQUIRED: Canvas interaction handling, state management
+- IMPLEMENTATION STEPS: Add tool modes for positive, negative, and erase; on pointer event place charge node or erase nearest node; keep nodes in bounded canvas space.
+- RELATED: UC-02, BR-02, AR-02
 
-TECH-DESIGN:
-- DESIGN ID: UC-03.BR-01.ARCH-01.DES-01
-- IMPLEMENTATION TASKS: Implement barrier draw drag flow and eraser mode with nearest-segment deletion and bounce physics.
-- INTERFACES AND DATA CONTRACTS: BarrierSegment { id:string, x1:number, y1:number, x2:number, y2:number }.
-- EDGE CASES AND ERROR HANDLING: Ignore too-short barrier drags and skip zero-length normal computations.
-- TEST NOTES: Draw a barrier crossing particle path and confirm reflection; erase and confirm removal.
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID: II-03
+- GOAL: Implement barrier drawing, barrier erasing, and image-obstacle collisions.
+- SKILLSET REQUIRED: Canvas geometry, collision math
+- IMPLEMENTATION STEPS: Capture drag paths into barrier segments; implement near-segment erase check; create image mask occupancy lookup and collision response reflection.
+- RELATED: UC-03, BR-03, AR-03
 
-TECH-DESIGN:
-- DESIGN ID: UC-04.BR-01.ARCH-01.DES-01
-- IMPLEMENTATION TASKS: Maintain spawn accumulators for each negative node and emit particles at configured interval.
-- INTERFACES AND DATA CONTRACTS: Particle { id:string, x:number, y:number, vx:number, vy:number, age:number }.
-- EDGE CASES AND ERROR HANDLING: Clamp maximum particle count and stop spawning when paused.
-- TEST NOTES: With one source, verify periodic new particle creation while running.
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID: II-04
+- GOAL: Implement particle spawning from negative sources.
+- SKILLSET REQUIRED: Animation loop timing, particle systems
+- IMPLEMENTATION STEPS: Use dt accumulator with spawn-rate control to emit particles from each negative source while running; pause scheduler when paused.
+- RELATED: UC-04, BR-04, AR-04
 
-TECH-DESIGN:
-- DESIGN ID: UC-05.BR-01.ARCH-01.DES-01
-- IMPLEMENTATION TASKS: Detect sink capture using configurable radius and remove captured particles while tracking counter.
-- INTERFACES AND DATA CONTRACTS: Stats { active:number, spawned:number, annihilated:number }.
-- EDGE CASES AND ERROR HANDLING: Ensure one particle increments annihilation once before removal.
-- TEST NOTES: Route particles toward a sink and verify counter increments.
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID: II-05
+- GOAL: Implement sink annihilation and metric tracking.
+- SKILLSET REQUIRED: Vector math, simulation bookkeeping
+- IMPLEMENTATION STEPS: Detect sink-radius overlap against positive charges; remove captured particles; increment annihilation counter exactly once per capture.
+- RELATED: UC-05, BR-05, AR-05
 
-TECH-DESIGN:
-- DESIGN ID: UC-06.BR-01.ARCH-01.DES-01
-- IMPLEMENTATION TASKS: Wire spawn-rate range input to config and update display labels live.
-- INTERFACES AND DATA CONTRACTS: SimConfig { spawnPerSecond:number }.
-- EDGE CASES AND ERROR HANDLING: Clamp spawn rate to slider min/max bounds.
-- TEST NOTES: Adjust slider and verify measured emission frequency changes.
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID: II-06
+- GOAL: Implement spawn-rate live control.
+- SKILLSET REQUIRED: UI binding, runtime parameter updates
+- IMPLEMENTATION STEPS: Bind slider to spawn-per-second parameter with label; apply new value immediately to scheduler without full reset.
+- RELATED: UC-06, BR-06, AR-06
 
-TECH-DESIGN:
-- DESIGN ID: UC-07.BR-01.ARCH-01.DES-01
-- IMPLEMENTATION TASKS: Compute force field from static nodes and particle repulsion with softening epsilon and capped acceleration.
-- INTERFACES AND DATA CONTRACTS: ForceParams { k:number, particleRepel:number, epsilon:number, maxAccel:number }.
-- EDGE CASES AND ERROR HANDLING: Avoid division by zero with epsilon when distances are very small.
-- TEST NOTES: Verify attraction/repulsion trends by placing opposite and like-polarity nodes.
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID: II-07
+- GOAL: Implement Coulomb-like attraction and repulsion dynamics.
+- SKILLSET REQUIRED: Numerical integration, force modeling
+- IMPLEMENTATION STEPS: For each particle compute force from static charges and nearby particles; clamp minima and maxima for stability; update velocity and position each frame.
+- RELATED: UC-07, BR-07, AR-07
 
-TECH-DESIGN:
-- DESIGN ID: UC-08.BR-01.ARCH-01.DES-01
-- IMPLEMENTATION TASKS: Apply speed and strength multipliers in update integration and UI labels.
-- INTERFACES AND DATA CONTRACTS: SimConfig { simSpeed:number, forceStrength:number }.
-- EDGE CASES AND ERROR HANDLING: Use bounded dt and damping to prevent unstable explosive motion.
-- TEST NOTES: Change controls at runtime and observe immediate trajectory differences.
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID: II-08
+- GOAL: Support runtime speed and charge strength tuning.
+- SKILLSET REQUIRED: Simulation parameterization
+- IMPLEMENTATION STEPS: Bind speed and strength sliders to dt and force multipliers; apply changes immediately during run.
+- RELATED: UC-08, BR-08, AR-08
 
-TECH-DESIGN:
-- DESIGN ID: UC-09.BR-01.ARCH-01.DES-01
-- IMPLEMENTATION TASKS: Add advanced controls (lifetime, damping, capture radius, trails) and a reset button to defaults.
-- INTERFACES AND DATA CONTRACTS: AdvancedConfig { particleLifetime:number, damping:number, captureRadius:number, showTrails:boolean }.
-- EDGE CASES AND ERROR HANDLING: Keep reset idempotent and update all control labels.
-- TEST NOTES: Modify advanced options, then reset and verify defaults restored.
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID: II-09
+- GOAL: Implement advanced controls and reset defaults.
+- SKILLSET REQUIRED: Form controls, validation
+- IMPLEMENTATION STEPS: Add damping, capture radius, and trails controls with bounds; implement reset-defaults action that restores documented baseline values.
+- RELATED: UC-09, BR-09, AR-09
 
-TECH-DESIGN:
-- DESIGN ID: UC-10.BR-01.ARCH-01.DES-01
-- IMPLEMENTATION TASKS: Build intuitive control groups, active mode highlighting, run/pause button, and live stats/status text.
-- INTERFACES AND DATA CONTRACTS: UIState { mode:string, statusText:string }.
-- EDGE CASES AND ERROR HANDLING: If no source exists while running, show guidance status instead of silent idle behavior.
-- TEST NOTES: Confirm active mode and status text change as user interacts.
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID: II-10
+- GOAL: Provide clear tool/run status and user guidance.
+- SKILLSET REQUIRED: UX feedback patterns
+- IMPLEMENTATION STEPS: Render active mode indicator, run-state text, active and annihilated counters; show guidance message when running without negative source.
+- RELATED: UC-10, BR-10, AR-10
+
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID: II-11
+- GOAL: Save background image presets with collision-mask settings.
+- SKILLSET REQUIRED: Browser storage APIs, serialization
+- IMPLEMENTATION STEPS: Read loaded image as data URL, collect collision threshold and solid-mode settings, save to localStorage under user-provided preset name with overwrite handling.
+- RELATED: UC-11, BR-11, AR-11
+
+IMPLEMENTATION INSTRUCTION:
+- INSTRUCTION ID: II-12
+- GOAL: Load saved background presets and activate image collisions.
+- SKILLSET REQUIRED: Asset hydration, validation handling
+- IMPLEMENTATION STEPS: Populate preset selector from localStorage, load selected payload, rebuild mask map, activate collisions, and surface error if preset image is invalid.
+- RELATED: UC-12, BR-12, AR-12
