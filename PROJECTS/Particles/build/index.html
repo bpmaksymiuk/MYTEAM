@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coulomb Field Lab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <main class="app">
+      <header class="topbar">
+        <h1>Coulomb Field Lab</h1>
+        <p>Interactive charge-flow simulator</p>
+      </header>
+
+      <section class="layout">
+        <aside class="panel controls">
+          <h2>Tools</h2>
+          <div class="tool-row" id="tool-row">
+            <button data-tool="probePlus">Place + Probe</button>
+            <button data-tool="probeMinus">Place - Probe</button>
+            <button data-tool="drawBarrier">Draw Barrier</button>
+            <button data-tool="eraseBarrier">Erase Barrier</button>
+          </div>
+
+          <h2>Runtime Controls</h2>
+          <label>
+            Simulation Speed
+            <input id="speed" type="range" min="0.2" max="3" step="0.1" value="1" />
+          </label>
+          <label>
+            Charge Strength
+            <input id="strength" type="range" min="100" max="3000" step="50" value="950" />
+          </label>
+          <label>
+            Spawn Rate (charges/sec/probe)
+            <input id="spawnRate" type="range" min="1" max="80" step="1" value="18" />
+          </label>
+          <label>
+            Bounce Damping
+            <input id="damping" type="range" min="0.2" max="1" step="0.02" value="0.88" />
+          </label>
+          <label>
+            Particle Cap
+            <input id="particleCap" type="range" min="100" max="4000" step="50" value="900" />
+          </label>
+          <button id="clearAll" class="danger">Clear All</button>
+        </aside>
+
+        <section class="sim-wrap panel">
+          <canvas id="simCanvas" width="1100" height="700" aria-label="Coulomb simulation canvas"></canvas>
+        </section>
+
+        <aside class="panel hud">
+          <h2>Live Metrics</h2>
+          <dl>
+            <dt>Active Tool</dt><dd id="m-tool">probePlus</dd>
+            <dt>Charges</dt><dd id="m-charges">0</dd>
+            <dt>+ Probes</dt><dd id="m-plus">0</dd>
+            <dt>- Probes</dt><dd id="m-minus">0</dd>
+            <dt>Barriers</dt><dd id="m-barriers">0</dd>
+            <dt>FPS</dt><dd id="m-fps">0</dd>
+          </dl>
+          <p class="hint">Tip: Drag while in Draw Barrier mode to create reflective walls.</p>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

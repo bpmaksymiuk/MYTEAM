@@ -1,12 +1,15 @@
 Generate Use Cases (in 0-PROPOSED-BUSINESS-USE-CASES.md ) for the following:
+###################################################
+A chrome plug in, that pops up a window that resembles the notepad.exe application from Windows 95. 
+###################################################
 
-A chrome plug in, that resembles the notepad.exe application. 
 
 Use the following schema:
 
 USE CASE:
-- USE CASE ID
-- GOAL
+- ID <UC-XXX>
 - ACTOR
-- STEP BY STEP WALKTHROUGH
+- NAME
+- STEPS
 - ACCEPTANCE CRITERIA
+- RELATED

@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Classic Notepad",
+  "version": "0.2.0",
+  "description": "A Notepad-like plain text editor in a standalone detached Chrome window.",
+  "permissions": [
+    "storage",
+    "windows"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Open Classic Notepad"
+  }
+}
