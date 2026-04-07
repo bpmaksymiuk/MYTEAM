@@ -1,146 +1,179 @@
-BR-001 : Extension action opens Notepad in one click from the toolbar icon.
-- TESTABLE CONDITION
-  1. Clicking the extension action icon launches the Notepad experience without additional user steps.
-- NOTES
-  1. This is the primary entrypoint for all user flows.
-- RELATED UC-001, UC-008
+# Business Requirements
 
-BR-002 : Notepad renders a retro Windows-style interface with title bar, menu controls, editor, and status area.
+Generated from `1-USE-CASES.md`. Owned by Business Analyst.
+
+---
+
+## BR-001 : The extension shall provide a toolbar icon that, when clicked, opens the Notepad window
 - TESTABLE CONDITION
-  1. On launch, the UI shows window title text, menu row, editable text area, and status indicators.
-- NOTES
-  1. Visual intent remains Classic Notepad.
+  Given the extension is installed and enabled, when the user clicks the browser toolbar icon, then the Notepad window opens within 1 second.
+- NOTES None
 - RELATED UC-001
 
-BR-003 : Editor is immediately usable for multiline plain text editing.
-- TESTABLE CONDITION
-  1. User can place cursor, type, delete, and insert line breaks directly after opening.
-- NOTES
-  1. Behavior should match normal desktop notepad editing expectations.
-- RELATED UC-001, UC-002
+---
 
-BR-004 : Content mutations are reflected in real time and dirty/saved state is tracked accurately.
+## BR-002 : The system shall render the Notepad window in a visual style consistent with Windows 95 Notepad
 - TESTABLE CONDITION
-  1. Input changes update visible editor content instantly and toggle save-state indicator to unsaved.
-- NOTES
-  1. Dirty-state accuracy is required for safe destructive-action prompts.
-- RELATED UC-002, UC-007
+  Given the Notepad window is open, then the UI displays a navy title bar, silver window chrome, beveled borders, Courier New monospace font, and a retro menu bar styled to match the Windows 95 Notepad aesthetic.
+- NOTES Includes title bar, menu bar, editor area, and status bar styling.
+- RELATED UC-001
 
-BR-005 : Save operation persists note content and metadata to chrome.storage.local.
+---
+
+## BR-003 : The text area shall receive keyboard focus immediately upon window open
 - TESTABLE CONDITION
-  1. Triggering save writes content and metadata payload (title, wrap mode, cursor bounds, filename, dirty state) to storage.
-- NOTES
-  1. Storage key must be stable across sessions.
+  Given the Notepad window has just opened, then the editor textarea is focused and ready to accept keyboard input without requiring an additional click.
+- NOTES None
+- RELATED UC-001
+
+---
+
+## BR-004 : The editor shall render user-typed text in real time without input lag
+- TESTABLE CONDITION
+  Given the user is typing in the editor, then each keystroke is reflected in the editor immediately with no visible delay.
+- NOTES None
+- RELATED UC-002
+
+---
+
+## BR-005 : The editor shall support multi-line plain text with standard keyboard editing behavior
+- TESTABLE CONDITION
+  Given the editor is focused, then the user can type multi-line content, use backspace and delete, move with arrow keys, and select text with Shift+arrow keys.
+- NOTES Tab key behavior should insert a tab character or advance focus consistently.
+- RELATED UC-002
+
+---
+
+## BR-006 : The system shall write current editor content to persistent browser storage when Save is triggered
+- TESTABLE CONDITION
+  Given content exists in the editor, when the user triggers Save (menu or Ctrl+S), then the content is written to chrome.storage.local under the key 'noteContent'.
+- NOTES None
 - RELATED UC-003
 
-BR-006 : Save operation provides explicit visible confirmation.
+---
+
+## BR-007 : The saved content shall persist and be retrievable after the extension window is closed and reopened
 - TESTABLE CONDITION
-  1. After successful save, the UI displays saved status without requiring developer tools.
-- NOTES
-  1. Status copy must be user-facing.
+  Given a note has been saved, when the user closes the Notepad window and reopens it by clicking the toolbar icon, then the previously saved content is displayed in the editor.
+- NOTES Persistence must survive browser restart, not just tab reload.
+- RELATED UC-003, UC-004
+
+---
+
+## BR-008 : The system shall provide visible feedback indicating a save was completed successfully
+- TESTABLE CONDITION
+  Given the user triggers Save, then the title bar or status bar displays a visual confirmation (e.g., "Saved") within 500 ms of the write completing.
+- NOTES Feedback must be visible without requiring user interaction.
 - RELATED UC-003
 
-BR-007 : Load or reopen restores saved content accurately and keeps editor editable.
+---
+
+## BR-009 : The system shall automatically load the most recently saved note when the Notepad window opens
 - TESTABLE CONDITION
-  1. Restored text matches previously saved content and accepts immediate edits.
-- NOTES
-  1. Restore includes metadata when valid.
+  Given a note has been previously saved, when the Notepad window opens, then the saved content is loaded into the editor before the user types anything.
+- NOTES None
 - RELATED UC-004
 
-BR-008 : New action clears content only after confirmation when unsaved edits exist.
+---
+
+## BR-010 : Loaded content shall be immediately editable after loading
 - TESTABLE CONDITION
-  1. Invoking New on dirty content prompts user; confirm clears, cancel preserves.
-- NOTES
-  1. New may proceed immediately if content is already clean.
+  Given content has been loaded from storage, then the user can place the cursor anywhere and type without any additional action.
+- NOTES None
+- RELATED UC-004
+
+---
+
+## BR-011 : The system shall clear the editor to a blank state when New is confirmed
+- TESTABLE CONDITION
+  Given the user triggers New and confirms the prompt (if present), then the editor is cleared to an empty string with no residual content.
+- NOTES None
+- RELATED UC-005
+
+---
+
+## BR-012 : The system shall detect whether unsaved changes exist before executing a destructive action
+- TESTABLE CONDITION
+  Given the user has typed content that has not been saved, when the user triggers New or Load, then the system identifies the dirty state and gates the action behind a confirmation.
+- NOTES Dirty state is reset after Save, after Load completes, and after New clears the editor.
 - RELATED UC-005, UC-007
 
-BR-009 : Open/Load action warns on unsaved state and honors the chosen decision.
-- TESTABLE CONDITION
-  1. Opening/importing while dirty prompts user; cancel prevents replacement, continue proceeds.
-- NOTES
-  1. Prompt contract must match New and Close flows.
-- RELATED UC-004, UC-007
+---
 
-BR-010 : Close with unsaved content triggers confirmation and applies selected outcome only.
+## BR-013 : The system shall display a confirmation prompt when a destructive action is attempted with unsaved content present
 - TESTABLE CONDITION
-  1. Closing while dirty prompts user and either saves, discards, or cancels according to selection.
-- NOTES
-  1. Cancel keeps the window open and preserves state.
+  Given the editor has unsaved content, when the user triggers New or Load, then a confirmation dialog appears before any content is discarded.
+- NOTES The OS window close button (×) cannot be intercepted in a Chrome extension service worker; this limitation must be documented as a known caveat.
+- RELATED UC-005, UC-007
+
+---
+
+## BR-014 : The system shall cancel the destructive action and preserve current content when the user cancels the confirmation prompt
+- TESTABLE CONDITION
+  Given the confirmation prompt is displayed, when the user selects Cancel, then the editor retains its current content and the triggering action does not proceed.
+- NOTES None
 - RELATED UC-007
 
-BR-011 : Save As/Download exports current editor text as plain text with .txt default extension.
+---
+
+## BR-015 : The system shall produce a downloadable plain-text file from the current editor content when Download is triggered
 - TESTABLE CONDITION
-  1. Save As creates a downloadable file whose extension defaults to .txt when omitted.
-- NOTES
-  1. Export must be fully client-side.
+  Given the user triggers Download (Save As), then the browser initiates a file download with content exactly matching the editor's current text.
+- NOTES Must work without any server dependency.
 - RELATED UC-006
 
-BR-012 : Exported file content is byte-equivalent to editor content at export time.
+---
+
+## BR-016 : The downloaded file shall have a .txt extension and content that exactly matches the current editor state
 - TESTABLE CONDITION
-  1. Downloaded text exactly equals in-memory editor value with no transformations.
-- NOTES
-  1. Use UTF-8 text/plain payload.
+  Given a download completes, then the saved file has a .txt extension and its content is byte-for-byte equal to the editor content at the time of download.
+- NOTES None
 - RELATED UC-006
 
-BR-013 : State management preserves title, wrap mode, cursor, and last filename consistently.
-- TESTABLE CONDITION
-  1. Across save/load/new/open flows, metadata remains coherent and valid for current content.
-- NOTES
-  1. Cursor bounds must never exceed content length.
-- RELATED UC-002, UC-003, UC-004
+---
 
-BR-014 : New, Open/Load, and Close flows share a single unsaved-confirmation model.
+## BR-017 : The extension shall open Notepad in a detached standalone Chrome window
 - TESTABLE CONDITION
-  1. Each destructive flow invokes the same confirmation mechanism and executes only approved actions.
-- NOTES
-  1. Shared logic reduces divergence defects.
-- RELATED UC-005, UC-007
-
-BR-015 : Notepad opens as a detached standalone Chrome window with normal OS window behavior.
-- TESTABLE CONDITION
-  1. Launched Notepad window can be moved, resized, minimized, and restored via OS controls.
-- NOTES
-  1. Launch mechanism must use detached window APIs rather than extension popup overlay.
+  Given the user clicks the extension toolbar icon, then Notepad opens in a chrome.windows-managed window with OS-level chrome (title bar, resize handles, minimize), not a browser popup.
+- NOTES Window type should be 'popup' in chrome.windows.create to get a clean standalone window.
 - RELATED UC-008
 
-BR-016 : Only one Notepad window instance exists; relaunch focuses existing instance.
+---
+
+## BR-018 : The Notepad window shall persist its position and size between sessions
 - TESTABLE CONDITION
-  1. If a Notepad window is already open, clicking the extension action focuses that window and does not create another.
-- NOTES
-  1. Must remain robust across service worker restarts.
+  Given the user repositioned or resized the Notepad window, when they close and reopen it, then the window opens at the same position and size as when it was last closed.
+- NOTES Bounds stored in chrome.storage.local under key 'windowBounds'. Default fallback: left:100, top:100, width:700, height:500.
 - RELATED UC-008
 
-BR-017 : Notepad window geometry persists between sessions.
+---
+
+## BR-019 : Only one Notepad window shall be open at a time; clicking the icon when a window exists shall focus it
 - TESTABLE CONDITION
-  1. After move/resize and close, next launch restores last known size and position.
-- NOTES
-  1. Invalid geometry falls back to defaults safely.
+  Given a Notepad window is already open, when the user clicks the toolbar icon again, then the existing window is brought to the foreground rather than a second window being created.
+- NOTES Service worker must track the active windowId in memory and clear it on window close.
 - RELATED UC-008
 
-BR-018 : Existing editor capabilities continue to work inside detached window mode.
-- TESTABLE CONDITION
-  1. Save, load, new, find/replace, download, and unsaved prompts all function in detached window context.
-- NOTES
-  1. Detached-window migration must not regress prior functionality.
-- RELATED UC-008, UC-001, UC-002, UC-003, UC-004, UC-005, UC-006, UC-007
+---
 
-BR-019 : Help menu opens a keyboard-shortcuts dialog.
+## BR-020 : The system shall display a Help dialog listing all keyboard shortcuts when Help is selected
 - TESTABLE CONDITION
-  1. Activating Help shows a modal dialog that lists supported shortcuts.
-- NOTES
-  1. Dialog replaces generic alert behavior.
+  Given the user clicks Help in the menu bar, then a dialog opens listing each supported keyboard shortcut with its key combination and action label.
+- NOTES None
 - RELATED UC-009
 
-BR-020 : Help dialog lists each shortcut with both key combo and action label.
+---
+
+## BR-021 : Each entry in the Help dialog shall display the key combination and its action description
 - TESTABLE CONDITION
-  1. Dialog includes Ctrl+N, Ctrl+O, Ctrl+S, Ctrl+F, Ctrl+H, Ctrl+A, Ctrl+Y, and F5 with matching action descriptions.
-- NOTES
-  1. Listed shortcuts must stay aligned with keyboard handler bindings.
+  Given the Help dialog is open, then each row shows exactly one key combination (e.g., Ctrl+S) and exactly one action label (e.g., Save).
+- NOTES Shortcut list in Help must be derived from the same data source used to register the shortcuts, ensuring they stay in sync.
 - RELATED UC-009
 
-BR-021 : Help dialog closes via explicit Close action and Escape key.
+---
+
+## BR-022 : The Help dialog shall be closeable via a Close button and via the Escape key
 - TESTABLE CONDITION
-  1. User can dismiss the dialog using Close or Esc and return focus to editor.
-- NOTES
-  1. Native dialog behavior is acceptable.
+  Given the Help dialog is open, when the user clicks the Close button or presses Escape, then the dialog is dismissed and the editor regains focus.
+- NOTES HTML dialog element provides built-in Escape support via the 'cancel' event.
 - RELATED UC-009

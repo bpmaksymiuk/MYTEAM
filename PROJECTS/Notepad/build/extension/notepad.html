@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untitled - Notepad</title>
+  <link rel="stylesheet" href="notepad.css">
+</head>
+<body>
+  <div id="titlebar">
+    <span id="title-text">Untitled - Notepad</span>
+  </div>
+
+  <nav id="menubar">
+    <button class="menu-btn" data-menu="file">File</button>
+    <button class="menu-btn" data-menu="edit">Edit</button>
+    <button class="menu-btn" data-menu="help">Help</button>
+  </nav>
+
+  <div id="dropdown-container"></div>
+
+  <textarea id="editor" spellcheck="false"></textarea>
+
+  <div id="statusbar">
+    <span id="status-msg"></span>
+  </div>
+
+  <dialog id="help-dialog">
+    <h2>Keyboard Shortcuts</h2>
+    <table id="shortcuts-table">
+      <thead>
+        <tr><th>Shortcut</th><th>Action</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div id="help-footer">
+      <button id="help-close">Close</button>
+    </div>
+  </dialog>
+
+  <script src="notepad.js"></script>
+</body>
+</html>

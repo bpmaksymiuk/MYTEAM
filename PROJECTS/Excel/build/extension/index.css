@@ -1,0 +1,272 @@
+/* DI-004: Spreadsheet Visual Styles */
+
+:root {
+  --active-blue: #1565c0;
+  --header-bg: #f3f3f3;
+  --border: #d0d0d0;
+  --toolbar-bg: #f8f8f8;
+  --white: #ffffff;
+  --black: #000000;
+  --status-bg: #f0f0f0;
+  --dropdown-border: #bbb;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: Calibri, Aptos, 'Segoe UI', Arial, sans-serif;
+  font-size: 13px;
+  color: var(--black);
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Toolbar ────────────────────────────────────────────── */
+#toolbar {
+  display: flex;
+  align-items: center;
+  background: var(--toolbar-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 2px 4px;
+  flex-shrink: 0;
+}
+
+.menu-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 3px 10px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: default;
+  border-radius: 2px;
+}
+
+.menu-btn:hover,
+.menu-btn.active {
+  background: #e3e3e3;
+  border-color: var(--border);
+}
+
+/* ── Dropdown ───────────────────────────────────────────── */
+#dropdown-container {
+  position: relative;
+  z-index: 200;
+  flex-shrink: 0;
+}
+
+.dropdown {
+  position: absolute;
+  background: var(--white);
+  border: 1px solid var(--dropdown-border);
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+  min-width: 160px;
+  list-style: none;
+  padding: 3px 0;
+  font-size: 13px;
+}
+
+.dropdown li {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 24px 4px 12px;
+  cursor: default;
+  white-space: nowrap;
+  gap: 24px;
+}
+
+.dropdown li:hover {
+  background: #e8f0fe;
+}
+
+.dropdown .shortcut-label {
+  color: #666;
+  font-size: 12px;
+}
+
+/* ── Formula Bar ────────────────────────────────────────── */
+#formula-bar {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+  height: 26px;
+  flex-shrink: 0;
+}
+
+#cell-ref {
+  width: 64px;
+  min-width: 64px;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  border-right: 1px solid var(--border);
+  padding: 0 6px;
+  line-height: 26px;
+  overflow: hidden;
+  color: #333;
+}
+
+#formula-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0 8px;
+  font-family: Calibri, Aptos, Arial, sans-serif;
+  font-size: 13px;
+  background: transparent;
+  height: 100%;
+}
+
+/* ── Grid Wrapper ───────────────────────────────────────── */
+#grid-wrapper {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+
+#grid {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+/* Column header row */
+#col-headers th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--header-bg);
+  border: 1px solid var(--border);
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
+  user-select: none;
+  height: 22px;
+  min-width: 80px;
+  padding: 0 4px;
+}
+
+/* Corner cell (top-left blank) */
+#col-headers th.corner {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  min-width: 42px;
+  width: 42px;
+}
+
+/* Row number cells */
+td.row-num {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--header-bg);
+  border: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  user-select: none;
+  width: 42px;
+  min-width: 42px;
+  padding: 0 4px;
+}
+
+/* Data cells */
+#grid-body td.cell {
+  border: 1px solid var(--border);
+  min-width: 80px;
+  width: 80px;
+  height: 22px;
+  padding: 1px 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: cell;
+}
+
+#grid-body td.cell.active {
+  outline: 2px solid var(--active-blue);
+  outline-offset: -2px;
+}
+
+#grid-body td.cell.error {
+  color: #c00;
+}
+
+/* ── Status Bar ─────────────────────────────────────────── */
+#statusbar {
+  height: 20px;
+  background: var(--status-bg);
+  border-top: 1px solid var(--border);
+  padding: 2px 8px;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: #555;
+}
+
+/* ── Help Dialog ────────────────────────────────────────── */
+#help-dialog {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0;
+  min-width: 340px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+#help-dialog::backdrop {
+  background: rgba(0,0,0,0.25);
+}
+
+#help-dialog h2 {
+  background: #1565c0;
+  color: var(--white);
+  font-size: 13px;
+  padding: 6px 12px;
+  font-weight: 600;
+}
+
+#shortcuts-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0;
+}
+
+#shortcuts-table th,
+#shortcuts-table td {
+  text-align: left;
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+#shortcuts-table thead tr {
+  border-bottom: 1px solid var(--border);
+}
+
+#shorts-table tbody tr:hover {
+  background: #f5f5f5;
+}
+
+#help-footer {
+  display: flex;
+  justify-content: center;
+  padding: 6px 12px 10px;
+}
+
+#help-close {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 4px 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: default;
+}
+
+#help-close:hover {
+  background: #e8f0fe;
+}

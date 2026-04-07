@@ -1,0 +1,108 @@
+{
+  "gorion-intro": {
+    "speakerName": "Gorion",
+    "portrait": "gorion",
+    "text": "We must leave Candlekeep at once. There are forces at work that seek to destroy you. Are you ready to depart?",
+    "responses": [
+      {
+        "text": "Yes, I am ready.",
+        "condition": null,
+        "outcomes": [{ "type": "setFlag", "key": "gorion_spoken", "value": true }],
+        "nextNode": null
+      },
+      {
+        "text": "Not yet — I have more to do.",
+        "condition": null,
+        "outcomes": [],
+        "nextNode": "gorion-intro"
+      }
+    ]
+  },
+  "imoen-join": {
+    "speakerName": "Imoen",
+    "portrait": "imoen",
+    "text": "Hey! Wait up! Where do you think you're going without me? I'm coming too!",
+    "responses": [
+      {
+        "text": "Of course, Imoen. Let's go.",
+        "condition": null,
+        "outcomes": [{ "type": "recruitCompanion", "companionId": "imoen" }],
+        "nextNode": null
+      },
+      {
+        "text": "It's too dangerous. Stay here.",
+        "condition": null,
+        "outcomes": [],
+        "nextNode": "imoen-rejected"
+      }
+    ]
+  },
+  "imoen-rejected": {
+    "speakerName": "Imoen",
+    "portrait": "imoen",
+    "text": "But— fine. Just be careful, okay?",
+    "responses": [
+      { "text": "I will. Farewell.", "condition": null, "outcomes": [], "nextNode": null }
+    ]
+  },
+  "khalid-join": {
+    "speakerName": "Khalid",
+    "portrait": "khalid",
+    "text": "G-greetings. My name is Khalid. Jaheira tells me you could use a sword arm. I would be honoured to accompany you.",
+    "responses": [
+      {
+        "text": "Welcome, Khalid.",
+        "condition": null,
+        "outcomes": [{ "type": "recruitCompanion", "companionId": "khalid" }],
+        "nextNode": null
+      },
+      {
+        "text": "We don't need help.",
+        "condition": null,
+        "outcomes": [],
+        "nextNode": null
+      }
+    ]
+  },
+  "generic-merchant": {
+    "speakerName": "Merchant",
+    "portrait": "merchant-generic",
+    "text": "Good day, traveller. Looking to buy or sell?",
+    "responses": [
+      {
+        "text": "What do you have for sale?",
+        "condition": null,
+        "outcomes": [{ "type": "openShop", "shopId": "nashkel-general" }],
+        "nextNode": null
+      },
+      {
+        "text": "Nothing, thanks.",
+        "condition": null,
+        "outcomes": [],
+        "nextNode": null
+      }
+    ]
+  },
+  "nashkel-mayor": {
+    "speakerName": "Mayor Ghastkill",
+    "portrait": "mayor",
+    "text": "Thank the gods someone has come to help! The mines have been overrun. Our iron ore is ruined — every weapon crafted from it shatters on first blow. Please, investigate the Nashkel Mines!",
+    "responses": [
+      {
+        "text": "We will investigate the mines.",
+        "condition": null,
+        "outcomes": [
+          { "type": "startQuest", "questId": "iron-crisis" },
+          { "type": "setFlag", "key": "talked_mayor", "value": true }
+        ],
+        "nextNode": null
+      },
+      {
+        "text": "We will get to it in time.",
+        "condition": null,
+        "outcomes": [],
+        "nextNode": null
+      }
+    ]
+  }
+}

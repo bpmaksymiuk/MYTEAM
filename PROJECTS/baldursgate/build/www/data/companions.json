@@ -1,0 +1,26 @@
+[
+  {
+    "id": "imoen",
+    "name": "Imoen",
+    "portrait": "imoen",
+    "startingAreaId": "candlekeep",
+    "joinDialogueNodeId": "imoen-join",
+    "class": "thief",
+    "level": 1,
+    "stats": { "STR": 9, "DEX": 18, "CON": 16, "INT": 15, "WIS": 11, "CHA": 16 },
+    "startingEquipment": ["dagger"],
+    "personalityFlags": { "cheerful": true, "curious": true }
+  },
+  {
+    "id": "khalid",
+    "name": "Khalid",
+    "portrait": "khalid",
+    "startingAreaId": "nashkel",
+    "joinDialogueNodeId": "khalid-join",
+    "class": "fighter",
+    "level": 1,
+    "stats": { "STR": 15, "DEX": 16, "CON": 17, "INT": 13, "WIS": 14, "CHA": 9 },
+    "startingEquipment": ["longsword","chain-mail"],
+    "personalityFlags": { "loyal": true, "nervous": true }
+  }
+]

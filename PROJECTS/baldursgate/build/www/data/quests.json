@@ -1,0 +1,14 @@
+[
+  {
+    "id": "iron-crisis",
+    "title": "The Iron Crisis",
+    "description": "Throughout the region, iron ore and weapons made from it are turning brittle and shattering. The source of this corruption must be linked to the Nashkel Mines, the primary ore supplier. Mayor Ghastkill has pleaded for someone to investigate.",
+    "objectives": [
+      { "id": "reach-nashkel",  "text": "Travel to Nashkel",          "completionFlag": "reached_nashkel" },
+      { "id": "talk-mayor",     "text": "Speak with Mayor Ghastkill",  "completionFlag": "talked_mayor" },
+      { "id": "enter-mines",    "text": "Enter the Nashkel Mines",     "completionFlag": "entered_mines" },
+      { "id": "clear-mines",    "text": "Discover the source of the corruption", "completionFlag": "mines_cleared" }
+    ],
+    "xpReward": 1000
+  }
+]

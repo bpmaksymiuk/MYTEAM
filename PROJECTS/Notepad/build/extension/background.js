@@ -1,78 +1,59 @@
-const WINDOW_STATE_KEY = "notepadWindowState";
-const NOTEPAD_URL = chrome.runtime.getURL("popup.html");
+// DI-002: Service Worker — Window Lifecycle Manager
 
-async function getWindowState() {
-  const stored = await chrome.storage.local.get(WINDOW_STATE_KEY);
-  return stored[WINDOW_STATE_KEY] || {};
-}
+let notepadWindowId = null;
 
-async function setWindowState(windowState) {
-  await chrome.storage.local.set({ [WINDOW_STATE_KEY]: windowState });
-}
-
-async function focusExistingWindow(windowId) {
-  try {
-    await chrome.windows.get(windowId);
-    await chrome.windows.update(windowId, { focused: true });
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-function buildCreateData(geometry) {
-  const createData = {
-    url: NOTEPAD_URL,
-    type: "popup",
-    focused: true,
-    width: Number.isFinite(geometry?.width) ? geometry.width : 780,
-    height: Number.isFinite(geometry?.height) ? geometry.height : 580
-  };
-  if (Number.isFinite(geometry?.left)) {
-    createData.left = geometry.left;
-  }
-  if (Number.isFinite(geometry?.top)) {
-    createData.top = geometry.top;
-  }
-  return createData;
+async function getStoredBounds() {
+  return new Promise(resolve => {
+    chrome.storage.local.get('windowBounds', data => {
+      resolve(data.windowBounds || { left: 100, top: 100, width: 700, height: 500 });
+    });
+  });
 }
 
 chrome.action.onClicked.addListener(async () => {
-  const windowState = await getWindowState();
-
-  if (windowState.windowId && (await focusExistingWindow(windowState.windowId))) {
-    return;
-  }
-
-  const win = await chrome.windows.create(buildCreateData(windowState.geometry));
-  await setWindowState({
-    ...windowState,
-    windowId: win.id
-  });
-});
-
-chrome.windows.onBoundsChanged.addListener(async (win) => {
-  const windowState = await getWindowState();
-  if (win.id !== windowState.windowId) {
-    return;
-  }
-
-  await setWindowState({
-    ...windowState,
-    geometry: {
-      width: win.width,
-      height: win.height,
-      left: win.left,
-      top: win.top
+  try {
+    if (notepadWindowId !== null) {
+      await chrome.windows.update(notepadWindowId, { focused: true });
+    } else {
+      const bounds = await getStoredBounds();
+      const win = await chrome.windows.create({
+        url: chrome.runtime.getURL('notepad.html'),
+        type: 'popup',
+        left: bounds.left,
+        top: bounds.top,
+        width: bounds.width,
+        height: bounds.height,
+      });
+      notepadWindowId = win.id;
     }
-  });
+  } catch (err) {
+    // Window may have been closed externally; create a fresh one
+    notepadWindowId = null;
+    try {
+      const bounds = await getStoredBounds();
+      const win = await chrome.windows.create({
+        url: chrome.runtime.getURL('notepad.html'),
+        type: 'popup',
+        left: bounds.left,
+        top: bounds.top,
+        width: bounds.width,
+        height: bounds.height,
+      });
+      notepadWindowId = win.id;
+    } catch (innerErr) {
+      console.error('Notepad: failed to open window', innerErr);
+    }
+  }
 });
 
-chrome.windows.onRemoved.addListener(async (windowId) => {
-  const windowState = await getWindowState();
-  if (windowId !== windowState.windowId) {
-    return;
+chrome.windows.onBoundsChanged.addListener(win => {
+  if (win.id !== notepadWindowId) return;
+  const { left, top, width, height } = win;
+  chrome.storage.local.set({ windowBounds: { left, top, width, height } });
+});
+
+chrome.windows.onRemoved.addListener(removedId => {
+  if (removedId === notepadWindowId) {
+    notepadWindowId = null;
   }
-  const { windowId: _removed, ...rest } = windowState;
-  await setWindowState(rest);
 });

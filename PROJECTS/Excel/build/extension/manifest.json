@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Excel",
+  "version": "1.0.0",
+  "description": "A browser-based spreadsheet with formulas and CSV support.",
+  "permissions": ["storage", "windows"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {}
+}

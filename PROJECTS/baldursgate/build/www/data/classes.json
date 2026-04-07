@@ -1,0 +1,204 @@
+{
+  "fighter": {
+    "name": "Fighter",
+    "hitDie": 10,
+    "xpTable": [0,2000,4000,8000,16000,32000,64000,125000,250000,500000,750000,1000000,1250000,1500000,1750000,2000000,2250000,2500000,2750000,3000000],
+    "thac0": [20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1],
+    "savingThrows": {
+      "1":  {"death":14,"wands":16,"polymorph":15,"breath":17,"spells":17},
+      "3":  {"death":13,"wands":15,"polymorph":14,"breath":16,"spells":16},
+      "5":  {"death":11,"wands":13,"polymorph":12,"breath":13,"spells":14},
+      "7":  {"death":10,"wands":12,"polymorph":11,"breath":12,"spells":13},
+      "9":  {"death":8, "wands":10,"polymorph":9, "breath":9, "spells":11},
+      "13": {"death":5, "wands":7, "polymorph":6, "breath":6, "spells":8}
+    },
+    "spellSlots": null,
+    "proficiencySlots": [4,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0],
+    "thiefSkillPointsPerLevel": 0,
+    "startingEquipment": ["longsword","chain-mail"]
+  },
+  "mage": {
+    "name": "Mage",
+    "hitDie": 4,
+    "xpTable": [0,2500,5000,10000,20000,40000,60000,90000,135000,250000,375000,750000,1125000,1500000,1875000,2250000,2625000,3000000,3375000,3750000],
+    "thac0": [20,20,20,19,19,19,18,18,18,17,17,17,16,16,16,15,15,15,14,14],
+    "savingThrows": {
+      "1":  {"death":14,"wands":11,"polymorph":13,"breath":15,"spells":12},
+      "6":  {"death":13,"wands":9, "polymorph":11,"breath":13,"spells":10},
+      "11": {"death":11,"wands":7, "polymorph":9, "breath":11,"spells":8},
+      "16": {"death":10,"wands":5, "polymorph":7, "breath":9, "spells":6}
+    },
+    "spellSlots": {
+      "1":  [1,0,0,0,0,0,0,0,0],
+      "2":  [2,0,0,0,0,0,0,0,0],
+      "3":  [2,1,0,0,0,0,0,0,0],
+      "4":  [3,2,0,0,0,0,0,0,0],
+      "5":  [4,2,1,0,0,0,0,0,0],
+      "6":  [4,2,2,0,0,0,0,0,0],
+      "7":  [4,3,2,1,0,0,0,0,0],
+      "8":  [4,3,3,2,0,0,0,0,0],
+      "9":  [4,3,3,2,1,0,0,0,0],
+      "10": [4,4,3,2,2,0,0,0,0]
+    },
+    "proficiencySlots": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0],
+    "thiefSkillPointsPerLevel": 0,
+    "startingEquipment": ["dagger"]
+  },
+  "thief": {
+    "name": "Thief",
+    "hitDie": 6,
+    "xpTable": [0,1250,2500,5000,10000,20000,40000,70000,110000,160000,220000,440000,660000,880000,1100000,1320000,1540000,1760000,1980000,2200000],
+    "thac0": [20,20,19,19,18,18,17,17,16,16,15,15,14,14,13,13,12,12,11,11],
+    "savingThrows": {
+      "1":  {"death":13,"wands":14,"polymorph":12,"breath":16,"spells":15},
+      "5":  {"death":12,"wands":12,"polymorph":11,"breath":15,"spells":13},
+      "9":  {"death":11,"wands":10,"polymorph":10,"breath":14,"spells":11},
+      "13": {"death":10,"wands":8, "polymorph":9, "breath":13,"spells":9}
+    },
+    "spellSlots": null,
+    "proficiencySlots": [2,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0],
+    "thiefSkillPointsPerLevel": 30,
+    "startingEquipment": ["dagger","leather-armour"]
+  },
+  "cleric": {
+    "name": "Cleric",
+    "hitDie": 8,
+    "xpTable": [0,1500,3000,6000,13000,27500,55000,110000,225000,450000,675000,900000,1125000,1350000,1575000,1800000,2025000,2250000,2475000,2700000],
+    "thac0": [20,20,20,18,18,18,16,16,16,14,14,14,12,12,12,10,10,10,8,8],
+    "savingThrows": {
+      "1":  {"death":10,"wands":14,"polymorph":13,"breath":16,"spells":15},
+      "4":  {"death":9, "wands":13,"polymorph":12,"breath":15,"spells":14},
+      "7":  {"death":7, "wands":11,"polymorph":10,"breath":13,"spells":12},
+      "10": {"death":6, "wands":10,"polymorph":9, "breath":12,"spells":11}
+    },
+    "spellSlots": {
+      "1":  [1,0,0,0,0,0,0],
+      "2":  [2,0,0,0,0,0,0],
+      "3":  [2,1,0,0,0,0,0],
+      "4":  [3,2,0,0,0,0,0],
+      "5":  [3,3,1,0,0,0,0],
+      "6":  [3,3,2,0,0,0,0],
+      "7":  [3,3,2,1,0,0,0]
+    },
+    "proficiencySlots": [2,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1],
+    "thiefSkillPointsPerLevel": 0,
+    "startingEquipment": ["mace","chain-mail"]
+  },
+  "ranger": {
+    "name": "Ranger",
+    "hitDie": 10,
+    "xpTable": [0,2250,4500,9000,18000,36000,75000,150000,300000,600000,900000,1200000,1500000,1800000,2100000,2400000,2700000,3000000,3300000,3600000],
+    "thac0": [20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1],
+    "savingThrows": {
+      "1":  {"death":14,"wands":16,"polymorph":15,"breath":17,"spells":17},
+      "5":  {"death":11,"wands":13,"polymorph":12,"breath":13,"spells":14},
+      "9":  {"death":8, "wands":10,"polymorph":9, "breath":9, "spells":11}
+    },
+    "spellSlots": {
+      "8":  [1,0,0,0,0,0,0],
+      "9":  [1,0,0,0,0,0,0],
+      "10": [2,0,0,0,0,0,0]
+    },
+    "proficiencySlots": [3,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0],
+    "thiefSkillPointsPerLevel": 0,
+    "startingEquipment": ["longsword","leather-armour"]
+  },
+  "druid": {
+    "name": "Druid",
+    "hitDie": 8,
+    "xpTable": [0,2000,4000,7500,12500,20000,35000,60000,90000,125000,200000,300000,750000,1500000,3000000,3500000,4000000,4500000,5000000,5500000],
+    "thac0": [20,20,20,18,18,18,16,16,16,14,14,14,12,12,12,10,10,10,8,8],
+    "savingThrows": {
+      "1":  {"death":10,"wands":14,"polymorph":13,"breath":16,"spells":15},
+      "7":  {"death":7, "wands":11,"polymorph":10,"breath":13,"spells":12}
+    },
+    "spellSlots": {
+      "1":  [1,0,0,0,0,0,0],
+      "2":  [2,0,0,0,0,0,0],
+      "3":  [2,1,0,0,0,0,0],
+      "4":  [3,2,0,0,0,0,0],
+      "5":  [3,3,1,0,0,0,0]
+    },
+    "proficiencySlots": [2,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1],
+    "thiefSkillPointsPerLevel": 0,
+    "startingEquipment": ["quarterstaff","leather-armour"]
+  },
+  "bard": {
+    "name": "Bard",
+    "hitDie": 6,
+    "xpTable": [0,1500,3000,6000,13000,27000,55000,110000,220000,440000,660000,880000,1100000,1320000,1540000,1760000,1980000,2200000,2420000,2640000],
+    "thac0": [20,20,19,19,18,18,17,17,16,16,15,15,14,14,13,13,12,12,11,11],
+    "savingThrows": {
+      "1":  {"death":13,"wands":14,"polymorph":12,"breath":16,"spells":15},
+      "5":  {"death":11,"wands":12,"polymorph":10,"breath":14,"spells":13}
+    },
+    "spellSlots": {
+      "2":  [1,0,0,0,0,0,0],
+      "3":  [2,0,0,0,0,0,0],
+      "4":  [2,1,0,0,0,0,0],
+      "5":  [3,1,0,0,0,0,0],
+      "6":  [3,2,0,0,0,0,0]
+    },
+    "proficiencySlots": [2,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0],
+    "thiefSkillPointsPerLevel": 15,
+    "startingEquipment": ["dagger","leather-armour"]
+  },
+  "paladin": {
+    "name": "Paladin",
+    "hitDie": 10,
+    "xpTable": [0,2750,5500,12000,24000,45000,95000,175000,350000,700000,1050000,1400000,1750000,2100000,2450000,2800000,3150000,3500000,3850000,4200000],
+    "thac0": [20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1],
+    "savingThrows": {
+      "1":  {"death":14,"wands":16,"polymorph":15,"breath":17,"spells":17},
+      "5":  {"death":11,"wands":13,"polymorph":12,"breath":13,"spells":14}
+    },
+    "spellSlots": {
+      "9":  [1,0,0,0],
+      "10": [2,0,0,0],
+      "11": [2,1,0,0]
+    },
+    "proficiencySlots": [4,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0],
+    "thiefSkillPointsPerLevel": 0,
+    "startingEquipment": ["longsword","chain-mail"]
+  },
+  "sorcerer": {
+    "name": "Sorcerer",
+    "hitDie": 6,
+    "xpTable": [0,2500,5000,10000,20000,40000,60000,90000,135000,250000,375000,750000,1125000,1500000,1875000,2250000,2625000,3000000,3375000,3750000],
+    "thac0": [20,20,20,19,19,19,18,18,18,17,17,17,16,16,16,15,15,15,14,14],
+    "savingThrows": {
+      "1":  {"death":14,"wands":11,"polymorph":13,"breath":15,"spells":12},
+      "6":  {"death":13,"wands":9, "polymorph":11,"breath":13,"spells":10}
+    },
+    "spellSlots": {
+      "1":  [3,0,0,0,0,0,0,0,0],
+      "2":  [4,0,0,0,0,0,0,0,0],
+      "3":  [5,2,0,0,0,0,0,0,0],
+      "4":  [6,3,0,0,0,0,0,0,0],
+      "5":  [6,4,2,0,0,0,0,0,0],
+      "6":  [6,5,3,0,0,0,0,0,0],
+      "7":  [6,6,4,2,0,0,0,0,0]
+    },
+    "proficiencySlots": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0],
+    "thiefSkillPointsPerLevel": 0,
+    "startingEquipment": ["dagger"]
+  },
+  "shaman": {
+    "name": "Shaman",
+    "hitDie": 8,
+    "xpTable": [0,1500,3000,6000,13000,27500,55000,110000,225000,450000,675000,900000,1125000,1350000,1575000,1800000,2025000,2250000,2475000,2700000],
+    "thac0": [20,20,20,18,18,18,16,16,16,14,14,14,12,12,12,10,10,10,8,8],
+    "savingThrows": {
+      "1":  {"death":10,"wands":14,"polymorph":13,"breath":16,"spells":15},
+      "7":  {"death":7, "wands":11,"polymorph":10,"breath":13,"spells":12}
+    },
+    "spellSlots": {
+      "1":  [1,0,0,0,0,0,0],
+      "2":  [2,0,0,0,0,0,0],
+      "3":  [2,1,0,0,0,0,0]
+    },
+    "proficiencySlots": [2,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1],
+    "thiefSkillPointsPerLevel": 0,
+    "startingEquipment": ["quarterstaff"]
+  }
+}

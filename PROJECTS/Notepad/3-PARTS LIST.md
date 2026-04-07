@@ -1,89 +1,69 @@
-PT-001 : manifest configuration
-- DESCRIPTION
-  1. MV3 manifest metadata, permissions, action configuration, and background service worker declaration.
-- TECHNOLOGY RECOMMENDATIONS
-  1. manifest_version 3; permissions include storage and windows; background service_worker set.
-- NOTES
-  1. Do not define default_popup when action click is handled by background.
-- RELATED UC-001, UC-008, BR-001, BR-015, AR-001, AR-002
+# Parts List
 
-PT-002 : background window controller
-- DESCRIPTION
-  1. Service worker script managing action clicks, detached window creation, single-instance behavior, and geometry persistence.
-- TECHNOLOGY RECOMMENDATIONS
-  1. chrome.action.onClicked, chrome.windows.create/get/update/onRemoved/onBoundsChanged, chrome.storage.local.
-- NOTES
-  1. Persist window state under a stable storage key.
-- RELATED UC-008, BR-016, BR-017, AR-003, AR-004
+Generated from `2-REQUIREMENTS.md` and `3-ARCHITECTURE-RECOMMENDATIONS.md`. Owned by Architect.
 
-PT-003 : popup markup shell
-- DESCRIPTION
-  1. HTML scaffold for title bar, menu bar, editor, status bar, and dialogs.
-- TECHNOLOGY RECOMMENDATIONS
-  1. Semantic HTML with stable IDs and accessible labels.
-- NOTES
-  1. Include dialogs for find/replace, unsaved confirmation, and shortcuts help.
-- RELATED UC-001, UC-009, BR-002, BR-019, BR-021, AR-005, AR-011
+---
 
-PT-004 : retro visual style system
+## PT-001 : manifest.json — Extension Manifest
 - DESCRIPTION
-  1. CSS rules implementing Windows-style chrome, editor look, statusbar, and dialog/table styles.
+  The Chrome Extension Manifest V3 declaration file. Defines the extension name, version, permissions, service worker entry point, and browser action.
 - TECHNOLOGY RECOMMENDATIONS
-  1. Plain CSS variables and component classes without framework dependencies.
+  JSON. Manifest version 3. permissions: ["storage", "windows"]. background.service_worker: "background.js". action: {} (no default popup — click is handled by the service worker).
 - NOTES
-  1. Preserve readability at default window size and on resize.
-- RELATED UC-001, BR-002, BR-018, AR-005
+  host_permissions is not required for this extension. web_accessible_resources not required for internal extension pages.
+- RELATED UC-001, UC-008, BR-001, BR-017, AR-001
 
-PT-005 : editor state and rendering controller
-- DESCRIPTION
-  1. JavaScript state object and render helpers for title, save status, cursor status, and wrapping.
-- TECHNOLOGY RECOMMENDATIONS
-  1. Module-scoped state with explicit update functions.
-- NOTES
-  1. Clamp cursor metadata during restore.
-- RELATED UC-002, UC-003, UC-004, BR-004, BR-013, AR-006
+---
 
-PT-006 : persistence adapter
+## PT-002 : background.js — Service Worker
 - DESCRIPTION
-  1. Read/write routines for notepadState payload in chrome.storage.local.
+  The MV3 service worker that manages the Notepad window lifecycle (create, focus, close) and persists window bounds to chrome.storage.local. Handles the toolbar icon click event.
 - TECHNOLOGY RECOMMENDATIONS
-  1. Async operations with safe defaults and error handling.
+  Vanilla JavaScript. chrome.action.onClicked listener. chrome.windows.create(), chrome.windows.update(), chrome.windows.onBoundsChanged, chrome.windows.onRemoved. chrome.storage.local.get/set.
 - NOTES
-  1. Schedule persistence on input and state-affecting actions.
-- RELATED UC-003, UC-004, BR-005, BR-007, AR-007
+  Tracks active windowId in module-level variable. On icon click: if windowId exists, focus it; otherwise read stored bounds, create window. On onBoundsChanged: write new bounds to storage. On onRemoved: clear windowId.
+- RELATED UC-001, UC-008, BR-001, BR-017, BR-018, BR-019, AR-001, AR-002, AR-003
 
-PT-007 : unsaved confirmation subsystem
-- DESCRIPTION
-  1. Reusable decision dialog and promise-based resolver for destructive actions.
-- TECHNOLOGY RECOMMENDATIONS
-  1. Shared prompt function returning save/discard/cancel.
-- NOTES
-  1. Integrate with New, Open, and Close.
-- RELATED UC-005, UC-007, BR-008, BR-009, BR-010, BR-014, AR-008
+---
 
-PT-008 : find/replace and keyboard commands
+## PT-003 : notepad.html — UI Page Shell
 - DESCRIPTION
-  1. Dialog interactions plus keyboard shortcut handling mapped to editor actions.
+  The single HTML page loaded as the Notepad window content. Contains the title bar, menu bar (File, Edit, Help), dropdown containers, textarea editor, status bar, and help dialog.
 - TECHNOLOGY RECOMMENDATIONS
-  1. Explicit keymap checks for Ctrl+N/O/S/F/H/A/Y and F5.
+  HTML5. Semantic layout with div#titlebar, nav#menubar, div#dropdown-container, textarea#editor, div#statusbar, dialog#help-dialog. Links notepad.css and notepad.js.
 - NOTES
-  1. Keep Help shortcut table in sync with actual keymap.
-- RELATED UC-002, UC-009, BR-003, BR-020, AR-009, AR-011
+  The window's background frame is managed by Chrome (OS chrome). The HTML page covers the interior client area. Do not attempt to replicate a window chrome in HTML.
+- RELATED UC-001, UC-002, UC-009, BR-002, BR-003, BR-004, BR-005, BR-020, AR-004
 
-PT-009 : download/export subsystem
-- DESCRIPTION
-  1. Save/Save As behavior and file generation pipeline.
-- TECHNOLOGY RECOMMENDATIONS
-  1. Blob + URL.createObjectURL + anchor click; enforce .txt extension.
-- NOTES
-  1. Export content must remain exact.
-- RELATED UC-006, BR-011, BR-012, AR-010
+---
 
-PT-010 : Stage 5 build package
+## PT-004 : notepad.css — Windows 95 Theme
 - DESCRIPTION
-  1. Runnable extension files generated under ./build/extension.
+  All visual styling for the Notepad UI. Implements the Windows 95 aesthetic using CSS custom properties, box-shadow beveled borders, and the silver/navy color palette.
 - TECHNOLOGY RECOMMENDATIONS
-  1. Include manifest.json, background.js, popup.html, popup.css, popup.js.
+  CSS3. Custom properties (--win95-silver: #c0c0c0, --win95-navy: #000080). box-shadow border technique for beveled outset/inset effects. Courier New for editor font. System-ui or MS Sans Serif equivalent for UI chrome text.
 - NOTES
-  1. Release notes and test report must reference this package.
-- RELATED UC-001, BR-001, BR-018, AR-012
+  Avoid external web fonts — use system font stack only. Font loading from network would slow first-paint and require additional CSP configuration.
+- RELATED UC-001, BR-002, AR-007
+
+---
+
+## PT-005 : notepad.js — Editor Logic and Interactions
+- DESCRIPTION
+  All client-side JavaScript for the Notepad page: auto-load on open, dirty state tracking, save/load/new actions, file download, menu bar dropdowns, keyboard shortcuts, and help dialog population.
+- TECHNOLOGY RECOMMENDATIONS
+  Vanilla JavaScript ES6+. chrome.storage.local for save/load. Blob + URL.createObjectURL for download. HTML dialog.showModal() for help. addEventListener for all events. A single MENUS data structure drives both the menu bar rendering and the help shortcuts table (single source of truth).
+- NOTES
+  Dirty tracking: set isDirty = true on editor 'input' event, reset to false after save/load/new completes. Confirmation prompt: window.confirm() before destructive actions when isDirty is true.
+- RELATED UC-002, UC-003, UC-004, UC-005, UC-006, UC-007, UC-009, BR-004, BR-005, BR-006, BR-007, BR-008, BR-009, BR-010, BR-011, BR-012, BR-013, BR-014, BR-015, BR-016, BR-020, BR-021, BR-022, AR-002, AR-005, AR-006, AR-008
+
+---
+
+## PT-006 : notepad_128.png — Extension Icon
+- DESCRIPTION
+  A 128×128 PNG icon displayed in the Chrome toolbar and extensions management page. Represents the Notepad application visually.
+- TECHNOLOGY RECOMMENDATIONS
+  PNG format. Simple design: white notepad page outline with lines on a navy or silver background consistent with the Win95 theme. Can be a placeholder solid-color icon for the initial build.
+- NOTES
+  If a suitable icon is not available, Chrome will display the default puzzle-piece icon. This does not affect functionality.
+- RELATED UC-001, BR-001, AR-001

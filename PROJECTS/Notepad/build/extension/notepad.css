@@ -1,0 +1,200 @@
+/* DI-004: Windows 95 Visual Theme */
+
+:root {
+  --silver: #c0c0c0;
+  --navy: #000080;
+  --dark: #808080;
+  --white: #ffffff;
+  --black: #000000;
+  --highlight: #a0a0a0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--silver);
+  font-family: 'MS Sans Serif', 'Segoe UI', Arial, sans-serif;
+  font-size: 12px;
+  color: var(--black);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Title Bar ─────────────────────────────────────────── */
+#titlebar {
+  background: var(--navy);
+  color: var(--white);
+  padding: 3px 6px;
+  font-weight: bold;
+  font-size: 12px;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* ── Menu Bar ───────────────────────────────────────────── */
+#menubar {
+  display: flex;
+  background: var(--silver);
+  border-bottom: 1px solid var(--dark);
+  flex-shrink: 0;
+  padding: 1px 2px;
+}
+
+.menu-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: default;
+  color: var(--black);
+}
+
+.menu-btn:hover,
+.menu-btn.active {
+  background: var(--navy);
+  color: var(--white);
+  border-color: transparent;
+}
+
+/* ── Dropdown ───────────────────────────────────────────── */
+#dropdown-container {
+  position: relative;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.dropdown {
+  position: absolute;
+  background: var(--silver);
+  box-shadow:
+    inset -1px -1px var(--dark),
+    inset 1px 1px var(--white),
+    2px 2px 0 var(--black);
+  min-width: 160px;
+  list-style: none;
+  padding: 2px;
+  font-size: 12px;
+}
+
+.dropdown li {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 16px 3px 8px;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.dropdown li:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.dropdown .shortcut-label {
+  color: inherit;
+  margin-left: 24px;
+  opacity: 0.75;
+}
+
+/* ── Editor ─────────────────────────────────────────────── */
+#editor {
+  flex: 1;
+  resize: none;
+  border: none;
+  outline: none;
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  padding: 4px 6px;
+  box-shadow: inset 1px 1px var(--dark), inset -1px -1px var(--white);
+  width: 100%;
+  overflow: auto;
+}
+
+/* ── Status Bar ─────────────────────────────────────────── */
+#statusbar {
+  height: 20px;
+  background: var(--silver);
+  border-top: 1px solid var(--dark);
+  padding: 2px 6px;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--black);
+}
+
+/* ── Help Dialog ────────────────────────────────────────── */
+#help-dialog {
+  background: var(--silver);
+  border: none;
+  padding: 0;
+  box-shadow:
+    inset -1px -1px var(--dark),
+    inset 1px 1px var(--white),
+    3px 3px 0 var(--black);
+  min-width: 320px;
+}
+
+#help-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#help-dialog h2 {
+  background: var(--navy);
+  color: var(--white);
+  font-size: 12px;
+  padding: 4px 8px;
+  font-weight: bold;
+  user-select: none;
+}
+
+#shortcuts-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+#shortcuts-table th,
+#shortcuts-table td {
+  text-align: left;
+  padding: 3px 8px;
+}
+
+#shortcuts-table thead tr {
+  border-bottom: 1px solid var(--dark);
+}
+
+#help-footer {
+  display: flex;
+  justify-content: center;
+  padding: 6px 8px 8px;
+}
+
+#help-close {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 3px 18px;
+  background: var(--silver);
+  border: 1px solid var(--black);
+  box-shadow:
+    inset -1px -1px var(--dark),
+    inset 1px 1px var(--white);
+  cursor: default;
+}
+
+#help-close:active {
+  box-shadow:
+    inset 1px 1px var(--dark),
+    inset -1px -1px var(--white);
+}

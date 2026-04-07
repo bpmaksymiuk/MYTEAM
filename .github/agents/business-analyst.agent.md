@@ -68,4 +68,4 @@ Role directive source of truth: follow the canonical Business Analyst role direc
 
 ## Text File Processing Source Of Truth
 
-For all processing rules for `0-PROPOSED-BUSINESS-USE-CASES.md`, `1-USE-CASES.md`, and `2-REQUIREMENTS.md`, follow the canonical file-processing guidance in `../SoftwareFactory.md`.
+For all processing rules for `1-USE-CASES-PROPOSED.md`, `1-USE-CASES.md`, and `2-REQUIREMENTS.md`, follow the canonical file-processing guidance in `../SoftwareFactory.md`.

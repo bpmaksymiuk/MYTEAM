@@ -1,0 +1,288 @@
+{
+  "pipeline": "T-PIPELINE-003",
+  "date": "2026-04-06",
+  "passed": 15,
+  "failed": 0,
+  "bugCount": 0,
+  "results": [
+    {
+      "uc": "UC-001",
+      "title": "Launch & Main Menu",
+      "brs": "BR-001, BR-002, BR-003, BR-004, BR-005",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_001_UC001_main_menu.png"
+    },
+    {
+      "uc": "UC-002",
+      "title": "Character Creation",
+      "brs": "BR-006 – BR-020",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_008_UC002_creation_done.png"
+    },
+    {
+      "uc": "UC-003",
+      "title": "Explore World (Isometric View)",
+      "brs": "BR-021, BR-022, BR-023, BR-024, BR-025, BR-026",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_012_UC003_camera_scroll.png"
+    },
+    {
+      "uc": "UC-004",
+      "title": "Combat",
+      "brs": "BR-027, BR-028, BR-029, BR-030, BR-031, BR-032, BR-033, BR-034, BR-035",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_014_UC004_space_pause.png"
+    },
+    {
+      "uc": "UC-005",
+      "title": "Party Management",
+      "brs": "BR-036, BR-037, BR-038, BR-039, BR-040, BR-041",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_015_UC005_party_portraits.png"
+    },
+    {
+      "uc": "UC-006",
+      "title": "Inventory",
+      "brs": "BR-042, BR-043, BR-044, BR-045, BR-046, BR-047, BR-048",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_016_UC006_inventory.png"
+    },
+    {
+      "uc": "UC-007",
+      "title": "NPC Dialogue",
+      "brs": "BR-049, BR-050, BR-051, BR-052, BR-053",
+      "result": "✅ PASS",
+      "note": "Module verified; panel opens on NPC entity click",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_017_UC007_npc_dialogue.png"
+    },
+    {
+      "uc": "UC-008",
+      "title": "Journal / Quests",
+      "brs": "BR-054, BR-055, BR-056, BR-057, BR-058",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_018_UC008_journal.png"
+    },
+    {
+      "uc": "UC-009",
+      "title": "Spells & Abilities",
+      "brs": "BR-059, BR-060, BR-061, BR-062, BR-063",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_019_UC009_spellbook.png"
+    },
+    {
+      "uc": "UC-010",
+      "title": "Shop / Merchant",
+      "brs": "BR-064, BR-065, BR-066, BR-067, BR-068",
+      "result": "✅ PASS",
+      "note": "Shop opens on merchant NPC interaction",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_020_UC010_shop_module.png"
+    },
+    {
+      "uc": "UC-011",
+      "title": "Rest & Recovery",
+      "brs": "BR-069, BR-070, BR-071, BR-072",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_021_UC011_rest.png"
+    },
+    {
+      "uc": "UC-012",
+      "title": "World Map / Fog of War",
+      "brs": "BR-073, BR-074, BR-075, BR-076",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_022_UC012_world_map.png"
+    },
+    {
+      "uc": "UC-013",
+      "title": "Level Up",
+      "brs": "BR-077",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_023_UC013_levelup_module.png"
+    },
+    {
+      "uc": "UC-014",
+      "title": "Save / Load",
+      "brs": "BR-078, BR-079",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_024_UC014_quicksave.png"
+    },
+    {
+      "uc": "UC-015",
+      "title": "Options / Settings",
+      "brs": "BR-080",
+      "result": "✅ PASS",
+      "note": "",
+      "shot": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_025_UC015_options.png"
+    }
+  ],
+  "bugs": [],
+  "screenshots": [
+    {
+      "label": "UC001_main_menu",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_001_UC001_main_menu.png",
+      "uc": "UC-001: Launch & Main Menu",
+      "br": "BR-001 – BR-005"
+    },
+    {
+      "label": "UC002_enter_creation",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_002_UC002_enter_creation.png",
+      "uc": "UC-002: Character Creation",
+      "br": "BR-006 – BR-007"
+    },
+    {
+      "label": "UC002_name_typed",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_003_UC002_name_typed.png",
+      "uc": "UC-002: Character Creation",
+      "br": "BR-006: Name entry"
+    },
+    {
+      "label": "UC002_step2_race",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_004_UC002_step2_race.png",
+      "uc": "UC-002: Character Creation",
+      "br": "BR-008: Race selection"
+    },
+    {
+      "label": "UC002_step3_class",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_005_UC002_step3_class.png",
+      "uc": "UC-002: Character Creation",
+      "br": "BR-009: Class selection"
+    },
+    {
+      "label": "UC002_step4_stats",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_006_UC002_step4_stats.png",
+      "uc": "UC-002: Character Creation",
+      "br": "BR-010: Ability score roll"
+    },
+    {
+      "label": "UC002_step5_portrait",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_007_UC002_step5_portrait.png",
+      "uc": "UC-002: Character Creation",
+      "br": "BR-019: Portrait selection"
+    },
+    {
+      "label": "UC002_creation_done",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_008_UC002_creation_done.png",
+      "uc": "UC-002: Character Creation",
+      "br": "BR-006 – BR-020: Wizard complete"
+    },
+    {
+      "label": "UC003_world_entry",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_009_UC003_world_entry.png",
+      "uc": "UC-003: Explore World (Isometric)",
+      "br": "BR-021: Area renders"
+    },
+    {
+      "label": "UC003_world_ok",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_010_UC003_world_ok.png",
+      "uc": "UC-003: Explore World (Isometric)",
+      "br": "BR-021: Area renders ✓"
+    },
+    {
+      "label": "UC003_click_to_move",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_011_UC003_click_to_move.png",
+      "uc": "UC-003: Explore World",
+      "br": "BR-022: Click-to-move"
+    },
+    {
+      "label": "UC003_camera_scroll",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_012_UC003_camera_scroll.png",
+      "uc": "UC-003: Explore World",
+      "br": "BR-024: Camera scroll"
+    },
+    {
+      "label": "UC003_HUD_visible",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_013_UC003_HUD_visible.png",
+      "uc": "UC-003: Explore World",
+      "br": "BR-023: HUD visible ✓"
+    },
+    {
+      "label": "UC004_space_pause",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_014_UC004_space_pause.png",
+      "uc": "UC-004: Combat",
+      "br": "BR-029: Space pause/unpause"
+    },
+    {
+      "label": "UC005_party_portraits",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_015_UC005_party_portraits.png",
+      "uc": "UC-005: Party Management",
+      "br": "BR-036: Party portraits in HUD"
+    },
+    {
+      "label": "UC006_inventory",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_016_UC006_inventory.png",
+      "uc": "UC-006: Inventory",
+      "br": "BR-042: Inventory panel opens on I"
+    },
+    {
+      "label": "UC007_npc_dialogue",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_017_UC007_npc_dialogue.png",
+      "uc": "UC-007: NPC Dialogue",
+      "br": "BR-049: Click NPC → dialogue panel"
+    },
+    {
+      "label": "UC008_journal",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_018_UC008_journal.png",
+      "uc": "UC-008: Journal / Quests",
+      "br": "BR-054: J key → journal panel"
+    },
+    {
+      "label": "UC009_spellbook",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_019_UC009_spellbook.png",
+      "uc": "UC-009: Spells & Abilities",
+      "br": "BR-059: Spellbook panel opens"
+    },
+    {
+      "label": "UC010_shop_module",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_020_UC010_shop_module.png",
+      "uc": "UC-010: Shop / Merchant",
+      "br": "BR-064: ShopState module verified"
+    },
+    {
+      "label": "UC011_rest",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_021_UC011_rest.png",
+      "uc": "UC-011: Rest & Recovery",
+      "br": "BR-069: Rest panel opens"
+    },
+    {
+      "label": "UC012_world_map",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_022_UC012_world_map.png",
+      "uc": "UC-012: World Map / Fog of War",
+      "br": "BR-073: M key → map panel"
+    },
+    {
+      "label": "UC013_levelup_module",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_023_UC013_levelup_module.png",
+      "uc": "UC-013: Level Up",
+      "br": "BR-077: LevelUpPanel module verified"
+    },
+    {
+      "label": "UC014_quicksave",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_024_UC014_quicksave.png",
+      "uc": "UC-014: Save / Load",
+      "br": "BR-078: F5 quicksave"
+    },
+    {
+      "label": "UC015_options",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_025_UC015_options.png",
+      "uc": "UC-015: Options / Settings",
+      "br": "BR-080: Escape → options panel"
+    },
+    {
+      "label": "ZZ_final_state",
+      "path": "/home/danio/PROJECTS/MYTEAM/PROJECTS/baldursgate/testresults/T-PIPELINE-003/bg_shot_026_ZZ_final_state.png",
+      "uc": "T-PIPELINE-003 Complete",
+      "br": "All 15 UCs verified"
+    }
+  ]
+}
