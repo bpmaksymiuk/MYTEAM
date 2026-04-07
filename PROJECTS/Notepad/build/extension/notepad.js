@@ -20,7 +20,7 @@ function setDirty(value) {
 }
 
 // ── Storage: Load (DI-005, DI-006) ───────────────────────────────────────────
-function loadNote() {
+function loadNote(onSuccess) {
   chrome.storage.local.get('noteContent', data => {
     if (chrome.runtime.lastError) {
       showStatus('Load failed.');
@@ -28,6 +28,7 @@ function loadNote() {
     }
     document.getElementById('editor').value = data.noteContent || '';
     setDirty(false);
+    if (onSuccess) onSuccess();
   });
 }
 
@@ -53,8 +54,7 @@ function newNote() {
 
 function loadNoteFromStorage() {
   if (isDirty && !window.confirm('You have unsaved changes. Discard and load the saved note?')) return;
-  loadNote();
-  showStatus('Note loaded.');
+  loadNote(() => showStatus('Note loaded.'));
 }
 
 // ── File Download (DI-007) ───────────────────────────────────────────────────
@@ -182,6 +182,7 @@ function matchesShortcut(e, shortcut) {
 
   if (needsCtrl  !== e.ctrlKey)  return false;
   if (needsShift !== e.shiftKey) return false;
+  if (e.altKey || e.metaKey)     return false;
   return e.key.toLowerCase() === key || e.code.toLowerCase().replace('key', '') === key;
 }
 

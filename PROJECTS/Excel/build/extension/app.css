@@ -1,0 +1,440 @@
+/* app.css — Excel-faithful styling — DI-002 through DI-005, DI-010, DI-011, DI-013 */
+
+/* === CSS Variables === */
+:root {
+  --color-ribbon-bg: #fff;
+  --color-header-bg: #f2f2f2;
+  --color-selection-border: #185abd;
+  --color-selection-bg: #cde4f5;
+  --color-header-selected: #d6e4f7;
+  --color-grid-line: #d0d0d0;
+  --color-sheet-active-border: #217346;
+  --font-ui: 'Segoe UI', system-ui, sans-serif;
+  --font-cell: 'Calibri', sans-serif;
+}
+
+/* === Reset & Base === */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--font-ui);
+  background: #fff;
+}
+
+/* === Menu Bar (BR-003) === */
+#menu-bar {
+  height: 28px;
+  background: var(--color-ribbon-bg);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d0d0d0;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+.menu-tab {
+  padding: 4px 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: var(--font-ui);
+  color: #333;
+  border-radius: 2px;
+  height: 100%;
+}
+
+.menu-tab:hover {
+  background: #e8e8e8;
+}
+
+.menu-tab.active {
+  background: #e8e8e8;
+}
+
+/* === Ribbon (BR-004) === */
+#ribbon {
+  height: 71px;
+  background: var(--color-ribbon-bg);
+  display: flex;
+  border-bottom: 1px solid #d0d0d0;
+  overflow: hidden;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.ribbon-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #d0d0d0;
+  padding: 2px 6px;
+  min-width: 60px;
+}
+
+.ribbon-group-items {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+  align-items: center;
+}
+
+.ribbon-group-label {
+  font-size: 10px;
+  color: #666;
+  margin-top: auto;
+  padding-top: 2px;
+  white-space: nowrap;
+}
+
+/* Ribbon buttons */
+.ribbon-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  background: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: var(--font-ui);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #333;
+}
+
+.ribbon-btn:hover {
+  background: #e8e8e8;
+  border-color: #c0c0c0;
+}
+
+.ribbon-btn.active {
+  background: #c7e0f4;
+  border-color: #185abd;
+}
+
+/* Ribbon selects */
+.ribbon-select {
+  height: 24px;
+  font-size: 11px;
+  border: 1px solid #d0d0d0;
+  font-family: var(--font-ui);
+  background: #fff;
+  cursor: pointer;
+  padding: 0 2px;
+}
+
+/* Font name select wider */
+.ribbon-select.font-name {
+  width: 100px;
+}
+
+/* Font size select */
+.ribbon-select.font-size {
+  width: 44px;
+}
+
+/* Bold/Italic/Underline font weight */
+.ribbon-btn[data-action="bold"] { font-weight: bold; }
+.ribbon-btn[data-action="italic"] { font-style: italic; }
+.ribbon-btn[data-action="underline"] { text-decoration: underline; }
+
+/* === Formula Area (BR-005, BR-006) === */
+#formula-area {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d0d0d0;
+  gap: 4px;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+#name-box {
+  width: 80px;
+  height: 20px;
+  border: 1px solid #d0d0d0;
+  font-size: 12px;
+  padding: 0 2px;
+  font-family: var(--font-ui);
+  text-align: center;
+}
+
+#name-box:focus {
+  outline: 1px solid var(--color-selection-border);
+  border-color: var(--color-selection-border);
+}
+
+#fx-label {
+  font-style: italic;
+  color: #666;
+  font-size: 13px;
+  padding: 0 4px;
+  user-select: none;
+}
+
+#formula-bar {
+  flex: 1;
+  height: 20px;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  font-family: var(--font-cell);
+}
+
+#formula-bar:focus {
+  outline: none;
+}
+
+/* === Grid Container (BR-007, BR-008) === */
+#grid-container {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+
+/* === Grid Table === */
+#grid {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+#grid th,
+#grid td {
+  border: 1px solid var(--color-grid-line);
+  padding: 0 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Column header */
+#grid thead th.col-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--color-header-bg);
+  width: 64px;
+  height: 21px;
+  text-align: center;
+  font-weight: normal;
+  font-size: 11px;
+  font-family: var(--font-ui);
+  user-select: none;
+}
+
+/* Row number header */
+#grid td.row-header {
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  background: var(--color-header-bg);
+  width: 40px;
+  text-align: center;
+  font-weight: normal;
+  font-size: 11px;
+  font-family: var(--font-ui);
+  cursor: default;
+  user-select: none;
+}
+
+/* Top-left corner */
+#grid thead th.corner-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 15;
+  background: var(--color-header-bg);
+  width: 40px;
+  height: 21px;
+  user-select: none;
+}
+
+/* Data cells */
+#grid td.data-cell {
+  height: 21px;
+  width: 64px;
+  cursor: default;
+  font-family: var(--font-cell);
+  position: relative;
+}
+
+/* Selected cell */
+#grid td.data-cell.selected {
+  border: 2px solid var(--color-selection-border);
+  background: var(--color-selection-bg);
+  z-index: 2;
+}
+
+/* Selected column header */
+#grid thead th.col-header.col-selected {
+  background: var(--color-header-selected);
+}
+
+/* Selected row header */
+#grid td.row-header.row-selected {
+  background: var(--color-header-selected);
+}
+
+/* Inline edit input */
+.cell-edit-input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0 2px;
+  font-family: var(--font-cell);
+  font-size: 12px;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+
+/* Text alignment classes for cells */
+.align-left { text-align: left; }
+.align-center { text-align: center; }
+.align-right { text-align: right; }
+
+/* Bold / italic / underline cell formatting */
+.cell-bold { font-weight: bold; }
+.cell-italic { font-style: italic; }
+.cell-underline { text-decoration: underline; }
+
+/* === Sheet Tab Bar (BR-009, BR-010, BR-011) === */
+#sheet-tab-bar {
+  height: 28px;
+  background: #f0f0f0;
+  display: flex;
+  align-items: flex-end;
+  border-top: 1px solid #d0d0d0;
+  flex-shrink: 0;
+  padding-left: 2px;
+}
+
+#sheet-tabs {
+  display: flex;
+  align-items: flex-end;
+}
+
+.sheet-tab {
+  padding: 4px 12px;
+  border: 1px solid #d0d0d0;
+  background: #e0e0e0;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: var(--font-ui);
+  margin-right: 1px;
+  border-bottom: none;
+  border-radius: 2px 2px 0 0;
+  user-select: none;
+}
+
+.sheet-tab:hover {
+  background: #d0d0d0;
+}
+
+.sheet-tab.active {
+  background: #fff;
+  border-bottom: 3px solid var(--color-sheet-active-border);
+  margin-bottom: -1px;
+  font-weight: 500;
+}
+
+#add-sheet-btn {
+  padding: 2px 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  color: #555;
+  align-self: center;
+  margin-bottom: 2px;
+}
+
+#add-sheet-btn:hover {
+  background: #e0e0e0;
+  border-radius: 2px;
+}
+
+/* === Context Menu (BR-040–BR-047) === */
+#context-menu {
+  position: fixed;
+  display: none;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 180px;
+  font-size: 13px;
+  font-family: var(--font-ui);
+  padding: 3px 0;
+}
+
+.context-menu-item {
+  padding: 6px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.context-menu-item:hover {
+  background: var(--color-selection-bg);
+}
+
+.context-menu-separator {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 3px 0;
+}
+
+/* === Help Dialog (BR-058) === */
+#help-dialog {
+  min-width: 400px;
+  padding: 16px;
+  font-family: var(--font-ui);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#help-dialog h3 {
+  font-size: 14px;
+  color: #333;
+}
+
+#help-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+
+#help-table th,
+#help-table td {
+  padding: 4px 8px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+#help-table th {
+  font-weight: 600;
+  color: #555;
+  background: #f8f8f8;
+}
+
+#help-close-btn {
+  padding: 4px 16px;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 12px;
+}

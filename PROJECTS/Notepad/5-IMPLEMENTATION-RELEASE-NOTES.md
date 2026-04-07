@@ -50,3 +50,49 @@
 The OS window close button (×) cannot be intercepted in a Chrome Extension MV3 service worker context. The `beforeunload` event is not reliably dispatched in extension-managed windows. The confirmation prompt (window.confirm) fires correctly for New and Load actions as specified in the UC-007 STEPS. Close-button interception is a known Chrome extension platform limitation and is out of scope for this release.
 
 ---
+
+## RELEASE-NOTES: NP-REL-2026-04-06-001
+
+- **Version ID:** NP-REL-2026-04-06-001
+- **Date:** 2026-04-06
+- **Pipeline Run:** T-PIPELINE-NOTEPAD-001
+- **Type:** Bug Fix (microversion increment)
+
+### Bug Fixes
+
+| Bug ID | File | Description | Fix |
+|--------|------|-------------|-----|
+| BUG-NP-001 | `notepad.js` | `loadNoteFromStorage()` showed "Note loaded." before async `chrome.storage.local.get()` callback completed | `loadNote()` signature changed to `loadNote(onSuccess)`; status displayed only inside success callback |
+| BUG-NP-002 | `notepad.js` | `matchesShortcut()` did not guard against `altKey`/`metaKey`, allowing unintended shortcut triggers | Added `if (e.altKey \|\| e.metaKey) return false;` guard |
+
+### Testing
+
+- Stage 6 testing completed: T-PIPELINE-NOTEPAD-001 Run 1 (static analysis)
+- Result: **PASS PIPELINE** (8 PASS, 1 PARTIAL — UC-007 platform limitation)
+- See `6-TEST-REPORT.md` and `7-BUG-REPORT.md` for full details.
+
+---
+
+## RELEASE-NOTES: NP-REL-2026-04-06-002
+
+- **Version ID:** NP-REL-2026-04-06-002
+- **Date:** 2026-04-06
+- **Pipeline Run:** T-PIPELINE-NOTEPAD-001 Run 2 (live browser — Playwright)
+- **Type:** Bug Fix (microversion increment)
+
+### Bug Fixes
+
+| Bug ID | File | Description | Fix |
+|--------|------|-------------|-----|
+| BUG-NP-003 | `notepad.html` | Missing favicon: browser auto-requests `/favicon.ico` — returns HTTP 404, producing a console error in both Chrome extension context and HTTP-served testing | Added `<link rel="icon" href="data:,">` in `<head>` to suppress the automatic favicon request |
+
+### Testing
+
+- Stage 6 testing completed: T-PIPELINE-NOTEPAD-001 Run 2 (live browser — Playwright 1.59.1)
+- Test method: HTTP-served extension (`python3 -m http.server`), `chrome` API mock injected via `addInitScript`, Playwright browser with visible window
+- Pipeline script: `np_test_pipeline001.mjs`
+- Result: **PASS PIPELINE** (8 PASS, 1 PARTIAL — UC-008 `chrome.windows` requires real extension install)
+- 13 live browser screenshots captured → `testresults/T-PIPELINE-NOTEPAD-001/`
+- See `6-TEST-REPORT.md` for screenshot links and full run details.
+
+---

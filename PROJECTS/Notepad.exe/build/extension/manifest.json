@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Notepad",
+  "version": "1.0.0",
+  "description": "A Windows Notepad-style text editor Chrome extension",
+  "permissions": ["storage", "windows"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Open Notepad"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

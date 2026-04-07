@@ -1,0 +1,4 @@
+{
+    "vscode-ollama.model": "huihui_ai/qwen3-coder-next-abliterated:latest",
+    "ollama-participant.model": "huihui_ai/qwen3-coder-next-abliterated:latest"
+}

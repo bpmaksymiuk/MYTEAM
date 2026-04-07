@@ -41,6 +41,10 @@ export class PlayingState {
     this._loadArea(this.areaId).then(() => {
       this.setSubState(new ExplorationState(this));
       AudioManager.playMusic('music_explore');
+      // BUG-002 fix: unhide HUD only after area has fully loaded
+      // BUG-003 fix: re-init HUD here so portrait bar is built with confirmed party data
+      document.getElementById('hud').classList.remove('hidden');
+      this._hud.init();
     });
 
     this._onKeyDown = e => {
@@ -48,12 +52,25 @@ export class PlayingState {
       if (e.code === 'F5') { e.preventDefault(); this._quickSave(); }
       if (e.code === 'F9') { e.preventDefault(); this._quickLoad(); }
       if (e.code === 'Escape') this._openOptions();
+      if (e.code === 'KeyI') { e.preventDefault(); this._openPanel('inventory'); }
+      if (e.code === 'KeyJ') { e.preventDefault(); this._openPanel('journal');   }
+      if (e.code === 'KeyM') { e.preventDefault(); this._openPanel('map');       }
+      if (e.code === 'KeyC') { e.preventDefault(); this._openPanel('character'); }
     };
     this._onKeyUp = e => { this._scrollKeys.delete(e.code); };
     window.addEventListener('keydown', this._onKeyDown);
     window.addEventListener('keyup',   this._onKeyUp);
 
-    document.getElementById('hud').classList.remove('hidden');
+    // HUD button events (btn-spell, btn-rest, etc.)
+    this._onPlayingAction = e => {
+      const action = e.detail?.action || '';
+      if      (action === 'btn-inventory') this._openPanel('inventory');
+      else if (action === 'btn-journal')   this._openPanel('journal');
+      else if (action === 'btn-map')       this._openPanel('map');
+      else if (action === 'btn-spell')     this._openPanel('spellbook');
+      else if (action === 'btn-rest')      this._openPanel('rest');
+    };
+    window.addEventListener('playing:action', this._onPlayingAction);
   }
 
   exit() {
@@ -61,6 +78,7 @@ export class PlayingState {
     this._hud?.destroy?.();
     window.removeEventListener('keydown', this._onKeyDown);
     window.removeEventListener('keyup',   this._onKeyUp);
+    window.removeEventListener('playing:action', this._onPlayingAction);
     document.getElementById('hud').classList.add('hidden');
     document.getElementById('ui-layer').classList.remove('active');
     document.getElementById('ui-layer').innerHTML = '';
@@ -120,11 +138,11 @@ export class PlayingState {
     } else {
       const { FogOfWar } = await import('../engine/FogOfWar.js');
       this.fogOfWar = new FogOfWar(this.area.mapWidth, this.area.mapHeight);
-      // Reveal starting area around party leader on first visit
+      // BUG-001 fix: always reveal starting area — fall back to tile (10,10) when party is empty
       const first = this.party[0];
-      if (first) {
-        this.fogOfWar.reveal(Math.round(first.tileX || 10), Math.round(first.tileY || 10), 8);
-      }
+      const startX = first ? Math.round(first.tileX || 10) : 10;
+      const startY = first ? Math.round(first.tileY || 10) : 10;
+      this.fogOfWar.reveal(startX, startY, 8);
     }
 
     // Spawn NPCs from area data — area.npcs may be string IDs or full objects
@@ -226,6 +244,39 @@ export class PlayingState {
       const opts = new m.OptionsState(this, () => { opts.panel?.remove(); });
       opts.enter();
     });
+  }
+
+  _openPanel(type) {
+    // Clear any existing overlay first
+    const ui = document.getElementById('ui-layer');
+    if (ui) { ui.innerHTML = ''; ui.classList.remove('active'); }
+
+    if (type === 'inventory' || type === 'character') {
+      import('./substate/InventoryState.js').then(m => {
+        const inv = new m.InventoryState(this, 0);
+        inv.enter();
+      });
+    } else if (type === 'journal') {
+      import('./substate/JournalState.js').then(m => {
+        const j = new m.JournalState(this);
+        j.enter();
+      });
+    } else if (type === 'map') {
+      import('./substate/MapState.js').then(m => {
+        const ms = new m.MapState(this);
+        ms.enter();
+      });
+    } else if (type === 'spellbook') {
+      import('../ui/SpellbookPanel.js').then(m => {
+        const leader = this.party[0];
+        if (leader) { const sp = new m.SpellbookPanel(leader); sp.show(); }
+      });
+    } else if (type === 'rest') {
+      import('./substate/RestState.js').then(m => {
+        const rs = new m.RestState(this);
+        rs.enter();
+      });
+    }
   }
 
   buildGameState() {
