@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled - Notepad</title>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+  <div id="app">
+    <nav id="menubar"></nav>
+    <textarea id="editor" spellcheck="false" wrap="off"></textarea>
+    <footer id="statusbar">
+      <span id="status-line">Ln 1</span>
+      <span id="status-col">Col 1</span>
+      <span id="status-chars">0 chars</span>
+      <span id="status-encoding">UTF-8</span>
+    </footer>
+  </div>
+
+  <!-- Dialog overlays (hidden by default) -->
+  <div id="dialog-overlay" class="dialog-overlay hidden">
+    <div id="dialog-confirm" class="dialog hidden">
+      <div class="dialog-title"><span id="dialog-title-text">Notepad</span></div>
+      <div class="dialog-body"><p id="dialog-message"></p></div>
+      <div class="dialog-buttons">
+        <button id="dialog-yes">Yes</button>
+        <button id="dialog-no">No</button>
+        <button id="dialog-cancel">Cancel</button>
+      </div>
+    </div>
+    <div id="dialog-open" class="dialog hidden">
+      <div class="dialog-title">Open</div>
+      <div class="dialog-body"><ul id="open-file-list"></ul></div>
+      <div class="dialog-buttons">
+        <button id="dialog-open-ok">Open</button>
+        <button id="dialog-open-cancel">Cancel</button>
+      </div>
+    </div>
+    <div id="dialog-help" class="dialog hidden">
+      <div class="dialog-title">Keyboard Shortcuts</div>
+      <div class="dialog-body" id="help-content"></div>
+      <div class="dialog-buttons">
+        <button id="dialog-help-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

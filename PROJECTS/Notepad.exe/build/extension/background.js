@@ -1,35 +1,50 @@
-// background.js — Service worker for Notepad Chrome Extension
-// Implements BR-026, BR-027: single window, position/size persistence
-
-let notepadWindowId = null;
+// background.js — DI-002
+// Service worker: window lifecycle, single-instance enforcement, bounds persistence
 
 chrome.action.onClicked.addListener(async () => {
-  if (notepadWindowId !== null) {
+  const { activeWindowId } = await chrome.storage.session.get('activeWindowId');
+  if (activeWindowId) {
     try {
-      await chrome.windows.get(notepadWindowId);
-      await chrome.windows.update(notepadWindowId, { focused: true });
+      await chrome.windows.update(activeWindowId, { focused: true });
       return;
-    } catch {
-      notepadWindowId = null;
+    } catch (e) {
+      // Window no longer exists — fall through to create a new one
     }
   }
-  const bounds = await getSavedBounds();
+  await openNotepadWindow();
+});
+
+async function openNotepadWindow() {
+  const { windowBounds } = await chrome.storage.local.get('windowBounds');
+  const bounds = windowBounds || { width: 800, height: 600, left: 100, top: 100 };
   const win = await chrome.windows.create({
-    url: chrome.runtime.getURL('notepad.html'),
+    url: chrome.runtime.getURL('index.html'),
     type: 'popup',
     width: bounds.width,
     height: bounds.height,
     left: bounds.left,
-    top: bounds.top,
+    top: bounds.top
   });
-  notepadWindowId = win.id;
-});
-
-chrome.windows.onRemoved.addListener((id) => {
-  if (id === notepadWindowId) notepadWindowId = null;
-});
-
-async function getSavedBounds() {
-  const result = await chrome.storage.local.get('windowState');
-  return result.windowState || { width: 800, height: 600, left: 100, top: 100 };
+  await chrome.storage.session.set({ activeWindowId: win.id });
 }
+
+chrome.windows.onRemoved.addListener(async (windowId) => {
+  const { activeWindowId } = await chrome.storage.session.get('activeWindowId');
+  if (windowId === activeWindowId) {
+    await chrome.storage.session.remove('activeWindowId');
+  }
+});
+
+chrome.windows.onBoundsChanged.addListener(async (win) => {
+  const { activeWindowId } = await chrome.storage.session.get('activeWindowId');
+  if (win.id === activeWindowId && win.width && win.height) {
+    await chrome.storage.local.set({
+      windowBounds: {
+        width: win.width,
+        height: win.height,
+        left: win.left,
+        top: win.top
+      }
+    });
+  }
+});

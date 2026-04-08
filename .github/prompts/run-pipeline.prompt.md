@@ -6,13 +6,13 @@ description: Run the full 6-stage software factory pipeline for a project. Invok
 
 Run all 6 pipeline stages in order for the project: **${input:app:Project name (folder under PROJECTS/)}**
 
-Work in `PROJECTS/${input:app}` as the repository root. Read `.github/SoftwareFactory.md` first — it is the source of truth for all stage rules, artifact schemas, and exit gates.
+Work in `PROJECTS/${input:app}` as the repository root. Read `.github/instructions/pipeline.instructions.md` first — it is the source of truth for all stage rules, artifact schemas, and exit gates.
 
 ---
 
 ## Stage 2 — Business Analyst
 
-`(Business Analyst)` Read `1-USE-CASES.md` in full. Generate or update `2-REQUIREMENTS.md` so every UC step maps to at least one atomic, testable BR record. Follow the BA processing rules in SoftwareFactory.md.
+`(Business Analyst)` Read `1-USE-CASES.md` in full. Generate or update `2-REQUIREMENTS.md` so every UC step maps to at least one atomic, testable BR record. Follow the BA processing rules in `pipeline.instructions.md`.
 
 Exit gate: Every UC has at least one BR. Every BR has a testable condition. IDs are sequential and not reused.
 

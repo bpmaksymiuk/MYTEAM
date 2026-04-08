@@ -167,7 +167,6 @@ Whenever `1-USE-CASES-PROPOSED.md` is updated:
 Stage 0 quality gate passes when:
 - File follows use-case schema (UC-XXX header, STEPS, ACCEPTANCE CRITERIA, NOTES, RELATED fields)
 - Records are high quality and actionable
-- Records are high quality.
 
 ### Execution Policy
 
@@ -215,14 +214,13 @@ Pipeline stages 2–6 may only run when:
 **Input:** `1-USE-CASES.md`  
 **Output:** Atomic, testable business requirements  
 
-### BA Responsibility
+### Business Analyst Responsibility
 
 Convert use cases into complete, testable business requirements. Trigger this stage by updating `1-USE-CASES.md`.
 
 **For detailed guidance and exit gate criteria:** See `.github/instructions/2-requirements.instructions.md`
 
 ---
-
 ## Stage 3: Software Architecture
 
 **Owner:** Architect (A)  
@@ -236,8 +234,6 @@ Translate every business requirement into one or more concrete architecture deci
 
 **For detailed guidance and exit gate criteria:** See `.github/instructions/3-architecture.instructions.md`
 
----
-
 ## Stage 4: Technical Design
 
 **Owner:** Technical Lead (TL)  
@@ -245,68 +241,27 @@ Translate every business requirement into one or more concrete architecture deci
 **Input:** `2-REQUIREMENTS.md`, `3-ARCHITECTURE-RECOMMENDATIONS.md`, `3-PARTS LIST.md`  
 **Output:** Implementation-ready instructions for Developer  
 
-### TL Responsibility
+### Technical Lead Responsibility
 
 Produce detailed, actionable implementation instructions in `4-DESIGN-INSTRUCTIONS.md` that Developers can follow without clarifying questions.
 
 **For detailed guidance and exit gate criteria:** See `.github/instructions/4-design-instructions.instructions.md`
 
 ---
-
 ## Stage 5: Implementation & Release
 
 **Owner:** Developer  
 **Artifacts:** `./build/` + `5-RELEASE-NOTES.md`  
 **Input:** `4-DESIGN-INSTRUCTIONS.md`  
-**Output:** Source code + release notes with traceability  
+**Output:** Source code + release notes with traceability
 
-### Build Output Locations
+### Developer Responsibility
+I
+1. Implement approved design. in `.github/instructions/5-implementation.instructions.md`
 
-- **Chrome extensions:** `./build/extension/` (manifest.json, app.js, background.js, etc.)
-- **Browser games:** `./build/` or `./build/www/`
-- **Never** write implementation code outside `./build/`
-- All code under `./build/` must be traceable to ≥1 INSTRUCTION ID
-
-### Developer Implementation Contract
-
-1. **Scope control:** Implement only INSTRUCTION-linked work; no speculative features
-2. **Traceability:** Every modified file must map to at least one DI-XXX ID
-3. **Minimal footprint:** Prefer targeted edits over broad refactors
-4. **Security & correctness:** Validate boundary inputs, avoid injection vectors, provide safe user-visible error paths
-5. **Build hygiene:** Resolve relevant build/lint/diagnostic issues in changed scope
-6. **No dead references:** Every referenced DI must exist
-7. **Sensitive operations:** Clipboard, storage, messaging must include failure handling and user-visible error paths
-8. **Implementation caveats:** If runtime constraints exist, add IMPLEMENTATION COMMENT fields to affected UCs in `1-USE-CASES.md` and mirror them in release notes
-
-### Release Notes Requirement
-
-Every code change — including bug fixes from Stage 6 — must append a new versioned entry to the **top** of `5-RELEASE-NOTES.md` with a microversion increment (e.g., `v1.0.0` → `v1.0.1`).
-
-**Release entry structure:**
-1. Release ID: `<PROJECTABBR>-REL-YYYY-MM-DD-NNN`
-2. List implemented DI-XXX instructions
-3. List enabled UC-XXX and BR-XXX
-4. Document applied AR-XXX architecture decisions
-5. For bug fixes: increment microversion, list all fixed bugs (BUG-XXX)
-6. Preserve all historical information (append-only, never overwrite or delete)
-7. Document any runtime caveats or implementation limitations
-
-### Exit Gate (Stage 5)
-
-Before handing off to Stage 6:
-1. All code in `./build/` is traceable to ≥1 DI-XXX ID
-2. Build output follows location conventions (extensions in `./build/extension/`, games in `./build/` or `./build/www/`)
-3. No unresolved build/lint/diagnostic issues in modified scope
-4. Release notes appended to `5-RELEASE-NOTES.md` with full traceability
-5. Version incremented with microversion bump
-6. Implementation caveats documented in both UCs (IMPLEMENTATION COMMENT) and release notes
-
-**For detailed guidance and exit criteria documentation:** See `.github/instructions/5-release-notes.instructions.md`
-
-For detailed guidance and exit criteria documentation
+2. Generate release notes with traceability to design instructions.See `.github/instructions/5-release-notes.instructions.md`
 
 ---
-
 ## Stage 6: Verification & Release
 
 **Owner:** Tester  
@@ -314,9 +269,14 @@ For detailed guidance and exit criteria documentation
 **Input:** All Stage 1–5 artifacts + `./build`  
 **Output:** Test evidence + release decision  
 
-**For detailed guidance and exit gate criteria:** See `.github/instructions/6-test-report.instructions.md` and `.github/instructions/7-bug-report.instructions.md`
+### Tester Responsibility
+1. Verify that implemented code meets all use cases and requirements.
+2. Record test results in `6-TEST-REPORT.md` and any defects in `7-BUG-REPORT.md`.
+3. Provide a final release recommendation based on test outcomes.
 
----
+For detailed test report and bug report guidance, see `../instructions/6-test-report.instructions.md` and `../instructions/7-bug-report.instructions.md`.
+
+Before testing, read `1-USE-CASES.md`, `2-REQUIREMENTS.md`, `5-RELEASE-NOTES.md`, and existing `6-TEST-REPORT.md`.
 
 ## Manager: Gate Failure Loop
 
@@ -332,6 +292,12 @@ When any stage gate fails:
 4. **Cascade** — Re-run all downstream stages in order
 5. **Update** — Append new PIPELINE EXECUTION record
 6. **Repeat** — Continue until all gates PASS
+
+#### Artifact Verification
+
+When routing work back to a failing stage, ensure that stage owner creates/updates their artifacts correctly. If a stage reports success but artifacts don't exist, route work back to that stage owner with explicit instruction to use `create_file` or `replace_string_in_file` tools to actually create/write the files.
+
+Verify artifacts exist and gates pass. If artifact files are missing or incomplete, it is a stage failure — do not accept the work as complete.
 
 #### Ownership Routing
 

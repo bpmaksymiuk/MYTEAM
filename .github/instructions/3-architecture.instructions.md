@@ -37,7 +37,7 @@ Architecture makes technology decisions and identifies components that enable bu
 - Tradeoffs (vs. alternative approaches)
 - Justification (performance, maintainability, team expertise, timeline)
 
-**NOTES:** Optional implementation context, dependencies, or caveats.
+**NOTES:** Optional implementation context, dependencies, or caveats. For example, if a library is recommended, note the specific modules or functions to use. Please do not code. Proactively make recommendations for patterns that may be required but not explicitly traceable to requirements (e.g., logging, error handling, configuration management). Mark as `RELATED: (implied)`.
 
 **RELATED:** List parent BR-XXX and UC-XXX that this recommendation enables. Format:
 ```
@@ -118,3 +118,5 @@ RELATED: UC-003, UC-004 | BR-011, BR-012, BR-013 | AR-001, AR-002
 - Technology recommendations are mapped to architecture decisions.
 - PT IDs are sequential and never reused.
 - All RELATED fields reference valid UC-XXX, BR-XXX, and AR-XXX IDs.
+
+---

@@ -89,7 +89,7 @@ Example: `XL-REL-2026-04-07-001`
 
 1. **Create a new release entry at the top** of the file for every implementation run.
 2. **Preserve historical information** — never overwrite or delete prior releases.
-3. **Append, never prepend** releases; newest at the top for easy scanning.
+3. **Prepend, never overwrite** — newest entry at the top, all prior entries preserved below.
 4. **Include implemented scope summary and rationale.**
 5. **For bug fixes from Stage 6 testing:**
    - Add a new release entry with a microversion increment (e.g., `XL-REL-2026-04-07-001` → `XL-REL-2026-04-07-002`)
@@ -100,7 +100,7 @@ Example: `XL-REL-2026-04-07-001`
 ### Versioning Rule
 
 Microversion increment:
-- Stage 5 feature implementation: `v1.0.0` → `v1.0.1` (patch for new features, seems weird but this is how projects increment)
+- Stage 5 feature implementation: `v1.0.0` → `v1.0.1` (patch increment for each implementation run)
 - Stage 6 bug fix release: `v1.0.1` → `v1.0.2`
 - Increment the last number.
 
@@ -110,3 +110,27 @@ Microversion increment:
 - All changed files traced to at least one DI ID.
 - Historical releases preserved (no deletions or overwrites).
 - Any runtime caveats documented.
+
+---
+
+### Document Processing
+
+#### ⚠️ MANDATORY SCHEMA LOOKUP — DO THIS FIRST
+
+Before writing a single line of `5-RELEASE-NOTES.md`, you MUST:
+
+1. Read `.github/instructions/5-release-notes.instructions.md` in full.
+2. Find the **Record Schema** section. It specifies the exact format every release entry must follow.
+3. Produce output that matches that schema exactly — no sprint summaries, no changelog formats, no bullet lists of features. Only the schema defined in the instruction file.
+4. If you are unsure whether your output matches the schema, re-read the instruction file before writing.
+
+If the instruction file shows a different schema than the one above, that file wins. Do not invent sections.
+
+#### Artifact Creation Responsibilities
+
+**You must CREATE or UPDATE `5-RELEASE-NOTES.md` in the project folder.** Every code change must be documented here.
+
+- If the file does not exist, use the `create_file` tool to create it with an initial entry.
+- If it exists, use `replace_string_in_file` to prepend new versioned entries at the top (append-only pattern).
+- Always verify the file is written correctly by checking its contents after creation/update.
+- Do NOT just report that you created or updated the file — actually create/update it using available file tools. Failure to update the artifact is a stage failure.

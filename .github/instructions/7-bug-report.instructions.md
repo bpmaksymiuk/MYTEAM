@@ -84,7 +84,7 @@ Examples: `BUG-XL-001`, `BUG-BG-007`, `BUG-NP-002`
 
 ### Entry Order
 
-Newest bugs appended at the top of the file (same pattern as `5-RELEASE-NOTES.md`). This makes recent bugs easy to find.
+Newest bugs prepended at the top of the file (same pattern as `5-RELEASE-NOTES.md`). This makes recent bugs easy to find.
 
 ### Exit Gate (Stage 6)
 

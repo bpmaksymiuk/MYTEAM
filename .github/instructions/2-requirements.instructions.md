@@ -48,11 +48,11 @@ Examples:
 
 ### Processing Guidance
 
-1. **Generate at least one requirement per use-case step.** If a UC step is complex, generate up to 20 BRs.
+1. **Generate at least one requirement per use-case step.** If a UC step is complex, generate as many as it takes.
 2. **Each requirement must be atomic.** Avoid "and" in REQUIREMENT STATEMENT; split into separate BRs.
 3. **Testable conditions are mandatory.** Tester will use these to write test assertions.
 4. Do not duplicate requirements; use RELATED cross-references for shared behavior.
-5. May add implied requirements not directly traceable to UCs (e.g., security, performance, accessibility). Mark as `RELATED: (implied)`.
+5. Proactively add implied requirements not directly traceable to UCs (e.g., security, performance, accessibility). Mark as `RELATED: (implied)`.
 6. **Regenerate this file only when `1-USE-CASES.md` is updated for the pipeline run.** Incremental changes to 2-REQUIREMENTS.md without UC changes are allowed but require explicit notification.
 7. Preserve existing BR IDs during incremental updates.
 

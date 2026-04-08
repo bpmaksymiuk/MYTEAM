@@ -1,0 +1,268 @@
+/* theme.css — DI-003 — Windows Notepad visual theme */
+
+:root {
+  --font-ui: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-editor: 'Courier New', Courier, monospace;
+  --color-bg: #FFFFFF;
+  --color-chrome: #F0F0F0;
+  --color-border: #CCCCCC;
+  --color-text: #000000;
+  --color-menu-hover: #0078D4;
+  --color-menu-hover-text: #FFFFFF;
+  --color-dialog-title: #000080;
+  --color-dialog-title-text: #FFFFFF;
+  --statusbar-height: 22px;
+  --menubar-height: 24px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-ui);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ── Menu Bar ── */
+#menubar {
+  background: var(--color-chrome);
+  height: var(--menubar-height);
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--color-border);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.menu-item {
+  position: relative;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  cursor: default;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.menu-item:hover,
+.menu-item.open {
+  background: var(--color-menu-hover);
+  color: var(--color-menu-hover-text);
+}
+
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--color-chrome);
+  border: 1px solid var(--color-border);
+  z-index: 100;
+  min-width: 160px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  list-style: none;
+}
+
+.menu-item.open .menu-dropdown {
+  display: block;
+}
+
+.menu-dropdown li {
+  padding: 4px 32px 4px 24px;
+  font-size: 13px;
+  cursor: default;
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-dropdown li:hover {
+  background: var(--color-menu-hover);
+  color: var(--color-menu-hover-text);
+}
+
+.menu-dropdown li.separator {
+  padding: 0;
+  border-top: 1px solid var(--color-border);
+  margin: 3px 0;
+  cursor: default;
+  pointer-events: none;
+}
+
+.menu-dropdown li.disabled {
+  color: #999;
+  pointer-events: none;
+}
+
+.menu-shortcut {
+  font-size: 12px;
+  color: inherit;
+  margin-left: 24px;
+  opacity: 0.7;
+}
+
+/* ── Editor ── */
+#editor {
+  flex: 1;
+  resize: none;
+  border: none;
+  outline: none;
+  padding: 4px 6px;
+  font-family: var(--font-editor);
+  font-size: 14px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.5;
+  overflow: auto;
+  tab-size: 4;
+}
+
+/* ── Status Bar ── */
+#statusbar {
+  height: var(--statusbar-height);
+  background: var(--color-chrome);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+#statusbar span {
+  padding: 0 4px;
+  border-right: 1px solid var(--color-border);
+}
+
+#statusbar span:last-child {
+  border-right: none;
+}
+
+/* ── Dialog Overlay ── */
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-overlay.hidden {
+  display: none;
+}
+
+.dialog {
+  background: var(--color-chrome);
+  border: 2px solid var(--color-border);
+  min-width: 320px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.dialog.hidden {
+  display: none;
+}
+
+.dialog-title {
+  background: var(--color-dialog-title);
+  color: var(--color-dialog-title-text);
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: bold;
+  font-family: var(--font-ui);
+}
+
+.dialog-body {
+  padding: 16px;
+  font-size: 13px;
+  font-family: var(--font-ui);
+  min-height: 48px;
+}
+
+.dialog-body p {
+  line-height: 1.5;
+}
+
+.dialog-body ul {
+  list-style: none;
+  max-height: 180px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.dialog-body ul li {
+  padding: 5px 10px;
+  cursor: default;
+  font-size: 13px;
+}
+
+.dialog-body ul li:hover,
+.dialog-body ul li.selected {
+  background: var(--color-menu-hover);
+  color: var(--color-menu-hover-text);
+}
+
+.dialog-buttons {
+  padding: 8px 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  border-top: 1px solid var(--color-border);
+}
+
+.dialog-buttons button {
+  padding: 4px 16px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  cursor: default;
+  min-width: 72px;
+  border: 1px solid #888;
+  background: var(--color-chrome);
+  color: var(--color-text);
+}
+
+.dialog-buttons button:hover {
+  background: #E0E0E0;
+}
+
+.dialog-buttons button:active {
+  background: #C8C8C8;
+}
+
+/* Help dialog shortcut table */
+#help-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+#help-content td {
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+#help-content td:first-child {
+  font-weight: bold;
+  width: 120px;
+  font-family: var(--font-editor);
+  font-size: 12px;
+}

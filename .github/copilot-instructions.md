@@ -8,7 +8,8 @@ This is a **multi-project software factory** that converts business intent into 
 
 ```
 .github/
-  SoftwareFactory.md        ← Pipeline definition and processing rules (source of truth)
+  instructions/
+    pipeline.instructions.md  ← Pipeline definition and processing rules (source of truth)
   agents/                   ← Custom agent definitions (.agent.md) for each pipeline stage
   copilot-instructions.md   ← This file
 PROJECTS/
@@ -18,7 +19,7 @@ resources/                  ← Shared static assets (images, audio, etc.)
 
 ## The Pipeline
 
-Every project follows the same 6-stage pipeline defined in `.github/SoftwareFactory.md`:
+Every project follows the same 6-stage pipeline defined in `.github/instructions/pipeline.instructions.md`:
 
 | Stage | Agent | Artifact |
 |-------|-------|----------|
@@ -29,7 +30,7 @@ Every project follows the same 6-stage pipeline defined in `.github/SoftwareFact
 | 5 | Developer | `./build/` + `5-RELEASE-NOTES.md` |
 | 6 | Tester | `6-TEST-REPORT.md`, `7-BUG-REPORT.md` |
 
-- **Always read `SoftwareFactory.md`** before acting in any pipeline role — it is the canonical source for processing rules, artifact schemas, and exit gates.
+- **Always read `pipeline.instructions.md`** before acting in any pipeline role — it is the canonical source for processing rules, artifact schemas, and exit gates.
 - **Set working directory** to `PROJECTS/<APP>` before any pipeline operation. Use repository-relative paths in all artifacts (e.g., `./build`, not `/home/danio/...`).
 - **Never skip stages.** Each stage output is the required input for the next. Resolve ambiguity before coding.
 
@@ -81,7 +82,7 @@ Every code change (including bug fixes) appends a new entry to `5-RELEASE-NOTES.
 ## Key Files To Read First
 
 When starting work on a project, read in this order:
-1. `.github/SoftwareFactory.md` — pipeline rules
+1. `.github/instructions/pipeline.instructions.md` — pipeline rules
 2. `PROJECTS/<APP>/1-USE-CASES.md` — business intent
 3. `PROJECTS/<APP>/5-RELEASE-NOTES.md` — what's been built
 4. `PROJECTS/<APP>/6-TEST-REPORT.md` — test history

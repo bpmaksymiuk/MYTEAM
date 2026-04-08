@@ -202,3 +202,19 @@ Extensions with `chrome.*` APIs cannot be fully tested via HTTP serve:
 - results.json file exists at `testresults/T-PIPELINE-XXX/results.json`.
 - Final recommendation is explicit: **PASS PIPELINE** or **FAIL PIPELINE**.
 - 0 open FAILs (all either fixed or marked PARTIAL with documented reason).
+
+---
+
+### Document Processing
+
+## ⚠️ MANDATORY SCHEMA LOOKUP — DO THIS FIRST
+
+Before writing a single line of `6-TEST-REPORT.md` or `7-BUG-REPORT.md`, you MUST:
+
+1. Read `.github/instructions/6-test-report.instructions.md` in full.
+2. Read `.github/instructions/7-bug-report.instructions.md` in full.
+3. Find the **Record Schema** sections. They specify the exact format every test run and every bug entry must follow.
+4. Produce output that matches those schemas exactly — no alternative formats, no simplified tables, no summary-only reports. Only the schema defined in the instruction files.
+5. If you are unsure whether your output matches the schema, re-read the instruction files before writing.
+
+The canonical schemas (as of writing) are in the instruction files — always read them; do not rely on memory.
