@@ -1,0 +1,230 @@
+/* DI-006: notepad.css — Windows Notepad Stylesheet (PT-004) */
+
+/* ── Reset ───────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Custom Properties (Windows Notepad theme) ───────────────────────── */
+:root {
+  --font-ui:               'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  --font-editor:           Consolas, 'Courier New', monospace;
+  --color-bg:              #FFFFFF;
+  --color-text:            #000000;
+  --color-menubar-bg:      #F0F0F0;
+  --color-menubar-border:  #CCCCCC;
+  --color-menu-hover:      #0078D7;
+  --color-menu-hover-text: #FFFFFF;
+  --color-statusbar-bg:    #F0F0F0;
+  --color-statusbar-border:#CCCCCC;
+  --color-modal-overlay:   rgba(0, 0, 0, 0.35);
+  --color-modal-title-bg:  #0078D7;
+  --color-modal-title-text:#FFFFFF;
+  --editor-font-size:      14px;
+}
+
+/* ── Page Layout ─────────────────────────────────────────────────────── */
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-ui);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ── Menu Bar ────────────────────────────────────────────────────────── */
+#menubar {
+  display: flex;
+  background: var(--color-menubar-bg);
+  border-bottom: 1px solid var(--color-menubar-border);
+  user-select: none;
+  position: relative;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.menu-item {
+  position: relative;
+  padding: 4px 8px;
+  cursor: default;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background: var(--color-menu-hover);
+  color: var(--color-menu-hover-text);
+}
+
+/* ── Dropdown menus ──────────────────────────────────────────────────── */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--color-menubar-bg);
+  border: 1px solid var(--color-menubar-border);
+  list-style: none;
+  min-width: 200px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 200;
+}
+
+.menu-item.active > .dropdown {
+  display: block;
+}
+
+.dropdown li {
+  padding: 5px 24px 5px 16px;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.dropdown li:hover {
+  background: var(--color-menu-hover);
+  color: var(--color-menu-hover-text);
+}
+
+.dropdown li.separator {
+  height: 1px;
+  background: var(--color-menubar-border);
+  padding: 0;
+  margin: 2px 0;
+  pointer-events: none;
+}
+
+.shortcut {
+  margin-left: 32px;
+  color: #666666;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.dropdown li:hover .shortcut {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ── Editor ──────────────────────────────────────────────────────────── */
+#editor {
+  flex: 1;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 4px 6px;
+  font-family: var(--font-editor);
+  font-size: var(--editor-font-size);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.4;
+  overflow: auto;
+  white-space: pre;           /* default: no wrap */
+  word-wrap: normal;
+}
+
+/* Word Wrap active */
+body.word-wrap #editor {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* ── Status Bar ──────────────────────────────────────────────────────── */
+#statusbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 2px 8px;
+  background: var(--color-statusbar-bg);
+  border-top: 1px solid var(--color-statusbar-border);
+  font-size: 12px;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+/* ── Help Modal ──────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-modal-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal-window {
+  background: var(--color-bg);
+  border: 1px solid var(--color-menubar-border);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  min-width: 400px;
+  max-width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-titlebar {
+  background: var(--color-modal-title-bg);
+  color: var(--color-modal-title-text);
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: bold;
+  user-select: none;
+}
+
+.modal-titlebar button {
+  background: none;
+  border: none;
+  color: var(--color-modal-title-text);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.modal-titlebar button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-body {
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.shortcut-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.shortcut-table th,
+.shortcut-table td {
+  padding: 6px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-menubar-border);
+}
+
+.shortcut-table th {
+  background: var(--color-menubar-bg);
+  font-weight: bold;
+}

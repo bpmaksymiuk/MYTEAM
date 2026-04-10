@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "description": "Inject the shared pipeline communication protocol at session start.",
+        "command": "bash .github/hooks/inject-agent-communication-protocol.sh",
+        "timeout": 5
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "type": "command",
+        "description": "Inject the shared pipeline communication protocol for each user prompt.",
+        "command": "bash .github/hooks/inject-agent-communication-protocol.sh",
+        "timeout": 5
+      }
+    ],
+    "SubagentStart": [
+      {
+        "type": "command",
+        "description": "Inject the shared pipeline communication protocol whenever a subagent starts.",
+        "command": "bash .github/hooks/inject-agent-communication-protocol.sh",
+        "timeout": 5
+      }
+    ]
+  }
+}

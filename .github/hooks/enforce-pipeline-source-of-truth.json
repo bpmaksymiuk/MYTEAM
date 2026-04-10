@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "description": "Inject the pipeline source-of-truth reminder when a new session starts.",
+        "command": "bash .github/hooks/inject-pipeline-source-of-truth.sh",
+        "timeout": 5
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "type": "command",
+        "description": "Inject the pipeline source-of-truth reminder on each user prompt.",
+        "command": "bash .github/hooks/inject-pipeline-source-of-truth.sh",
+        "timeout": 5
+      }
+    ],
+    "SubagentStart": [
+      {
+        "type": "command",
+        "description": "Inject the pipeline source-of-truth reminder when a subagent starts.",
+        "command": "bash .github/hooks/inject-pipeline-source-of-truth.sh",
+        "timeout": 5
+      }
+    ]
+  }
+}

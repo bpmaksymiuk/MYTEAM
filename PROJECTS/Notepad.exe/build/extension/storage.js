@@ -1,49 +1,42 @@
-// storage.js — DI-007
-// localStorage note persistence manager
+// DI-004: storage.js — Storage Abstraction Module (PT-006)
+// Wraps chrome.storage.local with named async helpers.
 
-const PREFIX = 'notepad_note_';
-const CURRENT_KEY = 'notepad_current';
+const KEY_PREFIX_NOTE = 'note_';
+const KEY_GEOMETRY    = 'windowGeometry';
+const KEY_LAST_NOTE   = 'lastNoteName';
 
-function sanitizeFilename(filename) {
-  return filename.replace(/[/\\]/g, '_');
+export async function saveNote(name, content) {
+  const key = KEY_PREFIX_NOTE + name;
+  await chrome.storage.local.set({ [key]: content, [KEY_LAST_NOTE]: name });
 }
 
-export function saveNote(filename, content) {
-  try {
-    const key = PREFIX + sanitizeFilename(filename);
-    localStorage.setItem(key, content);
-    localStorage.setItem(CURRENT_KEY, filename);
-    return { ok: true };
-  } catch (e) {
-    if (e.name === 'QuotaExceededError') return { ok: false, error: 'Storage full' };
-    return { ok: false, error: e.message };
-  }
+export async function loadNote(name) {
+  const key = KEY_PREFIX_NOTE + name;
+  const result = await chrome.storage.local.get(key);
+  return Object.prototype.hasOwnProperty.call(result, key) ? result[key] : null;
 }
 
-export function loadNote(filename) {
-  return localStorage.getItem(PREFIX + sanitizeFilename(filename));
-  // Returns null if not found
+export async function listNotes() {
+  const all = await chrome.storage.local.get(null);
+  return Object.keys(all)
+    .filter(k => k.startsWith(KEY_PREFIX_NOTE))
+    .map(k => ({ name: k.slice(KEY_PREFIX_NOTE.length), key: k }));
 }
 
-export function listNotes() {
-  return Object.keys(localStorage)
-    .filter(k => k.startsWith(PREFIX))
-    .map(k => k.slice(PREFIX.length))
-    .sort();
+export async function loadLastNoteName() {
+  const result = await chrome.storage.local.get(KEY_LAST_NOTE);
+  return Object.prototype.hasOwnProperty.call(result, KEY_LAST_NOTE)
+    ? result[KEY_LAST_NOTE]
+    : null;
 }
 
-export function deleteNote(filename) {
-  localStorage.removeItem(PREFIX + sanitizeFilename(filename));
+export async function saveGeometry(rect) {
+  await chrome.storage.local.set({ [KEY_GEOMETRY]: rect });
 }
 
-export function getCurrentFilename() {
-  return localStorage.getItem(CURRENT_KEY) || null;
-}
-
-export function setCurrentFilename(filename) {
-  if (filename === null) {
-    localStorage.removeItem(CURRENT_KEY);
-  } else {
-    localStorage.setItem(CURRENT_KEY, filename);
-  }
+export async function loadGeometry() {
+  const result = await chrome.storage.local.get(KEY_GEOMETRY);
+  return Object.prototype.hasOwnProperty.call(result, KEY_GEOMETRY)
+    ? result[KEY_GEOMETRY]
+    : null;
 }

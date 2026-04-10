@@ -1,12 +1,13 @@
 {
   "version": "1.0",
-  "hooks": [
-    {
-      "event": "PreToolUse",
-      "tool": "editFiles",
-      "description": "Warn when writing implementation code outside ./build/ in a pipeline project",
-      "script": "bash",
-      "command": "file=$(echo \"$COPILOT_TOOL_INPUT\" | python3 -c \"import sys,json; d=json.load(sys.stdin); files=d.get('files',[]); [print(f.get('filePath','')) for f in files]\" 2>/dev/null); for f in $file; do if echo \"$f\" | grep -qE 'PROJECTS/[^/]+/' && ! echo \"$f\" | grep -qE 'PROJECTS/[^/]+/(build/|[0-9]-|6-TEST|7-BUG|testresults/|[a-z_]+_test_pipeline|goal\\.md|annotate_)'; then echo \"WARNING: Writing to '$f' which is outside ./build/ and not a pipeline artifact. Confirm this is intentional.\"; fi; done; exit 0"
-    }
-  ]
+  "hooks": {
+    "PreToolUse": [
+      {
+        "type": "command",
+        "tool": "editFiles",
+        "description": "Warn when writing implementation code outside ./build/ in a pipeline project.",
+        "command": "bash .github/hooks/check-build-boundary.sh"
+      }
+    ]
+  }
 }

@@ -1,85 +1,82 @@
 # Architecture Recommendations — Notepad.exe
 
-## AR-001 : Use Chrome Extension Manifest V3 with service worker and chrome.windows API
-- RATIONALE: Notepad.exe must open as a detached standalone window (BR-049) and enforce single-instance behavior (BR-052). Manifest V3 is the current Chrome extension standard; it provides `chrome.windows.create` for detached windows and a service worker background script for persistent window-lifecycle tracking. Alternatives (popup, sidebar, tab) do not satisfy BR-050 (window survives tab navigation). MV2 is deprecated.
-- NOTES: Requires `permissions: ["storage", "windows"]` in manifest.json. Service worker replaces the MV2 background page.
-- RELATED: BR-001, BR-003, BR-049, BR-050, BR-051, BR-052, BR-053 | UC-001, UC-008
+Derived from: `2-REQUIREMENTS.md`
+Stage: 3 — Architect
 
 ---
 
-## AR-002 : Use chrome.storage.local for window state persistence (position and size)
-- RATIONALE: BR-051 requires window position and size to persist between sessions. `chrome.storage.local` is accessible from both the service worker and the extension page, survives browser restarts, and has a generous quota. `localStorage` is not accessible from a service worker context, making it unsuitable for window state managed in background.js.
-- NOTES: Keys: `windowId`, `windowBounds` (top, left, width, height). Read on `chrome.windows.create`, write on `chrome.windows.onBoundsChanged`.
-- RELATED: BR-051 | UC-008
+## AR-001 : The extension shall be built as a Chrome Extension using Manifest V3.
+- RATIONALE: Manifest V3 is the current and only supported manifest version for newly submitted Chrome extensions. It provides the `chrome.windows`, `chrome.storage`, and service-worker APIs required by this project. MV2 is deprecated and will not be accepted by the Chrome Web Store.
+- NOTES None
+- RELATED UC-001, UC-008, BR-001, BR-038
 
 ---
 
-## AR-003 : Use localStorage for note content persistence
-- RATIONALE: BR-025, BR-026, BR-029, BR-060, BR-061 require client-side-only note persistence accessible from the extension page (app.js). `localStorage` is synchronous, zero-latency, and available in the extension page DOM context. No server dependency. `chrome.storage.local` would also work but adds async complexity unnecessary for simple text storage.
-- NOTES: Key scheme: `notepad_content` for body text, `notepad_filename` for current file name. Max localStorage quota ~5MB — sufficient for plain text notes.
-- RELATED: BR-025, BR-026, BR-027, BR-028, BR-029, BR-031, BR-033, BR-034, BR-060, BR-061 | UC-003, UC-004
+## AR-002 : A background service worker shall manage the Notepad window lifecycle (create, focus, and persist position/size).
+- RATIONALE: The `background.js` service worker is the only persistent context that can call `chrome.windows.create`, track existing window IDs, and respond to the extension icon click via `chrome.action.onClicked`. This is the correct architecture for ensuring only one window exists at a time (BR-041) and for restoring window geometry from storage on re-open (BR-040).
+- NOTES The service worker is event-driven and will be terminated by Chrome when idle. Window ID and geometry must be persisted via `chrome.storage.local`, not in-memory variables alone.
+- RELATED UC-008, BR-038, BR-039, BR-040, BR-041, BR-042
 
 ---
 
-## AR-004 : Use single-instance window enforcement via chrome.storage.session and window focus
-- RATIONALE: BR-052 requires that clicking the extension icon when a window already exists focuses it rather than opening a second. `chrome.storage.session` (MV3) stores the current window ID in the service worker across icon clicks. If the stored window ID resolves to a live window, call `chrome.windows.update` to focus it; otherwise create a new window.
-- NOTES: `chrome.storage.session` is cleared on browser restart, which is correct — a new window should be created after restart.
-- RELATED: BR-052 | UC-008
+## AR-003 : The Notepad UI shall be delivered as a standalone HTML page (`notepad.html`) opened via `chrome.windows.create`.
+- RATIONALE: Using `chrome.windows.create` with a `url` pointing to the extension's `notepad.html` creates a detached Chrome window with native OS window controls (minimize, maximize, close). This is the architecturally correct method to achieve a desktop-style window (UC-008) within Chrome extension constraints.
+- NOTES The window's `type` shall be set to `"popup"` to suppress tabs and the address bar, closely matching the Windows Notepad single-window aesthetic.
+- RELATED UC-001, UC-008, BR-001, BR-038, BR-039
 
 ---
 
-## AR-005 : Use a <textarea> element as the editor (not contenteditable)
-- RATIONALE: BR-014–BR-018 require standard keyboard editing; BR-019–BR-023 require cursor position tracking via `selectionStart`/`selectionEnd`. `<textarea>` provides these natively and predictably. `contenteditable` requires complex cursor position math, introduces HTML injection risk, and produces inconsistent behavior across browsers. `<textarea>` is the correct choice for a plain-text editor.
-- NOTES: Set `wrap="off"` by default (Word Wrap off); toggle to `wrap="soft"` for Word Wrap on (BR-007).
-- RELATED: BR-005, BR-006, BR-007, BR-008, BR-009, BR-013, BR-014, BR-015, BR-016, BR-017, BR-018, BR-019, BR-020, BR-021, BR-022, BR-023, BR-032 | UC-002, UC-002B
+## AR-004 : The text editor area shall use an HTML `<textarea>` element as the editor surface.
+- RATIONALE: A `<textarea>` natively supports all standard keyboard editing behaviors required by BR-012 (backspace, delete, arrow keys, select-all, tab), multi-line input (BR-010, BR-011), undo/redo, and clipboard operations. It avoids the complexity and inconsistency of `contenteditable`. It is the correct implementation for a plain-text editor.
+- NOTES None
+- RELATED UC-002, BR-010, BR-011, BR-012
 
 ---
 
-## AR-006 : Use vanilla HTML/CSS/JavaScript with no build step or framework
-- RATIONALE: The application is a self-contained Chrome extension page. No server, no bundler, no npm runtime dependency. Vanilla JS minimises attack surface, eliminates supply-chain risk, and produces files the Developer can edit directly. React/Vue/etc. would add complexity with no benefit for a single-page, single-user local app.
-- NOTES: ES6+ features (const/let, arrow functions, template literals, modules via `<script type="module">`) are fine — Chrome is always up to date.
-- RELATED: BR-029, BR-041, BR-060 | UC-001, UC-008
+## AR-005 : `chrome.storage.local` shall be used for all persistent note and window-geometry storage.
+- RATIONALE: `chrome.storage.local` is the appropriate persistence layer for Chrome extensions. It is asynchronous, sandboxed to the extension, does not require a server (BR-021), and is accessible from both the service worker and the page context. `localStorage` is not accessible from the service worker context, making it unsuitable for window geometry persistence.
+- NOTES Save/Load operations shall use the chrome.storage.local API exclusively. No `localStorage`, `IndexedDB`, or cookies shall be used.
+- RELATED UC-003, UC-004, UC-008, BR-019, BR-020, BR-021, BR-023, BR-025, BR-040
 
 ---
 
-## AR-007 : Use CSS custom properties for Windows Notepad visual theme
-- RATIONALE: BR-011, BR-012, BR-024, BR-057 require Windows Notepad appearance (Segoe UI font, light background, gray chrome, dark text). CSS custom properties (`--color-bg`, `--color-chrome`, `--font-ui`, etc.) centralise the theme so all components derive from a single source of truth. This makes it easy to match Windows system appearance without per-element overrides.
-- NOTES: Font stack: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`. Background: `#FFFFFF`. Chrome: `#F0F0F0`. Border: `#CCCCCC`.
-- RELATED: BR-002, BR-011, BR-012, BR-024, BR-057 | UC-001, UC-002, UC-002B, UC-009
+## AR-006 : The File > Save As download shall be implemented using the HTML5 anchor-download pattern (Blob URL + `<a download>`).
+- RATIONALE: Creating an object URL from a `Blob` and triggering a programmatic click on an `<a>` element with the `download` attribute is the standard, server-free approach for browser-initiated file downloads. It satisfies BR-030 through BR-034 without requiring the File System Access API (which requires an additional gesture) or any server dependency.
+- NOTES None
+- RELATED UC-006, BR-030, BR-031, BR-032, BR-033, BR-034
 
 ---
 
-## AR-008 : Use Blob + URL.createObjectURL + programmatic anchor click for file download
-- RATIONALE: BR-041–BR-045 require a client-side file download as plain UTF-8 text with no server dependency. `new Blob([content], {type:'text/plain;charset=utf-8'})` + `URL.createObjectURL` + a hidden `<a download="filename.txt">` click is the standard, universally supported browser pattern. `window.showSaveFilePicker` (File System Access API) is not available in extension pages.
-- NOTES: Revoke the object URL immediately after click (`URL.revokeObjectURL`) to avoid memory leaks.
-- RELATED: BR-041, BR-042, BR-043, BR-044, BR-045 | UC-006
+## AR-007 : The UI shall be built with vanilla JavaScript, HTML5, and CSS3 — no external frameworks or build tools.
+- RATIONALE: The application is a single-window plain-text editor with no complex component lifecycle needs. Vanilla JS minimizes extension size, eliminates third-party supply-chain risk, and keeps the extension self-contained. A framework adds no functional advantage for this scope.
+- NOTES No npm packages, bundlers, or external CDN resources shall be used. All assets are extension-local.
+- RELATED UC-001 through UC-009, all BRs
 
 ---
 
-## AR-009 : Use textarea input/click/keyup events + selectionStart for real-time status bar
-- RATIONALE: BR-019–BR-023 require live line number, column, and character count. Listening to `input`, `click`, and `keyup` events on the textarea and computing position from `selectionStart` + substring line counting is the standard approach. No library needed. Updates synchronously within the same event loop tick, satisfying BR-023's real-time requirement.
-- NOTES: Line number = count of `\n` chars before `selectionStart` + 1. Column = `selectionStart` − last `\n` index before cursor + 1. Char count = `textarea.value.length`.
-- RELATED: BR-019, BR-020, BR-021, BR-022, BR-023, BR-024 | UC-002B
+## AR-008 : CSS shall faithfully replicate the Windows Notepad visual theme using system fonts and standard system colors.
+- RATIONALE: Segoe UI (with fallback to system-ui, Arial) is the correct Windows system font (BR-008). Light background (#FFFFFF or system window color) with dark text (#000000) and a gray status bar replicates the Windows Notepad appearance (BR-018). CSS custom properties shall be used for theme colors to enable future theme extensions.
+- NOTES Use `font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif` throughout.
+- RELATED UC-001, UC-002, BR-008, BR-018
 
 ---
 
-## AR-010 : Use a dirty-flag boolean for unsaved-change detection
-- RATIONALE: BR-036, BR-037, BR-038, BR-046, BR-047, BR-048 require detecting unsaved changes before destructive actions (New, Open). A simple `isDirty` boolean set on `input` events and cleared on Save is the minimal, reliable implementation. Native `beforeunload` cannot intercept Chrome window close in an extension context (documented in UC-007 IMPLEMENTATION COMMENT).
-- NOTES: `isDirty = false` on: initial load, after Save, after New (confirmed), after Load. `isDirty = true` on: any `input` event in the textarea.
-- RELATED: BR-036, BR-037, BR-038, BR-039, BR-040, BR-046, BR-047, BR-048 | UC-005, UC-007
+## AR-009 : A status bar DOM element shall be updated on every `input` and `selectionchange` event to reflect live document statistics.
+- RATIONALE: The requirement for real-time updates (BR-017) is best satisfied by attaching an `input` event listener on the `<textarea>` (for character-count changes) and a `selectionchange` event (for cursor position changes). Computing line and column from `textarea.selectionStart` is O(n) in text length and sufficient for typical document sizes.
+- NOTES Both `input` (fired on content change) and `selectionchange` (fired on cursor move) are needed. Arrow-key navigation fires `selectionchange` but not `input`.
+- RELATED UC-002B, BR-013, BR-014, BR-015, BR-016, BR-017
 
 ---
 
-## AR-011 : Use in-page DOM modal overlays for all dialogs (unsaved-change prompt, open picker, help)
-- RATIONALE: BR-037, BR-047, BR-054–BR-059 require Windows-styled modal dialogs. Native `window.confirm` / `window.alert` cannot be styled and appear outside the extension window. In-page `<div>` overlays with a semi-transparent backdrop give full CSS control, matching Windows dialog appearance (BR-057). They also support Escape-key dismissal (BR-059) and Close button (BR-058).
-- NOTES: Dialog z-index must be above all other elements. Trap focus within dialog while open (accessibility). Dismiss on Escape keydown event.
-- RELATED: BR-030, BR-037, BR-047, BR-054, BR-055, BR-056, BR-057, BR-058, BR-059 | UC-004, UC-005, UC-007, UC-009
+## AR-010 : Confirmation prompts for destructive actions (New, Open with unsaved edits) shall use the native browser `window.confirm()` API.
+- TESTABLE CONDITION: A modal browser confirm dialog appears when the user attempts File > New or File > Open with unsaved content.
+- RATIONALE: `window.confirm()` is synchronous, universally supported in Chrome extension window contexts, requires no additional UI components, and satisfies the user-protection requirement (BR-027, BR-028). Custom styled dialogs are out of scope for this release.
+- NOTES None
+- RELATED UC-005, UC-007, BR-027, BR-028, BR-035, BR-036, BR-037
 
 ---
 
-## AR-012 : Use Playwright 1.59.1 at /tmp/node_modules/playwright/index.mjs for test automation
-- RATIONALE: Workspace standard for all pipeline test scripts. Run with `DISPLAY=:0`, `headless: false` per pipeline rules. Serves `./build/extension` via `python3 -m http.server` for HTTP-context testing. Chrome extension APIs that require real install are marked PARTIAL.
-- NOTES: Install if absent: `cd /tmp && npm install playwright@1.59.1`. Script saved to `PROJECTS/Notepad.exe/notepad_test_pipeline001.mjs`.
-- RELATED: BR-001, BR-004, BR-005, BR-009, BR-010, BR-014, BR-019, BR-025, BR-030, BR-035, BR-041, BR-049, BR-054 | UC-001, UC-002, UC-002B, UC-003, UC-004, UC-005, UC-006, UC-008, UC-009
-
----
+## AR-011 : The Help > View Help dialog shall be implemented as a custom HTML modal overlay within `notepad.html`.
+- RATIONALE: A custom in-page modal (a `<div>` overlay with `position: fixed`) satisfies the Windows-dialog styling requirement (BR-046) and provides full control over content layout (shortcut table). `window.alert()` cannot display formatted tables. A separate `chrome.windows.create` for help would over-engineer a simple read-only shortcut list.
+- NOTES The overlay shall trap keyboard focus and respond to the Escape key (BR-047).
+- RELATED UC-009, BR-043, BR-044, BR-045, BR-046, BR-047

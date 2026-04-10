@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "type": "command",
+        "description": "Require confirmation before any tool action that edits or patches pipeline-owned documents so only the owning role updates each artifact.",
+        "command": "bash .github/hooks/check-document-ownership.sh",
+        "timeout": 10
+      }
+    ]
+  }
+}

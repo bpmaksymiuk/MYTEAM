@@ -1,12 +1,14 @@
 {
   "manifest_version": 3,
   "name": "Notepad.exe",
-  "version": "1.0.0",
-  "description": "Windows Notepad as a Chrome Extension",
-  "permissions": ["storage", "windows"],
-  "background": { "service_worker": "background.js" },
-  "action": { "default_title": "Notepad" },
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
-  }
+  "version": "1.0",
+  "description": "A standalone Notepad window styled like Windows Notepad.",
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Open Notepad"
+  },
+  "permissions": ["storage", "windows"]
 }

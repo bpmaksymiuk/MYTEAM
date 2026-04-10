@@ -1,428 +1,333 @@
 # Business Requirements — Notepad.exe
 
-## BR-001 : System shall open Notepad window from Chrome extension icon in a single user action
-- TESTABLE CONDITION: Clicking the extension icon results in the Notepad window appearing without any additional steps required
-- NOTES: None
-- RELATED: UC-001
+Derived from: `1-USE-CASES.md`
+Stage: 2 — Business Analyst
 
 ---
 
-## BR-002 : System shall display a title bar showing "Untitled - Notepad" when no file is loaded
-- TESTABLE CONDITION: On open with no saved file, the title bar text reads exactly "Untitled - Notepad"
-- NOTES: None
-- RELATED: UC-001
+## BR-001 : The system shall open the Notepad window when the user clicks the Chrome extension icon.
+- TESTABLE CONDITION: Clicking the extension icon in Chrome opens a Notepad window within one user interaction.
+- NOTES None
+- RELATED UC-001, UC-008
 
 ---
 
-## BR-003 : System shall display minimize, maximize, and close controls in the title bar
-- TESTABLE CONDITION: Three window control buttons (minimize, maximize, close) are visible in the title bar area
-- NOTES: Native OS window controls provided by Chrome detached window
-- RELATED: UC-001, UC-008
+## BR-002 : The title bar shall display "Untitled - Notepad" for new documents and "{filename} - Notepad" for saved or loaded files.
+- TESTABLE CONDITION: Opening a new session shows "Untitled - Notepad"; after saving with name "notes.txt" the title bar shows "notes.txt - Notepad".
+- NOTES None
+- RELATED UC-001, UC-003, UC-004, UC-005
 
 ---
 
-## BR-004 : System shall display a menu bar with File, Edit, View, and Help top-level menus
-- TESTABLE CONDITION: Four menu labels — File, Edit, View, Help — are visible in the menu bar at all times
-- NOTES: None
-- RELATED: UC-001
+## BR-003 : The window shall include a menu bar with File, Edit, View, and Help top-level menus.
+- TESTABLE CONDITION: All four menus (File, Edit, View, Help) are visible and clickable in the menu bar.
+- NOTES None
+- RELATED UC-001
 
 ---
 
-## BR-005 : File menu shall contain New, Open, Save, Save As, and Exit items
-- TESTABLE CONDITION: Opening the File menu reveals exactly the items: New, Open, Save, Save As, Exit
-- NOTES: None
-- RELATED: UC-001
+## BR-004 : The File menu shall contain New, Open, Save, Save As, and Exit items.
+- TESTABLE CONDITION: Opening the File menu displays New, Open, Save, Save As, and Exit menu items.
+- NOTES None
+- RELATED UC-001, UC-003, UC-004, UC-005, UC-006
 
 ---
 
-## BR-006 : Edit menu shall contain Undo, Cut, Copy, Paste, Find, and Replace items
-- TESTABLE CONDITION: Opening the Edit menu reveals at minimum: Undo, Cut, Copy, Paste, Find, Replace
-- NOTES: None
-- RELATED: UC-001
+## BR-005 : The Edit menu shall contain Undo, Cut, Copy, Paste, Find, and Replace items.
+- TESTABLE CONDITION: Opening the Edit menu displays Undo, Cut, Copy, Paste, Find, and Replace menu items.
+- NOTES None
+- RELATED UC-001, UC-002
 
 ---
 
-## BR-007 : View menu shall contain Word Wrap and Zoom items
-- TESTABLE CONDITION: Opening the View menu reveals Word Wrap and Zoom options
-- NOTES: None
-- RELATED: UC-001
+## BR-006 : The View menu shall contain Word Wrap and Zoom items.
+- TESTABLE CONDITION: Opening the View menu displays Word Wrap and Zoom menu items.
+- NOTES None
+- RELATED UC-001
 
 ---
 
-## BR-008 : Help menu shall contain View Help and About Notepad items
-- TESTABLE CONDITION: Opening the Help menu reveals View Help and About Notepad options
-- NOTES: None
-- RELATED: UC-001, UC-009
+## BR-007 : The Help menu shall contain View Help and About Notepad items.
+- TESTABLE CONDITION: Opening the Help menu displays View Help and About Notepad menu items.
+- NOTES None
+- RELATED UC-001, UC-009
 
 ---
 
-## BR-009 : System shall display a scrollable text editor area as the main content region
-- TESTABLE CONDITION: A textarea or content-editable region occupies the central area of the window and accepts text input
-- NOTES: None
-- RELATED: UC-001, UC-002
+## BR-008 : The application shall use Windows system fonts (Segoe UI or system default), standard colors, and a Windows Notepad layout.
+- TESTABLE CONDITION: Rendered text uses Segoe UI or the nearest available system font; color scheme uses standard light background with dark text.
+- NOTES None
+- RELATED UC-001, UC-002, UC-008
 
 ---
 
-## BR-010 : System shall display a status bar at the bottom of the window
-- TESTABLE CONDITION: A horizontal bar is visible at the bottom of the window below the editor area
-- NOTES: None
-- RELATED: UC-001, UC-002B
+## BR-009 : Cursor focus shall be placed in the text area immediately when the window opens.
+- TESTABLE CONDITION: After the window opens, the user can immediately type without clicking the text area first.
+- NOTES None
+- RELATED UC-001
 
 ---
 
-## BR-011 : System shall apply Windows system fonts (Segoe UI or system default) to all UI elements
-- TESTABLE CONDITION: UI chrome (menus, title bar, status bar) renders in Segoe UI or the OS default sans-serif font
-- NOTES: None
-- RELATED: UC-001, UC-002
+## BR-010 : The main text editor area shall accept plain text input including line breaks and tabs.
+- TESTABLE CONDITION: User can type multi-line text and insert tabs; each added character appears in the editor immediately.
+- NOTES None
+- RELATED UC-002
 
 ---
 
-## BR-012 : System shall apply Windows Notepad color scheme (light background, dark text, gray chrome) to the UI
-- TESTABLE CONDITION: Editor background is white or near-white; text is dark; menu bar and status bar use gray tones matching standard Windows Notepad
-- NOTES: None
-- RELATED: UC-001, UC-002
+## BR-011 : Text updates shall be visible in the editor in real time after each input action.
+- TESTABLE CONDITION: Each keystroke is reflected in the editor display with no perceptible delay.
+- NOTES None
+- RELATED UC-002
 
 ---
 
-## BR-013 : System shall place cursor focus in the text editor immediately upon window open
-- TESTABLE CONDITION: User can begin typing immediately after the window opens without clicking the editor first
-- NOTES: None
-- RELATED: UC-001
+## BR-012 : Standard keyboard editing behaviors consistent with Windows Notepad shall be supported (e.g., backspace, delete, arrow keys, select-all).
+- TESTABLE CONDITION: Backspace, Delete, Home, End, arrow keys, and Ctrl+A all behave as expected in a standard Notepad editor.
+- NOTES None
+- RELATED UC-002
 
 ---
 
-## BR-014 : User shall be able to type plain text into the editor area
-- TESTABLE CONDITION: Characters typed on the keyboard appear in the editor at the cursor position
-- NOTES: None
-- RELATED: UC-002
+## BR-013 : The status bar shall display the current line number (1-indexed) at all times.
+- TESTABLE CONDITION: When the cursor is on line 3 of the document, the status bar shows "Ln 3" (or equivalent).
+- NOTES None
+- RELATED UC-001, UC-002B
 
 ---
 
-## BR-015 : Editor shall insert a line break when user presses the Enter key
-- TESTABLE CONDITION: Pressing Enter moves the cursor to a new line; subsequent text appears on the new line
-- NOTES: None
-- RELATED: UC-002
+## BR-014 : The status bar shall display the current column position (1-indexed) at all times.
+- TESTABLE CONDITION: When the cursor is at the 5th character of a line, the status bar shows "Col 5" (or equivalent).
+- NOTES None
+- RELATED UC-002B
 
 ---
 
-## BR-016 : Editor shall support Tab key insertion consistent with Windows Notepad behavior
-- TESTABLE CONDITION: Pressing Tab inserts a tab character at the cursor position (does not move focus away from editor)
-- NOTES: None
-- RELATED: UC-002
+## BR-015 : The status bar shall display the total character count of the document.
+- TESTABLE CONDITION: When the document contains 42 characters, the status bar shows a character count of 42.
+- NOTES None
+- RELATED UC-002B
 
 ---
 
-## BR-017 : Editor shall support text deletion via Backspace and Delete keys
-- TESTABLE CONDITION: Pressing Backspace removes the character before the cursor; pressing Delete removes the character after the cursor
-- NOTES: None
-- RELATED: UC-002
+## BR-016 : The status bar shall display the file encoding as UTF-8.
+- TESTABLE CONDITION: The status bar shows "UTF-8" at all times regardless of document content.
+- NOTES None
+- RELATED UC-002B
 
 ---
 
-## BR-018 : Editor shall reflect all input changes immediately without perceptible delay
-- TESTABLE CONDITION: Each keystroke results in visible text change within the same animation frame (no debounce or async delay)
-- NOTES: None
-- RELATED: UC-002
+## BR-017 : All status bar statistics shall update in real time as the user types or navigates with arrow keys.
+- TESTABLE CONDITION: Pressing the down-arrow key or typing a character immediately updates line, column, and character count shown in the status bar.
+- NOTES None
+- RELATED UC-002B
 
 ---
 
-## BR-019 : Status bar shall display the current line number of the cursor position (1-indexed)
-- TESTABLE CONDITION: The status bar shows "Ln N" (or equivalent) where N matches the cursor's current line; updates on cursor movement
-- NOTES: None
-- RELATED: UC-002B
+## BR-018 : The status bar shall use a Windows Notepad styled appearance (gray background with dark text at the bottom of the window).
+- TESTABLE CONDITION: The status bar is rendered at the bottom of the window with a gray background and dark, legible text.
+- NOTES None
+- RELATED UC-001, UC-002B
 
 ---
 
-## BR-020 : Status bar shall display the current column position of the cursor (1-indexed)
-- TESTABLE CONDITION: The status bar shows "Col N" (or equivalent) where N matches the cursor's current column; updates on cursor movement
-- NOTES: None
-- RELATED: UC-002B
+## BR-019 : File > Save shall write the current editor content to browser local storage.
+- TESTABLE CONDITION: After selecting File > Save and reopening the extension, the previously entered text is restored.
+- NOTES None
+- RELATED UC-003
 
 ---
 
-## BR-021 : Status bar shall display the total character count of the document
-- TESTABLE CONDITION: The status bar shows an accurate character count that increments on each character typed and decrements on deletion
-- NOTES: None
-- RELATED: UC-002B
+## BR-020 : Saved content shall persist after the extension popup is closed and reopened.
+- TESTABLE CONDITION: Content typed, saved, and then retrieved after closing and reopening the extension matches the saved content exactly.
+- NOTES None
+- RELATED UC-003
 
 ---
 
-## BR-022 : Status bar shall display the file encoding as "UTF-8"
-- TESTABLE CONDITION: The status bar shows "UTF-8" (or equivalent label) at all times
-- NOTES: None
-- RELATED: UC-002B
+## BR-021 : The save operation shall function without any server-side dependency.
+- TESTABLE CONDITION: Save succeeds with no network activity; local storage is the only write target.
+- NOTES None
+- RELATED UC-003, UC-006
 
 ---
 
-## BR-023 : Status bar shall update all statistics in real time as user types or navigates with arrow keys
-- TESTABLE CONDITION: Line, column, and character count values in the status bar change within one render cycle of each input event or arrow key press
-- NOTES: None
-- RELATED: UC-002B
+## BR-022 : File > Open shall display an interface to select a previously saved note.
+- TESTABLE CONDITION: Selecting File > Open presents the user with at least one saved note to choose from (when saves exist).
+- NOTES None
+- RELATED UC-004
 
 ---
 
-## BR-024 : Status bar shall use Windows Notepad visual style (gray bar with dark text at bottom of window)
-- TESTABLE CONDITION: Status bar has a gray background and dark text color; it is positioned at the very bottom of the window
-- NOTES: None
-- RELATED: UC-002B
+## BR-023 : Selected saved note content shall be restored accurately and completely in the editor.
+- TESTABLE CONDITION: The loaded content in the editor is identical to the content that was saved.
+- NOTES None
+- RELATED UC-004
 
 ---
 
-## BR-025 : System shall save editor content to browser local storage when user selects File > Save
-- TESTABLE CONDITION: After selecting File > Save, `localStorage` contains an entry with the current editor text
-- NOTES: None
-- RELATED: UC-003
+## BR-024 : Loaded content shall be editable immediately after loading.
+- TESTABLE CONDITION: The user can type a new character in the editor immediately after loading without any additional action.
+- NOTES None
+- RELATED UC-004
 
 ---
 
-## BR-026 : Saved content shall persist after the extension window is closed and reopened
-- TESTABLE CONDITION: Closing and reopening the extension after a save restores the previously saved text in the editor
-- NOTES: None
-- RELATED: UC-003, UC-004
+## BR-025 : Load behavior shall work consistently across browser sessions.
+- TESTABLE CONDITION: Closing Chrome, reopening it, and loading a saved note returns the same content each time.
+- NOTES None
+- RELATED UC-004
 
 ---
 
-## BR-027 : System shall capture the exact editor content at the time of the save action
-- TESTABLE CONDITION: The content written to local storage byte-for-byte matches the editor content at the moment Save was invoked
-- NOTES: None
-- RELATED: UC-003
+## BR-026 : File > New shall clear the editor to a blank state when confirmed.
+- TESTABLE CONDITION: After confirming File > New, the editor text area contains no characters.
+- NOTES None
+- RELATED UC-005
 
 ---
 
-## BR-028 : System shall update the title bar to show the saved filename after save
-- TESTABLE CONDITION: After saving as "document.txt", the title bar displays "document.txt - Notepad"
-- NOTES: None
-- RELATED: UC-003
+## BR-027 : The system shall prompt the user for confirmation before discarding unsaved edits on New.
+- TESTABLE CONDITION: If the document has unsaved text and the user selects File > New, a confirmation dialog appears before any content is discarded.
+- NOTES None
+- RELATED UC-005, UC-007
 
 ---
 
-## BR-029 : Save operation shall complete without any external server dependency
-- TESTABLE CONDITION: Save completes successfully with no network requests issued (verified via browser DevTools network log showing 0 requests on save)
-- NOTES: None
-- RELATED: UC-003
+## BR-028 : Canceling the New confirmation prompt shall keep the current note intact.
+- TESTABLE CONDITION: If the user dismisses or cancels the confirmation prompt, the editor content remains unchanged.
+- NOTES None
+- RELATED UC-005, UC-007
 
 ---
 
-## BR-030 : System shall display a list or picker of saved notes when user selects File > Open
-- TESTABLE CONDITION: Selecting File > Open shows a UI element listing all previously saved note names
-- NOTES: None
-- RELATED: UC-004
+## BR-029 : The status bar shall reset to line 1, column 1, and character count 0 after File > New is confirmed.
+- TESTABLE CONDITION: After confirming File > New, the status bar shows Ln 1, Col 1, and character count 0.
+- NOTES None
+- RELATED UC-005
 
 ---
 
-## BR-031 : System shall load selected note content from local storage into the editor
-- TESTABLE CONDITION: Selecting a note from the Open picker populates the editor with the exact saved text
-- NOTES: None
-- RELATED: UC-004
+## BR-030 : File > Save As shall trigger a browser download of the editor content as a plain UTF-8 text file.
+- TESTABLE CONDITION: Selecting File > Save As initiates a browser download; the resulting file is a valid UTF-8 plain text file.
+- NOTES None
+- RELATED UC-006
 
 ---
 
-## BR-032 : Loaded content shall be immediately editable in the editor after load
-- TESTABLE CONDITION: User can type, delete, or modify the loaded text immediately without any additional action
-- NOTES: None
-- RELATED: UC-004
+## BR-031 : Downloaded file content shall match the editor content exactly at the time of the Save As action.
+- TESTABLE CONDITION: Comparing downloaded file content with the editor text shows no differences.
+- NOTES None
+- RELATED UC-006
 
 ---
 
-## BR-033 : System shall update the title bar to the loaded filename after a successful load
-- TESTABLE CONDITION: After loading "notes.txt", the title bar displays "notes.txt - Notepad"
-- NOTES: None
-- RELATED: UC-004
+## BR-032 : The downloaded file's extension shall default to .txt.
+- TESTABLE CONDITION: The downloaded file name ends in ".txt".
+- NOTES None
+- RELATED UC-006
 
 ---
 
-## BR-034 : Load operation shall work consistently across browser sessions
-- TESTABLE CONDITION: A note saved in one session is retrievable via File > Open in a new browser session without data loss
-- NOTES: None
-- RELATED: UC-004
+## BR-033 : The downloaded file name shall default to "Untitled.txt" for unsaved documents or the current filename for previously saved documents.
+- TESTABLE CONDITION: For a new unsaved document the download is named "Untitled.txt"; for a document saved as "notes.txt" the download is named "notes.txt".
+- NOTES None
+- RELATED UC-006
 
 ---
 
-## BR-035 : System shall clear the editor to a blank state when user selects File > New and confirms
-- TESTABLE CONDITION: After confirming New, the editor is empty and the character count reads 0
-- NOTES: None
-- RELATED: UC-005
+## BR-034 : File > Save As shall operate without any server-side dependency.
+- TESTABLE CONDITION: The download completes with no network requests; the browser download API is the only mechanism used.
+- NOTES None
+- RELATED UC-006
 
 ---
 
-## BR-036 : System shall detect whether unsaved changes are present before executing the New action
-- TESTABLE CONDITION: If the editor has unsaved text and user selects File > New, a confirmation prompt appears; if no unsaved changes exist, no prompt appears
-- NOTES: None
-- RELATED: UC-005, UC-007
+## BR-035 : The system shall display a confirmation prompt when the user initiates a New or Open action and unsaved edits are present.
+- TESTABLE CONDITION: With unsaved text in the editor, selecting File > New or File > Open triggers a visible confirmation prompt.
+- NOTES None
+- RELATED UC-007
 
 ---
 
-## BR-037 : System shall display a confirmation prompt before discarding unsaved content on New
-- TESTABLE CONDITION: A dialog or modal appears asking user to confirm or cancel the New action when unsaved changes are present
-- NOTES: None
-- RELATED: UC-005, UC-007
+## BR-036 : The Continue option in the confirmation prompt shall proceed with the requested action.
+- TESTABLE CONDITION: Clicking Continue on the confirmation prompt causes the requested New or Open action to execute.
+- NOTES None
+- RELATED UC-007
 
 ---
 
-## BR-038 : System shall cancel the New action and preserve current content when user dismisses the confirmation prompt
-- TESTABLE CONDITION: Clicking Cancel on the New confirmation leaves the editor content and title bar unchanged
-- NOTES: None
-- RELATED: UC-005, UC-007
+## BR-037 : The Cancel option in the confirmation prompt shall leave the current content and application state unchanged.
+- TESTABLE CONDITION: Clicking Cancel on the confirmation prompt returns the editor to the exact state it was in before the action was initiated.
+- NOTES None
+- RELATED UC-007
 
 ---
 
-## BR-039 : System shall update the title bar to "Untitled - Notepad" after New is confirmed
-- TESTABLE CONDITION: After confirming New, the title bar reads exactly "Untitled - Notepad"
-- NOTES: None
-- RELATED: UC-005
+## BR-038 : The application shall open in a standalone detached Chrome window, not an inline popup.
+- TESTABLE CONDITION: Clicking the extension icon opens a separate Chrome window; the extension popup does not appear inline.
+- NOTES None
+- RELATED UC-008
 
 ---
 
-## BR-040 : System shall reset the status bar to line 1, column 1, and character count 0 after New
-- TESTABLE CONDITION: After confirming New, the status bar shows Ln 1, Col 1, and character count 0
-- NOTES: None
-- RELATED: UC-005
+## BR-039 : The detached window shall not close when the user navigates or switches tabs in the main browser.
+- TESTABLE CONDITION: The Notepad window remains open while the user navigates to a different URL in the main Chrome window.
+- NOTES None
+- RELATED UC-008
 
 ---
 
-## BR-041 : System shall initiate a browser file download when user selects File > Save As
-- TESTABLE CONDITION: Selecting File > Save As triggers a browser download without any server call
-- NOTES: None
-- RELATED: UC-006
+## BR-040 : The window position and size shall persist between sessions.
+- TESTABLE CONDITION: After the user resizes and repositions the window, closing and reopening the extension restores the same size and position.
+- NOTES None
+- RELATED UC-008
 
 ---
 
-## BR-042 : Downloaded file content shall match the editor content exactly
-- TESTABLE CONDITION: The downloaded file, opened in any text editor, contains byte-for-byte identical content to what was in the editor at save time
-- NOTES: None
-- RELATED: UC-006
+## BR-041 : Only one Notepad window shall be open at a time.
+- TESTABLE CONDITION: Clicking the extension icon while the Notepad window is already open focuses the existing window rather than opening a second one.
+- NOTES None
+- RELATED UC-008
 
 ---
 
-## BR-043 : Downloaded file extension shall default to .txt
-- TESTABLE CONDITION: The downloaded file has a .txt extension when no custom name is specified
-- NOTES: None
-- RELATED: UC-006
+## BR-042 : Clicking the extension icon when the Notepad window already exists shall focus that window.
+- TESTABLE CONDITION: With an open Notepad window minimized, clicking the extension icon brings the window to the foreground.
+- NOTES None
+- RELATED UC-008
 
 ---
 
-## BR-044 : Default download filename shall be "Untitled.txt" for unsaved documents, or the current filename for saved documents
-- TESTABLE CONDITION: For a new unsaved document, the download is named "Untitled.txt"; for a document saved as "notes.txt", the download is named "notes.txt"
-- NOTES: None
-- RELATED: UC-006
+## BR-043 : The Help > View Help action shall open a dialog listing all available keyboard shortcuts.
+- TESTABLE CONDITION: Clicking Help > View Help opens a dialog that contains at least one keyboard shortcut entry.
+- NOTES None
+- RELATED UC-009
 
 ---
 
-## BR-045 : Downloaded file shall be encoded as plain UTF-8 text
-- TESTABLE CONDITION: The downloaded file's encoding is UTF-8 (verified by file content inspection or browser Blob type "text/plain;charset=utf-8")
-- NOTES: None
-- RELATED: UC-006
+## BR-044 : Each shortcut entry in the Help dialog shall display both the key combination and its associated action.
+- TESTABLE CONDITION: Every row in the help dialog contains a key combination label and a human-readable action description.
+- NOTES None
+- RELATED UC-009
 
 ---
 
-## BR-046 : System shall detect unsaved changes before executing the Load (Open) action
-- TESTABLE CONDITION: If unsaved changes exist and user selects File > Open, a confirmation prompt appears before the picker is shown or a note is loaded
-- NOTES: None
-- RELATED: UC-007
+## BR-045 : The shortcuts listed in the Help dialog shall match the actual key bindings active in the editor.
+- TESTABLE CONDITION: Every shortcut displayed in the Help dialog triggers the listed action when pressed in the editor.
+- NOTES None
+- RELATED UC-009
 
 ---
 
-## BR-047 : System shall display a confirmation prompt before any action that would discard unsaved changes
-- TESTABLE CONDITION: A confirmation dialog appears for New and Open actions when the editor has unsaved text; the dialog presents a confirm and a cancel option
-- NOTES: Applies to New (UC-005) and Open/Load (UC-004). OS window close interception is out of scope per UC-007 IMPLEMENTATION COMMENT.
-- RELATED: UC-007
+## BR-046 : The Help dialog shall be styled as a Windows modal dialog with title bar and standard colors.
+- TESTABLE CONDITION: The Help dialog has a visible title bar, uses Windows-style colors, and appears modal (blocking background interaction).
+- NOTES None
+- RELATED UC-009
 
 ---
 
-## BR-048 : System shall proceed with the destructive action only when user explicitly confirms
-- TESTABLE CONDITION: The New or Open action executes only after user clicks the confirm option in the prompt; clicking cancel does not execute the action
-- NOTES: None
-- RELATED: UC-007
-
----
-
-## BR-049 : System shall open Notepad in a detached Chrome window (not a popup or browser tab)
-- TESTABLE CONDITION: The extension opens a standalone Chrome window (`chrome.windows.create`) with its own title bar separate from the main browser window
-- NOTES: Requires Chrome extension Manifest V3 windows API
-- RELATED: UC-008
-
----
-
-## BR-050 : Detached window shall remain open when user navigates or switches tabs in the main browser
-- TESTABLE CONDITION: After the Notepad window opens, switching tabs or navigating in the main browser does not close the Notepad window
-- NOTES: None
-- RELATED: UC-008
-
----
-
-## BR-051 : System shall persist window position and size between sessions
-- TESTABLE CONDITION: Resizing and repositioning the Notepad window, closing it, and reopening it restores the previous size and position
-- NOTES: None
-- RELATED: UC-008
-
----
-
-## BR-052 : System shall ensure only one Notepad window is open at a time
-- TESTABLE CONDITION: Clicking the extension icon when a Notepad window already exists focuses that window rather than opening a second one
-- NOTES: None
-- RELATED: UC-008
-
----
-
-## BR-053 : All application features shall function within the detached window
-- TESTABLE CONDITION: Save, Load, New, Find, Replace, and all other features work identically inside the detached window as they would in a popup
-- NOTES: None
-- RELATED: UC-008
-
----
-
-## BR-054 : System shall display a help dialog when user selects View Help from the Help menu
-- TESTABLE CONDITION: Clicking Help > View Help opens a modal dialog within the Notepad window
-- NOTES: None
-- RELATED: UC-009
-
----
-
-## BR-055 : Help dialog shall list all keyboard shortcuts supported by the application
-- TESTABLE CONDITION: The help dialog contains an entry for every keyboard shortcut that is active in the editor (verified by cross-referencing dialog content with implemented bindings)
-- NOTES: None
-- RELATED: UC-009
-
----
-
-## BR-056 : Each keyboard shortcut entry in the help dialog shall display the key combination and its action
-- TESTABLE CONDITION: Each row in the help dialog shows a key combination (e.g., "Ctrl+Z") and a plain-language description of its effect (e.g., "Undo")
-- NOTES: None
-- RELATED: UC-009
-
----
-
-## BR-057 : Help dialog shall be styled to match Windows system dialog appearance
-- TESTABLE CONDITION: Help dialog has a title bar, modal overlay, and color scheme consistent with Windows dialog style (gray title bar, white content area, standard button styles)
-- NOTES: None
-- RELATED: UC-009
-
----
-
-## BR-058 : Help dialog shall be dismissible by clicking a Close button
-- TESTABLE CONDITION: A Close button is visible in the help dialog; clicking it closes the dialog and returns focus to the editor
-- NOTES: None
-- RELATED: UC-009
-
----
-
-## BR-059 : Help dialog shall be dismissible by pressing the Escape key
-- TESTABLE CONDITION: With the help dialog open, pressing Escape closes it without any other action
-- NOTES: None
-- RELATED: UC-009
-
----
-
-## BR-060 : Application shall operate entirely client-side with no external server requests
-- TESTABLE CONDITION: All application functionality (save, load, download, render) produces zero outbound network requests (verified via DevTools Network panel)
-- NOTES: Implied non-functional requirement across all UCs
-- RELATED: (implied)
-
----
-
-## BR-061 : Application shall store all user data in browser local storage only
-- TESTABLE CONDITION: All persisted note data is stored under `localStorage` keys; no cookies, indexedDB, or remote storage is used
-- NOTES: Implied data privacy requirement
-- RELATED: (implied)
-
----
+## BR-047 : The Help dialog shall be dismissible via a Close button or the Escape key.
+- TESTABLE CONDITION: Clicking the Close button inside the dialog and pressing Escape both successfully close the Help dialog.
+- NOTES None
+- RELATED UC-009
