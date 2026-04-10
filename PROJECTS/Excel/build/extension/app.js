@@ -195,13 +195,25 @@ const FormulaEngine = {
   /** Main entry: evaluate raw formula string. Returns display string or error. */
   evaluate(raw, contextRow, contextCol) {
     if (!raw || !raw.startsWith('=')) return raw;
+    let expr = raw.slice(1).trim();
+    // Date function pre-pass (returns string, bypasses safeCalc)
+    if (/^(TODAY|NOW|DATE|YEAR|MONTH|DAY)\s*\(/i.test(expr)) {
+      return this.evalDateFunction(expr);
+    }
+    // & concatenation pre-pass
+    if (this.hasAmper(expr)) {
+      return this.evalAmper(expr);
+    }
     try {
-      let expr = raw.slice(1).trim();
       expr = this.expandFunctions(expr);
+      if (typeof expr === 'string' && expr.startsWith('#')) return expr;
+      // Unknown function names still present → #NAME?
+      if (/[A-Z]{2,}\s*\(/i.test(expr)) return '#NAME?';
       expr = this.replaceRefs(expr);
       return this.safeCalc(expr);
     } catch (e) {
-      return '#ERR';
+      if (typeof e === 'string' && e.startsWith('#')) return e;
+      return '#VALUE!';
     }
   },
 
@@ -212,7 +224,7 @@ const FormulaEngine = {
     let iterations = 0;
     do {
       prev = expr;
-      expr = expr.replace(/\b(SUM|AVERAGE|AVG|COUNT|MAX|MIN|IF)\s*\(([^()]*)\)/gi, (match, fn, args) => {
+      expr = expr.replace(/\b(SUM|AVERAGE|AVG|COUNT|MAX|MIN|IF|AND|OR|NOT|IFERROR|ROUND|ABS|INT|MOD|SQRT|POWER|CONCATENATE|CONCAT|LEN|LEFT|RIGHT|MID|UPPER|LOWER|TRIM)\s*\(([^()]*)\)/gi, (match, fn, args) => {
         return this.evalFunction(fn.toUpperCase(), args);
       });
       iterations++;
@@ -226,34 +238,106 @@ const FormulaEngine = {
     const rawArgs = argsStr.split(',').map(a => a.trim());
 
     if (fn === 'IF') {
-      // IF(condition, trueVal, falseVal) — evaluate condition after ref replacement
       const [condStr, trueStr, falseStr] = rawArgs;
-      const condExpr = this.replaceRefs(condStr || '0');
-      const condVal = this.safeCalc(condExpr);
-      const condBool = condVal !== '0' && condVal !== 0 && condVal !== '' && condVal !== false;
-      return condBool ? (trueStr || '0') : (falseStr || '0');
+      const condExprRaw = this.replaceRefs(condStr || '0');
+      const cmpResult = this.evalComparison(condExprRaw);
+      let condBool;
+      if (cmpResult !== null) {
+        condBool = cmpResult === '1';
+      } else {
+        const condVal = this.safeCalc(condExprRaw);
+        condBool = condVal !== '0' && condVal !== 0 && condVal !== '' && condVal !== false;
+      }
+      const stripQ = s => (s || '').trim().replace(/^"|"$/g, '');
+      return condBool ? stripQ(trueStr || '0') : stripQ(falseStr || '0');
     }
 
-    // Expand ranges inside each arg
+    // Logical functions
+    if (fn === 'AND' || fn === 'OR') {
+      const vals = rawArgs.map(a => {
+        const replaced = this.replaceRefs(a.trim());
+        const cmp = this.evalComparison(replaced);
+        return cmp !== null ? parseInt(cmp, 10) : parseFloat(this.safeCalc(replaced));
+      });
+      if (fn === 'AND') return vals.length > 0 && vals.every(v => !isNaN(v) && v !== 0) ? 'TRUE' : 'FALSE';
+      return vals.some(v => !isNaN(v) && v !== 0) ? 'TRUE' : 'FALSE';
+    }
+    if (fn === 'NOT') {
+      const replaced = this.replaceRefs(rawArgs[0] || '0');
+      const cmp = this.evalComparison(replaced);
+      const v = cmp !== null ? parseInt(cmp, 10) : parseFloat(this.safeCalc(replaced));
+      return (isNaN(v) || v === 0) ? 'TRUE' : 'FALSE';
+    }
+    if (fn === 'IFERROR') {
+      const valStr = rawArgs[0] ? rawArgs[0].trim() : '';
+      const errStr = rawArgs.slice(1).join(',').trim().replace(/^"|"$/g, '');
+      let result;
+      try {
+        const expanded = this.expandFunctions(valStr);
+        const replaced = this.replaceRefs(expanded);
+        result = this.safeCalc(replaced);
+      } catch (e) {
+        return errStr;
+      }
+      return (typeof result === 'string' && result.startsWith('#')) ? errStr : result;
+    }
+
+    // Math functions
+    const numericArgs = rawArgs.map(a => parseFloat(this.safeCalc(this.replaceRefs(a.trim()))));
+    if (fn === 'ROUND') {
+      const [n, d] = numericArgs;
+      const digits = isNaN(d) ? 0 : d;
+      return String(Math.round(n * Math.pow(10, digits)) / Math.pow(10, digits));
+    }
+    if (fn === 'ABS')   return String(Math.abs(numericArgs[0]));
+    if (fn === 'INT')   return String(Math.floor(numericArgs[0]));
+    if (fn === 'MOD') {
+      const [n, d] = numericArgs;
+      return String(n - Math.floor(n / d) * d);
+    }
+    if (fn === 'SQRT')  return numericArgs[0] < 0 ? '#VALUE!' : String(Math.sqrt(numericArgs[0]));
+    if (fn === 'POWER') return String(Math.pow(numericArgs[0], numericArgs[1]));
+
+    // Text functions
+    if (fn === 'CONCATENATE' || fn === 'CONCAT') {
+      return rawArgs.map(a => this.getStringArg(a)).join('');
+    }
+    if (fn === 'LEN')   return String(this.getStringArg(rawArgs[0] || '').length);
+    if (fn === 'LEFT') {
+      const s = this.getStringArg(rawArgs[0] || ''); const n = parseInt(rawArgs[1]) || 0;
+      return s.slice(0, n);
+    }
+    if (fn === 'RIGHT') {
+      const s = this.getStringArg(rawArgs[0] || ''); const n = parseInt(rawArgs[1]) || 0;
+      return n === 0 ? '' : s.slice(-n);
+    }
+    if (fn === 'MID') {
+      const s = this.getStringArg(rawArgs[0] || '');
+      const start = (parseInt(rawArgs[1]) || 1) - 1;
+      const len = parseInt(rawArgs[2]) || 0;
+      return s.slice(start, start + len);
+    }
+    if (fn === 'UPPER') return this.getStringArg(rawArgs[0] || '').toUpperCase();
+    if (fn === 'LOWER') return this.getStringArg(rawArgs[0] || '').toLowerCase();
+    if (fn === 'TRIM')  return this.getStringArg(rawArgs[0] || '').trim().replace(/\s+/g, ' ');
+
+    // Aggregate functions (numeric range)
     const values = [];
     for (const arg of rawArgs) {
       if (arg.includes(':')) {
-        // Range like A1:B3
         const nums = this.expandRange(arg);
         values.push(...nums);
       } else {
-        // Single ref or literal
         const ref = this.replaceRefs(arg);
         const num = parseFloat(ref);
         if (!isNaN(num)) values.push(num);
       }
     }
-
-    if (fn === 'SUM') return String(values.reduce((a, b) => a + b, 0));
+    if (fn === 'SUM')     return String(values.reduce((a, b) => a + b, 0));
     if (fn === 'AVERAGE' || fn === 'AVG') return values.length ? String(values.reduce((a, b) => a + b, 0) / values.length) : '0';
-    if (fn === 'COUNT') return String(values.length);
-    if (fn === 'MAX') return values.length ? String(Math.max(...values)) : '0';
-    if (fn === 'MIN') return values.length ? String(Math.min(...values)) : '0';
+    if (fn === 'COUNT')   return String(values.length);
+    if (fn === 'MAX')     return values.length ? String(Math.max(...values)) : '0';
+    if (fn === 'MIN')     return values.length ? String(Math.min(...values)) : '0';
     return '#NAME?';
   },
 
@@ -275,9 +359,9 @@ const FormulaEngine = {
     return values;
   },
 
-  /** Replace cell references (e.g., A1) with their numeric values. */
+  /** Replace cell references (e.g., A1, $A$1) with their numeric values. */
   replaceRefs(expr) {
-    return expr.replace(/\b([A-Z]+)(\d+)\b/g, (match, col, row) => {
+    return expr.replace(/\$?([A-Z]+)\$?(\d+)/g, (match, col, row) => {
       const r = parseInt(row, 10) - 1;
       const c = letterToColIndex(col);
       if (r < 0 || r >= GRID_ROWS || c < 0 || c >= GRID_COLS) return '0';
@@ -298,7 +382,7 @@ const FormulaEngine = {
     if (!/^[0-9+\-*\/().,eE]+$/.test(sanitized)) {
       // May be a plain text result from IF — return as-is if no operators
       if (/^[^=<>!&|]+$/.test(expr.trim())) return expr.trim();
-      return '#ERR';
+      return '#VALUE!';
     }
     try {
       // Recursive descent parser — safe arithmetic without eval/new Function
@@ -343,10 +427,109 @@ const FormulaEngine = {
       }
       return String(result);
     } catch (e) {
-      return '#ERR';
+      return '#VALUE!';
     }
+  },
+
+  /** Get the string value of a formula argument (quoted literal, cell ref, or plain text). */
+  getStringArg(arg) {
+    const t = (arg || '').trim();
+    if (/^".+"$/.test(t) || /^""$/.test(t)) return t.slice(1, -1);
+    const addr = parseAddress(t.replace(/\$/g, ''));
+    if (addr) return String(getCellDisplay(addr.row, addr.col) || '');
+    return t;
+  },
+
+  /** Check if expr contains & operator outside double-quoted strings. */
+  hasAmper(expr) {
+    let inQ = false;
+    for (let i = 0; i < expr.length; i++) {
+      if (expr[i] === '"') inQ = !inQ;
+      if (!inQ && expr[i] === '&') return true;
+    }
+    return false;
+  },
+
+  /** Evaluate & concatenation expression. */
+  evalAmper(expr) {
+    const parts = [];
+    let cur = '';
+    let inQ = false;
+    for (let i = 0; i < expr.length; i++) {
+      if (expr[i] === '"') inQ = !inQ;
+      if (!inQ && expr[i] === '&') { parts.push(cur.trim()); cur = ''; }
+      else cur += expr[i];
+    }
+    parts.push(cur.trim());
+    return parts.map(p => this.getStringArg(p)).join('');
+  },
+
+  /** Evaluate a comparison: left OP right → '1' or '0'. Returns null if no operator. */
+  evalComparison(expr) {
+    const m = expr.match(/^(.*?)(>=|<=|<>|>|<|=)(.*)$/);
+    if (!m) return null;
+    const L = parseFloat(this.safeCalc(m[1].trim()));
+    const R = parseFloat(this.safeCalc(m[3].trim()));
+    if (isNaN(L) || isNaN(R)) return null;
+    switch (m[2]) {
+      case '>':  return L > R  ? '1' : '0';
+      case '<':  return L < R  ? '1' : '0';
+      case '>=': return L >= R ? '1' : '0';
+      case '<=': return L <= R ? '1' : '0';
+      case '<>': return L !== R ? '1' : '0';
+      case '=':  return L === R ? '1' : '0';
+    }
+    return null;
+  },
+
+  /** Evaluate date functions: TODAY, NOW, DATE, YEAR, MONTH, DAY. */
+  evalDateFunction(expr) {
+    const m = expr.match(/^([A-Z]+)\s*\(([^)]*)\)/i);
+    if (!m) return '#VALUE!';
+    const fn = m[1].toUpperCase();
+    const rawArgs = m[2].split(',').map(a => a.trim());
+    const pad = n => String(n).padStart(2, '0');
+    const isoDate = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    if (fn === 'TODAY') return isoDate(new Date());
+    if (fn === 'NOW') {
+      const d = new Date();
+      return `${isoDate(d)} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    }
+    if (fn === 'DATE') {
+      const [y, mo, d] = rawArgs.map(a => parseInt(this.getStringArg(a)));
+      if (isNaN(y) || isNaN(mo) || isNaN(d)) return '#VALUE!';
+      return isoDate(new Date(y, mo - 1, d));
+    }
+    const dateArg = this.getStringArg(rawArgs[0] || '');
+    // Parse ISO date strings directly to avoid UTC-midnight timezone offset errors
+    const isoM = dateArg.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (isoM) {
+      if (fn === 'YEAR')  return String(parseInt(isoM[1], 10));
+      if (fn === 'MONTH') return String(parseInt(isoM[2], 10));
+      if (fn === 'DAY')   return String(parseInt(isoM[3], 10));
+    }
+    const parsed = new Date(dateArg);
+    if (isNaN(parsed.getTime())) return '#VALUE!';
+    if (fn === 'YEAR')  return String(parsed.getFullYear());
+    if (fn === 'MONTH') return String(parsed.getMonth() + 1);
+    if (fn === 'DAY')   return String(parsed.getDate());
+    return '#NAME?';
+  },
+
+  /** Adjust formula cell references by (rowDelta, colDelta), keeping $ absolute markers fixed. */
+  adjustFormulaRefs(raw, rowDelta, colDelta) {
+    if (!raw || !raw.startsWith('=')) return raw;
+    return raw.replace(/(\$?)([A-Z]+)(\$?)(\d+)/g, (match, colAbs, col, rowAbs, row) => {
+      const oCol = letterToColIndex(col);
+      const oRow = parseInt(row, 10) - 1;
+      const nCol = colAbs ? oCol : Math.max(0, Math.min(GRID_COLS-1, oCol + colDelta));
+      const nRow = rowAbs ? oRow : Math.max(0, Math.min(GRID_ROWS-1, oRow + rowDelta));
+      return (colAbs ? '$' : '') + colIndexToLetter(nCol) + (rowAbs ? '$' : '') + String(nRow + 1);
+    });
   }
 };
+// Expose FormulaEngine for testing (top-level const is not on window by default)
+window.FormulaEngine = FormulaEngine;
 
 // ============================================================
 // 6. UNDO STACK (DI-009, BR-053–BR-056)
@@ -670,7 +853,10 @@ function handleRibbonAction(action, value) {
     case 'paste':
       if (clipboardCell) {
         pushUndo(currentSnapshot());
-        setCell(selectedRow, selectedCol, clipboardCell.raw);
+        const pasteRaw = (clipboardCell.raw && clipboardCell.raw.startsWith('=') && !clipboardCell.cut)
+          ? FormulaEngine.adjustFormulaRefs(clipboardCell.raw, selectedRow - clipboardCell.row, selectedCol - clipboardCell.col)
+          : clipboardCell.raw;
+        setCell(selectedRow, selectedCol, pasteRaw);
         setCellFormat(selectedRow, selectedCol, clipboardCell.fmt);
         if (clipboardCell.cut) setCell(clipboardCell.row, clipboardCell.col, '');
         updateCellDisplay(selectedRow, selectedCol);
@@ -800,6 +986,33 @@ function handleNameBoxEnter(e) {
 }
 
 function handleFormulaBarEnter(e) {
+  if (e.key === 'F4') {
+    // Cycle reference type of token at/before cursor: A1 → $A$1 → A$1 → $A1 → A1
+    const input = e.target;
+    const val = input.value;
+    const pos = input.selectionStart;
+    const REF = /(\$?)([A-Z]+)(\$?)(\d+)/g;
+    let m, best = null;
+    while ((m = REF.exec(val)) !== null) {
+      if (m.index <= pos && REF.lastIndex >= pos) { best = m; break; }
+      if (REF.lastIndex <= pos) best = m;
+    }
+    if (best) {
+      const cycles = [
+        [''  , ''  ], // relative
+        ['$' , '$' ], // absolute
+        [''  , '$' ], // row-absolute
+        ['$' , ''  ], // col-absolute
+      ];
+      const ca = best[1], ra = best[3];
+      const curIdx = cycles.findIndex(([c, r]) => c === ca && r === ra);
+      const [nca, nra] = cycles[(curIdx + 1) % cycles.length];
+      const newRef = nca + best[2] + nra + best[4];
+      input.value = val.slice(0, best.index) + newRef + val.slice(best.index + best[0].length);
+      e.preventDefault();
+    }
+    return;
+  }
   if (e.key !== 'Enter') return;
   pushUndo(currentSnapshot());
   setCell(selectedRow, selectedCol, e.target.value);
@@ -1085,7 +1298,10 @@ function execContextAction(action) {
     case 'paste':
       if (clipboardCell) {
         pushUndo(currentSnapshot());
-        setCell(r, c, clipboardCell.raw);
+        const ctxPasteRaw = (clipboardCell.raw && clipboardCell.raw.startsWith('=') && !clipboardCell.cut)
+          ? FormulaEngine.adjustFormulaRefs(clipboardCell.raw, r - clipboardCell.row, c - clipboardCell.col)
+          : clipboardCell.raw;
+        setCell(r, c, ctxPasteRaw);
         setCellFormat(r, c, clipboardCell.fmt);
         if (clipboardCell.cut) setCell(clipboardCell.row, clipboardCell.col, '');
         renderGrid();
