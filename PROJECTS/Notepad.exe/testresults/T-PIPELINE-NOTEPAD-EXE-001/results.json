@@ -1,0 +1,133 @@
+{
+  "passed": 19,
+  "failed": 0,
+  "partial": 2,
+  "tests": [
+    {
+      "id": "T-001",
+      "description": "Extension loads and service worker starts",
+      "status": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "UC-001",
+      "description": "Extension opens a detached Notepad window",
+      "status": "PARTIAL",
+      "notes": "chrome.windows.create requires a real installed extension — tested via direct page load"
+    },
+    {
+      "id": "UC-008",
+      "description": "Extension enforces single-instance window",
+      "status": "PARTIAL",
+      "notes": "chrome.storage.session.get/set tested indirectly via background.js load"
+    },
+    {
+      "id": "T-002",
+      "description": "index.html loads without errors",
+      "status": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "UC-002",
+      "description": "User can type text in the editor",
+      "status": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "UC-006",
+      "description": "Status bar shows Ln/Col/Chars",
+      "status": "PASS",
+      "notes": "Ln 1, Col 16, 15 chars"
+    },
+    {
+      "id": "UC-007",
+      "description": "Menu bar is visible with File/Edit/View/Help",
+      "status": "PASS",
+      "notes": "4 menu items found"
+    },
+    {
+      "id": "UC-003",
+      "description": "User can save a note to localStorage",
+      "status": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "UC-004",
+      "description": "New file clears editor after unsaved guard",
+      "status": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "UC-003b",
+      "description": "Open picker loads selected note into editor",
+      "status": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "UC-005",
+      "description": "Download triggers file download with .txt extension",
+      "status": "PASS",
+      "notes": "filename: MyNote.txt"
+    },
+    {
+      "id": "UC-009",
+      "description": "View > Word Wrap toggles wrap off",
+      "status": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "UC-010",
+      "description": "Help > Keyboard Shortcuts dialog opens",
+      "status": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "BR-005",
+      "description": "File menu contains New, Open, Save, Save As, Exit",
+      "status": "PASS",
+      "notes": "items: New, Open..., Save, Save As..., Download..., Delete Note, Exit"
+    },
+    {
+      "id": "BR-006",
+      "description": "Edit menu contains Undo, Cut, Copy, Paste, Find, Replace",
+      "status": "PASS",
+      "notes": "items: Undo, Cut, Copy, Paste, Find..., Replace..."
+    },
+    {
+      "id": "BR-007",
+      "description": "View menu contains Word Wrap and Zoom",
+      "status": "PASS",
+      "notes": "items: Word Wrap, ✓ Status Bar, Zoom"
+    },
+    {
+      "id": "BR-008",
+      "description": "Help menu contains View Help and About Notepad",
+      "status": "PASS",
+      "notes": "items: View Help, About Notepad"
+    },
+    {
+      "id": "BR-022",
+      "description": "Status bar shows UTF-8 encoding",
+      "status": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "BR-054-059",
+      "description": "Help dialog: title, shortcuts, close button, Escape dismiss",
+      "status": "PASS",
+      "notes": "8 shortcut rows, title: \"Keyboard Shortcuts\""
+    },
+    {
+      "id": "BR-039-040",
+      "description": "Title \"Untitled - Notepad\" and status Ln1/Col1/0 chars after New",
+      "status": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "BR-033",
+      "description": "Title bar shows loaded filename",
+      "status": "PASS",
+      "notes": "Got: \"TitleTest - Notepad\""
+    }
+  ]
+}

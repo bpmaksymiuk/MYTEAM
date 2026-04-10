@@ -19,13 +19,20 @@ const MENU_STRUCTURE = [
     { label: 'Cut',          action: 'edit:cut',      shortcut: 'Ctrl+X' },
     { label: 'Copy',         action: 'edit:copy',     shortcut: 'Ctrl+C' },
     { label: 'Paste',        action: 'edit:paste',    shortcut: 'Ctrl+V' },
+    { type: 'separator' },
+    { label: 'Find...',      action: 'edit:find',     shortcut: 'Ctrl+F' },
+    { label: 'Replace...',   action: 'edit:replace',  shortcut: 'Ctrl+H' },
   ]},
   { label: 'View', items: [
     { label: 'Word Wrap',    action: 'view:wordwrap',  checkable: true },
     { label: 'Status Bar',   action: 'view:statusbar', checkable: true },
+    { type: 'separator' },
+    { label: 'Zoom',         action: 'view:zoom' },
   ]},
   { label: 'Help', items: [
-    { label: 'Keyboard Shortcuts', action: 'help:keyboard' },
+    { label: 'View Help',    action: 'help:keyboard' },
+    { type: 'separator' },
+    { label: 'About Notepad', action: 'help:about' },
   ]},
 ];
 

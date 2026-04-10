@@ -8,7 +8,7 @@ import { initMenubar, setMenuItemChecked } from './menubar.js';
 import { saveNote, loadNote, listNotes, deleteNote,
   getCurrentFilename, setCurrentFilename } from './storage.js';
 import { downloadAsText } from './downloader.js';
-import { showConfirm, showOpenPicker, showHelp } from './dialogs.js';
+import { showConfirm, showOpenPicker, showHelp, showAbout } from './dialogs.js';
 
 let currentFilename = null;   // null == Untitled
 let wordWrapEnabled = true;
@@ -132,7 +132,11 @@ async function handleMenuAction(action) {
     case 'file:exit':     window.close(); break;
     case 'view:wordwrap':  cmdToggleWordWrap(); break;
     case 'view:statusbar': cmdToggleStatusBar(); break;
+    case 'view:zoom':      await showConfirm('Zoom: Use Ctrl+Plus / Ctrl+Minus in your browser to zoom.'); break;
+    case 'edit:find':      await showConfirm('Find: Use Ctrl+F in the browser to search.'); break;
+    case 'edit:replace':   await showConfirm('Replace: Use Ctrl+H in the browser to replace.'); break;
     case 'help:keyboard':  showHelp(); break;
+    case 'help:about':     showAbout(); break;
   }
 }
 

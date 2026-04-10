@@ -99,6 +99,33 @@ export function showOpenPicker(notes) {
   });
 }
 
+// DI-009: showAbout — About Notepad dialog
+export function showAbout() {
+  const content = document.getElementById('help-content');
+  content.innerHTML = `
+    <div class="about-content">
+      <p><strong>Notepad.exe</strong></p>
+      <p>Version 1.0.0</p>
+      <p>A Windows Notepad-style Chrome Extension.</p>
+      <p>Stores notes in browser local storage.</p>
+    </div>`;
+  document.querySelector('#dialog-help .dialog-title').textContent = 'About Notepad';
+  openDialog('dialog-help');
+
+  const btnClose = document.getElementById('dialog-help-close');
+  btnClose.focus();
+
+  function close() {
+    document.querySelector('#dialog-help .dialog-title').textContent = 'Keyboard Shortcuts';
+    closeDialog('dialog-help');
+    clearEscape();
+    btnClose.removeEventListener('click', close);
+  }
+
+  btnClose.addEventListener('click', close);
+  registerEscape(close);
+}
+
 // DI-009: showHelp — keyboard shortcuts table
 export function showHelp() {
   const content = document.getElementById('help-content');

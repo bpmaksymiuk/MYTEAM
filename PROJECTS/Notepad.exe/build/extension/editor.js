@@ -39,8 +39,12 @@ export function setValue(text) {
 }
 
 export function clear() {
-  if (textareaEl) textareaEl.value = '';
-  // Does NOT set dirty
+  if (textareaEl) {
+    textareaEl.value = '';
+    // Dispatch input so statusbar and other listeners refresh to empty state
+    textareaEl.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+  // setDirty(false) called by caller after clear()
 }
 
 export function focus() {
