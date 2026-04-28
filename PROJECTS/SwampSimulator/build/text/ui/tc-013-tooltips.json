@@ -1,0 +1,18 @@
+{
+  "tooltip.nav.canvas": "Ecosystem canvas",
+  "tooltip.nav.foodweb": "Food web",
+  "tooltip.nav.dashboard": "Dashboard",
+  "tooltip.nav.intervention": "Interventions",
+  "tooltip.nav.scenarios": "Scenarios",
+  "tooltip.nav.saveload": "Save & load",
+  "tooltip.time.pause": "Pause",
+  "tooltip.time.play": "Play",
+  "tooltip.time.speed1": "Normal speed",
+  "tooltip.time.speed5": "Fast (\u00d75)",
+  "tooltip.time.speed30": "Very fast (\u00d730)",
+  "tooltip.time.skipSeason": "Skip to next season",
+  "tooltip.overlay.foodweb": "Show food-web arrows",
+  "tooltip.overlay.nutrient": "Show nutrient flow",
+  "tooltip.overlay.oxygen": "Show oxygen levels",
+  "tooltip.overlay.density": "Show population density"
+}

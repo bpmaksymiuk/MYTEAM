@@ -1,4 +1,10 @@
 {
     "vscode-ollama.model": "huihui_ai/qwen3-coder-next-abliterated:latest",
-    "ollama-participant.model": "huihui_ai/qwen3-coder-next-abliterated:latest"
+    "ollama-participant.model": "huihui_ai/qwen3-coder-next-abliterated:latest",
+    "chat.tools.terminal.autoApprove": {
+        "/^cd /home/danio/PROJECTS/MYTEAM/PROJECTS/new && /home/danio/PROJECTS/MYTEAM/\\.venv/bin/python -m http\\.server 9131 --directory build$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
 }

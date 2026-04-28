@@ -1,0 +1,32 @@
+{
+  "dam": {
+    "tooltip": {
+      "progress": "Dam {pct}% complete",
+      "health": "Structural health: {pct}%",
+      "species": "Species using this dam: {list}",
+      "demolish": "Demolish dam"
+    },
+    "breach": {
+      "alert": "Beaver dam breached! Water level dropping\u2026"
+    },
+    "milestone": {
+      "first": "First beaver dam complete! \ud83e\uddab The swamp has been reshaped."
+    }
+  },
+  "terrain": {
+    "seed": {
+      "label": "#seed: {n}"
+    },
+    "overlay": {
+      "label": "Biome zones"
+    }
+  },
+  "zone": {
+    "deep": "Deep water",
+    "shallow": "Shallow flats",
+    "mud": "Mudbank",
+    "grass": "Land patch",
+    "sand": "Dry sandbar",
+    "cypress": "Cypress stand"
+  }
+}

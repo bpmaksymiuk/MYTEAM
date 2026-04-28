@@ -1,0 +1,173 @@
+{
+  "run": "2026-04-28T02:14:39.783Z",
+  "results": [
+    {
+      "id": "T01",
+      "name": "UC-001 ecosystem canvas",
+      "status": "PASS",
+      "note": "tick=127",
+      "time": "2026-04-28T02:13:46.685Z"
+    },
+    {
+      "id": "T02",
+      "name": "UC-002 species inspector",
+      "status": "PASS",
+      "note": "",
+      "time": "2026-04-28T02:13:47.506Z"
+    },
+    {
+      "id": "T03",
+      "name": "UC-003 food web graph",
+      "status": "PASS",
+      "note": "",
+      "time": "2026-04-28T02:13:48.269Z"
+    },
+    {
+      "id": "T04",
+      "name": "UC-004 dashboard",
+      "status": "PASS",
+      "note": "",
+      "time": "2026-04-28T02:13:51.369Z"
+    },
+    {
+      "id": "T05",
+      "name": "UC-005 cascade after dragonfly removal",
+      "status": "PASS",
+      "note": "mosquito 0 -> 0",
+      "time": "2026-04-28T02:13:55.684Z"
+    },
+    {
+      "id": "T06",
+      "name": "UC-006 environmental event",
+      "status": "PASS",
+      "note": "",
+      "time": "2026-04-28T02:13:57.750Z"
+    },
+    {
+      "id": "T07",
+      "name": "UC-007 alligator-removed checklist",
+      "status": "PASS",
+      "note": "done=true",
+      "time": "2026-04-28T02:14:04.775Z"
+    },
+    {
+      "id": "T08",
+      "name": "UC-008 mosquito explosion",
+      "status": "PASS-WEAK",
+      "note": "mosquito=0",
+      "time": "2026-04-28T02:14:07.902Z"
+    },
+    {
+      "id": "T09",
+      "name": "UC-009 algae bloom (oxygen drop)",
+      "status": "PASS-WEAK",
+      "note": "oxygen=1.000",
+      "time": "2026-04-28T02:14:12.007Z"
+    },
+    {
+      "id": "T10",
+      "name": "UC-010 beaver dam progressing",
+      "status": "PASS",
+      "note": "progress=1.00",
+      "time": "2026-04-28T02:14:20.123Z"
+    },
+    {
+      "id": "T11",
+      "name": "UC-011 drought + gator-hole",
+      "status": "PASS",
+      "note": "gatorHoles=16",
+      "time": "2026-04-28T02:14:28.250Z"
+    },
+    {
+      "id": "T12",
+      "name": "UC-012 time controls — skip season",
+      "status": "PASS",
+      "note": "summer -> autumn",
+      "time": "2026-04-28T02:14:28.908Z"
+    },
+    {
+      "id": "T13",
+      "name": "UC-013 overlays",
+      "status": "PASS",
+      "note": "",
+      "time": "2026-04-28T02:14:30.784Z"
+    },
+    {
+      "id": "T14",
+      "name": "UC-014 save/load round-trip",
+      "status": "PASS",
+      "note": "day 210 -> after-load 211",
+      "time": "2026-04-28T02:14:33.860Z"
+    },
+    {
+      "id": "T15",
+      "name": "UC-015 cartoon sprites + animator state",
+      "status": "PASS",
+      "note": "agents=21 withAnim=21 nonBgSamples=309",
+      "time": "2026-04-28T02:14:34.393Z"
+    },
+    {
+      "id": "T15b",
+      "name": "UC-015 idle animation advances",
+      "status": "PASS-WEAK",
+      "note": "alligator f3/walk -> f3/walk",
+      "time": "2026-04-28T02:14:35.400Z"
+    },
+    {
+      "id": "T16",
+      "name": "UC-016 movement animations + facing",
+      "status": "PASS",
+      "note": "states=[walk] facings=[R,L] moving=19",
+      "time": "2026-04-28T02:14:35.493Z"
+    },
+    {
+      "id": "T16b",
+      "name": "UC-016 horizontal facing flip",
+      "status": "PASS",
+      "note": "facings=[R,L]",
+      "time": "2026-04-28T02:14:35.493Z"
+    },
+    {
+      "id": "T17",
+      "name": "UC-017 cartoon UI restyle",
+      "status": "PASS",
+      "note": "navIcons=6 overlayIcons=4 portraits=28 radius=12px cssVar=#2f6b3a scenarioHeaders=5",
+      "time": "2026-04-28T02:14:35.898Z"
+    },
+    {
+      "id": "T18",
+      "name": "UC-019 procedural terrain biome map",
+      "status": "PASS",
+      "note": "biome=true seed=true chip=\"#seed: 74247\" colourVariety=3",
+      "time": "2026-04-28T02:14:36.524Z"
+    },
+    {
+      "id": "T19",
+      "name": "UC-020 plant patches present and phased",
+      "status": "PASS",
+      "note": "patches=61 phasedAfterTick=61 phaseSum=10.34",
+      "time": "2026-04-28T02:14:37.625Z"
+    },
+    {
+      "id": "T20",
+      "name": "UC-021 atmosphere infrastructure (dams/milestones/EQ/tooltip)",
+      "status": "PASS",
+      "note": "dams=true milestones=true tooltip=true seed=\"#seed: 74247\" eqBars=5",
+      "time": "2026-04-28T02:14:37.734Z"
+    },
+    {
+      "id": "T21",
+      "name": "Edge: invalid seed hash normalizes to valid integer seed",
+      "status": "PASS",
+      "note": "seed=19423 hash=#seed=19423 chip=\"#seed: 19423\"",
+      "time": "2026-04-28T02:14:38.421Z"
+    },
+    {
+      "id": "T22",
+      "name": "Simple: ambient EQ exposes activity metadata",
+      "status": "PASS",
+      "note": "exists=true bars=5 title=\"Ecosystem activity - 129 organisms\" aria=\"Ecosystem activity: 129 organisms\"",
+      "time": "2026-04-28T02:14:39.749Z"
+    }
+  ]
+}

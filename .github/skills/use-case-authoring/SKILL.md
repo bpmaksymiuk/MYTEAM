@@ -10,7 +10,7 @@ argument-hint: 'Describe whether you are drafting proposed use cases, updating a
 - Updating PROJECTS/**/1-USE-CASES.md
 - Updating PROJECTS/**/1-USE-CASES-PROPOSED.md
 - Validating Stage 0 or Stage 1 use-case schema
-- Checking acceptance criteria quality before Stage 2
+- Checking acceptance criteria quality before Stage 3
 - Recording Stage 5 or Stage 6 implementation caveats for a use case
 
 ## Target Files
@@ -48,7 +48,7 @@ argument-hint: 'Describe whether you are drafting proposed use cases, updating a
 - Minimize cross-dependencies between use cases.
 
 ## Implementation Caveat Handling
-If a use case cannot be fully implemented due to an external constraint, add an IMPLEMENTATION COMMENT inside NOTES and mirror the same caveat in 5-RELEASE-NOTES.md.
+If a use case cannot be fully implemented due to an external constraint, add an IMPLEMENTATION COMMENT inside NOTES and mirror the same caveat in the project release notes file.
 
 ## Exit Gate
 - Every use case has complete fields.

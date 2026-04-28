@@ -1,19 +1,19 @@
 ---
 name: architecture-and-parts-authoring
-description: 'Write 3-ARCHITECTURE-RECOMMENDATIONS.md and 3-PARTS LIST.md from 2-REQUIREMENTS.md. Use for Stage 3 architecture, concrete technology decisions, rationale, component inventories, and BR-to-AR-to-PT traceability.'
-argument-hint: 'Describe the Stage 3 architecture or parts-list task.'
+description: 'Write 5-ARCHITECTURE-RECOMMENDATIONS.md and 5-PARTS LIST.md from 4-REQUIREMENTS.md. Use for Stage 5 architecture, concrete technology decisions, rationale, component inventories, and BR-to-AR-to-PT traceability.'
+argument-hint: 'Describe the Stage 5 architecture or parts-list task.'
 ---
 
 # Architecture And Parts Authoring
 
 ## When to Use
-- Creating or updating PROJECTS/**/3-ARCHITECTURE-RECOMMENDATIONS.md
-- Creating or updating PROJECTS/**/3-PARTS LIST.md
+- Creating or updating PROJECTS/**/5-ARCHITECTURE-RECOMMENDATIONS.md
+- Creating or updating PROJECTS/**/5-PARTS LIST.md
 - Converting BRs into technology decisions and component boundaries
 
 ## Target Files
-- 3-ARCHITECTURE-RECOMMENDATIONS.md
-- 3-PARTS LIST.md
+- 5-ARCHITECTURE-RECOMMENDATIONS.md
+- 5-PARTS LIST.md
 
 ## Architecture Record Schema
 
@@ -38,13 +38,12 @@ argument-hint: 'Describe the Stage 3 architecture or parts-list task.'
 
 ## Procedure
 1. Read the canonical pipeline file first.
-2. Read 2-REQUIREMENTS.md in full before writing.
+2. Read 4-REQUIREMENTS.md in full before writing.
 3. Write one AR per distinct technology decision or pattern.
-4. Name concrete libraries, APIs, frameworks, or design patterns. 
+4. Name concrete libraries, APIs, frameworks, or patterns.
 5. Explain rationale in terms of fit, tradeoffs, maintainability, and delivery constraints.
 6. In the same run, generate the parts list that maps ARs onto logical components.
 7. Preserve existing AR and PT IDs during incremental updates.
-
 
 ## Quality Rules
 - Do not invent architecture decisions for nonexistent requirements.

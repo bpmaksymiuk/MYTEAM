@@ -25,10 +25,31 @@ owner_for_path() {
     */1-USE-CASES.md|*/1-USE-CASES-PROPOSED.md)
       printf '%s' 'User / Product Owner'
       ;;
-    */2-REQUIREMENTS.md)
+    */2-NARRATIVE-VISION.md)
+      printf '%s' 'Writer'
+      ;;
+    */3-REQUIREMENTS.md)
       printf '%s' 'Business Analyst'
       ;;
-    */3-ARCHITECTURE-RECOMMENDATIONS.md|*/3-PARTS\ LIST.md)
+    */4-ARCHITECTURE-RECOMMENDATIONS.md|*/4-PARTS\ LIST.md)
+      printf '%s' 'Architect'
+      ;;
+    */5-DESIGN-INSTRUCTIONS.md)
+      printf '%s' 'Technical Lead'
+      ;;
+    */6-TEXT-CONTENT.md)
+      printf '%s' 'Writer'
+      ;;
+    */7-GRAPHIC-ASSETS.md)
+      printf '%s' 'Graphic Artist'
+      ;;
+    */8-RELEASE-NOTES.md)
+      printf '%s' 'Developer'
+      ;;
+    */9-TEST-CASES.md|*/9-TEST-REPORT.md|*/10-BUG-REPORT.md)
+      printf '%s' 'Tester'
+      ;;
+    */2-ARCHITECTURE-RECOMMENDATIONS.md|*/2-PARTS\ LIST.md)
       printf '%s' 'Architect'
       ;;
     */4-DESIGN-INSTRUCTIONS.md)

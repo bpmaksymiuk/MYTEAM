@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="sans-serif" font-size="14">
+  <rect width="1200" height="800" fill="#2c3e2e"/>
+  <!-- Top nav bar -->
+  <rect x="0" y="0" width="1200" height="48" fill="#1a2620"/>
+  <text x="20" y="30" fill="#cde3c4" font-weight="bold">SwampSimulator</text>
+  <g transform="translate(180,12)" fill="#cde3c4">
+    <rect width="80" height="24" fill="#3d5a3a" rx="3"/><text x="20" y="16">Canvas</text>
+    <rect x="90" width="80" height="24" fill="#2a3a28" rx="3"/><text x="110" y="16">Food Web</text>
+    <rect x="180" width="80" height="24" fill="#2a3a28" rx="3"/><text x="200" y="16">Dashboard</text>
+    <rect x="270" width="80" height="24" fill="#2a3a28" rx="3"/><text x="290" y="16">Intervene</text>
+    <rect x="360" width="80" height="24" fill="#2a3a28" rx="3"/><text x="380" y="16">Scenarios</text>
+    <rect x="450" width="80" height="24" fill="#2a3a28" rx="3"/><text x="465" y="16">Save/Load</text>
+  </g>
+  <!-- Time controls top right -->
+  <g transform="translate(1000,12)" fill="#cde3c4">
+    <rect width="180" height="24" fill="#1a2620" stroke="#3d5a3a" rx="3"/>
+    <text x="10" y="16">⏸  ▶  ×1 ×5 ×30  ⏭ Season</text>
+  </g>
+
+  <!-- Main canvas swamp scene -->
+  <rect x="0" y="48" width="980" height="752" fill="#3a4a32"/>
+  <!-- water channel -->
+  <path d="M0 200 Q 300 160, 600 240 T 980 280 L 980 600 Q 600 580, 300 640 T 0 600 Z" fill="#4a6b6b" opacity="0.85"/>
+  <!-- mudbanks -->
+  <ellipse cx="200" cy="120" rx="180" ry="40" fill="#6b5a3a"/>
+  <ellipse cx="900" cy="700" rx="200" ry="50" fill="#6b5a3a"/>
+  <!-- lily pads -->
+  <circle cx="350" cy="320" r="16" fill="#5a8a4a"/>
+  <circle cx="420" cy="380" r="14" fill="#5a8a4a"/>
+  <circle cx="500" cy="340" r="18" fill="#5a8a4a"/>
+  <circle cx="700" cy="450" r="15" fill="#5a8a4a"/>
+  <!-- cypress trees -->
+  <g transform="translate(80,500)"><polygon points="0,0 -20,-60 -10,-50 -25,-90 -5,-80 -15,-110 0,-100 15,-110 5,-80 25,-90 10,-50 20,-60" fill="#3a5a32"/><rect x="-5" y="-10" width="10" height="20" fill="#5a4030"/></g>
+  <g transform="translate(950,200)"><polygon points="0,0 -20,-60 -10,-50 -25,-90 -5,-80 -15,-110 0,-100 15,-110 5,-80 25,-90 10,-50 20,-60" fill="#3a5a32"/><rect x="-5" y="-10" width="10" height="20" fill="#5a4030"/></g>
+  <!-- Organisms (sprite stand-ins) -->
+  <g><circle cx="380" cy="320" r="6" fill="#4a3a2a"/><text x="395" y="325" fill="#fff">frog</text></g>
+  <g><circle cx="600" cy="400" r="8" fill="#7a6a4a"/><text x="615" y="405" fill="#fff">heron</text></g>
+  <g><ellipse cx="700" cy="280" rx="14" ry="5" fill="#4a5a3a"/><text x="720" y="285" fill="#fff">alligator</text></g>
+  <g><circle cx="450" cy="500" r="4" fill="#aa9933"/><text x="460" y="505" fill="#fff">dragonfly</text></g>
+  <g><circle cx="800" cy="350" r="5" fill="#7a5a3a"/><text x="815" y="355" fill="#fff">turtle</text></g>
+  <g><circle cx="300" cy="600" r="5" fill="#6a4a3a"/><text x="315" y="605" fill="#fff">crayfish</text></g>
+  <g><circle cx="850" cy="550" r="3" fill="#cccc33"/><text x="860" y="555" fill="#fff">fish</text></g>
+  <!-- Click-target highlight -->
+  <circle cx="700" cy="280" r="22" fill="none" stroke="#ffd34a" stroke-dasharray="3,3" stroke-width="2"/>
+
+  <!-- Overlay toggle bar (left side) -->
+  <g transform="translate(10,80)" fill="#cde3c4">
+    <rect width="120" height="200" fill="#1a2620" opacity="0.85" rx="4"/>
+    <text x="10" y="20">Overlays</text>
+    <rect x="10" y="30" width="100" height="22" fill="#2a3a28" rx="3"/><text x="20" y="46">☐ Food Web</text>
+    <rect x="10" y="60" width="100" height="22" fill="#2a3a28" rx="3"/><text x="20" y="76">☐ Nutrient</text>
+    <rect x="10" y="90" width="100" height="22" fill="#2a3a28" rx="3"/><text x="20" y="106">☐ Oxygen</text>
+    <rect x="10" y="120" width="100" height="22" fill="#2a3a28" rx="3"/><text x="20" y="136">☐ Density</text>
+  </g>
+
+  <!-- Right Species Inspector panel -->
+  <g transform="translate(980,48)" fill="#cde3c4">
+    <rect width="220" height="752" fill="#1a2620"/>
+    <text x="14" y="30" font-weight="bold">Species Inspector</text>
+    <line x1="0" y1="40" x2="220" y2="40" stroke="#3d5a3a"/>
+    <text x="14" y="65" font-size="16" font-weight="bold">Alligator</text>
+    <text x="14" y="85" font-size="11">Apex predator · pop: 3</text>
+    <text x="14" y="120">ROLE</text>
+    <text x="14" y="138" font-size="11">Apex aquatic predator;</text>
+    <text x="14" y="152" font-size="11">creates gator-holes that</text>
+    <text x="14" y="166" font-size="11">retain water in dry season.</text>
+    <text x="14" y="200">EATS</text>
+    <text x="14" y="220" font-size="11" fill="#7ac">· Bass</text>
+    <text x="14" y="236" font-size="11" fill="#7ac">· Water Snake</text>
+    <text x="14" y="252" font-size="11" fill="#7ac">· Heron</text>
+    <text x="14" y="268" font-size="11" fill="#7ac">· Turtle</text>
+    <text x="14" y="300">EATEN BY</text>
+    <text x="14" y="320" font-size="11">— (apex)</text>
+    <text x="14" y="360">Click linked species</text>
+    <text x="14" y="376" font-size="11">to navigate</text>
+  </g>
+
+  <!-- Caption -->
+  <text x="20" y="790" fill="#cde3c4" font-size="11" opacity="0.7">CB-001 · Ecosystem View · UC-001 / UC-002 / UC-013</text>
+</svg>

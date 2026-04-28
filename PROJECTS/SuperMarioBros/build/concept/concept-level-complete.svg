@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CB-010 Level Complete Screen | UC-010 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <title>CB-010 — Level Complete Screen</title>
+  <desc>Stage 3 Concept Storyboard | Super Mario Bros | UC-010</desc>
+
+  <!-- Frozen last frame of level (grassland example) -->
+  <rect width="800" height="500" fill="#5c94fc"/>
+  <rect x="0" y="420" width="800" height="80" fill="#8B4513"/>
+  <rect x="0" y="420" width="800" height="10" fill="#4a9e4a"/>
+  <!-- Clouds -->
+  <ellipse cx="140" cy="120" rx="55" ry="25" fill="#fff" opacity="0.7"/>
+  <ellipse cx="600" cy="150" rx="60" ry="28" fill="#fff" opacity="0.7"/>
+  <text x="400" y="60" font-family="monospace" font-size="12" text-anchor="middle" fill="#1a3a8c" opacity="0.7">[frozen level background — semi-opaque overlay applied above]</text>
+
+  <!-- Flag pole -->
+  <line x1="680" y1="80" x2="680" y2="420" stroke="#888" stroke-width="6"/>
+  <circle cx="680" cy="78" r="8" fill="#888"/>
+  <!-- Flag at bottom (Mario captured it) -->
+  <polygon points="680,380 680,340 716,360" fill="#27ae60"/>
+  <text x="700" y="396" font-family="monospace" font-size="9" fill="#27ae60">FLAG (captured)</text>
+
+  <!-- Mario sliding down pole -->
+  <rect x="668" y="330" width="22" height="30" rx="2" fill="#e74c3c" opacity="0.9"/>
+  <circle cx="679" cy="324" r="12" fill="#e74c3c" opacity="0.9"/>
+  <text x="679" y="374" font-family="monospace" font-size="9" text-anchor="middle" fill="#e74c3c">Mario sliding ↓</text>
+
+  <!-- Fireworks -->
+  <g opacity="0.9">
+    <circle cx="200" cy="150" r="4" fill="#e74c3c"/>
+    <line x1="200" y1="150" x2="180" y2="130" stroke="#e74c3c" stroke-width="2"/>
+    <line x1="200" y1="150" x2="220" y2="130" stroke="#f39c12" stroke-width="2"/>
+    <line x1="200" y1="150" x2="200" y2="124" stroke="#f1c40f" stroke-width="2"/>
+    <line x1="200" y1="150" x2="178" y2="164" stroke="#27ae60" stroke-width="2"/>
+    <line x1="200" y1="150" x2="222" y2="164" stroke="#9b59b6" stroke-width="2"/>
+
+    <circle cx="500" cy="120" r="4" fill="#f1c40f"/>
+    <line x1="500" y1="120" x2="480" y2="98" stroke="#f1c40f" stroke-width="2"/>
+    <line x1="500" y1="120" x2="520" y2="98" stroke="#e74c3c" stroke-width="2"/>
+    <line x1="500" y1="120" x2="500" y2="94" stroke="#3498db" stroke-width="2"/>
+    <line x1="500" y1="120" x2="476" y2="136" stroke="#e67e22" stroke-width="2"/>
+    <line x1="500" y1="120" x2="524" y2="136" stroke="#27ae60" stroke-width="2"/>
+  </g>
+  <text x="350" y="108" font-family="monospace" font-size="10" fill="#888">[firework burst animations — 2–3 bursts]</text>
+
+  <!-- Semi-opaque overlay panel -->
+  <rect x="100" y="160" width="600" height="230" rx="6" fill="#000000cc"/>
+  <rect x="100" y="160" width="600" height="230" rx="6" fill="none" stroke="#f1c40f" stroke-width="2"/>
+
+  <!-- COURSE CLEAR -->
+  <text x="400" y="210" font-family="monospace" font-size="30" font-weight="bold" text-anchor="middle" fill="#f1c40f" letter-spacing="2">COURSE CLEAR!</text>
+  <text x="400" y="228" font-family="monospace" font-size="10" text-anchor="middle" fill="#888">[yellow pixel font, centred]</text>
+  <line x1="120" y1="238" x2="680" y2="238" stroke="#444" stroke-width="1"/>
+
+  <!-- Tally rows -->
+  <text x="180" y="268" font-family="monospace" font-size="16" fill="#ffffff">TIME BONUS</text>
+  <text x="620" y="268" font-family="monospace" font-size="16" font-weight="bold" text-anchor="end" fill="#f1c40f">×050  +10000</text>
+  <text x="400" y="284" font-family="monospace" font-size="9" text-anchor="middle" fill="#888">[count-up animation: 0 → 10000]</text>
+
+  <text x="180" y="314" font-family="monospace" font-size="16" fill="#ffffff">COINS</text>
+  <text x="620" y="314" font-family="monospace" font-size="16" font-weight="bold" text-anchor="end" fill="#f1c40f">×24  +04800</text>
+
+  <line x1="120" y1="328" x2="680" y2="328" stroke="#444" stroke-width="1"/>
+  <text x="180" y="354" font-family="monospace" font-size="18" fill="#ffffff">TOTAL SCORE</text>
+  <text x="620" y="354" font-family="monospace" font-size="20" font-weight="bold" text-anchor="end" fill="#f1c40f">024800</text>
+  <text x="400" y="374" font-family="monospace" font-size="10" text-anchor="middle" fill="#888">[score readout with count-up before freezing]</text>
+
+  <!-- Interaction note -->
+  <rect x="10" y="462" width="780" height="34" rx="2" fill="#00000099"/>
+  <text x="400" y="476" font-family="monospace" font-size="11" text-anchor="middle" fill="#ffffff">INTERACTION: No required input. Tally count-up plays automatically.</text>
+  <text x="400" y="492" font-family="monospace" font-size="11" text-anchor="middle" fill="#aaa">Press Start to skip tally and advance to next level immediately.</text>
+</svg>

@@ -11,7 +11,7 @@ argument-hint: 'Describe the failed stage, rerun state, or pipeline orchestratio
 - Clear routing back to the owning stage only
 - Verification that required artifacts were actually created or updated
 - Ordered downstream reruns after the repaired stage passes
-- Visible execution-order handoffs across BA, Architect, TL, Developer, Tester, then Manager
+- Visible execution-order handoffs across stage owners
 - Reusable rerun and handoff wording from `./references/manager-rerun-templates.md`
 
 ## When to Use
@@ -51,7 +51,7 @@ argument-hint: 'Describe the failed stage, rerun state, or pipeline orchestratio
 9. Use the pipeline stages table as the authority for ownership routing and completion criteria.
 
 ## Communication Requirements
-- Use role-labeled phrasing such as `(Manager) Routing back to Stage 3 Architect due to failed architecture gate: missing AR-to-BR traceability.`
+- Use role-labeled phrasing such as `(Manager) Routing back to Stage 5 Architect due to failed architecture gate: missing AR-to-BR traceability.`
 - State which stage is being re-run and why.
 - Announce when an artifact is ready for the next stage.
 - Do not narrate the entire pipeline only as Manager; ensure each stage owner appears in execution order during full runs.

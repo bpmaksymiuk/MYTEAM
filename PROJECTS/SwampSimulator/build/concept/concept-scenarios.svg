@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="sans-serif" font-size="13">
+  <rect width="1200" height="800" fill="#1a2620"/>
+  <rect x="0" y="0" width="1200" height="48" fill="#0d1410"/>
+  <text x="20" y="30" fill="#cde3c4" font-weight="bold">SwampSimulator — Guided Scenarios</text>
+
+  <!-- Scenario card grid -->
+  <g transform="translate(40,80)" fill="#cde3c4">
+    <text font-weight="bold" font-size="16">Choose a Scenario</text>
+    <text y="20" fill="#888" font-size="11">Each scenario is a short ecological story · 3–5 simulated minutes</text>
+  </g>
+
+  <!-- 5 scenario cards -->
+  <g transform="translate(40,130)">
+    <rect width="220" height="220" fill="#2a3a28" stroke="#3d5a3a" rx="6"/>
+    <rect width="220" height="100" fill="#3a4a32"/>
+    <text x="110" y="58" text-anchor="middle" font-size="36" fill="#cc3344">🐊</text>
+    <text x="14" y="124" fill="#cde3c4" font-weight="bold">Remove the Alligator</text>
+    <text x="14" y="146" fill="#aaa" font-size="11">Watch the heron and fish</text>
+    <text x="14" y="160" fill="#aaa" font-size="11">populations shift after the</text>
+    <text x="14" y="174" fill="#aaa" font-size="11">apex predator is gone.</text>
+    <rect x="14" y="190" width="190" height="20" fill="#3d5a3a" rx="3"/>
+    <text x="109" y="204" text-anchor="middle" fill="#fff" font-size="11">Start Scenario</text>
+  </g>
+
+  <g transform="translate(280,130)">
+    <rect width="220" height="220" fill="#2a3a28" stroke="#3d5a3a" rx="6"/>
+    <rect width="220" height="100" fill="#3a4a32"/>
+    <text x="110" y="58" text-anchor="middle" font-size="36" fill="#aa9933">🦟</text>
+    <text x="14" y="124" fill="#cde3c4" font-weight="bold">Mosquito Explosion</text>
+    <text x="14" y="146" fill="#aaa" font-size="11">No dragonflies. Track the</text>
+    <text x="14" y="160" fill="#aaa" font-size="11">cascade through frogs, bats,</text>
+    <text x="14" y="174" fill="#aaa" font-size="11">and snakes.</text>
+    <rect x="14" y="190" width="190" height="20" fill="#3d5a3a" rx="3"/>
+    <text x="109" y="204" text-anchor="middle" fill="#fff" font-size="11">Start Scenario</text>
+  </g>
+
+  <g transform="translate(520,130)">
+    <rect width="220" height="220" fill="#2a3a28" stroke="#3d5a3a" rx="6"/>
+    <rect width="220" height="100" fill="#3a4a32"/>
+    <text x="110" y="58" text-anchor="middle" font-size="36" fill="#88aa44">🦠</text>
+    <text x="14" y="124" fill="#cde3c4" font-weight="bold">Algae Bloom</text>
+    <text x="14" y="146" fill="#aaa" font-size="11">Nutrient spike from fertiliser.</text>
+    <text x="14" y="160" fill="#aaa" font-size="11">Oxygen crash. Fish die-off.</text>
+    <text x="14" y="174" fill="#aaa" font-size="11">Can you reverse it?</text>
+    <rect x="14" y="190" width="190" height="20" fill="#3d5a3a" rx="3"/>
+    <text x="109" y="204" text-anchor="middle" fill="#fff" font-size="11">Start Scenario</text>
+  </g>
+
+  <g transform="translate(760,130)">
+    <rect width="220" height="220" fill="#2a3a28" stroke="#3d5a3a" rx="6"/>
+    <rect width="220" height="100" fill="#3a4a32"/>
+    <text x="110" y="58" text-anchor="middle" font-size="36" fill="#7a5aaa">🦫</text>
+    <text x="14" y="124" fill="#cde3c4" font-weight="bold">Beaver Dam</text>
+    <text x="14" y="146" fill="#aaa" font-size="11">A beaver builds a dam. The</text>
+    <text x="14" y="160" fill="#aaa" font-size="11">water rises and new habitat</text>
+    <text x="14" y="174" fill="#aaa" font-size="11">emerges.</text>
+    <rect x="14" y="190" width="190" height="20" fill="#3d5a3a" rx="3"/>
+    <text x="109" y="204" text-anchor="middle" fill="#fff" font-size="11">Start Scenario</text>
+  </g>
+
+  <g transform="translate(1000,130)">
+    <rect width="160" height="220" fill="#2a3a28" stroke="#3d5a3a" rx="6"/>
+    <rect width="160" height="100" fill="#3a4a32"/>
+    <text x="80" y="58" text-anchor="middle" font-size="36" fill="#cc8833">☀</text>
+    <text x="14" y="124" fill="#cde3c4" font-weight="bold">Drought Year</text>
+    <text x="14" y="146" fill="#aaa" font-size="11">Predator and prey crowd</text>
+    <text x="14" y="160" fill="#aaa" font-size="11">into shrinking pools.</text>
+    <rect x="14" y="190" width="132" height="20" fill="#3d5a3a" rx="3"/>
+    <text x="80" y="204" text-anchor="middle" fill="#fff" font-size="11">Start Scenario</text>
+  </g>
+
+  <!-- Active scenario overlay (lower half: example of running scenario) -->
+  <g transform="translate(40,400)">
+    <rect width="1120" height="370" fill="#0d1410" stroke="#3d5a3a" rx="6"/>
+    <text x="20" y="30" fill="#cde3c4" font-weight="bold" font-size="15">▶ Running: "Remove the Alligator"  ·  Day 12</text>
+    <line x1="0" y1="42" x2="1120" y2="42" stroke="#3d5a3a"/>
+
+    <text x="20" y="70" fill="#cde3c4" font-weight="bold">Cascade Checklist</text>
+    <g transform="translate(20,90)" font-size="13" fill="#cde3c4">
+      <text fill="#88cc66">✓ Snake population +20% (Day 4)</text>
+      <text y="22" fill="#88cc66">✓ Bass population +35% (Day 7)</text>
+      <text y="44" fill="#88cc66">✓ Heron population +18% (Day 9)</text>
+      <text y="66" fill="#888">○ Tadpole population −25%</text>
+      <text y="88" fill="#888">○ Algae overgrowth ≥ 40%</text>
+    </g>
+
+    <!-- Mini chart -->
+    <g transform="translate(550,70)">
+      <rect width="540" height="280" fill="#1a2620" stroke="#3d5a3a"/>
+      <text x="10" y="20" fill="#cde3c4" font-weight="bold" font-size="12">Population since alligator removal</text>
+      <line x1="40" y1="40" x2="40" y2="240" stroke="#3d5a3a"/>
+      <line x1="40" y1="240" x2="520" y2="240" stroke="#3d5a3a"/>
+      <polyline fill="none" stroke="#cc3344" stroke-width="2" points="40,150 100,180 200,210 300,235 400,239 500,240"/>
+      <polyline fill="none" stroke="#cc6633" stroke-width="2" points="40,180 100,170 200,140 300,110 400,90 500,80"/>
+      <polyline fill="none" stroke="#aa9933" stroke-width="2" points="40,200 100,195 200,180 300,150 400,130 500,120"/>
+      <text x="50" y="260" fill="#888" font-size="10">Alligator (decline)</text>
+      <text x="220" y="260" fill="#cc6633" font-size="10">Bass (rising)</text>
+      <text x="380" y="260" fill="#aa9933" font-size="10">Heron (rising)</text>
+    </g>
+  </g>
+
+  <text x="20" y="790" fill="#cde3c4" font-size="11" opacity="0.7">CB-005 · Guided Scenarios · UC-007 / UC-008 / UC-009 / UC-010 / UC-011</text>
+</svg>

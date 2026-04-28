@@ -1,0 +1,8 @@
+{
+  "ambient": {
+    "eq": {
+      "tooltip": "Ecosystem activity \u2014 {n} organisms",
+      "label": "Activity"
+    }
+  }
+}

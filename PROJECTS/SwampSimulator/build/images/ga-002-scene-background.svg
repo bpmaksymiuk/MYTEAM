@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <radialGradient id="water" cx="50%" cy="55%" r="65%"><stop offset="0%" stop-color="#5a7d7d"/><stop offset="100%" stop-color="#3a5858"/></radialGradient>
+    <linearGradient id="mud" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7a6a4a"/><stop offset="100%" stop-color="#5a4a30"/></linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#water)"/>
+  <path d="M0 540 Q200 500 400 535 T800 540 L800 600 L0 600 Z" fill="url(#mud)"/>
+  <path d="M0 60 Q200 90 400 60 T800 70 L800 0 L0 0 Z" fill="url(#mud)" opacity="0.7"/>
+  <g fill="#2a4222" opacity="0.85">
+    <ellipse cx="80" cy="120" rx="40" ry="55"/><rect x="76" y="140" width="8" height="60"/>
+    <ellipse cx="720" cy="100" rx="50" ry="65"/><rect x="716" y="120" width="8" height="80"/>
+    <ellipse cx="180" cy="500" rx="35" ry="48"/><rect x="176" y="510" width="8" height="60"/>
+  </g>
+</svg>

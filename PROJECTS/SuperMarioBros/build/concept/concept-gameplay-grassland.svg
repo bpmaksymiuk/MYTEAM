@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CB-004 Gameplay Grassland | UC-004, UC-006, UC-007 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <title>CB-004 — Gameplay Grassland Level</title>
+  <desc>Stage 3 Concept Storyboard | Super Mario Bros | UC-004 UC-006 UC-007</desc>
+
+  <!-- Sky -->
+  <rect width="800" height="440" fill="#5c94fc"/>
+
+  <!-- HUD bar -->
+  <rect x="0" y="0" width="800" height="42" fill="#1a0000"/>
+  <text x="30" y="16" font-family="monospace" font-size="11" fill="#fff">MARIO</text>
+  <text x="30" y="34" font-family="monospace" font-size="14" font-weight="bold" fill="#fff">000300</text>
+  <circle cx="310" cy="16" r="7" fill="#f1c40f"/>
+  <text x="322" y="21" font-family="monospace" font-size="13" fill="#fff">×02</text>
+  <text x="390" y="16" font-family="monospace" font-size="11" fill="#fff">WORLD</text>
+  <text x="398" y="34" font-family="monospace" font-size="14" font-weight="bold" fill="#fff">1-1</text>
+  <text x="510" y="16" font-family="monospace" font-size="11" fill="#fff">TIME</text>
+  <text x="512" y="34" font-family="monospace" font-size="14" font-weight="bold" fill="#fff">362</text>
+  <text x="700" y="16" font-family="monospace" font-size="11" fill="#fff">×3</text>
+
+  <!-- Region label -->
+  <text x="20" y="58" font-family="monospace" font-size="10" fill="#1a3a8c">REGION: HUD (fixed top bar)</text>
+
+  <!-- Cloud sprites -->
+  <ellipse cx="140" cy="110" rx="55" ry="25" fill="#fff" opacity="0.9"/>
+  <ellipse cx="175" cy="98" rx="35" ry="20" fill="#fff" opacity="0.9"/>
+  <ellipse cx="560" cy="130" rx="60" ry="26" fill="#fff" opacity="0.9"/>
+  <ellipse cx="600" cy="118" rx="38" ry="18" fill="#fff" opacity="0.9"/>
+  <text x="20" y="90" font-family="monospace" font-size="10" fill="#1a3a8c">REGION: BACKGROUND — sky + cloud sprites</text>
+
+  <!-- Hills -->
+  <ellipse cx="200" cy="400" rx="140" ry="60" fill="#68b868"/>
+  <ellipse cx="600" cy="420" rx="120" ry="50" fill="#68b868"/>
+  <text x="20" y="380" font-family="monospace" font-size="10" fill="#1a5c1a">REGION: MIDGROUND — rolling green hills</text>
+
+  <!-- Ground tile row -->
+  <rect x="0" y="430" width="800" height="70" fill="#8B4513"/>
+  <rect x="0" y="430" width="800" height="10" fill="#4a9e4a"/>
+  <!-- tile grid lines -->
+  <g stroke="#5c3010" stroke-width="1" opacity="0.5">
+    <line x1="40" y1="430" x2="40" y2="500"/>
+    <line x1="80" y1="430" x2="80" y2="500"/>
+    <line x1="120" y1="430" x2="120" y2="500"/>
+    <line x1="160" y1="430" x2="160" y2="500"/>
+    <line x1="200" y1="430" x2="200" y2="500"/>
+    <line x1="240" y1="430" x2="240" y2="500"/>
+    <line x1="280" y1="430" x2="280" y2="500"/>
+    <line x1="320" y1="430" x2="320" y2="500"/>
+    <line x1="360" y1="430" x2="360" y2="500"/>
+    <line x1="400" y1="430" x2="400" y2="500"/>
+    <line x1="440" y1="430" x2="440" y2="500"/>
+    <line x1="480" y1="430" x2="480" y2="500"/>
+    <line x1="520" y1="430" x2="520" y2="500"/>
+    <line x1="560" y1="430" x2="560" y2="500"/>
+    <line x1="600" y1="430" x2="600" y2="500"/>
+    <line x1="640" y1="430" x2="640" y2="500"/>
+    <line x1="680" y1="430" x2="680" y2="500"/>
+    <line x1="720" y1="430" x2="720" y2="500"/>
+    <line x1="760" y1="430" x2="760" y2="500"/>
+  </g>
+  <text x="20" y="425" font-family="monospace" font-size="10" fill="#8B4513">REGION: FOREGROUND FLOOR — ground tile row</text>
+
+  <!-- Green pipe -->
+  <rect x="500" y="370" width="50" height="60" fill="#27ae60" stroke="#1e8449" stroke-width="2"/>
+  <rect x="493" y="360" width="64" height="18" rx="3" fill="#2ecc71" stroke="#1e8449" stroke-width="2"/>
+  <text x="515" y="358" font-family="monospace" font-size="9" fill="#1e8449">PIPE</text>
+
+  <!-- Platform blocks (Q-blocks + bricks) -->
+  <g>
+    <!-- Brick block -->
+    <rect x="240" y="300" width="36" height="36" fill="#c0392b" stroke="#922b21" stroke-width="1"/>
+    <line x1="240" y1="318" x2="276" y2="318" stroke="#922b21" stroke-width="1"/>
+    <line x1="258" y1="300" x2="258" y2="318" stroke="#922b21" stroke-width="1"/>
+    <!-- Q-block -->
+    <rect x="278" y="300" width="36" height="36" fill="#e67e22" stroke="#d35400" stroke-width="2"/>
+    <text x="296" y="324" font-family="monospace" font-size="16" font-weight="bold" text-anchor="middle" fill="#fff">?</text>
+    <!-- Brick block -->
+    <rect x="316" y="300" width="36" height="36" fill="#c0392b" stroke="#922b21" stroke-width="1"/>
+    <line x1="316" y1="318" x2="352" y2="318" stroke="#922b21" stroke-width="1"/>
+    <line x1="334" y1="300" x2="334" y2="318" stroke="#922b21" stroke-width="1"/>
+  </g>
+  <text x="240" y="294" font-family="monospace" font-size="10" fill="#c0392b">REGION: PLATFORM — brick + Q-blocks</text>
+
+  <!-- Coin above Q-block -->
+  <circle cx="296" cy="275" r="10" fill="#f1c40f" stroke="#d4ac0d" stroke-width="2"/>
+  <text x="296" y="280" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle" fill="#fff">C</text>
+  <text x="296" y="264" font-family="monospace" font-size="9" text-anchor="middle" fill="#f1c40f">↑ coin</text>
+
+  <!-- Mario sprite (small) -->
+  <rect x="130" y="398" width="24" height="30" rx="2" fill="#e74c3c"/>
+  <circle cx="142" cy="393" r="12" fill="#e74c3c"/>
+  <rect x="133" y="408" width="10" height="16" fill="#2980b9"/>
+  <rect x="147" y="408" width="10" height="16" fill="#2980b9"/>
+  <text x="142" y="464" font-family="monospace" font-size="9" text-anchor="middle" fill="#e74c3c">MARIO (small)</text>
+  <text x="20" y="398" font-family="monospace" font-size="10" fill="#e74c3c">ACTOR: Mario (small state)</text>
+
+  <!-- Goombler enemy -->
+  <rect x="420" y="400" width="30" height="28" rx="4" fill="#8B4513"/>
+  <circle cx="427" cy="402" r="5" fill="#fff"/>
+  <circle cx="443" cy="402" r="5" fill="#fff"/>
+  <circle cx="427" cy="403" r="3" fill="#1a0000"/>
+  <circle cx="443" cy="403" r="3" fill="#1a0000"/>
+  <text x="435" y="446" font-family="monospace" font-size="9" text-anchor="middle" fill="#8B4513">GOOMBLER</text>
+  <!-- Walk direction arrow -->
+  <line x1="450" y1="414" x2="410" y2="414" stroke="#e74c3c" stroke-width="1" stroke-dasharray="3 2"/>
+  <polygon points="410,410 402,414 410,418" fill="#e74c3c"/>
+  <text x="430" y="410" font-family="monospace" font-size="9" fill="#e74c3c">← patrol</text>
+
+  <!-- Interaction annotations -->
+  <rect x="10" y="460" width="780" height="36" rx="2" fill="#00000099"/>
+  <text x="20" y="474" font-family="monospace" font-size="10" fill="#ffffff">← / → move | ↑ / Space jump | Hit Q-block from below → coin/item pops | Stomp Goombler → squish +100pts</text>
+  <text x="20" y="488" font-family="monospace" font-size="10" fill="#e74c3c">Pit fall → life lost → respawn or Game Over (CB-011)</text>
+</svg>

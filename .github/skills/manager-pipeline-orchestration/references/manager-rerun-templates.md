@@ -21,24 +21,24 @@ Use these templates as starting points. Replace placeholders with concrete stage
 
 ## Common Routing Cases
 
-### Stage 2 Requirement Failure
+### Stage 3 Requirement Failure
 ```markdown
-(Manager) Routing back to Stage 2 Business Analyst due to failed requirements gate: <BR issue>. Stage 3 and later must be re-run after 2-REQUIREMENTS.md passes.
+(Manager) Routing back to Stage 4 Business Analyst due to failed requirements gate: <BR issue>. Stage 6 and later must be re-run after 4-REQUIREMENTS.md passes.
 ```
 
-### Stage 3 Architecture Failure
+### Stage 5 Architecture Failure
 ```markdown
-(Manager) Routing back to Stage 3 Architect due to failed architecture gate: <AR/PT issue>. Stage 4 through Stage 6 are blocked until 3-ARCHITECTURE-RECOMMENDATIONS.md and 3-PARTS LIST.md pass together.
+(Manager) Routing back to Stage 5 Architect due to failed architecture gate: <AR/PT issue>. Stage 6 through Stage 10 are blocked until 5-ARCHITECTURE-RECOMMENDATIONS.md and 5-PARTS LIST.md pass together.
 ```
 
-### Stage 4 Design Failure
+### Stage 5 Design Failure
 ```markdown
-(Manager) Routing back to Stage 4 Technical Lead due to failed design gate: <DI issue>. Developer implementation must wait until 4-DESIGN-INSTRUCTIONS.md is implementation-ready.
+(Manager) Routing back to Stage 6 Technical Lead due to failed design gate: <DI issue>. Developer implementation must wait until 6-DESIGN-INSTRUCTIONS.md is implementation-ready.
 ```
 
 ### Stage 5 Implementation Failure
 ```markdown
-(Manager) Routing back to Stage 5 Developer due to failed implementation gate: <build, traceability, or release-note issue>. Stage 6 verification is blocked until the build and release notes pass together.
+(Manager) Routing back to Stage 8 Developer due to failed implementation gate: <build, traceability, or release-note issue>. Stage 6 verification is blocked until the build and release notes pass together.
 ```
 
 ### Stage 6 Verification Failure
@@ -74,7 +74,7 @@ Use these templates as starting points. Replace placeholders with concrete stage
 
 ### Pipeline Pass
 ```markdown
-(Manager) All stage gates pass. Traceability is intact from use case to test evidence, and 6-TEST-REPORT.md records PASS PIPELINE.
+(Manager) All stage gates pass. Traceability is intact from use case to test evidence, and 10-TEST-REPORT.md records PASS PIPELINE.
 ```
 
 ### Pipeline Still Blocked

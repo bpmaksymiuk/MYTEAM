@@ -23,4 +23,4 @@ When working on `.github/` customization files, use the appropriate customizatio
 1. Prefer minimal, stage-correct changes over broad rewrites.
 2. Keep paths repository-relative from the active project folder.
 3. Preserve existing project structure unless the active design or stage artifact requires a change.
-4. For implementation changes, update the project-local release notes and preserve append-only verification history.
+4. For implementation changes, update project release notes and preserve append-only verification history.
