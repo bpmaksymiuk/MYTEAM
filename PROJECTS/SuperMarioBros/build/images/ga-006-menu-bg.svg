@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4488ee"/>
+      <stop offset="100%" stop-color="#5c94fc"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a7c20"/>
+      <stop offset="30%" stop-color="#8b6914"/>
+      <stop offset="100%" stop-color="#5a3e0a"/>
+    </linearGradient>
+  </defs>
+  <!-- Sky -->
+  <rect width="800" height="480" fill="url(#sky)"/>
+  <!-- Clouds (pixel art style blocky clouds) -->
+  <g fill="#ffffff" opacity="0.9">
+    <rect x="60" y="60" width="80" height="20" rx="4"/>
+    <rect x="40" y="68" width="120" height="20" rx="4"/>
+    <rect x="280" y="40" width="60" height="16" rx="4"/>
+    <rect x="264" y="48" width="92" height="18" rx="4"/>
+    <rect x="500" y="70" width="100" height="22" rx="4"/>
+    <rect x="480" y="80" width="140" height="20" rx="4"/>
+    <rect x="680" y="50" width="70" height="16" rx="4"/>
+    <rect x="666" y="58" width="98" height="18" rx="4"/>
+  </g>
+  <!-- Distant hills (dark green) -->
+  <ellipse cx="160" cy="380" rx="120" ry="60" fill="#2a5a10" opacity="0.7"/>
+  <ellipse cx="460" cy="370" rx="140" ry="70" fill="#2a5a10" opacity="0.7"/>
+  <ellipse cx="680" cy="385" rx="110" ry="55" fill="#2a5a10" opacity="0.7"/>
+  <!-- Ground strip -->
+  <rect x="0" y="400" width="800" height="80" fill="url(#ground)"/>
+  <!-- Platforms (decorative) -->
+  <rect x="100" y="320" width="128" height="20" fill="#cc6622"/>
+  <rect x="100" y="320" width="128" height="3" fill="#ee8844"/>
+  <rect x="380" y="260" width="96" height="20" fill="#cc6622"/>
+  <rect x="380" y="260" width="96" height="3" fill="#ee8844"/>
+  <rect x="580" y="300" width="128" height="20" fill="#cc6622"/>
+  <rect x="580" y="300" width="128" height="3" fill="#ee8844"/>
+  <!-- Question blocks -->
+  <rect x="220" y="220" width="32" height="32" fill="#f0c000"/>
+  <rect x="221" y="221" width="30" height="2" fill="#ffd800"/>
+  <rect x="221" y="221" width="2" height="30" fill="#ffd800"/>
+  <rect x="221" y="249" width="30" height="2" fill="#a08000"/>
+  <rect x="249" y="221" width="2" height="30" fill="#a08000"/>
+  <rect x="232" y="228" width="8" height="16" fill="#6b4800"/>
+  <rect x="354" y="220" width="32" height="32" fill="#f0c000"/>
+  <rect x="355" y="221" width="30" height="2" fill="#ffd800"/>
+  <rect x="355" y="221" width="2" height="30" fill="#ffd800"/>
+  <rect x="355" y="249" width="30" height="2" fill="#a08000"/>
+  <rect x="383" y="221" width="2" height="30" fill="#a08000"/>
+  <rect x="366" y="228" width="8" height="16" fill="#6b4800"/>
+  <!-- Pipes (green) -->
+  <rect x="640" y="360" width="48" height="48" fill="#2a8a2a"/>
+  <rect x="636" y="360" width="56" height="12" fill="#33aa33"/>
+  <rect x="638" y="360" width="52" height="3" fill="#55cc55"/>
+  <rect x="80" y="370" width="48" height="38" fill="#2a8a2a"/>
+  <rect x="76" y="370" width="56" height="12" fill="#33aa33"/>
+  <rect x="78" y="370" width="52" height="3" fill="#55cc55"/>
+  <!-- Title card area (dark semi-transparent) -->
+  <rect x="200" y="130" width="400" height="120" fill="#000000" opacity="0.55" rx="6"/>
+  <rect x="202" y="132" width="396" height="2" fill="#ffffff" opacity="0.2"/>
+  <!-- Title text hint (white blocks forming stylised letters) -->
+  <text x="400" y="178" font-family="monospace" font-size="36" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="4">SUPER MARIO</text>
+  <text x="400" y="222" font-family="monospace" font-size="22" fill="#f0c000" text-anchor="middle" letter-spacing="6">BROS</text>
+</svg>

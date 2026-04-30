@@ -1,0 +1,31 @@
+{
+  "runId": "T-PIPELINE-SMB-002",
+  "date": "2026-04-28",
+  "summary": {
+    "totalCases": 11,
+    "pass": 11,
+    "fail": 0,
+    "partial": 0
+  },
+  "caseResults": {
+    "TC-SMB-001": "PASS",
+    "TC-SMB-002": "PASS",
+    "TC-SMB-003": "PASS",
+    "TC-SMB-004": "PASS",
+    "TC-SMB-005": "PASS",
+    "TC-SMB-006": "PASS",
+    "TC-SMB-007": "PASS",
+    "TC-SMB-008": "PASS",
+    "TC-SMB-009": "PASS",
+    "TC-SMB-010": "PASS",
+    "TC-SMB-011": "PASS"
+  },
+  "runtimeEvidence": {
+    "phaserVersion": "3.90.0",
+    "menuActiveAfterBoot": true,
+    "gameAndHudActiveAfterNewGame": true,
+    "audioKeysLoaded": 9,
+    "tilemapKeysLoaded": 8,
+    "remainingWarnings": []
+  }
+}

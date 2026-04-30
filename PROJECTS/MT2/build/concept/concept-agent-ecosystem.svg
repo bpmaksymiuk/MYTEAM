@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" font-family="monospace, sans-serif">
+  <rect width="900" height="560" fill="#0d1117"/>
+  <text x="450" y="34" text-anchor="middle" font-size="17" font-weight="bold" fill="#e6edf3">MT2 — Agent Ecosystem</text>
+  <text x="450" y="52" text-anchor="middle" font-size="11" fill="#8b949e">One .agent.md file per stage · Role, tools, skill, owned artifact</text>
+
+  <!-- Central pipeline instruction box -->
+  <rect x="320" y="74" width="260" height="48" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="450" y="94" text-anchor="middle" font-size="12" font-weight="bold" fill="#58a6ff">.github/instructions/</text>
+  <text x="450" y="110" text-anchor="middle" font-size="11" fill="#c9d1d9">pipeline.instructions.md</text>
+
+  <!-- Spoke lines from center to agents -->
+  <line x1="450" y1="122" x2="450" y2="180" stroke="#21262d" stroke-width="1.5"/>
+  <line x1="450" y1="98" x2="100" y2="200" stroke="#21262d" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="450" y1="98" x2="800" y2="200" stroke="#21262d" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="450" y1="98" x2="100" y2="340" stroke="#21262d" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="450" y1="98" x2="800" y2="340" stroke="#21262d" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="450" y1="98" x2="220" y2="460" stroke="#21262d" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="450" y1="98" x2="680" y2="460" stroke="#21262d" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Agent cards: Writer (Stage 2 & 7) -->
+  <rect x="30" y="180" width="160" height="90" rx="6" fill="#21262d" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="110" y="200" text-anchor="middle" font-size="11" font-weight="bold" fill="#3fb950">Writer</text>
+  <text x="110" y="216" text-anchor="middle" font-size="9" fill="#8b949e">Stages 2 &amp; 7</text>
+  <text x="110" y="232" text-anchor="middle" font-size="9" fill="#c9d1d9">Artifacts: 2-NARRATIVE-VISION.md</text>
+  <text x="110" y="246" text-anchor="middle" font-size="9" fill="#c9d1d9">7-TEXT-CONTENT.md · ./build/text/</text>
+  <text x="110" y="262" text-anchor="middle" font-size="9" fill="#8b949e">Skill: content-writing-authoring</text>
+
+  <!-- Agent cards: Graphic Artist (Stage 3 & 8) -->
+  <rect x="710" y="180" width="160" height="90" rx="6" fill="#21262d" stroke="#d29922" stroke-width="1.5"/>
+  <text x="790" y="200" text-anchor="middle" font-size="11" font-weight="bold" fill="#d29922">Graphic Artist</text>
+  <text x="790" y="216" text-anchor="middle" font-size="9" fill="#8b949e">Stages 3 &amp; 8</text>
+  <text x="790" y="232" text-anchor="middle" font-size="9" fill="#c9d1d9">Artifacts: 3-CONCEPT-STORYBOARD.md</text>
+  <text x="790" y="246" text-anchor="middle" font-size="9" fill="#c9d1d9">8-GRAPHIC-ASSETS.md · ./build/images/</text>
+  <text x="790" y="262" text-anchor="middle" font-size="9" fill="#8b949e">Skill: concept/graphic-artwork-authoring</text>
+
+  <!-- Business Analyst + Architect -->
+  <rect x="30" y="310" width="160" height="90" rx="6" fill="#21262d" stroke="#58a6ff" stroke-width="1.5"/>
+  <text x="110" y="330" text-anchor="middle" font-size="11" font-weight="bold" fill="#58a6ff">Business Analyst</text>
+  <text x="110" y="346" text-anchor="middle" font-size="9" fill="#8b949e">Stage 4</text>
+  <text x="110" y="362" text-anchor="middle" font-size="9" fill="#c9d1d9">Artifact: 4-REQUIREMENTS.md</text>
+  <text x="110" y="378" text-anchor="middle" font-size="9" fill="#c9d1d9">BR records · UC traceability</text>
+  <text x="110" y="394" text-anchor="middle" font-size="9" fill="#8b949e">Skill: business-requirements-writing</text>
+
+  <rect x="710" y="310" width="160" height="90" rx="6" fill="#21262d" stroke="#f78166" stroke-width="1.5"/>
+  <text x="790" y="330" text-anchor="middle" font-size="11" font-weight="bold" fill="#f78166">Architect</text>
+  <text x="790" y="346" text-anchor="middle" font-size="9" fill="#8b949e">Stage 5</text>
+  <text x="790" y="362" text-anchor="middle" font-size="9" fill="#c9d1d9">Artifacts: 5-ARCHITECTURE.md</text>
+  <text x="790" y="378" text-anchor="middle" font-size="9" fill="#c9d1d9">5-PARTS LIST.md</text>
+  <text x="790" y="394" text-anchor="middle" font-size="9" fill="#8b949e">Skill: architecture-and-parts-authoring</text>
+
+  <!-- Tech Lead + Developer -->
+  <rect x="150" y="440" width="160" height="90" rx="6" fill="#21262d" stroke="#58a6ff" stroke-width="1.5"/>
+  <text x="230" y="460" text-anchor="middle" font-size="11" font-weight="bold" fill="#58a6ff">Technical Lead</text>
+  <text x="230" y="476" text-anchor="middle" font-size="9" fill="#8b949e">Stage 6</text>
+  <text x="230" y="492" text-anchor="middle" font-size="9" fill="#c9d1d9">Artifact: 6-DESIGN-INSTRUCTIONS.md</text>
+  <text x="230" y="508" text-anchor="middle" font-size="9" fill="#c9d1d9">DI records · pseudocode · signatures</text>
+  <text x="230" y="524" text-anchor="middle" font-size="9" fill="#8b949e">Skill: design-instructions-authoring</text>
+
+  <rect x="590" y="440" width="160" height="90" rx="6" fill="#21262d" stroke="#f78166" stroke-width="1.5"/>
+  <text x="670" y="460" text-anchor="middle" font-size="11" font-weight="bold" fill="#f78166">Developer</text>
+  <text x="670" y="476" text-anchor="middle" font-size="9" fill="#8b949e">Stage 9</text>
+  <text x="670" y="492" text-anchor="middle" font-size="9" fill="#c9d1d9">Artifact: ./build/** </text>
+  <text x="670" y="508" text-anchor="middle" font-size="9" fill="#c9d1d9">9-RELEASE-NOTES.md</text>
+  <text x="670" y="524" text-anchor="middle" font-size="9" fill="#8b949e">Skill: implementation-stage</text>
+
+  <!-- Tester — centred below -->
+  <rect x="370" y="180" width="160" height="90" rx="6" fill="#21262d" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="450" y="200" text-anchor="middle" font-size="11" font-weight="bold" fill="#3fb950">Tester</text>
+  <text x="450" y="216" text-anchor="middle" font-size="9" fill="#8b949e">Stage 10</text>
+  <text x="450" y="232" text-anchor="middle" font-size="9" fill="#c9d1d9">Artifacts: 10-TEST-CASES.md</text>
+  <text x="450" y="248" text-anchor="middle" font-size="9" fill="#c9d1d9">10-TEST-REPORT.md · 11-BUG-REPORT.md</text>
+  <text x="450" y="264" text-anchor="middle" font-size="9" fill="#8b949e">Skills: test-case/test-report/bug-report</text>
+</svg>
