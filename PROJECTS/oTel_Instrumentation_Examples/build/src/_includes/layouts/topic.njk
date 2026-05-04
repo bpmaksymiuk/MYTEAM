@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+---
+<article class="topic-page">
+  <header class="topic-header">
+    <h1>{{ title }}</h1>
+    {% if summary %}<p class="topic-summary">{{ summary }}</p>{% endif %}
+    {% verified %}
+    {% staleness %}
+  </header>
+  {{ content | safe }}
+</article>

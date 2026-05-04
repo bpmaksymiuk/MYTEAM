@@ -1,61 +1,151 @@
----
-name: test-report-writing
-description: 'Write Stage 10 verification evidence in 10-TEST-REPORT.md, including UC/BR coverage, screenshots, results.json output, and PASS/FAIL recommendation.'
-argument-hint: 'Describe the verification run or report update to document.'
----
+# Test Report Writing — SKILL.md
 
-# Test Report Writing
+> Stage 10 (second half) — execute test cases, record evidence, issue release recommendation.
+
+---
 
 ## When to Use
-- Create or update `10-TEST-REPORT.md`.
-- Write or run Stage 10 verification scripts.
-- Record reruns, evidence, and recommendations.
-- Update outcomes for executed cases listed in `10-TEST-CASES.md`.
 
-## Target Files
-- `10-TEST-REPORT.md`
-- `10-TEST-CASES.md`
-- `<project>_test_pipeline<NNN>.mjs`
-- `testresults/<RUN-ID>/results.json`
-
-## Record Schema
-
-```markdown
-## T-PIPELINE-<PROJECT>-<NNN>
-
-**Date:** YYYY-MM-DD
-**Pipeline Script:** <project>_test_pipeline<NNN>.mjs
-**Build:** ./build/
-**Final Result:** ✅ N/M PASS | N FAIL | N PARTIAL | N open bugs
-
-### Run History
-### UC Coverage
-### Bugs Found
-### Exit Gate Checklist
-### RECOMMENDATION
+Invoke at Stage 10 (Tester) after test execution. Use it when executing formal verification specs and recording the outcome of each test case with evidence-backed results in `10-TEST-REPORT.md`. Every TC must have a corresponding TR; every passing TR must cite observable evidence (screenshot, trace, or assertion output). Use the Playwright helper libraries under `.github/skills/test-report-writing/lib/` for execution and screenshot handling. Do not use headless execution — observable evidence is required.
 
 ---
+
+## Target Files
+
+- `10-TEST-REPORT.md`
+- `./tests/playwright.config.mjs` (inside `./tests/`, NOT at the project root, NOT inside `./build/`)
+- `./tests/specs/**` (Playwright spec files)
+- `./tests/package.json` (`@playwright/test` devDependency — installed via `npm install` inside `./tests/`)
+- `.github/skills/test-report-writing/lib/**` (Playwright helper libraries)
+- `./tests/results/**` (evidence output and screenshots)
+- `./tests/test-results/**` (Playwright failure artefacts)
+
+---
+
+## Playwright Library Convention
+
+- Skill-local helper libraries live under `.github/skills/test-report-writing/lib/`.
+- Test execution and screenshot collection at Stage 10 must use these helpers.
+- Helpers may be extended, but existing helper interfaces should remain backward compatible for prior specs.
+
+### Spec file conventions
+
+All Playwright test artefacts live under `./tests/` (project root). Nothing test-related goes inside `./build/`.
+
+```
+PROJECTS/<APP>/
+├── tests/
+│   ├── package.json          ← { devDependencies: { "@playwright/test": "^1.x" } }
+│   ├── package-lock.json
+│   ├── playwright.config.mjs ← config lives here
+│   ├── specs/                ← spec files live here
+│   │   └── *.spec.mjs
+│   ├── results/              ← evidence files (screenshots, .txt)
+│   └── test-results/         ← Playwright failure artefacts
+└── build/                    ← app source only
 ```
 
-## Procedure
-1. Read pipeline instructions.
-2. Read current use cases and requirements.
-3. Read `10-TEST-CASES.md` and verify each case is ready to execute and traceable to UC/BR IDs.
-4. Serve `./build` and run tests with visible browser (`DISPLAY=:0`, `headless:false`).
-5. Use Playwright from `/tmp/node_modules/playwright/index.mjs`.
-6. Update `10-TEST-CASES.md` with PASS/FAIL/PARTIAL outcomes for each executed case, and capture screenshots and `results.json` for the run.
-7. Append a new record to `10-TEST-REPORT.md`.
-8. Create/update bug records in `11-BUG-REPORT.md` for every FAIL.
-9. Re-run until remaining failures are either fixed or explicitly justified.
+Tests are run from `./tests/`:
 
-## Verification Rules
-- Verify UC and BR behavior, not just page loads.
-- Keep report history append-only.
-- Final recommendation must be explicit.
+```
+cd PROJECTS/<APP>/tests
+npx playwright test --config=playwright.config.mjs --headed
+```
+
+Or from the project root:
+```
+npm --prefix tests test
+```
+
+Within each spec file (at `tests/specs/`):
+```js
+// evidence-helper import — 4 levels up from tests/specs/ to the MYTEAM workspace root
+import { ensureResultsDir, writeEvidence } from '../../../../.github/skills/test-report-writing/lib/evidence-helper.mjs';
+
+// evidence output dir — sibling of specs/ inside tests/
+const RESULTS_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../results');
+```
+
+`playwright.config.mjs` settings (inside `tests/`):
+```js
+testDir: './specs',
+outputDir: './test-results',
+reporter: [['list'], ['json', { outputFile: './results/playwright-report.json' }]],
+webServer: { command: 'npm --prefix ../build run dev', url: 'http://localhost:5173', ... },
+```
+
+`@playwright/test` is installed in `./tests/node_modules/` — **not** at the project root and **not** inside `./build/`.
+
+---
+
+## Report Structure
+
+```markdown
+# T-PIPELINE-<APP>-<NNN> — Test Report
+
+- **Run ID:** T-PIPELINE-<APP>-<NNN>
+- **Date:** YYYY-MM-DD
+- **Product:** <product name>
+- **Build Path:** ./build/
+
+## Results
+
+| T-ID | Description | Result | Evidence |
+|------|-------------|--------|----------|
+| T-001 | Test case name | PASS / FAIL | Screenshot filename or inline note |
+
+## Summary
+
+- **Total:** N
+- **Pass:** N
+- **Fail:** N
+
+## Recommendation
+
+**PASS** / **FAIL** / **CONDITIONAL PASS**
+
+> Justification: one paragraph explaining the recommendation based on the results above.
+
+## Evidence
+
+### T-XXX — [brief title]
+[Screenshot or output snippet. For FAIL: include exact error message or observed behaviour.]
+```
+
+---
+
+## Procedure
+
+1. Read `.github/instructions/pipeline.instructions.md`.
+2. Read `10-TEST-CASES.md` in full.
+3. Load Playwright helper libraries from `.github/skills/test-report-writing/lib/`.
+4. Execute formal verification specs in a visible browser using Playwright.
+5. Open the product in a **visible browser** when manual corroboration is needed.
+6. Execute each test case in T-ID order:
+   a. Follow the STEPS exactly as written.
+   b. Record the actual result (PASS or FAIL).
+   c. Capture screenshots via Playwright helpers in `.github/skills/test-report-writing/lib/` and store them under `./tests/results/` (never inside `./build/`).
+   d. For FAIL: record the exact observed behaviour vs the expected result.
+7. Populate the Results table and Summary counts.
+8. Write the Recommendation with a clear justification:
+   - **PASS:** All test cases passed.
+   - **FAIL:** One or more critical test cases failed.
+   - **CONDITIONAL PASS:** Minor failures noted; recommend fix before next release.
+9. Attach evidence for every FAIL entry.
+10. Assign a unique Run ID: `T-PIPELINE-<APP>-<NNN>` (increment NNN from prior runs).
+11. Append the report below any prior test reports — do not overwrite.
+12. Validate against the exit gate.
+13. **Stop. State `GATE 10: PASS` or `GATE 10: FAIL` before taking any further pipeline action.**
+
+---
 
 ## Exit Gate
-- Every UC has PASS, FAIL, or PARTIAL evidence.
-- Every FAIL has a matching bug entry.
-- `results.json` exists for the run.
-- `10-TEST-CASES.md` has execution outcomes for the run.
-- Final verdict is explicit: PASS PIPELINE or FAIL PIPELINE.
+
+- [ ] All test cases in `10-TEST-CASES.md` have been executed.
+- [ ] Every T-ID appears in the Results table.
+- [ ] Every FAIL entry has concrete evidence (screenshot or error log excerpt).
+- [ ] Playwright execution and screenshot capture used helper libraries under `.github/skills/test-report-writing/lib/`.
+- [ ] A Recommendation (PASS / FAIL / CONDITIONAL PASS) has been issued with written justification.
+- [ ] A unique Run ID has been assigned.
+- [ ] No prior test report entries have been modified or deleted.
+- [ ] `PIPELINE-STATUS.md` is updated for Stage 10 with STATUS and STATUS UPDATED date.

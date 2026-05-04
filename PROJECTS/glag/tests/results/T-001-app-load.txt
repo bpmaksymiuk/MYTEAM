@@ -1,0 +1,4 @@
+TEST ID: T-001
+TIMESTAMP: 2026-05-02T04:43:06.659Z
+RESULT: PASS
+DETAIL: Page renders; title and mode toggle visible

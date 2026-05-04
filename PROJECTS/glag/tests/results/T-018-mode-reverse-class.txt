@@ -1,0 +1,4 @@
+TEST ID: T-018
+TIMESTAMP: 2026-05-02T04:43:09.775Z
+RESULT: PASS
+DETAIL: body.mode-reverse class present

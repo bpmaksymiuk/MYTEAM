@@ -1,0 +1,4 @@
+TEST ID: T-005
+TIMESTAMP: 2026-05-02T04:43:07.405Z
+RESULT: PASS
+DETAIL: Mapping section visible after button click

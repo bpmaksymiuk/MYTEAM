@@ -1,0 +1,4 @@
+TEST ID: T-014
+TIMESTAMP: 2026-05-02T04:43:09.080Z
+RESULT: PASS
+DETAIL: btn-mode-glag-cyr active; label updated

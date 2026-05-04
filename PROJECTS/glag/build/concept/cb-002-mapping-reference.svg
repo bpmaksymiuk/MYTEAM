@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620">
+  <!-- Background -->
+  <rect width="800" height="620" fill="#0d1117"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="800" height="50" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="400" y="32" text-anchor="middle" font-family="monospace, sans-serif" font-size="17" font-weight="bold" fill="#e6edf3">Character Mapping Reference</text>
+  <text x="16" y="32" font-family="monospace, sans-serif" font-size="12" fill="#8b949e">CB-002</text>
+
+  <!-- Back link -->
+  <rect x="660" y="12" width="120" height="26" rx="4" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+  <text x="720" y="29" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#8b949e">← Back to Converter</text>
+
+  <!-- Screen label -->
+  <text x="400" y="75" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6e7681">[ MAPPING REFERENCE TABLE — UC-002 ]</text>
+
+  <!-- Intro text -->
+  <text x="30" y="98" font-family="sans-serif" font-size="12" fill="#8b949e">31 character pairs. Cyrillic characters not listed pass through the converter unchanged.</text>
+
+  <!-- Table header -->
+  <rect x="30" y="108" width="740" height="32" rx="4" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+  <text x="80" y="128" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#c9d1d9" letter-spacing="1">CYRILLIC</text>
+  <text x="200" y="128" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#c9d1d9" letter-spacing="1">CYRILLIC NAME</text>
+  <text x="360" y="128" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#c9d1d9" letter-spacing="1">GLAGOLITIC</text>
+  <text x="560" y="128" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#c9d1d9" letter-spacing="1">GLAGOLITIC NAME</text>
+  <!-- Column dividers in header -->
+  <line x1="130" y1="108" x2="130" y2="140" stroke="#30363d" stroke-width="1"/>
+  <line x1="290" y1="108" x2="290" y2="140" stroke="#30363d" stroke-width="1"/>
+  <line x1="430" y1="108" x2="430" y2="140" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Row 1 -->
+  <rect x="30" y="140" width="740" height="28" rx="0" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="80" y="158" text-anchor="middle" font-family="monospace, sans-serif" font-size="16" fill="#e6edf3">А</text>
+  <text x="200" y="158" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8b949e">Az / A</text>
+  <text x="360" y="158" text-anchor="middle" font-family="monospace, sans-serif" font-size="16" fill="#3fb950">&#x2C00;</text>
+  <text x="560" y="158" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8b949e">Glagolitic Az</text>
+  <line x1="130" y1="140" x2="130" y2="168" stroke="#21262d" stroke-width="1"/>
+  <line x1="290" y1="140" x2="290" y2="168" stroke="#21262d" stroke-width="1"/>
+  <line x1="430" y1="140" x2="430" y2="168" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row 2 -->
+  <rect x="30" y="168" width="740" height="28" rx="0" fill="#0d1117" stroke="#21262d" stroke-width="1"/>
+  <text x="80" y="186" text-anchor="middle" font-family="monospace, sans-serif" font-size="16" fill="#e6edf3">Б</text>
+  <text x="200" y="186" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8b949e">Buki / B</text>
+  <text x="360" y="186" text-anchor="middle" font-family="monospace, sans-serif" font-size="16" fill="#3fb950">&#x2C01;</text>
+  <text x="560" y="186" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8b949e">Glagolitic Buky</text>
+  <line x1="130" y1="168" x2="130" y2="196" stroke="#21262d" stroke-width="1"/>
+  <line x1="290" y1="168" x2="290" y2="196" stroke="#21262d" stroke-width="1"/>
+  <line x1="430" y1="168" x2="430" y2="196" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row 3 -->
+  <rect x="30" y="196" width="740" height="28" rx="0" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="80" y="214" text-anchor="middle" font-family="monospace, sans-serif" font-size="16" fill="#e6edf3">В</text>
+  <text x="200" y="214" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8b949e">Vedi / V</text>
+  <text x="360" y="214" text-anchor="middle" font-family="monospace, sans-serif" font-size="16" fill="#3fb950">&#x2C02;</text>
+  <text x="560" y="214" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8b949e">Glagolitic Vede</text>
+  <line x1="130" y1="196" x2="130" y2="224" stroke="#21262d" stroke-width="1"/>
+  <line x1="290" y1="196" x2="290" y2="224" stroke="#21262d" stroke-width="1"/>
+  <line x1="430" y1="196" x2="430" y2="224" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row 4 -->
+  <rect x="30" y="224" width="740" height="28" rx="0" fill="#0d1117" stroke="#21262d" stroke-width="1"/>
+  <text x="80" y="242" text-anchor="middle" font-family="monospace, sans-serif" font-size="16" fill="#e6edf3">Г</text>
+  <text x="200" y="242" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8b949e">Glagoli / G</text>
+  <text x="360" y="242" text-anchor="middle" font-family="monospace, sans-serif" font-size="16" fill="#3fb950">&#x2C03;</text>
+  <text x="560" y="242" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8b949e">Glagolitic Glagoli</text>
+  <line x1="130" y1="224" x2="130" y2="252" stroke="#21262d" stroke-width="1"/>
+  <line x1="290" y1="224" x2="290" y2="252" stroke="#21262d" stroke-width="1"/>
+  <line x1="430" y1="224" x2="430" y2="252" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row 5 -->
+  <rect x="30" y="252" width="740" height="28" rx="0" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="80" y="270" text-anchor="middle" font-family="monospace, sans-serif" font-size="16" fill="#e6edf3">Д</text>
+  <text x="200" y="270" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8b949e">Dobro / D</text>
+  <text x="360" y="270" text-anchor="middle" font-family="monospace, sans-serif" font-size="16" fill="#3fb950">&#x2C04;</text>
+  <text x="560" y="270" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8b949e">Glagolitic Dobro</text>
+  <line x1="130" y1="252" x2="130" y2="280" stroke="#21262d" stroke-width="1"/>
+  <line x1="290" y1="252" x2="290" y2="280" stroke="#21262d" stroke-width="1"/>
+  <line x1="430" y1="252" x2="430" y2="280" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Ellipsis rows (26 more) -->
+  <rect x="30" y="280" width="740" height="36" rx="0" fill="#0d1117" stroke="#21262d" stroke-width="1"/>
+  <text x="400" y="302" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#484f58">· · ·  26 more rows  · · ·</text>
+  <text x="400" y="314" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#484f58">(all 31 pairs shown in the deployed table)</text>
+
+  <!-- Last row sample -->
+  <rect x="30" y="316" width="740" height="28" rx="0" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="80" y="334" text-anchor="middle" font-family="monospace, sans-serif" font-size="16" fill="#e6edf3">Я</text>
+  <text x="200" y="334" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8b949e">Ya</text>
+  <text x="360" y="334" text-anchor="middle" font-family="monospace, sans-serif" font-size="16" fill="#3fb950">&#x2C1E;</text>
+  <text x="560" y="334" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8b949e">Glagolitic Yat</text>
+  <line x1="130" y1="316" x2="130" y2="344" stroke="#21262d" stroke-width="1"/>
+  <line x1="290" y1="316" x2="290" y2="344" stroke="#21262d" stroke-width="1"/>
+  <line x1="430" y1="316" x2="430" y2="344" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Table border full -->
+  <rect x="30" y="108" width="740" height="236" rx="4" fill="none" stroke="#30363d" stroke-width="1.5"/>
+
+  <!-- Annotations -->
+  <line x1="770" y1="155" x2="795" y2="140" stroke="#6e7681" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="520" y="368" font-family="sans-serif" font-size="10" fill="#8b949e">rows alternate #161b22 / #0d1117 for readability</text>
+
+  <!-- Scroll indicator -->
+  <rect x="772" y="140" width="8" height="200" rx="4" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+  <rect x="772" y="140" width="8" height="60" rx="4" fill="#388bfd" opacity="0.7"/>
+  <text x="786" y="200" font-family="sans-serif" font-size="9" fill="#484f58" transform="rotate(90,786,200)">scrollable</text>
+
+  <!-- AC1 annotation -->
+  <rect x="30" y="360" width="740" height="50" rx="4" fill="#161b22" stroke="#30363d" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="45" y="382" font-family="sans-serif" font-size="11" fill="#8b949e">AC1: all 31 defined pairs shown</text>
+  <text x="45" y="397" font-family="sans-serif" font-size="11" fill="#8b949e">AC2: each row = Cyrillic char + Glagolitic char + both names</text>
+  <text x="400" y="382" font-family="sans-serif" font-size="11" fill="#8b949e">AC3: column labels in English, no specialist knowledge needed</text>
+
+  <!-- Footer -->
+  <line x1="0" y1="540" x2="800" y2="540" stroke="#21262d" stroke-width="1"/>
+  <text x="400" y="558" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#484f58">CB-002 — Mapping Reference Table — traces to UC-002</text>
+  <text x="400" y="572" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#484f58">Stage 3 Concept — not a production asset</text>
+</svg>

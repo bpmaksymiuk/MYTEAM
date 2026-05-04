@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <rect width="900" height="420" fill="#0d0f12"/>
+  <rect x="0" y="0" width="900" height="40" fill="#1a1d23"/>
+  <text x="20" y="26" font-family="monospace" font-size="13" fill="#e8eaed">CB-007 — Tier Status &amp; Upgrade Flow</text>
+  <text x="800" y="26" font-family="monospace" font-size="11" fill="#555">UC-011 UC-010</text>
+
+  <!-- Tier indicator (persistent in workspace header) -->
+  <text x="30" y="65" font-family="monospace" font-size="11" fill="#888">Persistent tier indicator — top-right of Workspace header</text>
+  <rect x="680" y="50" width="190" height="30" fill="#1a1d23" rx="6" stroke="#2a2d35" stroke-width="1"/>
+  <text x="700" y="69" font-family="monospace" font-size="10" fill="#888">FREE TIER</text>
+  <text x="810" y="69" font-family="monospace" font-size="10" fill="#ffb347">3/5 today</text>
+
+  <!-- Limit reached state -->
+  <text x="30" y="110" font-family="monospace" font-size="11" fill="#888">Daily limit reached — Rewrite button disabled, inline banner appears</text>
+  <rect x="30" y="120" width="840" height="50" fill="#1a1d23" rx="6" stroke="#ffb347" stroke-width="1"/>
+  <text x="50" y="144" font-family="monospace" font-size="11" fill="#e8eaed">You've used your 5 free rewrites today.</text>
+  <text x="50" y="160" font-family="monospace" font-size="9" fill="#888">Resets at midnight UTC · </text>
+  <text x="230" y="160" font-family="monospace" font-size="9" fill="#00e5a0">Upgrade to Pro for unlimited rewrites →</text>
+  <rect x="720" y="128" width="130" height="30" fill="#ffb347" rx="6"/>
+  <text x="785" y="148" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle" font-weight="bold">Upgrade to Pro</text>
+
+  <!-- Upgrade modal -->
+  <text x="30" y="210" font-family="monospace" font-size="11" fill="#888">Upgrade modal — minimal, reachable within 2 interactions from limit prompt</text>
+  <rect x="200" y="220" width="500" height="160" fill="#141720" rx="12" stroke="#00e5a0" stroke-width="1"/>
+  <text x="450" y="248" font-family="monospace" font-size="13" fill="#e8eaed" text-anchor="middle">Upgrade to Pro</text>
+
+  <!-- Tier comparison -->
+  <rect x="220" y="258" width="210" height="80" fill="#0d0f12" rx="6" stroke="#2a2d35" stroke-width="1"/>
+  <text x="325" y="276" font-family="monospace" font-size="10" fill="#888" text-anchor="middle">FREE</text>
+  <text x="325" y="296" font-family="monospace" font-size="10" fill="#888" text-anchor="middle">5 rewrites / day</text>
+  <text x="325" y="312" font-family="monospace" font-size="10" fill="#888" text-anchor="middle">30-session history</text>
+  <text x="325" y="328" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">Current plan</text>
+
+  <rect x="470" y="258" width="210" height="80" fill="#00332a" rx="6" stroke="#00e5a0" stroke-width="1"/>
+  <text x="575" y="276" font-family="monospace" font-size="10" fill="#00e5a0" text-anchor="middle">PRO</text>
+  <text x="575" y="296" font-family="monospace" font-size="10" fill="#e8eaed" text-anchor="middle">Unlimited rewrites</text>
+  <text x="575" y="312" font-family="monospace" font-size="10" fill="#e8eaed" text-anchor="middle">Unlimited history</text>
+  <text x="575" y="328" font-family="monospace" font-size="10" fill="#00e5a0" text-anchor="middle">$9/mo</text>
+
+  <rect x="340" y="352" width="220" height="18" fill="#00e5a0" rx="4"/>
+  <text x="450" y="364" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle" font-weight="bold">Confirm upgrade — $9/month</text>
+
+  <!-- Pro state tier indicator -->
+  <text x="30" y="400" font-family="monospace" font-size="11" fill="#888">Pro tier indicator (after upgrade) :</text>
+  <rect x="680" y="388" width="190" height="30" fill="#00332a" rx="6" stroke="#00e5a0" stroke-width="1"/>
+  <text x="700" y="407" font-family="monospace" font-size="10" fill="#00e5a0">PRO</text>
+  <text x="790" y="407" font-family="monospace" font-size="10" fill="#888">Unlimited</text>
+</svg>

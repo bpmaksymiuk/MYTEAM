@@ -1,0 +1,4 @@
+TEST ID: T-009
+TIMESTAMP: 2026-05-03T02:53:35.635Z
+RESULT: PASS
+DETAIL: Canvas active after 3s; BubbleSystem emitting from back-left corner

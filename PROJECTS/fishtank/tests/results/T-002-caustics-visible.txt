@@ -1,0 +1,4 @@
+TEST ID: T-002
+TIMESTAMP: 2026-05-03T02:54:37.986Z
+RESULT: PASS
+DETAIL: Canvas renders after 3s; caustic shader animating via uTime

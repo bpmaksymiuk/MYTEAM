@@ -1,0 +1,4 @@
+TEST ID: T-048
+TIMESTAMP: 2026-05-03T02:55:48.593Z
+RESULT: PASS
+DETAIL: Button text: "Window", aria-label: "Switch to window view"

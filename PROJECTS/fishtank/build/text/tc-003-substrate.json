@@ -1,0 +1,9 @@
+{
+  "label": "Substrate",
+  "ariaLabel": "Choose substrate type",
+  "options": {
+    "sand":   { "label": "Sand" },
+    "gravel": { "label": "Gravel" },
+    "rock":   { "label": "Rock" }
+  }
+}

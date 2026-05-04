@@ -1,0 +1,4 @@
+TEST ID: T-dotnet
+TIMESTAMP: 2026-05-04T03:23:12.122Z
+RESULT: PASS
+DETAIL: dotnet quickstart rendered with verification badge.

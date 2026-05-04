@@ -1,0 +1,6 @@
+Clear button:       ✕ Clear
+Copy button:        ⎘ Copy Output
+Copy button (disabled state): ⎘ Copy Output  [disabled — no output present]
+Copy toast:         ✓ Copied to clipboard
+Mapping button:     ☰ Mapping
+Back button:        ← Back

@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 760" width="1100" height="760">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', system-ui, sans-serif; fill: #e6edf3; }
+      .title { font-size: 18px; font-weight: 600; }
+      .label { font-size: 13px; }
+      .small { font-size: 11px; fill: #8b949e; }
+      .code { font-size: 11px; font-family: 'Cascadia Code', monospace; fill: #f78166; }
+      .note { font-size: 11px; fill: #d29922; }
+    </style>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3d444d"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="760" fill="#0d1117"/>
+  <rect x="0" y="0" width="1100" height="44" fill="#161b22"/>
+  <text x="24" y="28" class="title">GA-008 · Crab Entity — Object3D Hierarchy &amp; Gait</text>
+  <text x="900" y="28" class="small">TRACEABILITY: DI-021</text>
+
+  <!-- ===== TOP LEFT: Object3D hierarchy tree ===== -->
+  <text x="28" y="70" class="label" font-weight="600" fill="#f78166">Object3D Hierarchy (CrabEntity.root)</text>
+
+  <!-- Root node -->
+  <rect x="200" y="84" width="120" height="36" rx="6" fill="#161b22" stroke="#b91c1c" stroke-width="2"/>
+  <text x="260" y="107" class="label" text-anchor="middle" font-weight="600">root</text>
+
+  <!-- Vertical stem from root -->
+  <line x1="260" y1="120" x2="260" y2="148" stroke="#3d444d" stroke-width="1.5"/>
+
+  <!-- Horizontal branch -->
+  <line x1="80" y1="148" x2="500" y2="148" stroke="#3d444d" stroke-width="1.5"/>
+
+  <!-- Carapace -->
+  <line x1="260" y1="148" x2="260" y2="168" stroke="#3d444d" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="200" y="168" width="120" height="34" rx="6" fill="#161b22" stroke="#f78166" stroke-width="1.5"/>
+  <text x="260" y="190" class="small" text-anchor="middle" fill="#f78166">Carapace Mesh</text>
+
+  <!-- Leg groups (8 legs, 2 sides) -->
+  <line x1="80" y1="148" x2="80" y2="168" stroke="#3d444d" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="24" y="168" width="112" height="34" rx="6" fill="#161b22" stroke="#d29922" stroke-width="1.5"/>
+  <text x="80" y="183" class="small" text-anchor="middle" fill="#d29922">Leg Roots</text>
+  <text x="80" y="197" class="small" text-anchor="middle">(8 total, 2 sides)</text>
+
+  <!-- Leg root -> segments -->
+  <line x1="80" y1="202" x2="80" y2="228" stroke="#3d444d" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="24" y="228" width="112" height="80" rx="6" fill="#0d1117" stroke="#3d444d" stroke-width="1"/>
+  <text x="80" y="248" class="small" text-anchor="middle">coxa (len 22)</text>
+  <text x="80" y="264" class="small" text-anchor="middle">↓</text>
+  <text x="80" y="279" class="small" text-anchor="middle">merus (len 20)</text>
+  <text x="80" y="294" class="small" text-anchor="middle">↓</text>
+  <text x="80" y="309" class="small" text-anchor="middle">dactyl (len 18)</text>
+
+  <!-- Claw groups -->
+  <line x1="500" y1="148" x2="500" y2="168" stroke="#3d444d" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="436" y="168" width="128" height="34" rx="6" fill="#161b22" stroke="#d29922" stroke-width="1.5"/>
+  <text x="500" y="183" class="small" text-anchor="middle" fill="#d29922">Claw Roots</text>
+  <text x="500" y="197" class="small" text-anchor="middle">(2 total, L + R)</text>
+
+  <!-- Claw root -> segments -->
+  <line x1="500" y1="202" x2="500" y2="228" stroke="#3d444d" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="436" y="228" width="128" height="64" rx="6" fill="#0d1117" stroke="#3d444d" stroke-width="1"/>
+  <text x="500" y="248" class="small" text-anchor="middle">merus (len 25)</text>
+  <text x="500" y="264" class="small" text-anchor="middle">↓</text>
+  <text x="500" y="279" class="small" text-anchor="middle">dactyl + claw sphere</text>
+
+  <!-- Carapace details -->
+  <rect x="28" y="344" width="560" height="72" rx="6" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <text x="48" y="364" class="label" fill="#d29922" font-weight="600">Carapace Geometry</text>
+  <text x="48" y="382" class="small">CylinderGeometry(rTop=80, rBot=65, h=30, radialSegments=8)</text>
+  <text x="48" y="398" class="small">rotated 90° on X  ·  color #7c3f1e  ·  roughness 0.8  ·  metalness 0.1</text>
+  <text x="48" y="414" class="small">Mounted: root.position.y = SUBSTRATE_Y + 15</text>
+
+  <!-- ===== TOP RIGHT: Gait phase table ===== -->
+  <text x="650" y="70" class="label" font-weight="600" fill="#f78166">Gait Oscillator — Phase Offsets</text>
+
+  <rect x="640" y="84" width="420" height="220" rx="6" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+
+  <!-- Table header -->
+  <rect x="640" y="84" width="420" height="32" rx="6" fill="#21262d"/>
+  <text x="700" y="105" class="small" font-weight="600" fill="#e6edf3">Leg Index</text>
+  <text x="820" y="105" class="small" font-weight="600" fill="#e6edf3">Side</text>
+  <text x="900" y="105" class="small" font-weight="600" fill="#e6edf3">Phase Offset</text>
+
+  <line x1="640" y1="116" x2="1060" y2="116" stroke="#3d444d" stroke-width="1"/>
+
+  <text x="700" y="134" class="small">L-0</text><text x="820" y="134" class="small">Left</text><text x="900" y="134" class="code">0</text>
+  <text x="700" y="152" class="small">L-1</text><text x="820" y="152" class="small">Left</text><text x="900" y="152" class="code">π/4 (0.785)</text>
+  <text x="700" y="170" class="small">L-2</text><text x="820" y="170" class="small">Left</text><text x="900" y="170" class="code">π/2 (1.571)</text>
+  <text x="700" y="188" class="small">L-3</text><text x="820" y="188" class="small">Left</text><text x="900" y="188" class="code">3π/4 (2.356)</text>
+  <line x1="640" y1="198" x2="1060" y2="198" stroke="#3d444d" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="700" y="214" class="small">R-0 to R-3</text><text x="820" y="214" class="small">Right</text><text x="900" y="214" class="code">above + π (anti-phase)</text>
+  <text x="660" y="238" class="small">gaitFrequency = 1.5 Hz  ·  rotation applied to coxa (chain[1].rotation.x)</text>
+  <text x="660" y="256" class="small">amplitude = ±0.35 rad  ·  gaitTime accumulates in update(dt)</text>
+  <text x="660" y="275" class="small" fill="#d29922">Lateral drift: ±SIDE_SPEED (18 units/s), direction reverses every 4 s</text>
+  <text x="660" y="293" class="small" fill="#d29922">Clamped to x ∈ [−380, 380]</text>
+
+  <!-- ===== BOTTOM: Defensive display clip timeline ===== -->
+  <text x="28" y="455" class="label" font-weight="600" fill="#f78166">Defensive Display — AnimationMixer Clip Timeline (2.8 s)</text>
+
+  <rect x="28" y="468" width="1040" height="120" rx="6" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+
+  <!-- Timeline axis -->
+  <line x1="60" y1="555" x2="1040" y2="555" stroke="#3d444d" stroke-width="1.5"/>
+
+  <!-- Time markers -->
+  <line x1="60" y1="548" x2="60" y2="562" stroke="#8b949e" stroke-width="1.5"/>
+  <text x="60" y="576" class="small" text-anchor="middle">0 s</text>
+
+  <line x1="354" y1="548" x2="354" y2="562" stroke="#8b949e" stroke-width="1.5"/>
+  <text x="354" y="576" class="small" text-anchor="middle">0.3 s</text>
+
+  <line x1="940" y1="548" x2="940" y2="562" stroke="#8b949e" stroke-width="1.5"/>
+  <text x="940" y="576" class="small" text-anchor="middle">2.5 s</text>
+
+  <line x1="1040" y1="548" x2="1040" y2="562" stroke="#8b949e" stroke-width="1.5"/>
+  <text x="1040" y="576" class="small" text-anchor="middle">2.8 s</text>
+
+  <!-- Phase fills -->
+  <rect x="60" y="504" width="294" height="40" rx="4" fill="#b91c1c" opacity="0.5"/>
+  <text x="207" y="529" class="small" text-anchor="middle" fill="#f78166">Raise merus to 80°</text>
+
+  <rect x="354" y="504" width="586" height="40" rx="4" fill="#3d444d" opacity="0.8"/>
+  <text x="647" y="529" class="small" text-anchor="middle">Hold — claw display</text>
+
+  <rect x="940" y="504" width="100" height="40" rx="4" fill="#1f6feb" opacity="0.5"/>
+  <text x="990" y="529" class="small" text-anchor="middle" fill="#79c0ff">Return</text>
+
+  <!-- Merus label -->
+  <text x="60" y="492" class="small" fill="#d29922">merus.quaternion track: QuaternionKeyframeTrack</text>
+  <text x="60" y="506" class="small" fill="#d29922">times=[0, 0.3, 2.5, 2.8]  ·  q0→q1 (80°)→q1→q0</text>
+
+  <!-- Requirements -->
+  <rect x="28" y="614" width="1040" height="56" rx="6" fill="#0d1117" stroke="#1f6feb" stroke-width="1"/>
+  <text x="48" y="634" class="small" fill="#79c0ff" font-weight="600">Requirements Coverage</text>
+  <text x="48" y="652" class="small">BR-045 Crab photorealistic carapace  ·  BR-046 Sideways locomotion alternating gait  ·  BR-047 Claw idle animation  ·  BR-048 Defensive claw display on click</text>
+  <text x="48" y="668" class="small">AR-012 · PT-023  ·  Interaction radius: 120 world units  ·  Click event: InputManager → CrabEntity.onInteract(worldPos)</text>
+</svg>

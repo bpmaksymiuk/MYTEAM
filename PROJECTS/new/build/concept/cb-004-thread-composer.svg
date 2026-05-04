@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <rect width="900" height="560" fill="#0d0f12"/>
+  <rect x="0" y="0" width="900" height="40" fill="#1a1d23"/>
+  <text x="20" y="26" font-family="monospace" font-size="13" fill="#e8eaed">CB-004 — Thread Composer</text>
+  <text x="800" y="26" font-family="monospace" font-size="11" fill="#555">UC-007 UC-004</text>
+
+  <!-- Trigger label -->
+  <text x="30" y="65" font-family="monospace" font-size="11" fill="#888">Auto-triggers when input &gt;280 chars OR user selects "Thread mode" explicitly</text>
+
+  <!-- Hook tweet card -->
+  <rect x="30" y="78" width="840" height="110" fill="#141720" rx="8" stroke="#ffb347" stroke-width="2"/>
+  <rect x="30" y="78" width="90" height="26" fill="#ffb347" rx="4"/>
+  <text x="75" y="96" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle" font-weight="bold">⚓ Hook Tweet</text>
+  <text x="52" y="96" font-family="monospace" font-size="10" fill="#555" text-anchor="end">≡</text>
+  <text x="50" y="120" font-family="monospace" font-size="11" fill="#e8eaed">The reason this study changed how economists</text>
+  <text x="50" y="138" font-family="monospace" font-size="11" fill="#e8eaed">model inflation — and why it matters to you.</text>
+  <text x="50" y="156" font-family="monospace" font-size="10" fill="#666">🧵 Thread below</text>
+  <text x="790" y="180" font-family="monospace" font-size="10" fill="#ffb347">78/280</text>
+  <rect x="822" y="168" width="38" height="18" fill="#1a1d23" rx="4" stroke="#444" stroke-width="1"/>
+  <text x="841" y="181" font-family="monospace" font-size="9" fill="#aaa" text-anchor="middle">↻</text>
+
+  <!-- Segment 2 -->
+  <rect x="30" y="200" width="840" height="100" fill="#141720" rx="8" stroke="#2a2d35" stroke-width="1"/>
+  <text x="52" y="218" font-family="monospace" font-size="12" fill="#888">≡</text>
+  <rect x="68" y="208" width="36" height="18" fill="#1a1d23" rx="4" stroke="#444" stroke-width="1"/>
+  <text x="86" y="221" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">2/5</text>
+  <text x="50" y="248" font-family="monospace" font-size="11" fill="#e8eaed">Economists have long assumed that wage</text>
+  <text x="50" y="266" font-family="monospace" font-size="11" fill="#e8eaed">growth and inflation move in lockstep.</text>
+  <text x="790" y="288" font-family="monospace" font-size="10" fill="#00e5a0">104/280</text>
+  <rect x="826" y="276" width="34" height="18" fill="#1a1d23" rx="4" stroke="#444" stroke-width="1"/>
+  <text x="843" y="289" font-family="monospace" font-size="9" fill="#aaa" text-anchor="middle">↻</text>
+
+  <!-- Segment 3 -->
+  <rect x="30" y="312" width="840" height="100" fill="#141720" rx="8" stroke="#2a2d35" stroke-width="1"/>
+  <text x="52" y="330" font-family="monospace" font-size="12" fill="#888">≡</text>
+  <rect x="68" y="320" width="36" height="18" fill="#1a1d23" rx="4" stroke="#444" stroke-width="1"/>
+  <text x="86" y="333" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">3/5</text>
+  <text x="50" y="360" font-family="monospace" font-size="11" fill="#e8eaed">The 2024 study found this assumption</text>
+  <text x="50" y="378" font-family="monospace" font-size="11" fill="#e8eaed">breaks down in high-productivity economies.</text>
+  <text x="790" y="400" font-family="monospace" font-size="10" fill="#00e5a0">112/280</text>
+  <rect x="826" y="388" width="34" height="18" fill="#1a1d23" rx="4" stroke="#444" stroke-width="1"/>
+  <text x="843" y="401" font-family="monospace" font-size="9" fill="#aaa" text-anchor="middle">↻</text>
+
+  <!-- Ellipsis for remaining segments -->
+  <text x="430" y="432" font-family="monospace" font-size="14" fill="#555" text-anchor="middle">• • •  (segments 4/5 and 5/5 follow same pattern)</text>
+
+  <!-- Copy all action (sticky bottom) -->
+  <rect x="30" y="466" width="840" height="50" fill="#1a1d23" rx="8" stroke="#00e5a0" stroke-width="1"/>
+  <text x="300" y="496" font-family="monospace" font-size="11" fill="#888">Copy all 5 tweets in order (double line break between each)</text>
+  <rect x="680" y="474" width="160" height="30" fill="#00e5a0" rx="6"/>
+  <text x="760" y="493" font-family="monospace" font-size="11" fill="#0d0f12" text-anchor="middle" font-weight="bold">⎘ Copy All Thread</text>
+
+  <text x="30" y="548" font-family="monospace" font-size="10" fill="#444">Drag ≡ handle to reorder. ↻ regenerates single segment without affecting others. Each segment ≤ 280 chars enforced.</text>
+</svg>

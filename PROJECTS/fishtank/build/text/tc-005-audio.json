@@ -1,0 +1,10 @@
+{
+  "enabled": {
+    "label": "Sound On",
+    "ariaLabel": "Ambient sound is on — click to turn off"
+  },
+  "disabled": {
+    "label": "Sound Off",
+    "ariaLabel": "Ambient sound is off — click to turn on"
+  }
+}

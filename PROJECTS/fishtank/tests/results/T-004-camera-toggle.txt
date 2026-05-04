@@ -1,0 +1,4 @@
+TEST ID: T-004
+TIMESTAMP: 2026-05-03T02:54:39.093Z
+RESULT: PASS
+DETAIL: Camera mode aria-pressed toggles correctly without reload

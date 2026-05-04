@@ -1,0 +1,4 @@
+TEST ID: T-001
+TIMESTAMP: 2026-05-03T02:54:34.554Z
+RESULT: PASS
+DETAIL: Canvas visible at 1280x720, no scrollbars

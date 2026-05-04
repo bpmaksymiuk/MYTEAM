@@ -1,0 +1,4 @@
+TEST ID: T-017
+TIMESTAMP: 2026-05-03T02:54:04.969Z
+RESULT: PASS
+DETAIL: Rapid 5 clicks processed without error; feedCooldown 0.8s active

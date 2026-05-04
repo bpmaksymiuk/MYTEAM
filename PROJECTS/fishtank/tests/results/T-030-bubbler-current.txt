@@ -1,0 +1,4 @@
+TEST ID: T-030
+TIMESTAMP: 2026-05-03T02:56:36.815Z
+RESULT: PASS
+DETAIL: BubbleSystem max rate + FluidGrid ran 3s without errors

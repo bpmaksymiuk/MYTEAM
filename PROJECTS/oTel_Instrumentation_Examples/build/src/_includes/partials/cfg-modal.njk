@@ -1,0 +1,59 @@
+<dialog id="cfg-modal" class="cfg-modal" aria-labelledby="cfg-title">
+  <form method="dialog" data-cfg-form>
+    <header>
+      <h2 id="cfg-title">Configure your OTLP destination</h2>
+      <p class="muted">Pick a preset. Saved locally in your browser only — nothing leaves this page.</p>
+      <button type="button" data-cfg-close aria-label="Close">×</button>
+    </header>
+
+    <fieldset class="presets">
+      <legend>Preset</legend>
+      <label class="preset-card" data-preset="direct">
+        <input type="radio" name="preset" value="direct" checked>
+        <strong>Direct OTLP (HTTP) — no Collector</strong>
+        <span>Sends directly to any OTLP HTTP endpoint. Default.</span>
+      </label>
+      <label class="preset-card" data-preset="dynatrace">
+        <input type="radio" name="preset" value="dynatrace">
+        <strong>Dynatrace</strong>
+        <span>Tenant URL + API token.</span>
+        <small class="neutrality-note">Dynatrace is one of several supported destinations.</small>
+      </label>
+      <label class="preset-card" data-preset="collector">
+        <input type="radio" name="preset" value="collector">
+        <strong>Local OTel Collector <em>(optional)</em></strong>
+        <span>localhost:4318 — Collector dev mode. Running a Collector is optional.</span>
+      </label>
+    </fieldset>
+
+    <div class="field" data-show-when-preset="direct collector">
+      <label for="cfg-endpoint">OTLP endpoint</label>
+      <input id="cfg-endpoint" name="endpoint" type="url" data-cfg-field="endpoint" placeholder="http://localhost:4318">
+    </div>
+
+    <div class="field" data-show-when-preset="dynatrace">
+      <label for="cfg-tenant">Dynatrace tenant URL</label>
+      <input id="cfg-tenant" name="tenantUrl" type="url" data-cfg-field="tenantUrl" placeholder="https://abc12345.live.dynatrace.com">
+    </div>
+
+    <div class="field" data-show-when-preset="dynatrace">
+      <label for="cfg-token">Dynatrace API token</label>
+      <input id="cfg-token" name="apiToken" type="password" data-cfg-field="apiToken" placeholder="dt0c01.…">
+    </div>
+
+    <div class="field">
+      <label for="cfg-service">Service name</label>
+      <input id="cfg-service" name="serviceName" type="text" data-cfg-field="serviceName" value="my-service">
+    </div>
+
+    <section class="preview" data-cfg-preview aria-live="polite">
+      <h3>Preview · what every recipe will render</h3>
+      <pre><code></code></pre>
+    </section>
+
+    <footer>
+      <button type="button" data-cfg-clear class="btn btn-secondary">Clear</button>
+      <button type="submit" data-cfg-save class="btn btn-primary">Save</button>
+    </footer>
+  </form>
+</dialog>

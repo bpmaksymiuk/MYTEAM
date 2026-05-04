@@ -1,0 +1,4 @@
+TEST ID: T-012
+TIMESTAMP: 2026-05-04T03:23:13.400Z
+RESULT: PASS
+DETAIL: Release notes page renders v0.1.0.

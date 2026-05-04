@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', system-ui, sans-serif; }
+      .title  { font-size: 16px; font-weight: 600; fill: #e6edf3; }
+      .label  { font-size: 11px; font-weight: 600; fill: #c9d1d9; }
+      .small  { font-size: 10px; fill: #8b949e; }
+      .api    { font-size: 9px; fill: #79c0ff; font-family: 'Cascadia Code', 'Consolas', monospace; }
+    </style>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#8b949e"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#79c0ff"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="520" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="450" y="28" text-anchor="middle" class="title">Input &amp; Action Dispatch Flow</text>
+  <text x="450" y="46" text-anchor="middle" class="small">DI-015 · DI-016 · DI-017 · left = browser events · centre = dispatch · right = handlers</text>
+
+  <!-- ─── COLUMN A: EVENT SOURCES ─── -->
+  <text x="120" y="72" text-anchor="middle" class="small" fill="#d29922">EVENT SOURCES</text>
+
+  <rect x="20" y="82" width="200" height="36" rx="6" fill="#161b22" stroke="#9e6a03" stroke-width="1.5"/>
+  <text x="120" y="105" text-anchor="middle" class="label">pointerdown</text>
+
+  <rect x="20" y="134" width="200" height="36" rx="6" fill="#161b22" stroke="#9e6a03" stroke-width="1.5"/>
+  <text x="120" y="157" text-anchor="middle" class="label">pointermove</text>
+
+  <rect x="20" y="186" width="200" height="36" rx="6" fill="#161b22" stroke="#9e6a03" stroke-width="1.5"/>
+  <text x="120" y="209" text-anchor="middle" class="label">pointerup</text>
+
+  <rect x="20" y="248" width="200" height="36" rx="6" fill="#161b22" stroke="#9e6a03" stroke-width="1.5"/>
+  <text x="120" y="271" text-anchor="middle" class="label">HammerJS · Pinch</text>
+
+  <rect x="20" y="300" width="200" height="36" rx="6" fill="#161b22" stroke="#9e6a03" stroke-width="1.5"/>
+  <text x="120" y="323" text-anchor="middle" class="label">HammerJS · Pan</text>
+
+  <!-- AudioManager.init gate annotation -->
+  <rect x="20" y="370" width="200" height="52" rx="6" fill="#161b22" stroke="#2ea043" stroke-width="1.5"/>
+  <text x="120" y="392" text-anchor="middle" class="label" fill="#3fb950">AudioManager</text>
+  <text x="120" y="408" text-anchor="middle" class="small">.init() called on</text>
+  <text x="120" y="420" text-anchor="middle" class="small">first pointerdown</text>
+
+  <!-- ─── COLUMN B: InputManager + dispatch ─── -->
+  <text x="450" y="72" text-anchor="middle" class="small" fill="#79c0ff">INPUTMANAGER · DISPATCH</text>
+
+  <rect x="340" y="82" width="220" height="290" rx="8" fill="#161b22" stroke="#1f6feb" stroke-width="2"/>
+  <text x="450" y="108" text-anchor="middle" class="label" fill="#79c0ff">PT-015 · InputManager</text>
+  <!-- decision diamond -->
+  <polygon points="450,138  510,172  450,206  390,172" fill="#21262d" stroke="#3d444d" stroke-width="1.5"/>
+  <text x="450" y="168" text-anchor="middle" class="small">action</text>
+  <text x="450" y="180" text-anchor="middle" class="small">type?</text>
+  <!-- typed action labels inside -->
+  <text x="370" y="148" class="api">feed</text>
+  <text x="370" y="192" class="api">dragfeed</text>
+  <text x="480" y="148" class="api">select</text>
+  <text x="480" y="192" class="api">zoom</text>
+  <!-- cooldown annotation -->
+  <rect x="352" y="218" width="196" height="26" rx="4" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+  <text x="450" y="235" text-anchor="middle" class="api">feedCooldown ≥ 0.8 s gate</text>
+  <!-- setPointerCapture note -->
+  <rect x="352" y="252" width="196" height="26" rx="4" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+  <text x="450" y="269" text-anchor="middle" class="api">setPointerCapture(pointerId)</text>
+  <!-- world coord note -->
+  <rect x="352" y="286" width="196" height="26" rx="4" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+  <text x="450" y="303" text-anchor="middle" class="api">_screenToWorld → plane intersect</text>
+  <!-- dispatch arrow self to output -->
+  <text x="450" y="348" text-anchor="middle" class="api" fill="#8b949e">onAction(handlers[]) →</text>
+
+  <!-- ─── arrows: sources → InputManager ─── -->
+  <line x1="220" y1="100" x2="340" y2="150" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="220" y1="152" x2="340" y2="175" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="220" y1="204" x2="340" y2="185" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="220" y1="266" x2="340" y2="185" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="220" y1="318" x2="340" y2="210" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="220" y1="390" x2="340" y2="250" stroke="#2ea043" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+
+  <!-- ─── COLUMN C: HANDLERS ─── -->
+  <text x="760" y="72" text-anchor="middle" class="small" fill="#3fb950">ACTION HANDLERS</text>
+
+  <!-- ParticleSystem (feed/dragfeed) -->
+  <rect x="640" y="82" width="240" height="60" rx="6" fill="#161b22" stroke="#1f6feb" stroke-width="1.5"/>
+  <text x="760" y="108" text-anchor="middle" class="label">ParticleSystem</text>
+  <text x="760" y="126" text-anchor="middle" class="api">spawnFood(x, WATER_Y, z)</text>
+  <text x="760" y="140" text-anchor="middle" class="small">on feed / dragfeed</text>
+
+  <!-- HUD (select) -->
+  <rect x="640" y="170" width="240" height="72" rx="6" fill="#161b22" stroke="#3d444d" stroke-width="1.5"/>
+  <text x="760" y="196" text-anchor="middle" class="label">HUD</text>
+  <text x="760" y="214" text-anchor="middle" class="api">Raycaster.intersectObjects</text>
+  <text x="760" y="228" text-anchor="middle" class="small">on select → showSelection()</text>
+  <text x="760" y="240" text-anchor="middle" class="small">or hideSelection()</text>
+
+  <!-- SceneManager (zoom — camera) -->
+  <rect x="640" y="262" width="240" height="58" rx="6" fill="#161b22" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="760" y="286" text-anchor="middle" class="label">SceneManager</text>
+  <text x="760" y="304" text-anchor="middle" class="small">zoom → camera frustum scale</text>
+  <text x="760" y="318" text-anchor="middle" class="small">(handled via AppState in future)</text>
+
+  <!-- ─── arrows: InputManager → handlers ─── -->
+  <line x1="560" y1="148" x2="640" y2="115" stroke="#79c0ff" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+  <text x="572" y="128" class="api">FeedAction</text>
+  <text x="572" y="140" class="api">DragFeedAction</text>
+
+  <line x1="560" y1="200" x2="640" y2="210" stroke="#79c0ff" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+  <text x="572" y="196" class="api">SelectAction</text>
+
+  <line x1="560" y1="240" x2="640" y2="285" stroke="#79c0ff" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+  <text x="572" y="260" class="api">ZoomAction</text>
+
+  <!-- ─── LEGEND ─── -->
+  <rect x="20" y="458" width="860" height="44" rx="6" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <line x1="40" y1="480" x2="80" y2="480" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="86" y="484" class="small">browser/Hammer event</text>
+  <line x1="250" y1="480" x2="290" y2="480" stroke="#79c0ff" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+  <text x="296" y="484" class="small">typed GameAction dispatch</text>
+  <line x1="480" y1="480" x2="520" y2="480" stroke="#2ea043" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+  <text x="526" y="484" class="small">one-time init (gesture gate)</text>
+  <text x="40" y="496" class="small" fill="#3d444d">Note: SelectAction ray-cast is performed in HUD (DI-016), not InputManager — InputManager passes screen coords only.</text>
+</svg>

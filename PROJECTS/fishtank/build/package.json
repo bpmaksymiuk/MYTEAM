@@ -1,0 +1,24 @@
+{
+  "name": "fish-tank-simulator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "playwright test --config=playwright.config.mjs"
+  },
+  "dependencies": {
+    "hammerjs": "^2.0.8",
+    "howler": "^2.2.4",
+    "three": "^0.165.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/hammerjs": "^2.0.45",
+    "@types/howler": "^2.2.11",
+    "@types/three": "^0.165.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11"
+  }
+}

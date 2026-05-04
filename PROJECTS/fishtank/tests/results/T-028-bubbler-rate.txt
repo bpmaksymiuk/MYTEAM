@@ -1,0 +1,4 @@
+TEST ID: T-028
+TIMESTAMP: 2026-05-03T02:56:29.819Z
+RESULT: PASS
+DETAIL: Bubbler slider accepts 30 and 200 correctly

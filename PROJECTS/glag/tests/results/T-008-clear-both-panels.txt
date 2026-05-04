@@ -1,0 +1,4 @@
+TEST ID: T-008
+TIMESTAMP: 2026-05-02T04:43:07.960Z
+RESULT: PASS
+DETAIL: Both panels empty after clear

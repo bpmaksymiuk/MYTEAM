@@ -1,0 +1,4 @@
+TEST ID: T-013
+TIMESTAMP: 2026-05-04T03:23:13.489Z
+RESULT: PASS
+DETAIL: All four sample dirs present with README.md.

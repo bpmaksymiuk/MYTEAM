@@ -1,0 +1,4 @@
+TEST ID: T-019
+TIMESTAMP: 2026-05-03T02:56:03.443Z
+RESULT: PASS
+DETAIL: hud-root aria-label=Tank Controls; controls-panel visible

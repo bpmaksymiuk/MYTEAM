@@ -1,0 +1,4 @@
+TEST ID: T-021
+TIMESTAMP: 2026-05-03T02:56:04.296Z
+RESULT: PASS
+DETAIL: Selection card has hidden attribute on load; title text is empty

@@ -1,0 +1,4 @@
+TEST ID: T-015
+TIMESTAMP: 2026-05-03T02:53:55.884Z
+RESULT: PASS
+DETAIL: Canvas click triggers ParticleSystem.emit without errors

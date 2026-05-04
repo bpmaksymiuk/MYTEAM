@@ -1,0 +1,17 @@
+[2m[WebServer] [22m[34m[90m[11ty][39m[34m Server at http://localhost:8080/[39m
+
+Running 11 tests using 1 worker
+
+  ✓   1 specs/cookbook.spec.mjs:12:3 › oTel Cookbook — UC coverage › T-001 home page presents cookbook and four languages above the fold (745ms)
+  ✓   2 specs/cookbook.spec.mjs:25:3 › oTel Cookbook — UC coverage › T-002 configuration panel persists selection and substitutes values (372ms)
+  ✓   3 specs/cookbook.spec.mjs:34:5 › oTel Cookbook — UC coverage › T-00x javascript quickstart renders with verification badge (345ms)
+  ✓   4 specs/cookbook.spec.mjs:34:5 › oTel Cookbook — UC coverage › T-00x python quickstart renders with verification badge (319ms)
+  ✓   5 specs/cookbook.spec.mjs:34:5 › oTel Cookbook — UC coverage › T-00x dotnet quickstart renders with verification badge (282ms)
+  ✓   6 specs/cookbook.spec.mjs:34:5 › oTel Cookbook — UC coverage › T-00x java quickstart renders with verification badge (328ms)
+  ✓   7 specs/cookbook.spec.mjs:42:3 › oTel Cookbook — UC coverage › T-009 navigation index links every recipe (228ms)
+  ✓   8 specs/cookbook.spec.mjs:49:3 › oTel Cookbook — UC coverage › T-010 cross-cutting topics index lists four topics (224ms)
+  ✓   9 specs/cookbook.spec.mjs:57:3 › oTel Cookbook — UC coverage › T-011 troubleshooting index lists symptom causes (224ms)
+  ✓  10 specs/cookbook.spec.mjs:64:3 › oTel Cookbook — UC coverage › T-012 release notes page lists v0.1.0 (206ms)
+  ✓  11 specs/cookbook.spec.mjs:70:3 › oTel Cookbook — UC coverage › T-013 sample directories exist and parity script passes (8ms)
+
+  11 passed (7.0s)

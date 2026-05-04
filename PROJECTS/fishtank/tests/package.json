@@ -1,0 +1,33 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "esbuild": "^0.21.5",
+    "fflate": "^0.8.2",
+    "hammerjs": "^2.0.8",
+    "howler": "^2.2.4",
+    "meshoptimizer": "^0.18.1",
+    "nanoid": "^3.3.12",
+    "picocolors": "^1.1.1",
+    "postcss": "^8.5.13",
+    "rollup": "^4.60.2",
+    "source-map-js": "^1.2.1",
+    "three": "^0.165.0",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1"
+  },
+  "scripts": {
+    "test": "playwright test --config=playwright.config.mjs --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,69 +1,51 @@
----
-name: manager-pipeline-orchestration
-description: 'Run the Manager gate-failure loop for the software factory pipeline. Use when diagnosing failed stage gates, routing work back to the owning stage, verifying artifacts were actually written, orchestrating downstream reruns, and enforcing visible stage handoffs.'
-argument-hint: 'Describe the failed stage, rerun state, or pipeline orchestration task.'
----
+# Manager Pipeline Orchestration — SKILL.md
 
-# Manager Pipeline Orchestration
+> Cross-cutting role — gate failure detection, routing, and pipeline recovery.
 
-## What This Skill Produces
-- A controlled rerun plan when a stage gate fails
-- Clear routing back to the owning stage only
-- Verification that required artifacts were actually created or updated
-- Ordered downstream reruns after the repaired stage passes
-- Visible execution-order handoffs across stage owners
-- Reusable rerun and handoff wording from `./references/manager-rerun-templates.md`
+---
 
 ## When to Use
-- A pipeline stage reports success but its exit gate did not actually pass
-- An artifact is missing, incomplete, or not written to disk
-- A downstream stage must be re-run because an upstream artifact changed
-- A full pipeline run needs orchestration across all stage owners
-- A Manager agent needs to explain why work is being routed back and what happens next
 
-## Decision Points
+Invoke for the Manager cross-cutting role whenever a gate failure is detected, whenever an Auditor flags a blocking violation, or whenever the pipeline needs to be re-triggered after a recovery. Use it to identify the owning stage, issue a routing instruction with a precise failure description, and after correction issue a recovery instruction naming every downstream stage to rerun in order. The Manager produces routing and recovery instructions only — it does not produce stage artifacts.
 
-### 1. Is there a gate failure?
-- If no, continue to the next stage in order.
-- If yes, stop downstream progression and identify the failed gate item.
+---
 
-### 2. Which stage owns the failure?
-- Route only to the stage that owns the failed artifact or gate item.
-- Do not skip upstream ownership boundaries.
+## Target Files
 
-### 3. Was the artifact actually written?
-- If a stage claims success but the artifact does not exist, is incomplete, or was not updated on disk, treat that as a stage failure.
-- Route back to the owning stage with an explicit instruction to create or update the artifact properly.
+- Session log (informal — not a pipeline artifact owned by any stage)
 
-### 4. What must be re-run afterward?
-- Once the repaired stage passes, re-run all downstream stages in order.
-- Do not rerun unaffected upstream stages unless the source-of-intent changed.
+---
 
 ## Procedure
-1. Read `.github/instructions/pipeline.instructions.md` first.
-2. Confirm the current working directory is `PROJECTS/<APP>`.
-3. Identify whether the run is a clean stage progression or a failure-recovery rerun.
-4. If a stage failed, name the exact failed gate item and the owning stage.
-5. Verify the owning stage's artifact exists, is complete, and was actually written.
-6. Route work back only to that owning stage.
-7. After the repaired stage passes, orchestrate downstream reruns in execution order.
-8. Announce when an artifact is ready for the next stage.
-9. Use the pipeline stages table as the authority for ownership routing and completion criteria.
 
-## Communication Requirements
-- Use role-labeled phrasing such as `(Manager) Routing back to Stage 5 Architect due to failed architecture gate: missing AR-to-BR traceability.`
-- State which stage is being re-run and why.
-- Announce when an artifact is ready for the next stage.
-- Do not narrate the entire pipeline only as Manager; ensure each stage owner appears in execution order during full runs.
-- Reuse and adapt the canned wording in `./references/manager-rerun-templates.md` for common failure and handoff cases.
+Follow the Gate Failure Loop below. Activate on demand only — not on a fixed stage cadence.
 
-## Quality Checks
-- The failed gate item is named explicitly.
-- Work is routed only to the owning stage.
-- Missing or unwritten artifacts are treated as failures.
-- Downstream reruns happen in order after repair.
-- Final completion requires all stage gates plus PASS PIPELINE evidence.
+## Gate Failure Loop
 
-## Reference
-- `./references/manager-rerun-templates.md`: canned messages for rerouting, artifact-ready handoffs, and pipeline completion or failure states.
+1. **Detect failure.** Receive the failure signal: an agent self-reports an exit gate FAIL, a stage artifact is missing or invalid, or the Auditor flags a blocking violation.
+2. **Identify ownership.** Determine which artifact failed and which stage owns it. Consult the Pipeline Stages table in `pipeline.instructions.md`.
+3. **Write a failure description.** Produce a specific, actionable description of what failed and why. Vague descriptions ("it didn't work") are not acceptable. Include: the artifact name, the specific failing criterion, and the expected vs observed state.
+4. **Route to owning stage.** Direct the owning stage's agent to re-run with the failure description. Do not attempt to fix the artifact yourself.
+5. **Wait for re-run.** Monitor the re-run. Do not proceed to downstream stages until the exit gate is PASS. Do not apply time pressure that causes the agent to skip quality checks.
+6. **Trigger downstream.** After a confirmed PASS, trigger all downstream stages in order, starting from the stage immediately after the recovered stage.
+7. **Log the recovery.** Record in the session log: stage that failed, failure description, routing action, re-run result, recovery confirmation, and downstream re-run sequence.
 
+---
+
+## Explicit Prohibitions
+
+- Do not edit any stage-owned artifact directly.
+- Do not skip the re-run of any downstream stage after a recovery.
+- Do not close a failure record without a confirmed PASS from the owning stage.
+- Do not merge multiple failure loops — resolve one failure completely before addressing another.
+- Do not accept a partial fix — the exit gate must fully pass, not just the failing criterion.
+
+---
+
+## Exit Gate
+
+- [ ] No open failure records remain unresolved.
+- [ ] Every failure record has a documented routing action and a confirmed PASS outcome.
+- [ ] All downstream stages were re-run in order after each recovery.
+- [ ] Pipeline is at PASS on all stage exit gates before the Manager session closes.
+- [ ] `PIPELINE-STATUS.md` reflects current stage states and latest update dates.

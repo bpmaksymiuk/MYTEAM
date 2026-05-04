@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 580" width="820" height="580">
+  <title>CB-002 — Controls and Configuration Panel — Fish Tank Simulator Concept</title>
+  <rect width="820" height="580" fill="#0d1117"/>
+
+  <g id="title-bar">
+    <rect x="0" y="0" width="820" height="36" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+    <text x="16" y="23" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#e6edf3">CB-002 — CONTROLS AND CONFIGURATION PANEL</text>
+    <text x="804" y="23" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="end">UC-002 · UC-003</text>
+  </g>
+
+  <g id="tank-mini">
+    <rect x="40" y="52" width="520" height="490" rx="4" fill="#071830" stroke="#3d444d" stroke-width="4"/>
+    <text x="300" y="120" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#8b949e" text-anchor="middle">TANK SCENE (active)</text>
+    <ellipse cx="200" cy="260" rx="22" ry="9" fill="#3fb950" opacity="0.4"/>
+    <ellipse cx="350" cy="240" rx="26" ry="10" fill="#d29922" opacity="0.4"/>
+    <ellipse cx="420" cy="310" rx="18" ry="7" fill="#79c0ff" opacity="0.4"/>
+    <rect x="40" y="482" width="520" height="60" fill="#111820" opacity="0.9"/>
+    <text x="300" y="517" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">Scene updates immediately on selection change</text>
+  </g>
+
+  <g id="controls-panel">
+    <rect x="580" y="52" width="200" height="490" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1.5"/>
+    <text x="680" y="80" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#e6edf3" text-anchor="middle">CONTROLS</text>
+    <line x1="596" y1="90" x2="764" y2="90" stroke="#3d444d" stroke-width="1"/>
+
+    <text x="596" y="116" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Camera Mode</text>
+    <rect x="596" y="124" width="90" height="28" rx="6" fill="#1f6feb" opacity="0.8" stroke="#79c0ff" stroke-width="1"/>
+    <text x="641" y="142" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#e6edf3" text-anchor="middle">Isometric</text>
+    <rect x="694" y="124" width="70" height="28" rx="6" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+    <text x="729" y="142" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">3 / 4</text>
+    <text x="596" y="172" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">AC1: ≥2 camera modes · no restart</text>
+
+    <line x1="596" y1="185" x2="764" y2="185" stroke="#3d444d" stroke-width="0.5"/>
+
+    <text x="596" y="207" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Substrate</text>
+    <rect x="596" y="214" width="164" height="28" rx="4" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+    <text x="640" y="232" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Sand</text>
+    <text x="740" y="232" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">▾</text>
+    <text x="596" y="256" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">Options: sand · gravel · rock</text>
+
+    <line x1="596" y1="268" x2="764" y2="268" stroke="#3d444d" stroke-width="0.5"/>
+
+    <text x="596" y="288" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Decorations</text>
+    <g id="toggle-shipwreck">
+      <rect x="596" y="296" width="130" height="26" rx="4" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+      <text x="612" y="313" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Shipwreck</text>
+      <rect x="706" y="300" width="20" height="14" rx="7" fill="#2ea043"/>
+      <circle cx="718" cy="307" r="5" fill="#e6edf3"/>
+    </g>
+    <g id="toggle-rocks">
+      <rect x="596" y="328" width="130" height="26" rx="4" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+      <text x="612" y="345" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Rocks</text>
+      <rect x="706" y="332" width="20" height="14" rx="7" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+      <circle cx="712" cy="339" r="5" fill="#8b949e"/>
+    </g>
+    <g id="toggle-artifacts">
+      <rect x="596" y="360" width="130" height="26" rx="4" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+      <text x="612" y="377" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Artifacts</text>
+      <rect x="706" y="364" width="20" height="14" rx="7" fill="#2ea043"/>
+      <circle cx="718" cy="371" r="5" fill="#e6edf3"/>
+    </g>
+    <text x="596" y="402" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">AC2: visible placement in scene</text>
+
+    <line x1="596" y1="414" x2="764" y2="414" stroke="#3d444d" stroke-width="0.5"/>
+
+    <text x="596" y="434" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Audio Ambiance</text>
+    <rect x="596" y="442" width="164" height="28" rx="4" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+    <text x="640" y="460" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">ON</text>
+    <rect x="716" y="444" width="20" height="14" rx="7" fill="#2ea043"/>
+    <circle cx="728" cy="451" r="5" fill="#e6edf3"/>
+    <text x="596" y="486" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">AC3: user enable/disable audio</text>
+
+    <line x1="596" y1="496" x2="764" y2="496" stroke="#3d444d" stroke-width="0.5"/>
+    <text x="596" y="516" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">Session persists selections</text>
+    <text x="596" y="530" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">Controls discoverable · no tutorial</text>
+  </g>
+
+  <g id="footer-note">
+    <text x="410" y="565" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">All selections apply immediately to the live tank scene without restart</text>
+  </g>
+</svg>

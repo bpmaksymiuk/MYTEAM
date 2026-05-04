@@ -1,0 +1,4 @@
+TEST ID: T-020
+TIMESTAMP: 2026-05-03T02:56:03.842Z
+RESULT: PASS
+DETAIL: #selection-card, #selection-title, #selection-desc all present in DOM

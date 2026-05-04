@@ -1,0 +1,4 @@
+TEST ID: T-015
+TIMESTAMP: 2026-05-02T04:43:09.277Z
+RESULT: PASS
+DETAIL: Both panels empty after mode switch

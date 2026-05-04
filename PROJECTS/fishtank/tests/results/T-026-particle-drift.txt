@@ -1,0 +1,4 @@
+TEST ID: T-026
+TIMESTAMP: 2026-05-03T02:56:22.962Z
+RESULT: PASS
+DETAIL: ParticleSystem.tick() ran 3s without errors

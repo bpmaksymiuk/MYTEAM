@@ -1,59 +1,64 @@
----
-name: concept-storyboard-authoring
-description: 'Produce 3-CONCEPT-STORYBOARD.md and ./build/concept/** storyboard files from 2-NARRATIVE-VISION.md and 1-USE-CASES.md. Use for Stage 3 early visual concept work, screen-by-screen storyboarding, and style direction before requirements are written.'
-argument-hint: 'Describe the concept scope, visual style direction, and UC IDs to cover.'
----
+# Concept Storyboard Authoring — SKILL.md
 
-# Concept Storyboard Authoring
+> Stage 3 — early visual concepts before requirements are locked.
+
+---
 
 ## When to Use
-- Creating or updating `3-CONCEPT-STORYBOARD.md`.
-- Producing concept storyboard files in `./build/concept/` at Stage 3.
-- Establishing visual direction and screen layout before requirements are written.
-- Giving the Business Analyst, Architect, and Technical Lead a visual reference.
+
+Invoke at Stage 3 (Graphic Artist). Use it when translating approved use cases into visual concept boards that communicate the product's shape before any architecture or design work begins. Produces `3-CONCEPT-STORYBOARD.md` and SVG files under `build/concept/`. These are exploratory — they inform later stages but are not final assets. Final assets are produced at Stage 8. Upstream input: `1-USE-CASES.md`.
+
+---
 
 ## Target Files
+
 - `3-CONCEPT-STORYBOARD.md`
-- `./build/concept/**`
+- `./build/concept/**` (one SVG per CB record)
 
-## CB Record Schema
-
-```markdown
-## CB-XXX : CONCEPT NAME
-- SUMMARY
-- FILE
-- FORMAT
-- SCREENS COVERED
-- STYLE NOTES
-- TRACEABILITY
-- RELATED
 ---
+
+## Record Schema
+
+```
+## CB-XXX : STORYBOARD NAME
+
+- **SUMMARY:** One sentence describing what this concept visualises.
+- **FILE:** `./build/concept/<filename>.svg`
+- **FORMAT:** SVG preferred. Labelled regions, minimal colour, clear structure.
+- **SCREENS COVERED:** List of screens or views this concept illustrates.
+- **STYLE NOTES:** Mood, palette direction, layout approach, interaction hints.
+- **TRACEABILITY:** UC-IDs this concept maps to.
+- **RELATED:** Other CB-IDs this concept builds on or contrasts with.
 ```
 
+---
+
 ## Procedure
-1. Read pipeline instructions.
-2. Read `2-NARRATIVE-VISION.md` in full for tone, themes, and creative direction.
-3. Read `1-USE-CASES.md` for the list of screens and user flows to visualise.
-4. Produce one concept file per major screen or user flow in `./build/concept/`.
-5. Use SVG format for all concept files unless a raster format is explicitly required.
-6. Annotate each storyboard file with labelled regions (e.g. title bar, toolbar, editor, status bar) and interaction notes.
-7. Create one CB record per concept file in `3-CONCEPT-STORYBOARD.md`.
-8. Keep storyboards illustrative — do not produce pixel-perfect finalised artwork at this stage; that belongs to Stage 8.
 
-## Naming Convention
-- Concept files: `concept-{screen-name}.svg`
-- Record IDs: `CB-001`, `CB-002`, ...
+1. Read `.github/instructions/pipeline.instructions.md`.
+2. Read `1-USE-CASES.md` and `2-NARRATIVE-VISION.md` in full.
+3. Identify the major screens or flows each UC implies.
+4. Group related screens into logical storyboard units — one CB record per major flow or view cluster.
+5. For each CB:
+   - Write the CB record in `3-CONCEPT-STORYBOARD.md`.
+   - Create the SVG file at the path specified in the FILE field.
+   - SVG format requirements:
+     - Dark background (`#0d1117` or `#161b22`)
+     - Labelled regions with clear bounding boxes
+     - Include a title bar and screen annotations
+     - Use muted colours for exploration; no production polish needed at this stage
+6. Add an exit gate section to `3-CONCEPT-STORYBOARD.md`.
+7. Validate against the exit gate.
+8. **Stop. State `GATE 3: PASS` or `GATE 3: FAIL` before taking any further pipeline action.**
 
-## Quality Rules
-- Every CB record must map to a real, non-empty file in `./build/concept/`.
-- Concept files must cover all major screens identified in `1-USE-CASES.md`.
-- Storyboards must be legible at a glance; include visible labels.
-- Do not produce final production image assets at this stage.
-- TRACEABILITY fields must reference valid UC IDs from `1-USE-CASES.md`.
+---
 
 ## Exit Gate
-- `3-CONCEPT-STORYBOARD.md` exists with one CB record per major screen.
-- Every CB FILE path exists in `./build/concept/` and is non-empty.
-- All major UC screens are represented in at least one concept file.
-- TRACEABILITY fields reference valid UC IDs.
-- No stubs or placeholder records remain.
+
+- [ ] `3-CONCEPT-STORYBOARD.md` contains at least one CB record per major UC flow.
+- [ ] Every CB record follows the schema (all fields present).
+- [ ] Every CB FILE path exists and is a non-empty SVG.
+- [ ] No CB file is a placeholder stub — each must contain meaningful visual structure.
+- [ ] TRACEABILITY field references valid UC-IDs.
+- [ ] SVG files are legible at standard screen resolution.
+- [ ] `PIPELINE-STATUS.md` is updated for Stage 3 with STATUS and STATUS UPDATED date.

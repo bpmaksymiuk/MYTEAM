@@ -1,0 +1,4 @@
+TEST ID: T-001
+TIMESTAMP: 2026-05-04T03:23:10.730Z
+RESULT: PASS
+DETAIL: Home page rendered with all four languages, OTLP, and Dynatrace mentioned.

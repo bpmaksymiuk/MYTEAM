@@ -1,0 +1,4 @@
+Section heading: Character Mapping Reference
+Back button:     ← Back
+Intro text:      29 uppercase character pairs. Lowercase variants are also mapped. Characters not listed pass through unchanged.
+Table headers:   Cyrillic | Cyrillic Name | Glagolitic | Glagolitic Name

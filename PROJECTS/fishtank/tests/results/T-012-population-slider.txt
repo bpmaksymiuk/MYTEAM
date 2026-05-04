@@ -1,0 +1,4 @@
+TEST ID: T-012
+TIMESTAMP: 2026-05-03T02:53:43.292Z
+RESULT: PASS
+DETAIL: Population display updates to 5 and 20 correctly

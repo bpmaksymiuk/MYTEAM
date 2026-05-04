@@ -1,0 +1,4 @@
+TEST ID: T-016
+TIMESTAMP: 2026-05-03T02:54:03.267Z
+RESULT: PASS
+DETAIL: FishAgent food-seek override runs 4s after food drop without errors

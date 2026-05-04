@@ -1,0 +1,21 @@
+{
+  "cardPrefix": "Species:",
+  "species": {
+    "clownfish": {
+      "displayName": "Clownfish",
+      "description": "Darting and bold, it claims its patch of the tank with restless energy."
+    },
+    "angelfish": {
+      "displayName": "Angelfish",
+      "description": "Gliding slowly through open water, it moves with unhurried grace."
+    },
+    "tetra": {
+      "displayName": "Tetra",
+      "description": "Small and swift, it schools with its kind in a shimmering, coordinated drift."
+    },
+    "gourami": {
+      "displayName": "Gourami",
+      "description": "Unhurried and curious, it explores the lower reaches at its own quiet pace."
+    }
+  }
+}

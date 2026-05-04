@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" font-family="Inter, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; }
+      .panel { fill: #161b22; }
+      .panel2 { fill: #1f2530; }
+      .ink { fill: #e6ecf5; }
+      .muted { fill: #8a93ab; }
+      .ok { fill: #37b26b; }
+      .otel { fill: #f5a800; }
+      .dt { fill: #1496ff; }
+      .warn { fill: #e0a030; }
+      .h1 { font-size: 26px; font-weight: 700; }
+      .h2 { font-size: 18px; font-weight: 600; }
+      .h3 { font-size: 14px; font-weight: 600; }
+      .body { font-size: 13px; }
+      .small { font-size: 11px; }
+      .mono { font-family: 'Fira Code', monospace; font-size: 12px; }
+      .stamp { font-size: 10px; letter-spacing: 1.5px; }
+      .pill-active { stroke: #37b26b; stroke-width: 2; fill: none; }
+      .pill-inactive { stroke: #2a334d; stroke-width: 1; fill: none; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="800" class="bg"/>
+
+  <text x="40" y="22" class="ink stamp">CB-003 · CONCEPT BOARD · CONFIGURATION PANEL · UC-002</text>
+  <text x="1240" y="22" text-anchor="end" class="muted stamp">CLIENT-SIDE ONLY · BROWSER STORAGE · NO SERVER</text>
+  <line x1="40" y1="30" x2="1240" y2="30" stroke="#2a334d"/>
+
+  <!-- Page underneath (dimmed) -->
+  <rect x="60" y="60" width="1160" height="720" fill="#0d1117"/>
+  <rect x="60" y="60" width="1160" height="720" fill="#000" opacity="0.45"/>
+  <text x="80" y="100" class="muted small">[ recipe page dimmed beneath modal ]</text>
+  <rect x="80" y="120" width="700" height="14" fill="#1c2230"/>
+  <rect x="80" y="142" width="500" height="14" fill="#1c2230"/>
+  <rect x="80" y="180" width="800" height="120" fill="#1c2230"/>
+
+  <!-- Modal panel -->
+  <rect x="280" y="100" width="720" height="600" rx="10" class="panel" stroke="#2a334d" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="310" y="145" class="ink h1">Configure your OTLP destination</text>
+  <text x="310" y="170" class="muted body">Pick a preset. Saved locally in your browser only — nothing leaves this page.</text>
+  <text x="970" y="145" text-anchor="end" class="muted body">×</text>
+
+  <!-- Preset row -->
+  <text x="310" y="215" class="ink h3">PRESET</text>
+  <g>
+    <rect x="310" y="230" width="200" height="80" rx="6" class="panel-active pill-active" fill="#0f1a2e"/>
+    <circle cx="330" cy="252" r="6" class="ok"/>
+    <text x="345" y="256" class="ink h3">Generic OTLP</text>
+    <text x="325" y="280" class="muted small">Send to any OTLP/HTTP receiver.</text>
+    <text x="325" y="298" class="mono otel" font-size="10">Default</text>
+  </g>
+  <g>
+    <rect x="525" y="230" width="200" height="80" rx="6" class="pill-inactive"/>
+    <circle cx="545" cy="252" r="6" class="dt"/>
+    <text x="560" y="256" class="ink h3">Dynatrace</text>
+    <text x="540" y="280" class="muted small">Tenant URL + API token.</text>
+    <text x="540" y="298" class="mono dt" font-size="10">Click to select</text>
+  </g>
+  <g>
+    <rect x="740" y="230" width="220" height="80" rx="6" class="pill-inactive"/>
+    <text x="760" y="256" class="ink h3">Local OTLP receiver</text>
+    <text x="755" y="280" class="muted small">localhost:4318 — collector dev mode.</text>
+    <text x="755" y="298" class="mono muted" font-size="10">Click to select</text>
+  </g>
+
+  <!-- Inputs (Dynatrace shown for example, dimmed because Generic active) -->
+  <text x="310" y="355" class="ink h3">DYNATRACE TENANT URL</text>
+  <text x="310" y="372" class="muted small">required only when Dynatrace preset is selected</text>
+  <rect x="310" y="385" width="650" height="38" rx="4" class="panel2" stroke="#2a334d"/>
+  <text x="325" y="409" class="mono muted">https://abc12345.live.dynatrace.com</text>
+
+  <text x="310" y="450" class="ink h3">DYNATRACE API TOKEN</text>
+  <text x="310" y="467" class="muted small">scopes: openTelemetryTrace.ingest, metrics.ingest, logs.ingest</text>
+  <rect x="310" y="480" width="650" height="38" rx="4" class="panel2" stroke="#2a334d"/>
+  <text x="325" y="504" class="mono muted">dt0c01.•••••••••••••••••••••••••••••••</text>
+
+  <!-- Service name -->
+  <text x="310" y="545" class="ink h3">SERVICE NAME</text>
+  <rect x="310" y="558" width="320" height="38" rx="4" class="panel2" stroke="#2a334d"/>
+  <text x="325" y="582" class="mono ink">my-service</text>
+
+  <!-- Preview block -->
+  <text x="310" y="630" class="ink h3 otel">PREVIEW · what every recipe will render</text>
+  <rect x="310" y="640" width="650" height="40" rx="4" fill="#0a0e18" stroke="#37b26b"/>
+  <text x="325" y="657" class="mono ok">OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318</text>
+  <text x="325" y="673" class="mono muted">OTEL_SERVICE_NAME=my-service</text>
+
+  <!-- Buttons -->
+  <rect x="800" y="700" width="80" height="34" rx="4" class="panel2" stroke="#2a334d"/>
+  <text x="840" y="722" text-anchor="middle" class="muted body">Clear</text>
+  <rect x="890" y="700" width="80" height="34" rx="4" fill="#37b26b"/>
+  <text x="930" y="722" text-anchor="middle" class="ink body" font-weight="600">Save</text>
+
+  <!-- Side annotations -->
+  <text x="40" y="280" class="muted small" transform="rotate(-90 40 280)">UC-002 AC2: at least three presets</text>
+  <text x="1255" y="430" class="muted small" transform="rotate(-90 1255 430)">UC-002 AC5: stays in browser</text>
+  <text x="40" y="660" class="muted small" transform="rotate(-90 40 660)">UC-002 AC4: live preview of rendered values</text>
+</svg>

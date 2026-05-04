@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" font-family="Inter, 'Helvetica Neue', sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #0b1020; }
+      .surface { fill: #141a2e; }
+      .surface2 { fill: #1c2440; }
+      .ink { fill: #e6ecf5; }
+      .muted { fill: #8a93ab; }
+      .otel { fill: #f5a800; }
+      .dt { fill: #1496ff; }
+      .ok { fill: #37b26b; }
+      .frame { fill: none; stroke: #2a334d; stroke-width: 1; }
+      .h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.5px; }
+      .h2 { font-size: 22px; font-weight: 600; }
+      .h3 { font-size: 15px; font-weight: 600; }
+      .body { font-size: 14px; }
+      .small { font-size: 11px; }
+      .mono { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 13px; }
+      .stamp { font-size: 10px; letter-spacing: 1.5px; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="800" class="bg"/>
+
+  <!-- Title bar -->
+  <text x="40" y="22" class="ink stamp">CB-002 · CONCEPT BOARD · DIRECTION B — CONSOLE-FIRST MODERN · HOME PAGE</text>
+  <text x="1240" y="22" text-anchor="end" class="muted stamp">DEEP NAVY · OTEL ORANGE · DYNATRACE CYAN</text>
+  <line x1="40" y1="30" x2="1240" y2="30" stroke="#2a334d"/>
+
+  <!-- Browser chrome -->
+  <rect x="60" y="60" width="1160" height="40" class="surface"/>
+  <circle cx="80" cy="80" r="6" fill="#ff5f57"/><circle cx="98" cy="80" r="6" fill="#febc2e"/><circle cx="116" cy="80" r="6" fill="#28c840"/>
+  <rect x="140" y="68" width="900" height="24" class="surface2"/>
+  <text x="155" y="85" class="mono muted">https://otel-cookbook.dev</text>
+
+  <!-- Top nav -->
+  <rect x="60" y="100" width="1160" height="50" class="surface"/>
+  <rect x="80" y="118" width="14" height="14" class="otel"/>
+  <text x="105" y="132" class="ink h3">otel.cookbook</text>
+  <text x="900" y="132" class="muted body">recipes</text>
+  <text x="985" y="132" class="muted body">topics</text>
+  <text x="1060" y="132" class="muted body">troubleshoot</text>
+  <rect x="1160" y="112" width="50" height="26" rx="4" class="surface2" stroke="#2a334d"/>
+  <text x="1185" y="130" text-anchor="middle" class="ink mono">cfg</text>
+
+  <!-- Hero -->
+  <text x="80" y="220" class="ink h1">OpenTelemetry → any OTLP backend</text>
+  <text x="80" y="270" class="ink h1">in <tspan class="otel">4 languages</tspan>, in <tspan class="dt">5 minutes</tspan>.</text>
+  <text x="80" y="305" class="muted body">Copy a recipe. Set four env-vars. Watch your spans land.</text>
+
+  <!-- Destination chips -->
+  <rect x="80" y="335" width="170" height="32" rx="16" class="surface" stroke="#37b26b"/>
+  <circle cx="100" cy="351" r="5" class="ok"/>
+  <text x="115" y="356" class="ink small">Generic OTLP</text>
+  <rect x="260" y="335" width="120" height="32" rx="16" class="surface" stroke="#1496ff"/>
+  <circle cx="278" cy="351" r="5" class="dt"/>
+  <text x="290" y="356" class="ink small">Dynatrace</text>
+  <rect x="390" y="335" width="170" height="32" rx="16" class="surface" stroke="#2a334d"/>
+  <text x="408" y="356" class="muted small">Local · localhost:4318</text>
+  <text x="80" y="395" class="muted small">Pick once in cfg → every code block on every page is pre-filled.</text>
+
+  <!-- Language tiles -->
+  <g>
+    <rect x="80" y="430" width="270" height="170" rx="6" class="surface" stroke="#2a334d"/>
+    <rect x="80" y="430" width="270" height="3" class="otel"/>
+    <text x="100" y="468" class="ink h2">JavaScript</text>
+    <text x="100" y="490" class="muted small">Node.js</text>
+    <text x="100" y="520" class="mono ink">› quickstart</text>
+    <text x="100" y="540" class="mono muted">› manual sdk</text>
+    <text x="100" y="560" class="mono muted">› auto-instrument</text>
+    <text x="100" y="588" class="mono ok small">✓ verified 2026-04-22</text>
+  </g>
+  <g>
+    <rect x="370" y="430" width="270" height="170" rx="6" class="surface" stroke="#2a334d"/>
+    <rect x="370" y="430" width="270" height="3" class="otel"/>
+    <text x="390" y="468" class="ink h2">Python</text>
+    <text x="390" y="490" class="muted small">3.9+</text>
+    <text x="390" y="520" class="mono ink">› quickstart</text>
+    <text x="390" y="540" class="mono muted">› manual sdk</text>
+    <text x="390" y="560" class="mono muted">› auto-instrument</text>
+    <text x="390" y="588" class="mono ok small">✓ verified 2026-04-22</text>
+  </g>
+  <g>
+    <rect x="660" y="430" width="270" height="170" rx="6" class="surface" stroke="#2a334d"/>
+    <rect x="660" y="430" width="270" height="3" class="otel"/>
+    <text x="680" y="468" class="ink h2">.NET</text>
+    <text x="680" y="490" class="muted small">.NET 8+</text>
+    <text x="680" y="520" class="mono ink">› quickstart</text>
+    <text x="680" y="540" class="mono muted">› manual sdk</text>
+    <text x="680" y="560" class="mono muted">› auto-instrument</text>
+    <text x="680" y="588" class="mono ok small">✓ verified 2026-04-22</text>
+  </g>
+  <g>
+    <rect x="950" y="430" width="270" height="170" rx="6" class="surface" stroke="#2a334d"/>
+    <rect x="950" y="430" width="270" height="3" class="otel"/>
+    <text x="970" y="468" class="ink h2">Java</text>
+    <text x="970" y="490" class="muted small">17+</text>
+    <text x="970" y="520" class="mono ink">› quickstart</text>
+    <text x="970" y="540" class="mono muted">› manual sdk</text>
+    <text x="970" y="560" class="mono muted">› java agent</text>
+    <text x="970" y="588" class="mono ok small">✓ verified 2026-04-22</text>
+  </g>
+
+  <!-- Active config strip -->
+  <rect x="80" y="650" width="1140" height="60" rx="6" class="surface" stroke="#37b26b"/>
+  <circle cx="105" cy="680" r="6" class="ok"/>
+  <text x="125" y="685" class="ink mono">OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318</text>
+  <text x="125" y="700" class="mono muted small">active config · Generic OTLP preset · saved locally only</text>
+  <text x="1100" y="688" class="dt mono small">change →</text>
+
+  <!-- Bottom annotation -->
+  <text x="60" y="770" class="muted small">Style: dark by default · OTel orange (#F5A800) for product · Dynatrace cyan (#1496FF) for that destination only · ok-green for verified state</text>
+</svg>

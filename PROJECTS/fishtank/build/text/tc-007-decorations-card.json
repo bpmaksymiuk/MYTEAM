@@ -1,0 +1,17 @@
+{
+  "cardPrefix": "Decoration:",
+  "decorations": {
+    "shipwreck": {
+      "displayName": "Shipwreck",
+      "description": "A vessel that found its rest here long ago, now home to those who shelter within."
+    },
+    "rocks": {
+      "displayName": "Rocks",
+      "description": "Smooth-worn stones that break the current and give the fish a place to weave between."
+    },
+    "artifacts": {
+      "displayName": "Artifacts",
+      "description": "A small chest of forgotten things, half-buried, catching the light from above."
+    }
+  }
+}

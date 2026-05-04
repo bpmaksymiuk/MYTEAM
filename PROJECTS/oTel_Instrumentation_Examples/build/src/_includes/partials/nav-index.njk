@@ -1,0 +1,13 @@
+<nav aria-label="Topics">
+  <h2 class="nav-heading">Topics</h2>
+  <ul class="nav-topics">
+    {% for t in topicOrder %}
+      <li>
+        <a href="/{{ t.slug }}/"
+           {% if page.url == '/' + t.slug + '/' %}aria-current="page"{% endif %}>
+          {{ t.label }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

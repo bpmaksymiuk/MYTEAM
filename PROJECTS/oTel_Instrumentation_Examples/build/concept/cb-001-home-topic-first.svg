@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" font-family="Georgia, 'Source Serif', serif">
+  <defs>
+    <style>
+      .paper { fill: #f8f4ec; }
+      .ink { fill: #1b1a17; }
+      .muted { fill: #6b6358; }
+      .ochre { fill: #c58a3f; }
+      .sage { fill: #6e8b5a; }
+      .red { fill: #b6452c; }
+      .frame { fill: none; stroke: #1b1a17; stroke-width: 1.5; }
+      .dashed { fill: none; stroke: #1b1a17; stroke-width: 1; stroke-dasharray: 4 3; }
+      .h1 { font-size: 38px; font-weight: 700; }
+      .h2 { font-size: 22px; font-weight: 700; }
+      .h3 { font-size: 16px; font-weight: 700; }
+      .body { font-size: 14px; }
+      .small { font-size: 11px; }
+      .mono { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 13px; }
+      .stamp { font-size: 10px; letter-spacing: 1.5px; }
+      .annot { font-style: italic; font-family: 'Caveat', 'Comic Sans MS', cursive; font-size: 18px; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="800" class="paper"/>
+
+  <!-- Title bar -->
+  <rect x="40" y="30" width="1200" height="2" class="ink"/>
+  <text x="40" y="22" class="ink stamp">CB-001 · CONCEPT BOARD · DIRECTION A — ENGINEER'S NOTEBOOK · HOME PAGE</text>
+  <text x="1240" y="22" text-anchor="end" class="muted stamp">PAPER · OCHRE · SAGE · INK</text>
+
+  <!-- Browser chrome -->
+  <rect x="60" y="60" width="1160" height="40" class="frame"/>
+  <circle cx="80" cy="80" r="6" class="muted"/><circle cx="98" cy="80" r="6" class="muted"/><circle cx="116" cy="80" r="6" class="muted"/>
+  <rect x="140" y="68" width="900" height="24" fill="#ece6d8" stroke="#6b6358"/>
+  <text x="155" y="85" class="mono" fill="#6b6358">otel-cookbook.dev</text>
+
+  <!-- Top nav -->
+  <rect x="60" y="100" width="1160" height="50" fill="#ece6d8" stroke="#1b1a17"/>
+  <text x="80" y="132" class="ink h3">OTel Cookbook</text>
+  <text x="900" y="132" class="ink body">Recipes</text>
+  <text x="1000" y="132" class="ink body">Topics</text>
+  <text x="1090" y="132" class="ink body">Troubleshoot</text>
+  <rect x="1180" y="112" width="32" height="26" fill="#c58a3f"/>
+  <text x="1196" y="130" text-anchor="middle" fill="#fff" class="h3">⚙</text>
+  <text x="1180" y="158" class="annot ochre">Config panel ←</text>
+
+  <!-- Hero -->
+  <text x="80" y="220" class="ink h1">OpenTelemetry, in four languages.</text>
+  <text x="80" y="260" class="ink h1">Pick a recipe. Copy. Run.</text>
+  <text x="80" y="295" class="muted body">A cookbook for emitting OTLP traces, metrics, and logs from JavaScript, Python, .NET, and Java.</text>
+  <text x="80" y="315" class="muted body">Send to any OTLP destination — including Dynatrace.</text>
+
+  <!-- Annotation -->
+  <path d="M 80 335 Q 100 360 130 360" class="dashed"/>
+  <text x="140" y="365" class="annot ochre">UC-001 AC2: OTLP above the fold; Dynatrace named as one option</text>
+
+  <!-- Language tiles -->
+  <g>
+    <rect x="80" y="400" width="270" height="180" class="paper" stroke="#1b1a17" stroke-width="1.5"/>
+    <text x="100" y="440" class="ink h2">JavaScript</text>
+    <text x="100" y="465" class="muted body">Node.js</text>
+    <text x="100" y="510" class="ink body">› Quickstart</text>
+    <text x="100" y="530" class="ink body">› Manual SDK</text>
+    <text x="100" y="550" class="ink body">› Auto-instrument</text>
+    <text x="100" y="570" class="muted small">Verified 2026-04-22 · @otel/sdk-node@0.51</text>
+  </g>
+  <g>
+    <rect x="370" y="400" width="270" height="180" class="paper" stroke="#1b1a17" stroke-width="1.5"/>
+    <text x="390" y="440" class="ink h2">Python</text>
+    <text x="390" y="465" class="muted body">3.9+</text>
+    <text x="390" y="510" class="ink body">› Quickstart</text>
+    <text x="390" y="530" class="ink body">› Manual SDK</text>
+    <text x="390" y="550" class="ink body">› Auto-instrument</text>
+    <text x="390" y="570" class="muted small">Verified 2026-04-22 · opentelemetry-sdk 1.27</text>
+  </g>
+  <g>
+    <rect x="660" y="400" width="270" height="180" class="paper" stroke="#1b1a17" stroke-width="1.5"/>
+    <text x="680" y="440" class="ink h2">.NET</text>
+    <text x="680" y="465" class="muted body">.NET 8+</text>
+    <text x="680" y="510" class="ink body">› Quickstart</text>
+    <text x="680" y="530" class="ink body">› Manual SDK</text>
+    <text x="680" y="550" class="ink body">› Auto-instrument</text>
+    <text x="680" y="570" class="muted small">Verified 2026-04-22 · OTel.Exporter.Otlp 1.9</text>
+  </g>
+  <g>
+    <rect x="950" y="400" width="270" height="180" class="paper" stroke="#1b1a17" stroke-width="1.5"/>
+    <text x="970" y="440" class="ink h2">Java</text>
+    <text x="970" y="465" class="muted body">17+</text>
+    <text x="970" y="510" class="ink body">› Quickstart</text>
+    <text x="970" y="530" class="ink body">› Manual SDK</text>
+    <text x="970" y="550" class="ink body">› Java agent</text>
+    <text x="970" y="570" class="muted small">Verified 2026-04-22 · opentelemetry-bom 1.42</text>
+  </g>
+
+  <!-- Annotation under tiles -->
+  <text x="80" y="615" class="annot sage">Four equally weighted entry points · UC-001 AC1 + AC3</text>
+
+  <!-- Status strip -->
+  <rect x="80" y="650" width="1140" height="60" fill="#ece6d8" stroke="#1b1a17"/>
+  <text x="100" y="680" class="ink h3">Configuration:</text>
+  <text x="220" y="680" class="mono" fill="#6e8b5a">Generic OTLP · http://localhost:4318</text>
+  <text x="100" y="700" class="muted small">Click ⚙ to switch destination · Dynatrace, custom OTLP collector, or local receiver</text>
+  <text x="900" y="688" class="ochre body">Change destination →</text>
+
+  <!-- Margin annotation -->
+  <text x="60" y="770" class="annot ochre">"Joy of OTel" · warm cream + ink + ochre accents · serif headings · code in mono</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+  <rect width="900" height="300" fill="#0d0f12"/>
+  <rect x="0" y="0" width="900" height="40" fill="#1a1d23"/>
+  <text x="20" y="26" font-family="monospace" font-size="13" fill="#e8eaed">CB-005 — Hashtag &amp; Timing Panel</text>
+  <text x="830" y="26" font-family="monospace" font-size="11" fill="#555">UC-008</text>
+
+  <text x="30" y="65" font-family="monospace" font-size="11" fill="#888">Appears contextually BELOW the copied tile — not a modal. Collapses after 8s or next interaction.</text>
+
+  <rect x="30" y="78" width="840" height="180" fill="#141720" rx="8" stroke="#2a2d35" stroke-width="1"/>
+
+  <!-- Hashtag section -->
+  <text x="50" y="104" font-family="monospace" font-size="11" fill="#e8eaed">Suggested hashtags</text>
+  <!-- Hashtag chips -->
+  <rect x="50" y="112" width="90" height="24" fill="#1a1d23" rx="12" stroke="#00e5a0" stroke-width="1"/>
+  <text x="95" y="128" font-family="monospace" font-size="10" fill="#00e5a0" text-anchor="middle">#economics</text>
+  <rect x="150" y="112" width="72" height="24" fill="#1a1d23" rx="12" stroke="#00e5a0" stroke-width="1"/>
+  <text x="186" y="128" font-family="monospace" font-size="10" fill="#00e5a0" text-anchor="middle">#inflation</text>
+  <rect x="232" y="112" width="66" height="24" fill="#1a1d23" rx="12" stroke="#00e5a0" stroke-width="1"/>
+  <text x="265" y="128" font-family="monospace" font-size="10" fill="#00e5a0" text-anchor="middle">#research</text>
+  <rect x="308" y="112" width="68" height="24" fill="#1a1d23" rx="12" stroke="#2a2d35" stroke-width="1"/>
+  <text x="342" y="128" font-family="monospace" font-size="10" fill="#888" text-anchor="middle">#finance</text>
+  <rect x="386" y="112" width="88" height="24" fill="#1a1d23" rx="12" stroke="#2a2d35" stroke-width="1"/>
+  <text x="430" y="128" font-family="monospace" font-size="10" fill="#888" text-anchor="middle">#macroeconomics</text>
+  <text x="50" y="152" font-family="monospace" font-size="9" fill="#555">Click any hashtag to append it to the copied text.</text>
+
+  <!-- Divider -->
+  <line x1="50" y1="165" x2="850" y2="165" stroke="#2a2d35" stroke-width="1"/>
+
+  <!-- Timing section -->
+  <text x="50" y="188" font-family="monospace" font-size="11" fill="#e8eaed">Best time to post</text>
+  <text x="200" y="188" font-family="monospace" font-size="11" fill="#ffb347">🕐  18:00 – 20:00  (your timezone)</text>
+  <text x="50" y="208" font-family="monospace" font-size="9" fill="#555">Based on historical engagement patterns for Finance/Economics content.</text>
+  <text x="50" y="224" font-family="monospace" font-size="9" fill="#555">Informational only — does not schedule or post to X.</text>
+
+  <text x="30" y="280" font-family="monospace" font-size="10" fill="#444">Live trending hashtag API (X integration) deferred to post-v1 per Product Owner scope decision.</text>
+</svg>

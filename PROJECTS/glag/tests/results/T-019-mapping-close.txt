@@ -1,0 +1,4 @@
+TEST ID: T-019
+TIMESTAMP: 2026-05-02T04:43:10.323Z
+RESULT: PASS
+DETAIL: Mapping section hidden after Back click

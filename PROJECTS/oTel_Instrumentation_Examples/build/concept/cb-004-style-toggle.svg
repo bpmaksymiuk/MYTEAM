@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 900" width="1280" height="900" font-family="Inter, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; }
+      .panel { fill: #161b22; }
+      .panel2 { fill: #1f2530; }
+      .ink { fill: #e6ecf5; }
+      .muted { fill: #8a93ab; }
+      .ok { fill: #37b26b; }
+      .otel { fill: #f5a800; }
+      .dt { fill: #1496ff; }
+      .red { fill: #b6452c; }
+      .warn { fill: #e0a030; }
+      .h1 { font-size: 28px; font-weight: 700; }
+      .h2 { font-size: 18px; font-weight: 600; }
+      .h3 { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; }
+      .body { font-size: 13px; }
+      .small { font-size: 11px; }
+      .mono { font-family: 'Fira Code', monospace; font-size: 12px; }
+      .stamp { font-size: 10px; letter-spacing: 1.5px; }
+      .annot { font-style: italic; font-size: 11px; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="900" class="bg"/>
+
+  <text x="40" y="22" class="ink stamp">CB-004 · CONCEPT BOARD · RECIPE PAGE ANATOMY · UC-003 · UC-008 · UC-011 · UC-012</text>
+  <text x="1240" y="22" text-anchor="end" class="muted stamp">CODE IS THE HERO</text>
+  <line x1="40" y1="30" x2="1240" y2="30" stroke="#2a334d"/>
+
+  <!-- Top nav (mini) -->
+  <rect x="60" y="50" width="1160" height="38" class="panel"/>
+  <text x="80" y="74" class="ink h3">otel.cookbook</text>
+  <text x="240" y="74" class="muted small">› javascript › quickstart</text>
+  <text x="1140" y="74" class="muted small">cfg ⚙</text>
+
+  <!-- Two-column layout -->
+  <!-- Left rail: TOC -->
+  <rect x="60" y="100" width="220" height="780" class="panel"/>
+  <text x="80" y="130" class="ink h3 otel">JAVASCRIPT</text>
+  <text x="80" y="158" class="ink body">Quickstart</text>
+  <rect x="76" y="146" width="3" height="18" class="otel"/>
+  <text x="80" y="184" class="muted body">Manual SDK</text>
+  <text x="80" y="208" class="muted body">Auto-instrument</text>
+  <text x="80" y="232" class="muted body">Metrics</text>
+  <text x="80" y="256" class="muted body">Logs</text>
+  <text x="80" y="280" class="muted body">Context propagation</text>
+  <text x="80" y="304" class="muted body">Troubleshooting</text>
+
+  <line x1="80" y1="330" x2="260" y2="330" stroke="#2a334d"/>
+  <text x="80" y="358" class="muted h3">CROSS-CUTTING</text>
+  <text x="80" y="380" class="muted body">Resource attributes</text>
+  <text x="80" y="402" class="muted body">Sampling</text>
+  <text x="80" y="424" class="muted body">Semantic conventions</text>
+  <text x="80" y="446" class="muted body">Batching</text>
+
+  <!-- Main content -->
+  <!-- Header -->
+  <text x="310" y="145" class="ink h1">Quickstart · JavaScript</text>
+  <text x="310" y="172" class="muted body">From zero to one span emitted to your OTLP destination, in five minutes.</text>
+
+  <!-- Verification badge -->
+  <rect x="310" y="190" width="320" height="28" rx="14" class="panel" stroke="#37b26b"/>
+  <circle cx="328" cy="204" r="5" class="ok"/>
+  <text x="342" y="208" class="mono ink small">verified 2026-04-22 · @opentelemetry/sdk-node@0.51.1</text>
+  <text x="640" y="208" class="muted small">↳ release notes</text>
+  <text x="780" y="208" class="annot otel">UC-012 AC1</text>
+
+  <!-- Ingredients -->
+  <rect x="310" y="240" width="910" height="100" rx="6" class="panel"/>
+  <text x="328" y="266" class="otel h3">YOU WILL NEED</text>
+  <text x="328" y="290" class="ink body">• Node.js 20 LTS or newer</text>
+  <text x="328" y="310" class="ink body">• An OTLP destination configured (see <tspan class="dt">cfg ⚙</tspan> top-right)</text>
+  <text x="328" y="330" class="ink body">• 5 minutes</text>
+
+  <!-- Step 1: install -->
+  <text x="310" y="380" class="ink h2"><tspan class="otel">1.</tspan> Install</text>
+  <rect x="310" y="395" width="910" height="48" rx="4" fill="#0a0e18" stroke="#2a334d"/>
+  <text x="328" y="424" class="mono ink">$ npm i @opentelemetry/sdk-node @opentelemetry/exporter-trace-otlp-http</text>
+
+  <!-- Step 2: env vars (rendered from cfg) -->
+  <text x="310" y="480" class="ink h2"><tspan class="otel">2.</tspan> Set environment variables</text>
+  <text x="310" y="500" class="muted small">↓ Pre-filled from your saved Configuration · change in <tspan class="dt">cfg ⚙</tspan></text>
+  <rect x="310" y="510" width="910" height="76" rx="4" fill="#0a0e18" stroke="#37b26b"/>
+  <text x="328" y="532" class="mono ok">OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318</text>
+  <text x="328" y="550" class="mono ok">OTEL_SERVICE_NAME=my-service</text>
+  <text x="328" y="568" class="mono ok">OTEL_RESOURCE_ATTRIBUTES=deployment.environment=dev</text>
+
+  <!-- Step 3: code (the hero) -->
+  <text x="310" y="618" class="ink h2"><tspan class="otel">3.</tspan> Drop this in your entry file</text>
+  <rect x="310" y="630" width="910" height="170" rx="4" fill="#0a0e18" stroke="#2a334d"/>
+  <text x="328" y="652" class="mono dt">// instrumentation.js · require before any application code</text>
+  <text x="328" y="672" class="mono ink"><tspan class="dt">const</tspan> { NodeSDK } = require(<tspan class="ok">'@opentelemetry/sdk-node'</tspan>);</text>
+  <text x="328" y="690" class="mono ink"><tspan class="dt">const</tspan> { OTLPTraceExporter } = require(<tspan class="ok">'@opentelemetry/exporter-trace-otlp-http'</tspan>);</text>
+  <text x="328" y="708" class="mono ink"></text>
+  <text x="328" y="726" class="mono ink"><tspan class="dt">const</tspan> sdk = <tspan class="dt">new</tspan> NodeSDK({ traceExporter: <tspan class="dt">new</tspan> OTLPTraceExporter() });</text>
+  <text x="328" y="744" class="mono ink">sdk.start();</text>
+  <text x="328" y="762" class="mono ink"></text>
+  <text x="328" y="780" class="mono muted">// run your app: $ node -r ./instrumentation.js app.js</text>
+
+  <!-- Pitfall callout (right margin under code) -->
+  <rect x="310" y="820" width="910" height="48" rx="6" fill="#2a1812" stroke="#b6452c"/>
+  <text x="328" y="842" class="red h3">⚠ PITFALL — your endpoint returns 404</text>
+  <text x="328" y="858" class="ink small">If you forgot the <tspan class="mono">/v1/traces</tspan> suffix on a custom endpoint, the receiver returns 404 silently. Yes, we have all done this.</text>
+  <text x="900" y="876" class="annot otel">UC-011 AC1 · pitfall lives next to the cause</text>
+</svg>

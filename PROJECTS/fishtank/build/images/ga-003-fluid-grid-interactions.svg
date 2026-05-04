@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', system-ui, sans-serif; }
+      .title  { font-size: 16px; font-weight: 600; fill: #e6edf3; }
+      .label  { font-size: 12px; font-weight: 600; fill: #c9d1d9; }
+      .small  { font-size: 10px; fill: #8b949e; }
+      .api    { font-size: 9px;  fill: #79c0ff; font-family: 'Cascadia Code', 'Consolas', monospace; }
+    </style>
+    <marker id="write" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f78166"/>
+    </marker>
+    <marker id="read" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 1, 8 3, 0 5" fill="none" stroke="#79c0ff" stroke-width="1"/>
+    </marker>
+    <marker id="step" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#d29922"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="600" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="450" y="28" text-anchor="middle" class="title">FluidGrid — Subsystem Interaction Hub</text>
+  <text x="450" y="46" text-anchor="middle" class="small">DI-006 · DI-007 · DI-008 · DI-009 · DI-013 · filled arrow = write · open arrow = read</text>
+
+  <!-- ─── CENTRE: FluidGrid ─── -->
+  <rect x="330" y="230" width="240" height="110" rx="10" fill="#161b22" stroke="#1f6feb" stroke-width="2"/>
+  <text x="450" y="274" text-anchor="middle" class="label" fill="#79c0ff">PT-006</text>
+  <text x="450" y="292" text-anchor="middle" class="label">FluidGrid</text>
+  <text x="450" y="310" text-anchor="middle" class="small">64×64 Float32Array</text>
+  <text x="450" y="324" text-anchor="middle" class="small">vx / vz dual buffers</text>
+
+  <!-- ─── TOP: BubbleSystem ─── -->
+  <rect x="330" y="64" width="240" height="70" rx="8" fill="#161b22" stroke="#1f6feb" stroke-width="1.5"/>
+  <text x="450" y="94" text-anchor="middle" class="label">PT-008 · BubbleSystem</text>
+  <text x="450" y="110" text-anchor="middle" class="small">200 instanced bubbles</text>
+  <text x="450" y="124" text-anchor="middle" class="small">emit rate ← AppState.bubblerRate</text>
+  <!-- write arrow: BubbleSystem → FluidGrid -->
+  <line x1="450" y1="134" x2="450" y2="230" stroke="#f78166" stroke-width="1.5" marker-end="url(#write)"/>
+  <text x="456" y="190" class="api">addImpulse(bx, bz, 0, count×0.002, 1.5)</text>
+
+  <!-- ─── BOTTOM: ParticleSystem ─── -->
+  <rect x="330" y="466" width="240" height="60" rx="8" fill="#161b22" stroke="#1f6feb" stroke-width="1.5"/>
+  <text x="450" y="492" text-anchor="middle" class="label">PT-007 · ParticleSystem</text>
+  <text x="450" y="510" text-anchor="middle" class="small">500-slot pool · dust / food / sediment</text>
+  <!-- read arrow: ParticleSystem ← FluidGrid -->
+  <line x1="450" y1="466" x2="450" y2="340" stroke="#79c0ff" stroke-width="1.5" marker-end="url(#read)"/>
+  <text x="456" y="418" class="api">sample(p.x, p.z) → {vx, vz}</text>
+
+  <!-- ─── LEFT: FishAgent / FishManager ─── -->
+  <rect x="52" y="248" width="210" height="70" rx="8" fill="#161b22" stroke="#2ea043" stroke-width="1.5"/>
+  <text x="157" y="272" text-anchor="middle" class="label">PT-009/011 · FishAgent</text>
+  <text x="157" y="288" text-anchor="middle" class="small">Reynolds steering boids</text>
+  <text x="157" y="304" text-anchor="middle" class="small">spatial grid neighbour lookup</text>
+  <!-- write (wake): FishAgent → FluidGrid -->
+  <line x1="262" y1="270" x2="330" y2="270" stroke="#f78166" stroke-width="1.5" marker-end="url(#write)"/>
+  <text x="266" y="262" class="api">addImpulse (wake)</text>
+  <!-- read (current): FishAgent ← FluidGrid -->
+  <line x1="330" y1="290" x2="262" y2="290" stroke="#79c0ff" stroke-width="1.5" marker-end="url(#read)"/>
+  <text x="266" y="308" class="api">sample(x, z) → current</text>
+
+  <!-- ─── RIGHT: PlantSystem ─── -->
+  <rect x="638" y="248" width="210" height="70" rx="8" fill="#161b22" stroke="#2ea043" stroke-width="1.5"/>
+  <text x="743" y="272" text-anchor="middle" class="label">PT-013 · PlantSystem</text>
+  <text x="743" y="288" text-anchor="middle" class="small">TubeGeometry splines</text>
+  <text x="743" y="304" text-anchor="middle" class="small">vertex sway via fluid sample</text>
+  <!-- read: PlantSystem ← FluidGrid -->
+  <line x1="638" y1="270" x2="570" y2="270" stroke="#79c0ff" stroke-width="1.5" marker-end="url(#read)"/>
+  <text x="575" y="262" class="api">sample(base.x, base.z)</text>
+  <text x="575" y="308" class="api">→ lateral displacement</text>
+
+  <!-- ─── step() self-annotation ─── -->
+  <path d="M 330 310 Q 280 310 280 380 Q 280 430 330 430 L 330 340" fill="none" stroke="#d29922" stroke-width="1.5" marker-end="url(#step)"/>
+  <text x="240" y="376" class="api" fill="#d29922">step(dt)</text>
+  <text x="228" y="390" class="small" fill="#d29922">advect + decay</text>
+  <text x="228" y="404" class="small" fill="#d29922">boundary clamp</text>
+
+  <!-- ─── LEGEND ─── -->
+  <rect x="20" y="550" width="860" height="34" rx="6" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <line x1="40"  y1="567" x2="80"  y2="567" stroke="#f78166" stroke-width="1.5" marker-end="url(#write)"/>
+  <text x="88"  y="571" class="small">write / addImpulse</text>
+  <line x1="220" y1="567" x2="260" y2="567" stroke="#79c0ff" stroke-width="1.5" marker-end="url(#read)"/>
+  <text x="268" y="571" class="small">read / sample</text>
+  <line x1="400" y1="567" x2="440" y2="567" stroke="#d29922" stroke-width="1.5" marker-end="url(#step)"/>
+  <text x="448" y="571" class="small">self-update / step</text>
+</svg>

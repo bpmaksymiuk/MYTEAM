@@ -1,0 +1,4 @@
+TEST ID: T-python
+TIMESTAMP: 2026-05-04T03:23:11.835Z
+RESULT: PASS
+DETAIL: python quickstart rendered with verification badge.

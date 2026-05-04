@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', system-ui, sans-serif; }
+      .title  { font-size: 18px; font-weight: 600; fill: #e6edf3; }
+      .label  { font-size: 12px; fill: #c9d1d9; }
+      .small  { font-size: 10px; fill: #8b949e; }
+      .arrow  { fill: none; stroke-width: 1.5; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#8b949e"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="600" y="32" text-anchor="middle" class="title">System Architecture Overview — Fish Tank Simulator</text>
+  <text x="600" y="50" text-anchor="middle" class="small">PT-001 through PT-018 · Dependency tiers top → bottom</text>
+
+  <!-- ═══ TIER 0: BUILD ═══ -->
+  <rect x="20" y="64" width="1160" height="66" rx="8" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <text x="30" y="80" class="small" fill="#d29922">BUILD / ENTRY</text>
+  <!-- PT-018 vite.config -->
+  <rect x="40" y="86" width="130" height="34" rx="6" fill="#1c2128" stroke="#9e6a03" stroke-width="1.5"/>
+  <text x="105" y="101" text-anchor="middle" class="label">PT-018</text>
+  <text x="105" y="114" text-anchor="middle" class="small">vite.config.ts</text>
+  <!-- PT-001 index.html -->
+  <rect x="190" y="86" width="130" height="34" rx="6" fill="#1c2128" stroke="#9e6a03" stroke-width="1.5"/>
+  <text x="255" y="101" text-anchor="middle" class="label">PT-001</text>
+  <text x="255" y="114" text-anchor="middle" class="small">index.html</text>
+  <!-- PT-002 main.ts -->
+  <rect x="340" y="86" width="130" height="34" rx="6" fill="#1c2128" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="405" y="101" text-anchor="middle" class="label">PT-002</text>
+  <text x="405" y="114" text-anchor="middle" class="small">src/main.ts</text>
+
+  <!-- ═══ TIER 1: STATE ═══ -->
+  <rect x="20" y="144" width="1160" height="66" rx="8" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <text x="30" y="160" class="small" fill="#79c0ff">STATE</text>
+  <rect x="40" y="162" width="200" height="34" rx="6" fill="#1c2128" stroke="#1f6feb" stroke-width="1.5"/>
+  <text x="140" y="177" text-anchor="middle" class="label">PT-017</text>
+  <text x="140" y="190" text-anchor="middle" class="small">src/state/AppState.ts</text>
+
+  <!-- ═══ TIER 2: RENDERER ═══ -->
+  <rect x="20" y="224" width="1160" height="66" rx="8" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <text x="30" y="240" class="small" fill="#f78166">RENDERER</text>
+  <!-- PT-003 -->
+  <rect x="40" y="242" width="200" height="34" rx="6" fill="#1c2128" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="140" y="257" text-anchor="middle" class="label">PT-003</text>
+  <text x="140" y="270" text-anchor="middle" class="small">Renderer.ts</text>
+  <!-- PT-004 -->
+  <rect x="260" y="242" width="200" height="34" rx="6" fill="#1c2128" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="360" y="257" text-anchor="middle" class="label">PT-004</text>
+  <text x="360" y="270" text-anchor="middle" class="small">SceneManager.ts</text>
+  <!-- PT-005 -->
+  <rect x="480" y="242" width="220" height="34" rx="6" fill="#1c2128" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="590" y="257" text-anchor="middle" class="label">PT-005</text>
+  <text x="590" y="270" text-anchor="middle" class="small">shaders/ (water, caustics)</text>
+
+  <!-- ═══ TIER 3: SIMULATION ═══ -->
+  <rect x="20" y="304" width="1160" height="66" rx="8" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <text x="30" y="320" class="small" fill="#79c0ff">SIMULATION</text>
+  <!-- PT-006 -->
+  <rect x="40" y="322" width="180" height="34" rx="6" fill="#1c2128" stroke="#1f6feb" stroke-width="1.5"/>
+  <text x="130" y="337" text-anchor="middle" class="label">PT-006</text>
+  <text x="130" y="350" text-anchor="middle" class="small">FluidGrid.ts</text>
+  <!-- PT-007 -->
+  <rect x="240" y="322" width="180" height="34" rx="6" fill="#1c2128" stroke="#1f6feb" stroke-width="1.5"/>
+  <text x="330" y="337" text-anchor="middle" class="label">PT-007</text>
+  <text x="330" y="350" text-anchor="middle" class="small">ParticleSystem.ts</text>
+  <!-- PT-008 -->
+  <rect x="440" y="322" width="180" height="34" rx="6" fill="#1c2128" stroke="#1f6feb" stroke-width="1.5"/>
+  <text x="530" y="337" text-anchor="middle" class="label">PT-008</text>
+  <text x="530" y="350" text-anchor="middle" class="small">BubbleSystem.ts</text>
+
+  <!-- ═══ TIER 4: FISH + ENVIRONMENT ═══ -->
+  <rect x="20" y="384" width="760" height="66" rx="8" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <text x="30" y="400" class="small" fill="#3fb950">FISH</text>
+  <!-- PT-009 -->
+  <rect x="40" y="402" width="155" height="34" rx="6" fill="#1c2128" stroke="#2ea043" stroke-width="1.5"/>
+  <text x="117" y="417" text-anchor="middle" class="label">PT-009</text>
+  <text x="117" y="430" text-anchor="middle" class="small">FishAgent.ts</text>
+  <!-- PT-010 -->
+  <rect x="210" y="402" width="155" height="34" rx="6" fill="#1c2128" stroke="#2ea043" stroke-width="1.5"/>
+  <text x="287" y="417" text-anchor="middle" class="label">PT-010</text>
+  <text x="287" y="430" text-anchor="middle" class="small">FishSpecies.ts</text>
+  <!-- PT-011 -->
+  <rect x="380" y="402" width="155" height="34" rx="6" fill="#1c2128" stroke="#2ea043" stroke-width="1.5"/>
+  <text x="457" y="417" text-anchor="middle" class="label">PT-011</text>
+  <text x="457" y="430" text-anchor="middle" class="small">FishManager.ts</text>
+  <!-- PT-013 PlantSystem -->
+  <rect x="550" y="402" width="155" height="34" rx="6" fill="#1c2128" stroke="#2ea043" stroke-width="1.5"/>
+  <text x="627" y="417" text-anchor="middle" class="label">PT-013</text>
+  <text x="627" y="430" text-anchor="middle" class="small">PlantSystem.ts</text>
+
+  <rect x="800" y="384" width="380" height="66" rx="8" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <text x="810" y="400" class="small" fill="#d29922">ENVIRONMENT</text>
+  <!-- PT-012 -->
+  <rect x="820" y="402" width="160" height="34" rx="6" fill="#1c2128" stroke="#9e6a03" stroke-width="1.5"/>
+  <text x="900" y="417" text-anchor="middle" class="label">PT-012</text>
+  <text x="900" y="430" text-anchor="middle" class="small">EnvironmentConfig.ts</text>
+
+  <!-- ═══ TIER 5: AUDIO + INPUT + UI ═══ -->
+  <rect x="20" y="464" width="1160" height="66" rx="8" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <text x="30" y="480" class="small" fill="#c9d1d9">AUDIO · INPUT · UI</text>
+  <!-- PT-014 -->
+  <rect x="40" y="482" width="185" height="34" rx="6" fill="#1c2128" stroke="#3d444d" stroke-width="1.5"/>
+  <text x="132" y="497" text-anchor="middle" class="label">PT-014</text>
+  <text x="132" y="510" text-anchor="middle" class="small">AudioManager.ts</text>
+  <!-- PT-015 -->
+  <rect x="245" y="482" width="185" height="34" rx="6" fill="#1c2128" stroke="#3d444d" stroke-width="1.5"/>
+  <text x="337" y="497" text-anchor="middle" class="label">PT-015</text>
+  <text x="337" y="510" text-anchor="middle" class="small">InputManager.ts</text>
+  <!-- PT-016 -->
+  <rect x="450" y="482" width="185" height="34" rx="6" fill="#1c2128" stroke="#3d444d" stroke-width="1.5"/>
+  <text x="542" y="497" text-anchor="middle" class="label">PT-016</text>
+  <text x="542" y="510" text-anchor="middle" class="small">HUD.ts</text>
+
+  <!-- ═══ DEPENDENCY ARROWS (selected key paths) ═══ -->
+  <!-- main.ts → AppState -->
+  <line x1="405" y1="120" x2="405" y2="144" class="arrow" stroke="#8b949e"/>
+  <!-- main.ts → Renderer -->
+  <line x1="390" y1="120" x2="140" y2="224" class="arrow" stroke="#8b949e"/>
+  <!-- main.ts → SceneManager -->
+  <line x1="405" y1="120" x2="360" y2="224" class="arrow" stroke="#8b949e"/>
+  <!-- AppState → SceneManager -->
+  <line x1="200" y1="179" x2="300" y2="242" class="arrow" stroke="#1f6feb" stroke-dasharray="4,3"/>
+  <!-- Renderer → FluidGrid (drives tick) -->
+  <line x1="200" y1="259" x2="130" y2="304" class="arrow" stroke="#8b949e"/>
+  <!-- FluidGrid → ParticleSystem -->
+  <line x1="220" y1="339" x2="240" y2="339" class="arrow" stroke="#1f6feb"/>
+  <!-- FluidGrid → BubbleSystem -->
+  <line x1="220" y1="345" x2="440" y2="345" class="arrow" stroke="#1f6feb"/>
+  <!-- FluidGrid → FishAgent -->
+  <line x1="130" y1="370" x2="117" y2="402" class="arrow" stroke="#1f6feb" stroke-dasharray="4,3"/>
+  <!-- FluidGrid → PlantSystem -->
+  <line x1="220" y1="355" x2="600" y2="402" class="arrow" stroke="#1f6feb" stroke-dasharray="4,3"/>
+  <!-- AppState → AudioManager -->
+  <line x1="140" y1="196" x2="132" y2="482" class="arrow" stroke="#1f6feb" stroke-dasharray="4,3"/>
+  <!-- InputManager → HUD -->
+  <line x1="430" y1="499" x2="450" y2="499" class="arrow" stroke="#8b949e"/>
+  <!-- SceneManager exposes shaders -->
+  <line x1="480" y1="259" x2="480" y2="242" class="arrow" stroke="#b91c1c" stroke-dasharray="4,3"/>
+
+  <!-- ═══ LEGEND ═══ -->
+  <rect x="20" y="560" width="1160" height="100" rx="8" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <text x="30" y="578" class="small" fill="#8b949e">LEGEND</text>
+  <rect x="40"  y="588" width="14" height="14" rx="3" fill="#1c2128" stroke="#b91c1c" stroke-width="1.5"/><text x="60"  y="600" class="small">Renderer subsystem</text>
+  <rect x="200" y="588" width="14" height="14" rx="3" fill="#1c2128" stroke="#1f6feb" stroke-width="1.5"/><text x="220" y="600" class="small">State / Simulation</text>
+  <rect x="360" y="588" width="14" height="14" rx="3" fill="#1c2128" stroke="#2ea043" stroke-width="1.5"/><text x="380" y="600" class="small">Fish subsystem</text>
+  <rect x="520" y="588" width="14" height="14" rx="3" fill="#1c2128" stroke="#9e6a03" stroke-width="1.5"/><text x="540" y="600" class="small">Environment / Build</text>
+  <!-- arrow legend -->
+  <line x1="40"  y1="630" x2="90"  y2="630" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrowhead)"/><text x="96"  y="634" class="small">hard dependency</text>
+  <line x1="220" y1="630" x2="270" y2="630" stroke="#1f6feb" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowhead)"/><text x="276" y="634" class="small">AppState subscription / data sample</text>
+</svg>

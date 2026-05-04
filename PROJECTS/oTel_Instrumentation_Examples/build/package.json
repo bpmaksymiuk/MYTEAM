@@ -1,0 +1,17 @@
+{
+  "name": "otel-cookbook",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "node scripts/check-sample-parity.mjs && eleventy",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@playwright/test": "^1.59.1",
+    "markdown-it-attrs": "^4.1.6",
+    "shiki": "^1.0.0"
+  }
+}

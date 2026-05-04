@@ -1,0 +1,4 @@
+TEST ID: T-011
+TIMESTAMP: 2026-05-02T04:43:08.393Z
+RESULT: PASS
+DETAIL: Copy button enabled after conversion

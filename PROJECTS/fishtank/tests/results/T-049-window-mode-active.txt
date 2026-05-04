@@ -1,0 +1,4 @@
+TEST ID: T-049
+TIMESTAMP: 2026-05-03T02:55:49.632Z
+RESULT: PASS
+DETAIL: Overlay visible: true; Exit btn visible: true; Errors: none

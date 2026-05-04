@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', system-ui, sans-serif; }
+      .title  { font-size: 17px; font-weight: 600; fill: #e6edf3; }
+      .label  { font-size: 12px; font-weight: 600; fill: #c9d1d9; }
+      .small  { font-size: 10px; fill: #8b949e; }
+      .id     { font-size: 9px;  fill: #79c0ff; font-family: 'Cascadia Code', 'Consolas', monospace; }
+      .dim    { fill: #3d444d; }
+    </style>
+    <marker id="leader" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+      <circle cx="2.5" cy="2.5" r="2" fill="#8b949e"/>
+    </marker>
+  </defs>
+
+  <!-- Background — full viewport simulation -->
+  <rect width="1200" height="700" fill="#0d1117"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="1200" height="44" fill="#161b22"/>
+  <text x="600" y="20" text-anchor="middle" class="title">HUD Layout Specification</text>
+  <text x="600" y="36" text-anchor="middle" class="small">DI-016 · 16:9 viewport · pointer-event regions annotated</text>
+
+  <!-- ─── VIEWPORT FRAME ─── -->
+  <rect x="30" y="54" width="1140" height="620" rx="6" fill="#071020" stroke="#3d444d" stroke-width="1.5"/>
+  <text x="600" y="350" text-anchor="middle" class="small" fill="#21262d">canvas#tank-canvas (WebGL — pointer-events: all)</text>
+
+  <!-- ─── PASS-THROUGH REGION annotation ─── -->
+  <rect x="30" y="54" width="1140" height="620" rx="6" fill="none" stroke="#3d444d" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="80" y="76" class="id" fill="#3d444d">#hud-root · pointer-events: none · position: absolute 0 0 100% 100%</text>
+
+  <!-- ─── HUD CONTROLS PANEL ─── -->
+  <rect x="46" y="70" width="220" height="290" rx="8" fill="rgba(13,17,23,0.88)" stroke="#3d444d" stroke-width="1.5"/>
+  <!-- pointer-events active badge -->
+  <rect x="46" y="70" width="220" height="14" rx="4" fill="#1f6feb" fill-opacity="0.25"/>
+  <text x="156" y="81" text-anchor="middle" class="id" fill="#79c0ff">pointer-events: all</text>
+
+  <text x="156" y="100" text-anchor="middle" class="label">#hud-controls</text>
+
+  <!-- Camera section -->
+  <text x="58" y="122" class="small">Camera</text>
+  <rect x="58" y="128" width="94" height="26" rx="4" fill="#1f6feb" stroke="#79c0ff" stroke-width="1"/>
+  <text x="105" y="145" text-anchor="middle" class="id">Isometric View</text>
+  <rect x="160" y="128" width="94" height="26" rx="4" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+  <text x="207" y="145" text-anchor="middle" class="id">3/4 View</text>
+
+  <!-- Substrate section -->
+  <text x="58" y="174" class="small">Substrate</text>
+  <rect x="58" y="180" width="196" height="26" rx="4" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+  <text x="100" y="197" class="id">Sand ▾</text>
+
+  <!-- Decorations section -->
+  <text x="58" y="226" class="small">Decorations</text>
+  <rect x="58" y="231" width="12" height="12" rx="2" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+  <rect x="58" y="231" width="12" height="12" rx="2" fill="none" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="77" y="242" class="id">Shipwreck</text>
+  <rect x="58" y="249" width="12" height="12" rx="2" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+  <text x="77" y="260" class="id" fill="#3d444d">Rocks</text>
+  <rect x="58" y="267" width="12" height="12" rx="2" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+  <rect x="58" y="267" width="12" height="12" rx="2" fill="none" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="77" y="278" class="id">Artifacts</text>
+
+  <!-- Audio section -->
+  <text x="58" y="304" class="small">Audio</text>
+  <rect x="58" y="310" width="196" height="26" rx="4" fill="#21262d" stroke="#3d444d" stroke-width="1"/>
+  <text x="100" y="327" class="id">Sound Off</text>
+
+  <!-- ─── SELECTION CARD ─── -->
+  <rect x="934" y="554" width="220" height="90" rx="8" fill="rgba(13,17,23,0.92)" stroke="#3d444d" stroke-width="1.5"/>
+  <rect x="934" y="554" width="220" height="14" rx="4" fill="#161b22"/>
+  <text x="1044" y="565" text-anchor="middle" class="id" fill="#3d444d">pointer-events: none</text>
+  <text x="950" y="584" class="id">#selection-card</text>
+  <text x="950" y="600" class="label">Clownfish</text>
+  <text x="950" y="616" class="small">Species: clownfish</text>
+  <text x="950" y="632" class="small">Darting and bold, it claims its patch…</text>
+
+  <!-- ─── LEADER LINES ─── -->
+  <!-- HUD controls label -->
+  <line x1="266" y1="180" x2="340" y2="180" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="344" y="184" class="id" fill="#8b949e">#hud-controls</text>
+  <text x="344" y="196" class="id" fill="#8b949e">top: 8px; left: 8px</text>
+  <text x="344" y="208" class="id" fill="#8b949e">min-width: 180px</text>
+
+  <!-- Controls camera row label -->
+  <line x1="266" y1="141" x2="340" y2="130" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="344" y="130" class="id" fill="#8b949e">button[active] → .active class</text>
+  <text x="344" y="142" class="id" fill="#8b949e">→ appState.set('cameraMode')</text>
+
+  <!-- Substrate label -->
+  <line x1="266" y1="193" x2="340" y2="230" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="344" y="230" class="id" fill="#8b949e">select → appState.set('substrateType')</text>
+
+  <!-- Decorations label -->
+  <line x1="266" y1="260" x2="340" y2="268" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="344" y="268" class="id" fill="#8b949e">input[checkbox] → appState.set('decorations', …)</text>
+
+  <!-- Audio label -->
+  <line x1="266" y1="323" x2="340" y2="323" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="344" y="323" class="id" fill="#8b949e">button → appState.set('audioEnabled', !state)</text>
+
+  <!-- Selection card label -->
+  <line x1="934" y1="600" x2="860" y2="580" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="640" y="568" class="id" fill="#8b949e">#selection-card</text>
+  <text x="640" y="580" class="id" fill="#8b949e">position: absolute; bottom: 20px; right: 20px</text>
+  <text x="640" y="592" class="id" fill="#8b949e">display: none | block (.visible class toggle)</text>
+  <text x="640" y="604" class="id" fill="#8b949e">pointer-events: none</text>
+
+  <!-- ─── Z-ORDER NOTE ─── -->
+  <rect x="30" y="648" width="1140" height="26" rx="4" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <text x="600" y="665" text-anchor="middle" class="small">Z-ORDER (back → front):  canvas#tank-canvas  →  #hud-root (pass-through)  →  #hud-controls (pointer-events: all)  →  #selection-card (pointer-events: none)</text>
+</svg>

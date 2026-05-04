@@ -1,0 +1,4 @@
+TEST ID: T-035
+TIMESTAMP: 2026-05-03T02:54:31.392Z
+RESULT: PASS
+DETAIL: HUD controls responsive after 5s; camera toggle and feed work

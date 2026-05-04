@@ -1,0 +1,7 @@
+Cyrillic→Glagolitic mode:
+  Input label:  Input — Cyrillic
+  Output label: Output — Glagolitic
+
+Glagolitic→Cyrillic mode:
+  Input label:  Input — Glagolitic
+  Output label: Output — Cyrillic

@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <title>CB-007: Species Locomotion Mode Comparison</title>
+  <rect width="900" height="560" fill="#0d1117"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="900" height="36" fill="#161b22"/>
+  <text x="450" y="23" font-family="monospace" font-size="13" fill="#8b949e" text-anchor="middle">CB-007 · SPECIES LOCOMOTION MODE COMPARISON · UC-014</text>
+
+  <!-- Column headers -->
+  <rect x="0" y="36" width="300" height="44" fill="#1c2030"/>
+  <rect x="300" y="36" width="300" height="44" fill="#1a2a1a"/>
+  <rect x="600" y="36" width="300" height="44" fill="#2a1a1a"/>
+
+  <text x="150" y="54" font-family="monospace" font-size="12" fill="#80d4e0" text-anchor="middle" font-weight="bold">LABRIFORM</text>
+  <text x="150" y="70" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">pectoral-fin rowing · reef fish</text>
+  <text x="450" y="54" font-family="monospace" font-size="12" fill="#3fb950" text-anchor="middle" font-weight="bold">SUBCARANGIFORM</text>
+  <text x="450" y="70" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">rear-half undulation · schooling fish</text>
+  <text x="750" y="54" font-family="monospace" font-size="12" fill="#f85149" text-anchor="middle" font-weight="bold">CARANGIFORM</text>
+  <text x="750" y="70" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">stiff body + tail oscillation · goldfish</text>
+
+  <!-- Column dividers -->
+  <line x1="300" y1="36" x2="300" y2="530" stroke="#21262d" stroke-width="1"/>
+  <line x1="600" y1="36" x2="600" y2="530" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row labels (left edge) -->
+  <rect x="0" y="80" width="900" height="150" fill="#0d1117"/>
+  <rect x="0" y="230" width="900" height="150" fill="#111820"/>
+  <rect x="0" y="380" width="900" height="150" fill="#0d1117"/>
+
+  <!-- Row label: IDLE -->
+  <text x="8" y="162" font-family="monospace" font-size="11" fill="#8b949e" transform="rotate(-90, 8, 162)">IDLE</text>
+  <text x="8" y="310" font-family="monospace" font-size="11" fill="#d29922" transform="rotate(-90, 8, 310)">CRUISE</text>
+  <text x="8" y="460" font-family="monospace" font-size="11" fill="#f85149" transform="rotate(-90, 8, 460)">BURST</text>
+
+  <!-- ===== ROW 1: IDLE ===== -->
+
+  <!-- LABRIFORM IDLE -->
+  <text x="150" y="100" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="middle">amplitude: low · freq: 0.5 Hz</text>
+  <ellipse cx="150" cy="155" rx="60" ry="22" fill="#1a5c7a" stroke="#2a8fbb" stroke-width="1"/>
+  <!-- pectoral fins — gently fanned, minimal stroke -->
+  <path d="M125,155 Q108,148 103,160 Q108,170 125,165 Z" fill="#80d4e0" fill-opacity="0.45" stroke="#80d4e0" stroke-width="0.8"/>
+  <!-- eye -->
+  <circle cx="97" cy="152" r="7" fill="#0a0a0a"/><circle cx="95" cy="150" r="2.5" fill="#ffffff"/>
+  <!-- tail minimal wiggle -->
+  <path d="M207,143 Q218,138 222,155 Q218,172 207,167" fill="#80d4e0" fill-opacity="0.3" stroke="#80d4e0" stroke-width="1"/>
+  <!-- body wave arc — very small amplitude -->
+  <path d="M125,155 Q160,152 207,155" stroke="#8b949e" stroke-width="1" fill="none" stroke-dasharray="4,3" opacity="0.5"/>
+  <text x="150" y="205" font-family="monospace" font-size="9" fill="#80d4e0" text-anchor="middle">fins slowly fan open</text>
+
+  <!-- SUBCARANGIFORM IDLE -->
+  <text x="450" y="100" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="middle">amplitude: low · freq: 0.4 Hz</text>
+  <path d="M350,155 Q390,140 430,152 Q470,163 510,155" stroke="#2a7a5a" stroke-width="22" fill="none" stroke-linecap="round"/>
+  <path d="M350,155 Q390,140 430,152 Q470,163 510,155" stroke="#3fb950" stroke-width="18" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <!-- tail -->
+  <path d="M507,145 Q520,140 524,155 Q520,170 507,165" fill="#3fb950" fill-opacity="0.35" stroke="#3fb950" stroke-width="1"/>
+  <!-- body wave: small amplitude undulation line -->
+  <path d="M350,155 Q390,148 430,158 Q470,166 510,155" stroke="#3fb950" stroke-width="1" fill="none" stroke-dasharray="4,3" opacity="0.6"/>
+  <text x="150" y="205" font-family="monospace" font-size="9" fill="#80d4e0" text-anchor="middle"/>
+  <text x="450" y="205" font-family="monospace" font-size="9" fill="#3fb950" text-anchor="middle">rear-third wave only</text>
+
+  <!-- CARANGIFORM IDLE -->
+  <text x="750" y="100" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="middle">amplitude: low · freq: 0.3 Hz</text>
+  <ellipse cx="750" cy="155" rx="65" ry="20" fill="#4a1a1a" stroke="#8a3a3a" stroke-width="1"/>
+  <!-- body nearly rigid, tail minimal -->
+  <path d="M810,142 Q825,135 829,155 Q825,175 810,168" fill="#f85149" fill-opacity="0.3" stroke="#f85149" stroke-width="1"/>
+  <path d="M680,155 Q720,155 780,155 Q800,153 810,155" stroke="#8a3a3a" stroke-width="1" fill="none" stroke-dasharray="5,3" opacity="0.5"/>
+  <text x="750" y="205" font-family="monospace" font-size="9" fill="#f85149" text-anchor="middle">body stiff, tail tip only</text>
+
+  <!-- ===== ROW 2: CRUISE ===== -->
+
+  <!-- LABRIFORM CRUISE -->
+  <text x="150" y="248" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="middle">amplitude: medium · freq: 1.2 Hz</text>
+  <ellipse cx="150" cy="300" rx="60" ry="22" fill="#1a5c7a" stroke="#2a8fbb" stroke-width="1"/>
+  <path d="M125,300 Q102,285 96,302 Q102,320 125,310 Z" fill="#80d4e0" fill-opacity="0.55" stroke="#80d4e0" stroke-width="1"/>
+  <path d="M125,300 Q102,318 98,330 Q110,325 125,312 Z" fill="#80d4e0" fill-opacity="0.4" stroke="#80d4e0" stroke-width="0.8"/>
+  <circle cx="97" cy="297" r="7" fill="#0a0a0a"/><circle cx="95" cy="295" r="2.5" fill="#ffffff"/>
+  <path d="M207,288 Q222,278 228,300 Q222,322 207,312" fill="#80d4e0" fill-opacity="0.4" stroke="#80d4e0" stroke-width="1.2"/>
+  <text x="150" y="350" font-family="monospace" font-size="9" fill="#d29922" text-anchor="middle">pectorals wider stroke arc</text>
+
+  <!-- SUBCARANGIFORM CRUISE -->
+  <text x="450" y="248" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="middle">amplitude: medium · freq: 1.0 Hz</text>
+  <!-- body wave: more pronounced S-curve -->
+  <path d="M345,295 Q375,280 405,300 Q445,320 490,300 Q510,293 520,300" stroke="#2a7a5a" stroke-width="22" fill="none" stroke-linecap="round"/>
+  <path d="M345,295 Q375,280 405,300 Q445,320 490,300 Q510,293 520,300" stroke="#3fb950" stroke-width="18" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <path d="M517,288 Q532,280 536,300 Q532,320 517,312" fill="#3fb950" fill-opacity="0.4" stroke="#3fb950" stroke-width="1.2"/>
+  <!-- amplitude annotation arrow -->
+  <path d="M445,280 L445,320" stroke="#d29922" stroke-width="1" marker-end="url(#arrowAmber)"/>
+  <text x="450" y="350" font-family="monospace" font-size="9" fill="#d29922" text-anchor="middle">S-wave amplitude increases</text>
+
+  <!-- CARANGIFORM CRUISE -->
+  <text x="750" y="248" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="middle">amplitude: medium · freq: 0.9 Hz</text>
+  <ellipse cx="750" cy="300" rx="65" ry="20" fill="#4a1a1a" stroke="#8a3a3a" stroke-width="1"/>
+  <path d="M808,284 Q826,272 832,300 Q826,328 808,316" fill="#f85149" fill-opacity="0.45" stroke="#f85149" stroke-width="1.5"/>
+  <path d="M680,300 Q750,300 800,300 Q808,296 812,300" stroke="#8a3a3a" stroke-width="1" fill="none" stroke-dasharray="5,3" opacity="0.6"/>
+  <text x="750" y="350" font-family="monospace" font-size="9" fill="#d29922" text-anchor="middle">tail sweep widens</text>
+
+  <!-- ===== ROW 3: BURST ===== -->
+
+  <!-- LABRIFORM BURST -->
+  <text x="150" y="398" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="middle">amplitude: high · freq: 2.5 Hz</text>
+  <ellipse cx="150" cy="450" rx="60" ry="22" fill="#1a5c7a" stroke="#2a8fbb" stroke-width="1.5"/>
+  <!-- pectorals pressed flat during burst -->
+  <path d="M125,450 Q115,447 108,452 Q112,456 125,454 Z" fill="#80d4e0" fill-opacity="0.2" stroke="#80d4e0" stroke-width="0.6"/>
+  <!-- caudal burst -->
+  <path d="M207,430 Q228,412 236,450 Q228,488 207,470" fill="#80d4e0" fill-opacity="0.6" stroke="#80d4e0" stroke-width="2"/>
+  <!-- speed lines -->
+  <g stroke="#f85149" stroke-width="0.8" stroke-dasharray="6,3" opacity="0.7">
+    <line x1="100" y1="443" x2="65" y2="443"/>
+    <line x1="105" y1="452" x2="68" y2="452"/>
+    <line x1="100" y1="461" x2="65" y2="461"/>
+  </g>
+  <circle cx="97" cy="447" r="7" fill="#0a0a0a"/><circle cx="95" cy="445" r="2.5" fill="#ffffff"/>
+  <text x="150" y="510" font-family="monospace" font-size="9" fill="#f85149" text-anchor="middle">pectorals flatten; caudal drives</text>
+
+  <!-- SUBCARANGIFORM BURST -->
+  <text x="450" y="398" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="middle">amplitude: high · freq: 2.2 Hz</text>
+  <!-- C-start position: body bent -->
+  <path d="M345,440 Q380,410 420,440 Q460,470 510,445" stroke="#1a6a3a" stroke-width="24" fill="none" stroke-linecap="round"/>
+  <path d="M345,440 Q380,410 420,440 Q460,470 510,445" stroke="#3fb950" stroke-width="18" fill="none" stroke-linecap="round" opacity="0.55"/>
+  <path d="M507,432 Q525,418 531,445 Q525,472 507,458" fill="#3fb950" fill-opacity="0.6" stroke="#3fb950" stroke-width="2"/>
+  <g stroke="#f85149" stroke-width="0.8" stroke-dasharray="6,3" opacity="0.7">
+    <line x1="348" y1="433" x2="312" y2="427"/>
+    <line x1="347" y1="445" x2="310" y2="445"/>
+  </g>
+  <text x="450" y="510" font-family="monospace" font-size="9" fill="#f85149" text-anchor="middle">full body C-start wave; max amplitude</text>
+
+  <!-- CARANGIFORM BURST -->
+  <text x="750" y="398" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="middle">amplitude: high · freq: 2.0 Hz</text>
+  <ellipse cx="748" cy="450" rx="66" ry="20" fill="#5a1a1a" stroke="#aa3a3a" stroke-width="1.5"/>
+  <path d="M808,424 Q832,404 840,450 Q832,496 808,476" fill="#f85149" fill-opacity="0.65" stroke="#f85149" stroke-width="2.2"/>
+  <g stroke="#f85149" stroke-width="0.8" stroke-dasharray="6,3" opacity="0.7">
+    <line x1="688" y1="442" x2="650" y2="436"/>
+    <line x1="687" y1="453" x2="648" y2="453"/>
+    <line x1="688" y1="462" x2="650" y2="468"/>
+  </g>
+  <path d="M685,450 Q720,448 800,450" stroke="#aa3a3a" stroke-width="1" fill="none" stroke-dasharray="5,3" opacity="0.7"/>
+  <text x="750" y="510" font-family="monospace" font-size="9" fill="#f85149" text-anchor="middle">wide tail sweep; body locked stiff</text>
+
+  <!-- Footer -->
+  <rect x="0" y="530" width="900" height="30" fill="#161b22"/>
+  <text x="450" y="549" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">Idle: body-wave amp 0.05×BL · Cruise: 0.12×BL · Burst: 0.22×BL  ·  BL = body length</text>
+</svg>

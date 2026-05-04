@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="1000" height="580">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', system-ui, sans-serif; fill: #e6edf3; }
+      .title { font-size: 18px; font-weight: 600; }
+      .label { font-size: 13px; }
+      .small { font-size: 11px; fill: #8b949e; }
+      .code { font-size: 11px; font-family: 'Cascadia Code', monospace; fill: #f78166; }
+      .prop { font-size: 11px; font-family: 'Cascadia Code', monospace; fill: #79c0ff; }
+    </style>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3d444d"/>
+    </marker>
+    <marker id="arrb" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#1f6feb"/>
+    </marker>
+    <marker id="arrg" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2ea043"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="580" fill="#0d1117"/>
+  <rect x="0" y="0" width="1000" height="44" fill="#161b22"/>
+  <text x="24" y="28" class="title">GA-009 · Front-Window Mode — State Machine</text>
+  <text x="800" y="28" class="small">TRACEABILITY: DI-022</text>
+
+  <!-- ===== STATE: Normal ===== -->
+  <rect x="44" y="80" width="360" height="360" rx="12" fill="#161b22" stroke="#1f6feb" stroke-width="2"/>
+  <rect x="44" y="80" width="360" height="40" rx="12" fill="#1f6feb" opacity="0.25"/>
+  <text x="224" y="107" class="label" text-anchor="middle" font-weight="600" fill="#79c0ff">STATE: Normal</text>
+
+  <!-- Normal state internals -->
+  <text x="64" y="148" class="small" font-weight="600" fill="#e6edf3">Camera</text>
+  <rect x="64" y="156" width="320" height="36" rx="4" fill="#0d1117" stroke="#3d444d" stroke-width="1"/>
+  <text x="74" y="179" class="prop">PerspectiveCamera  (Renderer._defaultCamera)</text>
+
+  <text x="64" y="214" class="small" font-weight="600" fill="#e6edf3">HUD</text>
+  <rect x="64" y="222" width="320" height="36" rx="4" fill="#0d1117" stroke="#3d444d" stroke-width="1"/>
+  <text x="74" y="237" class="prop">#hud-root</text>
+  <text x="74" y="251" class="small">display: '' (visible)</text>
+
+  <text x="64" y="280" class="small" font-weight="600" fill="#e6edf3">Exit Button</text>
+  <rect x="64" y="288" width="320" height="36" rx="4" fill="#0d1117" stroke="#3d444d" stroke-width="1"/>
+  <text x="74" y="303" class="prop">#exit-window-btn</text>
+  <text x="74" y="317" class="small">display: none</text>
+
+  <text x="64" y="346" class="small" font-weight="600" fill="#e6edf3">AppState</text>
+  <rect x="64" y="354" width="320" height="36" rx="4" fill="#0d1117" stroke="#3d444d" stroke-width="1"/>
+  <text x="74" y="374" class="prop">frontWindowMode = false</text>
+
+  <text x="64" y="424" class="small" font-weight="600" fill="#e6edf3">HUD btn</text>
+  <rect x="64" y="432" width="320" height="30" rx="4" fill="#21262d" stroke="#1f6feb" stroke-width="1.5"/>
+  <text x="224" y="452" class="label" text-anchor="middle" fill="#79c0ff">[ Window ]</text>
+
+  <!-- ===== TRANSITIONS ===== -->
+  <!-- activate arrow -->
+  <line x1="404" y1="220" x2="596" y2="220" stroke="#2ea043" stroke-width="2" marker-end="url(#arrg)"/>
+  <rect x="426" y="188" width="148" height="56" rx="6" fill="#0d1117" stroke="#2ea043" stroke-width="1.5"/>
+  <text x="500" y="207" class="small" text-anchor="middle" fill="#3fb950" font-weight="600">activate()</text>
+  <text x="500" y="223" class="small" text-anchor="middle">click #btn-window-mode</text>
+  <text x="500" y="237" class="small" text-anchor="middle">→ ≤ 2 interactions</text>
+
+  <!-- deactivate arrow (return) -->
+  <line x1="596" y1="260" x2="404" y2="260" stroke="#b91c1c" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="426" y="268" width="148" height="68" rx="6" fill="#0d1117" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="500" y="289" class="small" text-anchor="middle" fill="#f78166" font-weight="600">deactivate()</text>
+  <text x="500" y="305" class="small" text-anchor="middle">Escape keydown</text>
+  <text x="500" y="321" class="small" text-anchor="middle">OR click #exit-window-btn</text>
+
+  <!-- ===== STATE: Window Mode ===== -->
+  <rect x="596" y="80" width="360" height="360" rx="12" fill="#161b22" stroke="#b91c1c" stroke-width="2"/>
+  <rect x="596" y="80" width="360" height="40" rx="12" fill="#b91c1c" opacity="0.25"/>
+  <text x="776" y="107" class="label" text-anchor="middle" font-weight="600" fill="#f78166">STATE: Window Mode</text>
+
+  <!-- Window state internals -->
+  <text x="616" y="148" class="small" font-weight="600" fill="#e6edf3">Camera</text>
+  <rect x="616" y="156" width="320" height="52" rx="4" fill="#0d1117" stroke="#3d444d" stroke-width="1"/>
+  <text x="626" y="174" class="prop">OrthographicCamera</text>
+  <text x="626" y="190" class="small">frustum = tank dims (800 × 500)</text>
+  <text x="626" y="204" class="small">position (0, 0, 500) · lookAt (0, 0, 0)</text>
+
+  <text x="616" y="230" class="small" font-weight="600" fill="#e6edf3">HUD</text>
+  <rect x="616" y="238" width="320" height="36" rx="4" fill="#0d1117" stroke="#3d444d" stroke-width="1"/>
+  <text x="626" y="253" class="prop">#hud-root</text>
+  <text x="626" y="267" class="small">display: none (hidden)</text>
+
+  <text x="616" y="296" class="small" font-weight="600" fill="#e6edf3">Exit Button</text>
+  <rect x="616" y="304" width="320" height="52" rx="4" fill="#0d1117" stroke="#3d444d" stroke-width="1"/>
+  <text x="626" y="321" class="prop">#exit-window-btn</text>
+  <text x="626" y="337" class="small">display: block  ·  top:8px right:8px</text>
+  <text x="626" y="353" class="small">opacity:0.5  ·  aria-label "Exit window mode"</text>
+
+  <text x="616" y="380" class="small" font-weight="600" fill="#e6edf3">AppState</text>
+  <rect x="616" y="388" width="320" height="36" rx="4" fill="#0d1117" stroke="#3d444d" stroke-width="1"/>
+  <text x="626" y="408" class="prop">frontWindowMode = true</text>
+
+  <!-- Simulation tick note (spans both states) -->
+  <rect x="44" y="460" width="912" height="48" rx="6" fill="#0d1117" stroke="#9e6a03" stroke-width="1.5"/>
+  <text x="64" y="481" class="small" fill="#d29922" font-weight="600">Simulation Continuity (BR-051)</text>
+  <text x="64" y="497" class="small">RAF game loop, fluid grid, fish behaviours, and crab gait continue uninterrupted during both activate() and deactivate() transitions.</text>
+
+  <!-- Requirements box -->
+  <rect x="44" y="524" width="912" height="44" rx="6" fill="#0d1117" stroke="#1f6feb" stroke-width="1"/>
+  <text x="64" y="543" class="small" fill="#79c0ff" font-weight="600">Requirements</text>
+  <text x="64" y="559" class="small">BR-049 Activation ≤2 interactions  ·  BR-050 All UI chrome hidden  ·  BR-051 Simulation uninterrupted  ·  BR-052 Exit via Escape or corner control  ·  AR-013 · PT-024</text>
+</svg>

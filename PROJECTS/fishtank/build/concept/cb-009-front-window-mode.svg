@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540">
+  <title>CB-009: Clean Front-Window View Mode</title>
+  <rect width="900" height="540" fill="#0d1117"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="900" height="36" fill="#161b22"/>
+  <text x="450" y="23" font-family="monospace" font-size="13" fill="#8b949e" text-anchor="middle">CB-009 · CLEAN FRONT-WINDOW VIEW MODE · UC-016</text>
+
+  <!-- ===== COMPARISON STRIP (top) ===== -->
+  <rect x="20" y="48" width="200" height="110" fill="#161b22" stroke="#d29922" stroke-width="2" rx="3"/>
+  <text x="120" y="65" font-family="monospace" font-size="9" fill="#d29922" text-anchor="middle">BEFORE: normal HUD</text>
+
+  <!-- Mini HUD view -->
+  <rect x="28" y="70" width="184" height="80" fill="#071830"/>
+  <!-- HUD bar (top) -->
+  <rect x="28" y="70" width="184" height="14" fill="#161b22"/>
+  <rect x="33" y="73" width="24" height="8" fill="#1f6feb" rx="1"/><text x="45" y="80" font-family="monospace" font-size="6" fill="#e6edf3" text-anchor="middle">Iso</text>
+  <rect x="62" y="73" width="30" height="8" fill="#21262d" rx="1"/><text x="77" y="80" font-family="monospace" font-size="6" fill="#8b949e" text-anchor="middle">3/4</text>
+  <rect x="143" y="73" width="24" height="8" fill="#21262d" rx="1"/><text x="155" y="80" font-family="monospace" font-size="6" fill="#8b949e" text-anchor="middle">♪</text>
+  <rect x="172" y="73" width="34" height="8" fill="#21262d" rx="1"/><text x="189" y="80" font-family="monospace" font-size="6" fill="#8b949e" text-anchor="middle">Feed</text>
+  <!-- controls panel visible -->
+  <rect x="172" y="86" width="36" height="60" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="190" y="100" font-family="monospace" font-size="5" fill="#8b949e" text-anchor="middle">substrate</text>
+  <rect x="176" y="103" width="28" height="6" fill="#21262d" rx="1"/>
+  <text x="190" y="114" font-family="monospace" font-size="5" fill="#8b949e" text-anchor="middle">decor</text>
+  <rect x="176" y="117" width="14" height="6" fill="#1f6feb" rx="1"/>
+  <!-- fish in mini tank -->
+  <ellipse cx="90" cy="115" rx="14" ry="6" fill="#2a8fbb"/>
+  <ellipse cx="60" cy="125" rx="10" ry="4" fill="#2a7a5a"/>
+  <ellipse cx="115" cy="130" rx="12" ry="5" fill="#7c3f1e"/>
+  <!-- substrate -->
+  <rect x="28" y="142" width="138" height="8" fill="#1c1408"/>
+
+  <!-- Arrow between comparison panels -->
+  <line x1="228" y1="103" x2="262" y2="103" stroke="#e6edf3" stroke-width="2"/>
+  <polygon points="262,99 272,103 262,107" fill="#e6edf3"/>
+  <text x="250" y="96" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="middle">≤2</text>
+  <text x="250" y="107" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="middle">steps</text>
+
+  <!-- AFTER mini panel -->
+  <rect x="280" y="48" width="200" height="110" fill="#161b22" stroke="#1f6feb" stroke-width="2" rx="3"/>
+  <text x="380" y="65" font-family="monospace" font-size="9" fill="#1f6feb" text-anchor="middle">AFTER: clean window mode</text>
+
+  <!-- Clean window mini view — no HUD -->
+  <rect x="288" y="70" width="184" height="80" fill="#071830"/>
+  <!-- Glass border only -->
+  <rect x="288" y="70" width="184" height="80" fill="none" stroke="#1f2937" stroke-width="1"/>
+  <!-- Fish only, no HUD -->
+  <ellipse cx="360" cy="103" rx="16" ry="7" fill="#2a8fbb"/>
+  <ellipse cx="330" cy="118" rx="11" ry="5" fill="#2a7a5a"/>
+  <ellipse cx="398" cy="113" rx="13" ry="6" fill="#2a8fbb" opacity="0.8"/>
+  <!-- Crab at bottom -->
+  <ellipse cx="370" cy="140" rx="12" ry="8" fill="#7c3f1e"/>
+  <line x1="360" y1="137" x2="348" y2="132" stroke="#5a2d12" stroke-width="2"/>
+  <line x1="380" y1="137" x2="392" y2="132" stroke="#5a2d12" stroke-width="2"/>
+  <!-- No substrate label, no HUD elements -->
+  <rect x="288" y="142" width="184" height="8" fill="#1c1408"/>
+  <!-- Corner exit icon (visible on hover — muted) -->
+  <rect x="454" y="70" width="14" height="14" fill="none" stroke="#8b949e" stroke-width="1" rx="2" opacity="0.5"/>
+  <path d="M457,76 L462,76 L462,81" stroke="#8b949e" stroke-width="1" fill="none" opacity="0.5"/>
+
+  <!-- ===== MAIN CLEAN WINDOW PANEL ===== -->
+  <rect x="0" y="180" width="900" height="320" fill="#071828"/>
+
+  <!-- Glass border — thin, subtle -->
+  <rect x="0" y="180" width="900" height="320" fill="none" stroke="#1f2937" stroke-width="2"/>
+
+  <!-- Glass refraction overlay (top) -->
+  <rect x="0" y="180" width="900" height="20" fill="#0a2040" opacity="0.6"/>
+  <path d="M0,200 Q150,190 300,200 Q450,210 600,200 Q750,190 900,200" fill="none" stroke="#1f6feb" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Water column caustics -->
+  <g fill="#c9a84c" opacity="0.08">
+    <path d="M120,210 Q160,200 200,215 Q180,228 140,225 Z"/>
+    <path d="M340,218 Q385,208 420,220 Q400,234 360,232 Z"/>
+    <path d="M560,212 Q605,202 635,216 Q615,230 578,228 Z"/>
+    <path d="M720,220 Q758,210 790,222 Q772,235 735,233 Z"/>
+  </g>
+
+  <!-- FISH in clean tank — no annotations, just visual -->
+  <!-- Fish 1: labriform reef fish -->
+  <ellipse cx="200" cy="290" rx="55" ry="22" fill="#1a5c7a" stroke="#2a8fbb" stroke-width="1"/>
+  <path d="M175,268 Q200,248 240,258 Q248,270 210,273 Z" fill="#80d4e0" fill-opacity="0.3" stroke="#80d4e0" stroke-width="0.8"/>
+  <path d="M175,290 Q155,278 148,292 Q155,307 175,300 Z" fill="#80d4e0" fill-opacity="0.35" stroke="#80d4e0" stroke-width="0.8"/>
+  <path d="M250,272 Q268,262 273,290 Q268,318 250,308" fill="#80d4e0" fill-opacity="0.3" stroke="#80d4e0" stroke-width="1"/>
+  <circle cx="152" cy="286" r="9" fill="#0a0a0a"/><circle cx="150" cy="284" r="2.5" fill="#ffffff"/>
+
+  <!-- Fish 2: schooling group -->
+  <ellipse cx="460" cy="255" rx="42" ry="16" fill="#2a7a5a" stroke="#3fa070" stroke-width="1"/>
+  <path d="M497,248 Q510,243 514,255 Q510,267 497,262" fill="#3fa070" fill-opacity="0.3" stroke="#3fa070" stroke-width="0.8"/>
+  <circle cx="423" cy="252" r="7" fill="#0a0a0a"/><circle cx="421" cy="250" r="2" fill="#ffffff"/>
+
+  <ellipse cx="520" cy="278" rx="40" ry="15" fill="#2a7a5a" stroke="#3fa070" stroke-width="1"/>
+  <path d="M555,271 Q568,265 572,278 Q568,291 555,286" fill="#3fa070" fill-opacity="0.3" stroke="#3fa070" stroke-width="0.8"/>
+  <circle cx="485" cy="275" r="6" fill="#0a0a0a"/><circle cx="483" cy="273" r="1.8" fill="#ffffff"/>
+
+  <ellipse cx="490" cy="305" rx="38" ry="14" fill="#2a7a5a" stroke="#3fa070" stroke-width="1"/>
+  <path d="M523,299 Q534,294 537,305 Q534,316 523,311" fill="#3fa070" fill-opacity="0.3" stroke="#3fa070" stroke-width="0.8"/>
+
+  <!-- Fish 3: carangiform (goldfish-like) -->
+  <ellipse cx="740" cy="310" rx="60" ry="24" fill="#8b4513" stroke="#c47820" stroke-width="1.2"/>
+  <path d="M700,286 Q720,268 760,278 Q767,288 732,292 Z" fill="#c47820" fill-opacity="0.3" stroke="#c47820" stroke-width="0.8"/>
+  <path d="M793,292 Q812,278 818,310 Q812,342 793,328" fill="#c47820" fill-opacity="0.35" stroke="#c47820" stroke-width="1.2"/>
+  <circle cx="685" cy="306" r="10" fill="#0a0a0a"/><circle cx="683" cy="304" r="3" fill="#ffffff"/>
+
+  <!-- Substrate -->
+  <rect x="0" y="460" width="900" height="40" fill="#1c1408"/>
+  <!-- Gravel -->
+  <g fill="#2a1e0e" opacity="0.7">
+    <circle cx="40" cy="470" r="4"/><circle cx="80" cy="475" r="3.5"/><circle cx="120" cy="468" r="5"/>
+    <circle cx="160" cy="475" r="3"/><circle cx="200" cy="470" r="4.5"/><circle cx="240" cy="476" r="3"/>
+    <circle cx="280" cy="469" r="5"/><circle cx="320" cy="474" r="3.5"/><circle cx="360" cy="470" r="4"/>
+    <circle cx="400" cy="475" r="3"/><circle cx="440" cy="469" r="5"/><circle cx="480" cy="474" r="3.5"/>
+    <circle cx="520" cy="470" r="4.5"/><circle cx="560" cy="476" r="3"/><circle cx="600" cy="469" r="5"/>
+    <circle cx="640" cy="474" r="3.5"/><circle cx="680" cy="470" r="4"/><circle cx="720" cy="475" r="3"/>
+    <circle cx="760" cy="469" r="5"/><circle cx="800" cy="474" r="3.5"/><circle cx="840" cy="470" r="4"/>
+    <circle cx="875" cy="476" r="3.5"/>
+  </g>
+
+  <!-- CRAB at substrate -->
+  <ellipse cx="450" cy="452" rx="38" ry="22" fill="#7c3f1e" stroke="#a85c2a" stroke-width="1.5"/>
+  <!-- Crab legs (minimal, natural) -->
+  <line x1="420" y1="446" x2="393" y2="438" stroke="#5a2d12" stroke-width="3"/><line x1="393" y1="438" x2="375" y2="456" stroke="#5a2d12" stroke-width="2.5"/><line x1="375" y1="456" x2="365" y2="470" stroke="#5a2d12" stroke-width="2"/>
+  <line x1="415" y1="454" x2="386" y2="450" stroke="#5a2d12" stroke-width="3"/><line x1="386" y1="450" x2="368" y2="464" stroke="#5a2d12" stroke-width="2.5"/><line x1="368" y1="464" x2="358" y2="478" stroke="#5a2d12" stroke-width="2"/>
+  <line x1="480" y1="446" x2="507" y2="438" stroke="#5a2d12" stroke-width="3"/><line x1="507" y1="438" x2="525" y2="456" stroke="#5a2d12" stroke-width="2.5"/><line x1="525" y1="456" x2="535" y2="470" stroke="#5a2d12" stroke-width="2"/>
+  <line x1="485" y1="454" x2="514" y2="450" stroke="#5a2d12" stroke-width="3"/><line x1="514" y1="450" x2="532" y2="464" stroke="#5a2d12" stroke-width="2.5"/><line x1="532" y1="464" x2="542" y2="478" stroke="#5a2d12" stroke-width="2"/>
+  <!-- Claw left -->
+  <line x1="425" y1="436" x2="400" y2="420" stroke="#5a2d12" stroke-width="5"/><path d="M400,420 Q387,410 380,420 Q387,430 398,426 Z" fill="#7c3f1e" stroke="#a85c2a" stroke-width="1.2"/>
+  <!-- Claw right -->
+  <line x1="475" y1="436" x2="500" y2="420" stroke="#5a2d12" stroke-width="5"/><path d="M500,420 Q513,410 520,420 Q513,430 502,426 Z" fill="#7c3f1e" stroke="#a85c2a" stroke-width="1.2"/>
+
+  <!-- CORNER EXIT ICON — appears on hover -->
+  <rect x="858" y="188" width="30" height="30" fill="none" stroke="#8b949e" stroke-width="1.5" rx="3" opacity="0.5"/>
+  <path d="M862,192 L880,192 L880,210" stroke="#8b949e" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <line x1="862" y1="210" x2="876" y2="196" stroke="#8b949e" stroke-width="1.5" opacity="0.5"/>
+  <!-- Corner icon annotation -->
+  <line x1="858" y1="203" x2="820" y2="203" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="810" y="200" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="end">exit icon</text>
+  <text x="810" y="212" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="end">(hover-reveal)</text>
+  <text x="810" y="223" font-family="monospace" font-size="9" fill="#8b949e" text-anchor="end">opacity 0.5</text>
+
+  <!-- No HUD label overlay -->
+  <text x="30" y="216" font-family="monospace" font-size="10" fill="#8b949e" opacity="0.6">no controls · no labels · no tooltips</text>
+
+  <!-- ESC key hint (very subtle) -->
+  <text x="30" y="492" font-family="monospace" font-size="9" fill="#8b949e" opacity="0.45">Esc to exit window mode</text>
+
+  <!-- Footer -->
+  <rect x="0" y="505" width="900" height="35" fill="#161b22"/>
+  <text x="450" y="527" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">Front-window mode: THREE.OrthographicCamera · UI layer display:none · AppState.frontWindowMode = true · Escape key exits</text>
+</svg>

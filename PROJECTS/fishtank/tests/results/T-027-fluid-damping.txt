@@ -1,0 +1,4 @@
+TEST ID: T-027
+TIMESTAMP: 2026-05-03T02:56:29.364Z
+RESULT: PASS
+DETAIL: FluidGrid impulse + decay ran 5s after click without errors

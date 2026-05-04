@@ -1,0 +1,9 @@
+{
+  "hudButton": {
+    "label": "Window",
+    "ariaLabel": "Switch to window view"
+  },
+  "exitButton": {
+    "ariaLabel": "Exit window mode"
+  }
+}

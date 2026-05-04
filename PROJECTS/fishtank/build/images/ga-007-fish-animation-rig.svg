@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', system-ui, sans-serif; fill: #e6edf3; }
+      .title { font-size: 18px; font-weight: 600; }
+      .label { font-size: 13px; }
+      .small { font-size: 11px; fill: #8b949e; }
+      .code { font-size: 11px; font-family: 'Cascadia Code', monospace; fill: #f78166; }
+      .prop { font-size: 11px; font-family: 'Cascadia Code', monospace; fill: #79c0ff; }
+    </style>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3d444d"/>
+    </marker>
+    <marker id="arrg" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3fb950"/>
+    </marker>
+    <marker id="arry" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#d29922"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="720" fill="#0d1117"/>
+  <rect x="0" y="0" width="1200" height="44" fill="#161b22"/>
+  <text x="24" y="28" class="title">GA-007 · Fish Skeletal Animation Rig</text>
+  <text x="980" y="28" class="small">TRACEABILITY: DI-020</text>
+
+  <!-- ===== LEFT PANEL: Bone chain silhouette ===== -->
+  <text x="36" y="70" class="label" font-weight="600" fill="#f78166">Bone Chain Layout (per fish)</text>
+
+  <!-- Fish body silhouette (ellipse) -->
+  <ellipse cx="300" cy="290" rx="230" ry="78" fill="#161b22" stroke="#3d444d" stroke-width="1.5"/>
+  <!-- Caudal fin -->
+  <polygon points="530,254 580,210 580,370 530,326" fill="#161b22" stroke="#3d444d" stroke-width="1.5"/>
+  <!-- Dorsal fin -->
+  <polygon points="200,212 270,148 350,148 380,212" fill="#161b22" stroke="#3d444d" stroke-width="1.5"/>
+
+  <!-- Spine bones B0-B7 -->
+  <!-- B0 (head) -->
+  <circle cx="92" cy="290" r="12" fill="#b91c1c" stroke="#f78166" stroke-width="2"/>
+  <text x="92" y="294" class="small" text-anchor="middle" fill="#f78166" font-size="10">B0</text>
+  <!-- B1 -->
+  <circle cx="150" cy="290" r="10" fill="#161b22" stroke="#f78166" stroke-width="1.5"/>
+  <text x="150" y="294" class="small" text-anchor="middle" fill="#f78166" font-size="10">B1</text>
+  <!-- B2 -->
+  <circle cx="208" cy="284" r="10" fill="#161b22" stroke="#f78166" stroke-width="1.5"/>
+  <text x="208" y="288" class="small" text-anchor="middle" fill="#f78166" font-size="10">B2</text>
+  <!-- B3 -->
+  <circle cx="264" cy="280" r="10" fill="#161b22" stroke="#f78166" stroke-width="1.5"/>
+  <text x="264" y="284" class="small" text-anchor="middle" fill="#f78166" font-size="10">B3</text>
+  <!-- B4 -->
+  <circle cx="318" cy="280" r="10" fill="#161b22" stroke="#f78166" stroke-width="1.5"/>
+  <text x="318" y="284" class="small" text-anchor="middle" fill="#f78166" font-size="10">B4</text>
+  <!-- B5 -->
+  <circle cx="370" cy="284" r="10" fill="#161b22" stroke="#f78166" stroke-width="1.5"/>
+  <text x="370" y="288" class="small" text-anchor="middle" fill="#f78166" font-size="10">B5</text>
+  <!-- B6 -->
+  <circle cx="420" cy="288" r="10" fill="#161b22" stroke="#f78166" stroke-width="1.5"/>
+  <text x="420" y="292" class="small" text-anchor="middle" fill="#f78166" font-size="10">B6</text>
+  <!-- B7 (tail) -->
+  <circle cx="470" cy="290" r="10" fill="#161b22" stroke="#f78166" stroke-width="1.5"/>
+  <text x="470" y="294" class="small" text-anchor="middle" fill="#f78166" font-size="10">B7</text>
+  <!-- Spine bone connectors -->
+  <line x1="104" y1="290" x2="140" y2="290" stroke="#f78166" stroke-width="1.5"/>
+  <line x1="160" y1="290" x2="198" y2="285" stroke="#f78166" stroke-width="1.5"/>
+  <line x1="218" y1="284" x2="254" y2="281" stroke="#f78166" stroke-width="1.5"/>
+  <line x1="274" y1="281" x2="308" y2="281" stroke="#f78166" stroke-width="1.5"/>
+  <line x1="328" y1="281" x2="360" y2="283" stroke="#f78166" stroke-width="1.5"/>
+  <line x1="380" y1="285" x2="410" y2="288" stroke="#f78166" stroke-width="1.5"/>
+  <line x1="430" y1="289" x2="460" y2="290" stroke="#f78166" stroke-width="1.5"/>
+
+  <!-- Pectoral bones PL, PR -->
+  <circle cx="208" cy="340" r="9" fill="#161b22" stroke="#d29922" stroke-width="2"/>
+  <text x="208" y="344" class="small" text-anchor="middle" fill="#d29922" font-size="10">PL</text>
+  <circle cx="208" cy="238" r="9" fill="#161b22" stroke="#d29922" stroke-width="2"/>
+  <text x="208" y="242" class="small" text-anchor="middle" fill="#d29922" font-size="10">PR</text>
+  <line x1="208" y1="294" x2="208" y2="331" stroke="#d29922" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <line x1="208" y1="275" x2="208" y2="229" stroke="#d29922" stroke-width="1.5" stroke-dasharray="4 2"/>
+
+  <!-- Dorsal bone D1 -->
+  <circle cx="280" cy="192" r="9" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="280" y="196" class="small" text-anchor="middle" fill="#3fb950" font-size="10">D1</text>
+  <line x1="280" y1="270" x2="280" y2="201" stroke="#3fb950" stroke-width="1.5" stroke-dasharray="4 2"/>
+
+  <!-- Amplitude gradient bar -->
+  <text x="60" y="410" class="small" fill="#8b949e">Rotation amplitude rearWeight :</text>
+  <text x="88" y="430" class="small" fill="#79c0ff">B0 ×0.0 (head — no rotation)</text>
+  <text x="88" y="448" class="small">B1–B3 ×0.1 – 0.4 (front body)</text>
+  <text x="88" y="466" class="small">B4–B6 ×0.5 – 0.8 (rear body)</text>
+  <text x="88" y="484" class="small" fill="#f78166">B7 ×1.0 (tail — max rotation)</text>
+
+  <!-- Speed state amplitudes -->
+  <rect x="36" y="504" width="540" height="90" rx="6" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <text x="56" y="524" class="label" fill="#d29922" font-weight="600">Spine rotation × rearWeight per speed state</text>
+  <text x="56" y="544" class="code">idle:   amp = 0.08 rad   period = 2.0 s</text>
+  <text x="56" y="562" class="code">cruise: amp = 0.20 rad   period = 1.0 s</text>
+  <text x="56" y="580" class="code">burst:  amp = 0.38 rad   period = 0.45 s</text>
+  <text x="56" y="598" class="small">Pectoral fan: idle 35° → cruise 15° → burst 0° (synchronous)</text>
+
+  <!-- ===== RIGHT PANEL: AnimationMixer clip graph ===== -->
+  <text x="660" y="70" class="label" font-weight="600" fill="#f78166">AnimationMixer — Clip State Graph</text>
+
+  <!-- Clip nodes -->
+  <!-- idle -->
+  <rect x="720" y="120" width="120" height="48" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="780" y="140" class="label" text-anchor="middle" fill="#3fb950">idle</text>
+  <text x="780" y="157" class="small" text-anchor="middle">period 2.0 s · LoopRepeat</text>
+
+  <!-- cruise -->
+  <rect x="920" y="120" width="120" height="48" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="2"/>
+  <text x="980" y="140" class="label" text-anchor="middle" fill="#79c0ff">cruise</text>
+  <text x="980" y="157" class="small" text-anchor="middle">period 1.0 s · LoopRepeat</text>
+
+  <!-- burst -->
+  <rect x="920" y="280" width="120" height="48" rx="8" fill="#161b22" stroke="#f78166" stroke-width="2"/>
+  <text x="980" y="300" class="label" text-anchor="middle" fill="#f78166">burst</text>
+  <text x="980" y="317" class="small" text-anchor="middle">period 0.45 s · LoopRepeat</text>
+
+  <!-- cstart -->
+  <rect x="720" y="280" width="120" height="48" rx="8" fill="#161b22" stroke="#d29922" stroke-width="2"/>
+  <text x="780" y="300" class="label" text-anchor="middle" fill="#d29922">cstart</text>
+  <text x="780" y="317" class="small" text-anchor="middle">0.25 s · LoopOnce</text>
+
+  <!-- Transition arrows -->
+  <!-- idle <-> cruise -->
+  <line x1="840" y1="138" x2="920" y2="138" stroke="#3d444d" stroke-width="1.5" marker-end="url(#arrg)"/>
+  <text x="880" y="130" class="small" text-anchor="middle">0.4 s</text>
+  <line x1="920" y1="150" x2="840" y2="150" stroke="#3d444d" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="880" y="166" class="small" text-anchor="middle">0.6 s</text>
+
+  <!-- cruise <-> burst -->
+  <line x1="980" y1="168" x2="980" y2="280" stroke="#3d444d" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="994" y="228" class="small">0.2 s</text>
+  <line x1="964" y1="280" x2="964" y2="168" stroke="#3d444d" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="938" y="228" class="small">0.6 s</text>
+
+  <!-- idle -> cstart (dashed) -->
+  <line x1="780" y1="168" x2="780" y2="280" stroke="#d29922" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arry)"/>
+  <text x="796" y="228" class="small" fill="#d29922">trigger</text>
+
+  <!-- cstart -> burst (dashed) -->
+  <line x1="840" y1="304" x2="920" y2="304" stroke="#d29922" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arry)"/>
+  <text x="880" y="296" class="small" fill="#d29922" text-anchor="middle">after 0.25 s</text>
+  <text x="880" y="318" class="small" fill="#d29922" text-anchor="middle">crossfade 0.3 s</text>
+
+  <!-- Legend / notes -->
+  <rect x="660" y="380" width="490" height="220" rx="6" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+  <text x="680" y="402" class="label" fill="#d29922" font-weight="600">Crossfade Table</text>
+  <text x="680" y="424" class="small">idle → cruise      0.4 s</text>
+  <text x="680" y="442" class="small">cruise → idle      0.6 s</text>
+  <text x="680" y="460" class="small">cruise → burst     0.2 s</text>
+  <text x="680" y="478" class="small">burst → cruise     0.6 s</text>
+  <text x="680" y="496" class="small">idle → burst       0.3 s</text>
+  <text x="680" y="514" class="small">burst → idle       0.8 s</text>
+  <text x="680" y="534" class="small" fill="#d29922">cstart triggers on cursor proximity &lt; 80 world units</text>
+  <text x="680" y="552" class="small" fill="#d29922">3.0 s cooldown per fish after C-start</text>
+  <text x="680" y="572" class="small">Requirements: BR-041 BR-042 BR-043 BR-044</text>
+  <text x="680" y="590" class="small">Parts: PT-022 · Architecture: AR-011</text>
+
+  <!-- bone legend -->
+  <circle cx="676" cy="630" r="7" fill="#161b22" stroke="#f78166" stroke-width="2"/>
+  <text x="690" y="634" class="small">Spine bones (B0–B7)</text>
+  <circle cx="800" cy="630" r="7" fill="#161b22" stroke="#d29922" stroke-width="2"/>
+  <text x="814" y="634" class="small">Pectoral bones (PL, PR)</text>
+  <circle cx="940" cy="630" r="7" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="954" y="634" class="small">Dorsal bone (D1)</text>
+</svg>

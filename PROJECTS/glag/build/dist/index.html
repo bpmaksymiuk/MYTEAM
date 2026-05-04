@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyrillic ↔ Glagolitic Converter</title>
+    <script type="module" crossorigin src="/assets/index-CkPUAA74.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CnC44LrE.css">
+  </head>
+  <body>
+    <header>
+      <h1>Cyrillic ↔ Glagolitic Converter</h1>
+    </header>
+
+    <main>
+      <div class="mode-toggle" role="group" aria-label="Conversion mode">
+        <button id="btn-mode-cyr-glag" class="btn-mode active" type="button">
+          Cyrillic → Glagolitic
+        </button>
+        <button id="btn-mode-glag-cyr" class="btn-mode" type="button">
+          Glagolitic → Cyrillic
+        </button>
+      </div>
+
+      <div class="panels">
+        <div class="panel panel-input">
+          <div class="panel-label" id="label-input">Input — Cyrillic</div>
+          <textarea
+            id="input-text"
+            placeholder="Type or paste Cyrillic text here…"
+            autocomplete="off"
+            spellcheck="false"
+            aria-labelledby="label-input"
+          ></textarea>
+        </div>
+
+        <div class="panel-arrow" aria-hidden="true">→</div>
+
+        <div class="panel panel-output">
+          <div class="panel-label" id="label-output">Output — Glagolitic</div>
+          <div
+            id="output-text"
+            role="region"
+            aria-labelledby="label-output"
+            aria-live="polite"
+          ></div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="btn-clear" type="button">✕ Clear</button>
+        <button id="btn-copy" type="button" disabled>⎘ Copy Output</button>
+        <button id="btn-mapping" type="button">☰ Mapping</button>
+      </div>
+
+      <div id="toast" role="status" aria-live="assertive" aria-atomic="true">
+        ✓ Copied to clipboard
+      </div>
+    </main>
+
+    <section id="section-mapping" hidden aria-label="Character mapping reference">
+      <div class="mapping-header">
+        <button id="btn-close-mapping" type="button">← Back</button>
+        <h2>Character Mapping Reference</h2>
+      </div>
+      <p class="mapping-intro">
+        29 uppercase character pairs. Lowercase variants are also mapped.
+        Characters not listed pass through unchanged.
+      </p>
+      <div id="mapping-table-container"></div>
+    </section>
+
+  </body>
+</html>

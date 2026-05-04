@@ -1,0 +1,4 @@
+TEST ID: T-050
+TIMESTAMP: 2026-05-03T02:55:51.223Z
+RESULT: PASS
+DETAIL: Overlay hidden: true; Exit btn hidden: true; Errors: none

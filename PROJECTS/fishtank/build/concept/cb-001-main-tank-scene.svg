@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 580" width="820" height="580">
+  <title>CB-001 — Main Tank Scene — Fish Tank Simulator Concept</title>
+  <rect width="820" height="580" fill="#0d1117"/>
+
+  <g id="title-bar">
+    <rect x="0" y="0" width="820" height="36" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+    <text x="16" y="23" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#e6edf3">CB-001 — MAIN TANK SCENE</text>
+    <text x="804" y="23" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="end">UC-001 · UC-008 · UC-012</text>
+  </g>
+
+  <g id="tank-outer">
+    <rect x="60" y="52" width="700" height="470" rx="4" fill="#0a1628" stroke="#3d444d" stroke-width="6"/>
+    <rect x="63" y="55" width="694" height="464" rx="2" fill="none" stroke="#21262d" stroke-width="1"/>
+  </g>
+
+  <g id="light-rays" opacity="0.14">
+    <polygon points="210,55 240,280 180,280" fill="#79c0ff"/>
+    <polygon points="380,55 415,340 345,340" fill="#79c0ff"/>
+    <polygon points="560,55 590,260 530,260" fill="#79c0ff"/>
+    <polygon points="680,55 700,310 660,310" fill="#79c0ff"/>
+  </g>
+
+  <g id="water-column">
+    <rect x="63" y="55" width="694" height="330" fill="#071830" opacity="0.7"/>
+    <text x="410" y="100" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">WATER COLUMN</text>
+    <text x="410" y="114" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#3d444d" text-anchor="middle">caustics · light diffusion · particle scatter · refraction</text>
+  </g>
+
+  <g id="hud-overlay">
+    <rect x="63" y="55" width="694" height="30" fill="#161b22" opacity="0.85"/>
+    <text x="80" y="75" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Settings</text>
+    <text x="180" y="75" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Camera</text>
+    <text x="280" y="75" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Feed</text>
+    <text x="750" y="75" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e" text-anchor="end">HUD OVERLAY — non-intrusive</text>
+    <line x1="63" y1="85" x2="757" y2="85" stroke="#3d444d" stroke-width="0.5"/>
+  </g>
+
+  <g id="water-surface">
+    <path d="M63,85 Q130,91 200,86 Q280,81 360,87 Q440,93 520,86 Q600,81 680,87 Q720,91 757,86" fill="none" stroke="#79c0ff" stroke-width="1.5" opacity="0.45"/>
+    <text x="757" y="82" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#79c0ff" text-anchor="end" opacity="0.6">WATER SURFACE</text>
+  </g>
+
+  <g id="fish-zone">
+    <rect x="78" y="140" width="664" height="200" rx="6" fill="none" stroke="#1f6feb" stroke-width="1" stroke-dasharray="6,4" opacity="0.4"/>
+    <text x="410" y="212" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#79c0ff" text-anchor="middle">FISH SWIM ZONE</text>
+    <text x="410" y="228" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">species mix · movement AI · obstacle avoidance</text>
+    <ellipse cx="180" cy="190" rx="22" ry="9" fill="#3fb950" opacity="0.55"/>
+    <text x="180" y="194" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#0d1117" text-anchor="middle">species A</text>
+    <ellipse cx="370" cy="170" rx="26" ry="10" fill="#d29922" opacity="0.55"/>
+    <text x="370" y="174" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#0d1117" text-anchor="middle">species B</text>
+    <ellipse cx="580" cy="255" rx="20" ry="8" fill="#79c0ff" opacity="0.55"/>
+    <text x="580" y="259" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#0d1117" text-anchor="middle">species C</text>
+    <ellipse cx="470" cy="300" rx="24" ry="9" fill="#f78166" opacity="0.5"/>
+    <text x="470" y="304" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#0d1117" text-anchor="middle">species D</text>
+    <ellipse cx="260" cy="310" rx="18" ry="7" fill="#3fb950" opacity="0.45"/>
+    <text x="260" y="314" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#0d1117" text-anchor="middle">species E</text>
+  </g>
+
+  <g id="bubbler">
+    <rect x="96" y="370" width="34" height="14" rx="3" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+    <text x="113" y="381" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">AIR STONE</text>
+    <circle cx="113" cy="355" r="3" fill="#79c0ff" opacity="0.45"/>
+    <circle cx="116" cy="325" r="4" fill="#79c0ff" opacity="0.38"/>
+    <circle cx="110" cy="295" r="3" fill="#79c0ff" opacity="0.30"/>
+    <circle cx="114" cy="263" r="5" fill="#79c0ff" opacity="0.24"/>
+    <circle cx="111" cy="228" r="3" fill="#79c0ff" opacity="0.18"/>
+    <circle cx="115" cy="190" r="4" fill="#79c0ff" opacity="0.12"/>
+    <line x1="130" y1="340" x2="160" y2="340" stroke="#8b949e" stroke-width="0.5" stroke-dasharray="3,2"/>
+    <text x="164" y="344" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">BUBBLER — rate configurable</text>
+  </g>
+
+  <g id="substrate">
+    <rect x="63" y="440" width="694" height="79" fill="#1c1408" opacity="0.92"/>
+    <text x="410" y="485" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">SUBSTRATE — sand / gravel / rock (selectable)</text>
+    <rect x="185" y="410" width="64" height="82" rx="3" fill="#1a1f26" stroke="#3d444d" stroke-width="1" opacity="0.85"/>
+    <text x="217" y="456" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">SHIPWRECK</text>
+    <rect x="590" y="428" width="42" height="62" rx="3" fill="#1a1f26" stroke="#3d444d" stroke-width="1" opacity="0.75"/>
+    <text x="611" y="462" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">ROCK</text>
+    <line x1="420" y1="519" x2="408" y2="430" stroke="#3fb950" stroke-width="2" opacity="0.55"/>
+    <line x1="460" y1="519" x2="476" y2="424" stroke="#3fb950" stroke-width="2" opacity="0.55"/>
+    <line x1="320" y1="519" x2="308" y2="432" stroke="#3fb950" stroke-width="2" opacity="0.45"/>
+    <text x="420" y="540" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#3d444d" text-anchor="middle">PLANTS — sway with current</text>
+  </g>
+
+  <g id="caustics-callout">
+    <ellipse cx="490" cy="160" rx="34" ry="16" fill="none" stroke="#d29922" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+    <text x="530" y="156" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#d29922">CAUSTICS</text>
+  </g>
+
+  <g id="footer-note">
+    <text x="410" y="565" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">Min 1280×720 · Responsive to 4K · 60 FPS target · Isometric / 3-4 view</text>
+  </g>
+</svg>

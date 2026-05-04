@@ -1,0 +1,4 @@
+TEST ID: T-008
+TIMESTAMP: 2026-05-03T02:54:41.111Z
+RESULT: PASS
+DETAIL: Substrate=gravel, rocks=true, pop=5 all retained within session

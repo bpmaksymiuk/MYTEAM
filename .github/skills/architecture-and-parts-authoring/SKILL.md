@@ -1,58 +1,66 @@
----
-name: architecture-and-parts-authoring
-description: 'Write 5-ARCHITECTURE-RECOMMENDATIONS.md and 5-PARTS LIST.md from 4-REQUIREMENTS.md. Use for Stage 5 architecture, concrete technology decisions, rationale, component inventories, and BR-to-AR-to-PT traceability.'
-argument-hint: 'Describe the Stage 5 architecture or parts-list task.'
----
+# Architecture and Parts Authoring — SKILL.md
 
-# Architecture And Parts Authoring
+> Stage 5 — concrete technology decisions and component inventory from business requirements.
+
+---
 
 ## When to Use
-- Creating or updating PROJECTS/**/5-ARCHITECTURE-RECOMMENDATIONS.md
-- Creating or updating PROJECTS/**/5-PARTS LIST.md
-- Converting BRs into technology decisions and component boundaries
+
+Invoke at Stage 5 (Architect). Use it when making technology decisions and building the parts inventory that translates requirements into a concrete technical structure. Every AR must be justified by explicit rationale and at least one named alternative. Produces `5-ARCHITECTURE-RECOMMENDATIONS.md` and `5-PARTS LIST.md`. Upstream input: `4-REQUIREMENTS.md`. Technology choices made here cascade into all downstream stages.
+
+---
 
 ## Target Files
-- 5-ARCHITECTURE-RECOMMENDATIONS.md
-- 5-PARTS LIST.md
 
-## Architecture Record Schema
+- `5-ARCHITECTURE-RECOMMENDATIONS.md`
+- `5-PARTS LIST.md`
 
-```markdown
-## AR-XXX : RECOMMENDATION
-- RATIONALE
-- NOTES
-- RELATED
 ---
+
+## AR Record Schema
+
+```
+## AR-XXX : RECOMMENDATION TITLE
+
+- **DECISION:** The specific technology, pattern, or approach selected.
+- **RATIONALE:** Why this decision was made over alternatives. Name at least one alternative considered.
+- **NOTES:** Known limitations, version constraints, or configuration requirements.
+- **RELATED:** BR-IDs this AR satisfies; PT-IDs that implement this AR.
 ```
 
-## Parts Record Schema
+## PT Record Schema
 
-```markdown
-## PT-XXX : PART/COMPONENT NAME
-- DESCRIPTION
-- TECHNOLOGY RECOMMENDATIONS
-- NOTES
-- RELATED
----
 ```
+## PT-XXX : PART NAME
+
+- **DESCRIPTION:** What this part does in the system.
+- **TECHNOLOGY RECOMMENDATIONS:** Specific library, format, tool, or pattern. Not a category — a named choice.
+- **NOTES:** File naming conventions, size constraints, runtime behaviour, or integration requirements.
+- **RELATED:** AR-IDs this PT implements; BR-IDs it satisfies.
+```
+
+---
 
 ## Procedure
-1. Read the canonical pipeline file first.
-2. Read 4-REQUIREMENTS.md in full before writing.
-3. Write one AR per distinct technology decision or pattern.
-4. Name concrete libraries, APIs, frameworks, or patterns.
-5. Explain rationale in terms of fit, tradeoffs, maintainability, and delivery constraints.
-6. In the same run, generate the parts list that maps ARs onto logical components.
-7. Preserve existing AR and PT IDs during incremental updates.
 
-## Quality Rules
-- Do not invent architecture decisions for nonexistent requirements.
-- Every AR must point to at least one BR and one UC.
-- Every PT must point to upstream UC, BR, and AR records.
-- Each part should have a clear boundary and responsibility.
+1. Read `.github/instructions/pipeline.instructions.md`.
+2. Read `4-REQUIREMENTS.md` in full.
+3. Group related BRs by concern (data, UI, security, integration, etc.).
+4. For each concern group, make one or more technology decisions and write an AR record.
+5. For each AR, identify the concrete components (files, libraries, config) and write PT records.
+6. Assign sequential IDs within each series (AR-001, AR-002, …; PT-001, PT-002, …).
+7. Validate against the exit gate.
+8. **Stop. State `GATE 5: PASS` or `GATE 5: FAIL` before taking any further pipeline action.**
+
+---
 
 ## Exit Gate
-- Every BR maps to at least one AR.
-- Every AR names a concrete technology or pattern.
-- Every PT maps technology recommendations to named parts.
-- AR and PT IDs are sequential and never reused.
+
+- [ ] Every BR maps to at least one AR.
+- [ ] Every AR names a specific, concrete technology — no generic categories.
+- [ ] Every AR includes at least one alternative considered in RATIONALE.
+- [ ] Every PT has a TECHNOLOGY RECOMMENDATIONS field that names a specific choice.
+- [ ] AR IDs are sequential and non-reused.
+- [ ] PT IDs are sequential and non-reused.
+- [ ] RELATED fields trace AR↔BR and PT↔AR correctly.
+- [ ] `PIPELINE-STATUS.md` is updated for Stage 5 with STATUS and STATUS UPDATED date.

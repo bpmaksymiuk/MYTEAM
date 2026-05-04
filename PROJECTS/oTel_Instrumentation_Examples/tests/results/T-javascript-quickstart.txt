@@ -1,0 +1,4 @@
+TEST ID: T-javascript
+TIMESTAMP: 2026-05-04T03:23:11.491Z
+RESULT: PASS
+DETAIL: javascript quickstart rendered with verification badge.

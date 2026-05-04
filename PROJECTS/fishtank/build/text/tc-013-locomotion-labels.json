@@ -1,0 +1,17 @@
+{
+  "labriform": {
+    "label": "Fin-rowing swim",
+    "parenthetical": "(labriform)",
+    "species": ["Angelfish"]
+  },
+  "subcarangiform": {
+    "label": "Body-wave swim",
+    "parenthetical": "(subcarangiform)",
+    "species": ["Tetra", "Clownfish"]
+  },
+  "carangiform": {
+    "label": "Tail-drive swim",
+    "parenthetical": "(carangiform)",
+    "species": ["Gourami"]
+  }
+}

@@ -1,0 +1,4 @@
+TEST ID: T-java
+TIMESTAMP: 2026-05-04T03:23:12.469Z
+RESULT: PASS
+DETAIL: java quickstart rendered with verification badge.

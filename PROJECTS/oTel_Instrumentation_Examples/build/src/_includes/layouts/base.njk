@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ title or 'Performance Architecture OTel Cookbook' }}</title>
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script type="module" src="/assets/cfg.mjs" defer></script>
+  <script type="module" src="/assets/js/tabs.mjs"></script>
+  <meta property="og:image" content="/images/og-card.svg">
+  <meta property="og:title" content="{{ title or 'Performance Architecture OTel Cookbook' }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="OTel Cookbook home">
+      <img src="/images/logo-wordmark.svg" alt="otel.cookbook" height="28">
+    </a>
+    <button data-cfg-open class="cfg-gear" aria-label="Configure OTLP destination">cfg &#9881;</button>
+  </header>
+
+  <div class="page">
+    <aside class="navindex">
+      {% include "partials/nav-index.njk" %}
+    </aside>
+    <main class="content">
+      {% block content %}{{ content | safe }}{% endblock %}
+    </main>
+  </div>
+
+  {% include "partials/cfg-modal.njk" %}
+
+  <footer class="sitefoot">
+    <a href="/release-notes/">Release notes</a>
+  </footer>
+</body>
+</html>

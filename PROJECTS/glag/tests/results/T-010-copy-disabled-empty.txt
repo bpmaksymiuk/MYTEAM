@@ -1,0 +1,4 @@
+TEST ID: T-010
+TIMESTAMP: 2026-05-02T04:43:08.257Z
+RESULT: PASS
+DETAIL: Copy button disabled on fresh load

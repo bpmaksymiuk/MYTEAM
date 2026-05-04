@@ -1,0 +1,4 @@
+TEST ID: T-022
+TIMESTAMP: 2026-05-03T02:56:09.756Z
+RESULT: PASS
+DETAIL: Canvas still visible and rendering after 5s

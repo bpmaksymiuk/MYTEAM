@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="OpenTelemetry, in four languages — OTel Cookbook">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#161b22"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g font-family="ui-monospace, 'JetBrains Mono', monospace">
+    <text x="80" y="120" font-size="28" fill="#8a93ab">otel.cookbook</text>
+    <circle cx="282" cy="112" r="6" fill="#f5a800"/>
+  </g>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" fill="#e6ecf5">
+    <text x="80" y="280" font-size="72" font-weight="700">OpenTelemetry,</text>
+    <text x="80" y="370" font-size="72" font-weight="700">in four languages.</text>
+    <text x="80" y="450" font-size="28" fill="#8a93ab">Copy-and-go OTLP recipes for JavaScript, Python, .NET, and Java.</text>
+  </g>
+  <g font-family="ui-monospace, monospace" font-size="22" fill="#e6ecf5">
+    <rect x="80" y="510" width="120" height="48" rx="8" fill="#1f2530" stroke="#37b26b"/>
+    <text x="140" y="541" text-anchor="middle">js</text>
+    <rect x="216" y="510" width="120" height="48" rx="8" fill="#1f2530" stroke="#37b26b"/>
+    <text x="276" y="541" text-anchor="middle">py</text>
+    <rect x="352" y="510" width="120" height="48" rx="8" fill="#1f2530" stroke="#37b26b"/>
+    <text x="412" y="541" text-anchor="middle">.net</text>
+    <rect x="488" y="510" width="120" height="48" rx="8" fill="#1f2530" stroke="#37b26b"/>
+    <text x="548" y="541" text-anchor="middle">java</text>
+  </g>
+</svg>

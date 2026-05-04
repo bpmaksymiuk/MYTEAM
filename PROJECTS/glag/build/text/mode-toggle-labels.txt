@@ -1,0 +1,2 @@
+Mode 1: Cyrillic → Glagolitic
+Mode 2: Glagolitic → Cyrillic

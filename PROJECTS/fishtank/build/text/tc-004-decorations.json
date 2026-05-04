@@ -1,0 +1,18 @@
+{
+  "groupHeading": "Decorations",
+  "groupAriaLabel": "Toggle tank decorations",
+  "items": {
+    "shipwreck": {
+      "label": "Shipwreck",
+      "ariaLabel": "Toggle Shipwreck decoration"
+    },
+    "rocks": {
+      "label": "Rocks",
+      "ariaLabel": "Toggle Rocks decoration"
+    },
+    "artifacts": {
+      "label": "Artifacts",
+      "ariaLabel": "Toggle Artifacts decoration"
+    }
+  }
+}

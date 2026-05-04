@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+  <rect width="900" height="480" fill="#0d0f12"/>
+  <rect x="0" y="0" width="900" height="40" fill="#1a1d23"/>
+  <text x="20" y="26" font-family="monospace" font-size="13" fill="#e8eaed">CB-002 — Strategy Selection &amp; Context Panel</text>
+  <text x="800" y="26" font-family="monospace" font-size="11" fill="#555">UC-002 UC-003</text>
+
+  <!-- Left: Strategy chips states -->
+  <text x="30" y="70" font-family="monospace" font-size="11" fill="#888">STATE A: All strategies active (default)</text>
+  <rect x="30" y="80" width="90" height="24" fill="#00e5a0" rx="12"/>
+  <text x="75" y="96" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Hook-First</text>
+  <rect x="130" y="80" width="114" height="24" fill="#00e5a0" rx="12"/>
+  <text x="187" y="96" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Controversy-Max</text>
+  <rect x="254" y="80" width="78" height="24" fill="#00e5a0" rx="12"/>
+  <text x="293" y="96" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Authority</text>
+  <rect x="342" y="80" width="86" height="24" fill="#00e5a0" rx="12"/>
+  <text x="385" y="96" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Story-Mode</text>
+  <rect x="438" y="80" width="82" height="24" fill="#00e5a0" rx="12"/>
+  <text x="479" y="96" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Minimalist</text>
+
+  <text x="30" y="135" font-family="monospace" font-size="11" fill="#888">STATE B: Controversy-Max deselected</text>
+  <rect x="30" y="145" width="90" height="24" fill="#00e5a0" rx="12"/>
+  <text x="75" y="161" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Hook-First</text>
+  <rect x="130" y="145" width="114" height="24" fill="#1a1d23" rx="12" stroke="#444" stroke-width="1"/>
+  <text x="187" y="161" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">Controversy-Max</text>
+  <rect x="254" y="145" width="78" height="24" fill="#00e5a0" rx="12"/>
+  <text x="293" y="161" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Authority</text>
+  <rect x="342" y="145" width="86" height="24" fill="#00e5a0" rx="12"/>
+  <text x="385" y="161" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Story-Mode</text>
+  <rect x="438" y="145" width="82" height="24" fill="#00e5a0" rx="12"/>
+  <text x="479" y="161" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Minimalist</text>
+
+  <text x="30" y="200" font-family="monospace" font-size="11" fill="#888">STATE C: All deactivated — BLOCKED STATE (inline warning)</text>
+  <rect x="30" y="210" width="90" height="24" fill="#1a1d23" rx="12" stroke="#444" stroke-width="1"/>
+  <text x="75" y="226" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">Hook-First</text>
+  <rect x="130" y="210" width="114" height="24" fill="#1a1d23" rx="12" stroke="#444" stroke-width="1"/>
+  <text x="187" y="226" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">Controversy-Max</text>
+  <rect x="254" y="210" width="78" height="24" fill="#1a1d23" rx="12" stroke="#444" stroke-width="1"/>
+  <text x="293" y="226" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">Authority</text>
+  <rect x="342" y="210" width="86" height="24" fill="#1a1d23" rx="12" stroke="#444" stroke-width="1"/>
+  <text x="385" y="226" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">Story-Mode</text>
+  <rect x="438" y="210" width="82" height="24" fill="#1a1d23" rx="12" stroke="#444" stroke-width="1"/>
+  <text x="479" y="226" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">Minimalist</text>
+  <rect x="30" y="240" width="380" height="22" fill="#1a1d23" rx="4" stroke="#ffb347" stroke-width="1"/>
+  <text x="220" y="255" font-family="monospace" font-size="10" fill="#ffb347" text-anchor="middle">Select at least one strategy to continue.</text>
+
+  <!-- Right: Context panel expanded -->
+  <rect x="560" y="55" width="310" height="380" fill="#141720" rx="8" stroke="#2a2d35" stroke-width="1"/>
+  <text x="580" y="80" font-family="monospace" font-size="12" fill="#e8eaed">Context Parameters (optional)</text>
+  <line x1="580" y1="88" x2="850" y2="88" stroke="#2a2d35" stroke-width="1"/>
+
+  <text x="580" y="112" font-family="monospace" font-size="10" fill="#888">Target audience / demographic</text>
+  <rect x="580" y="118" width="270" height="24" fill="#0d0f12" rx="4" stroke="#2a2d35" stroke-width="1"/>
+  <text x="594" y="134" font-family="monospace" font-size="10" fill="#555">e.g. Tech professionals, 25–40</text>
+
+  <text x="580" y="162" font-family="monospace" font-size="10" fill="#888">Topic category</text>
+  <rect x="580" y="168" width="270" height="24" fill="#0d0f12" rx="4" stroke="#2a2d35" stroke-width="1"/>
+  <text x="594" y="184" font-family="monospace" font-size="10" fill="#555">News / Tech / Finance / Health…  ▾</text>
+
+  <text x="580" y="212" font-family="monospace" font-size="10" fill="#888">Desired tone</text>
+  <rect x="580" y="218" width="80" height="22" fill="#00e5a0" rx="4"/>
+  <text x="620" y="233" font-family="monospace" font-size="9" fill="#0d0f12" text-anchor="middle">Authoritative</text>
+  <rect x="668" y="218" width="58" height="22" fill="#1a1d23" rx="4" stroke="#444" stroke-width="1"/>
+  <text x="697" y="233" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">Casual</text>
+  <rect x="734" y="218" width="58" height="22" fill="#1a1d23" rx="4" stroke="#444" stroke-width="1"/>
+  <text x="763" y="233" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">Curious</text>
+  <rect x="580" y="246" width="74" height="22" fill="#1a1d23" rx="4" stroke="#444" stroke-width="1"/>
+  <text x="617" y="261" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">Controversial</text>
+  <rect x="662" y="246" width="54" height="22" fill="#1a1d23" rx="4" stroke="#444" stroke-width="1"/>
+  <text x="689" y="261" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">Urgent</text>
+
+  <text x="580" y="290" font-family="monospace" font-size="10" fill="#888">Source credibility level</text>
+  <rect x="580" y="296" width="270" height="24" fill="#0d0f12" rx="4" stroke="#2a2d35" stroke-width="1"/>
+  <text x="594" y="312" font-family="monospace" font-size="10" fill="#555">Peer-reviewed / Official / Opinion…  ▾</text>
+
+  <text x="580" y="345" font-family="monospace" font-size="9" fill="#555">Parameters persist for this session.</text>
+  <rect x="640" y="390" width="120" height="28" fill="#00e5a0" rx="4"/>
+  <text x="700" y="408" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Apply Context</text>
+
+  <!-- Gear icon label -->
+  <text x="30" y="460" font-family="monospace" font-size="10" fill="#444">⚙  Gear icon entry point (non-intrusive, top-right of input area) opens this panel</text>
+</svg>

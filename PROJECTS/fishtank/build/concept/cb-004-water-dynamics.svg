@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 580" width="820" height="580">
+  <title>CB-004 — Water and Environmental Dynamics — Fish Tank Simulator Concept</title>
+  <rect width="820" height="580" fill="#0d1117"/>
+
+  <g id="title-bar">
+    <rect x="0" y="0" width="820" height="36" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+    <text x="16" y="23" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#e6edf3">CB-004 — WATER AND ENVIRONMENTAL DYNAMICS</text>
+    <text x="804" y="23" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="end">UC-004 · UC-009 · UC-010</text>
+  </g>
+
+  <g id="tank-cross-section">
+    <rect x="60" y="52" width="700" height="460" rx="4" fill="#071830" stroke="#3d444d" stroke-width="5"/>
+    <text x="410" y="74" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">CROSS-SECTION VIEW — water physics and dynamics</text>
+  </g>
+
+  <g id="water-surface-zone">
+    <rect x="60" y="80" width="700" height="40" fill="#0d3060" opacity="0.5"/>
+    <path d="M60,100 Q115,93 170,100 Q225,107 280,100 Q335,93 390,100 Q445,107 500,100 Q555,93 610,100 Q665,107 720,100 Q740,97 760,100" fill="none" stroke="#79c0ff" stroke-width="2" opacity="0.65"/>
+    <text x="760" y="96" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#79c0ff" text-anchor="end">WATER SURFACE — ripples · wave propagation</text>
+  </g>
+
+  <g id="bubble-column">
+    <rect x="90" y="430" width="40" height="16" rx="3" fill="#161b22" stroke="#3d444d" stroke-width="1"/>
+    <text x="110" y="443" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">BUBBLER</text>
+
+    <circle cx="110" cy="415" r="4" fill="#79c0ff" opacity="0.5"/>
+    <circle cx="106" cy="390" r="5" fill="#79c0ff" opacity="0.45"/>
+    <circle cx="113" cy="362" r="4" fill="#79c0ff" opacity="0.40"/>
+    <circle cx="108" cy="334" r="6" fill="#79c0ff" opacity="0.35"/>
+    <circle cx="114" cy="304" r="4" fill="#79c0ff" opacity="0.30"/>
+    <circle cx="109" cy="272" r="5" fill="#79c0ff" opacity="0.25"/>
+    <circle cx="112" cy="238" r="4" fill="#79c0ff" opacity="0.20"/>
+    <circle cx="107" cy="200" r="6" fill="#79c0ff" opacity="0.15"/>
+    <circle cx="111" cy="158" r="4" fill="#79c0ff" opacity="0.10"/>
+    <circle cx="108" cy="108" r="3" fill="none" stroke="#79c0ff" stroke-width="1" opacity="0.25"/>
+
+    <text x="125" y="320" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#79c0ff">BUBBLE COLUMN</text>
+    <text x="125" y="333" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#8b949e">30-200 bubbles/min · 1-5mm radius</text>
+    <text x="125" y="346" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#8b949e">AC1: rate configurable · AC2: size variation visible</text>
+  </g>
+
+  <g id="current-field">
+    <path d="M145,200 Q220,185 300,200 Q380,215 460,200 Q540,185 620,200 Q680,210 740,200" fill="none" stroke="#1f6feb" stroke-width="1.5" stroke-dasharray="8,4" opacity="0.45" marker-end="url(#currarrow)"/>
+    <path d="M145,250 Q230,238 310,250 Q390,262 470,250 Q550,238 630,250 Q700,258 740,250" fill="none" stroke="#1f6feb" stroke-width="1" stroke-dasharray="6,4" opacity="0.35" marker-end="url(#currarrow)"/>
+    <path d="M145,300 Q240,290 320,300 Q400,310 480,300 Q560,290 640,300 Q710,306 740,302" fill="none" stroke="#1f6feb" stroke-width="1" stroke-dasharray="6,4" opacity="0.30" marker-end="url(#currarrow)"/>
+    <text x="410" y="225" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#79c0ff" text-anchor="middle">CURRENT FIELD</text>
+    <text x="410" y="238" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">AC2: dynamic water response visible · AC3: localized currents near bubbler</text>
+  </g>
+
+  <g id="plants">
+    <line x1="400" y1="512" x2="383" y2="420" stroke="#3fb950" stroke-width="3" opacity="0.65"/>
+    <path d="M383,420 Q375,400 362,388" fill="none" stroke="#3fb950" stroke-width="2" opacity="0.6"/>
+    <text x="355" y="384" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#3fb950">sway</text>
+
+    <line x1="460" y1="512" x2="477" y2="415" stroke="#3fb950" stroke-width="3" opacity="0.65"/>
+    <path d="M477,415 Q488,398 502,386" fill="none" stroke="#3fb950" stroke-width="2" opacity="0.6"/>
+    <text x="505" y="382" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#3fb950">sway</text>
+
+    <line x1="560" y1="512" x2="570" y2="425" stroke="#3fb950" stroke-width="2" opacity="0.55"/>
+    <path d="M570,425 Q578,408 590,396" fill="none" stroke="#3fb950" stroke-width="1.5" opacity="0.5"/>
+
+    <text x="410" y="468" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#3fb950" text-anchor="middle">PLANT MOTION</text>
+    <text x="410" y="481" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">AC3: plant sway reflects water movement · AC1: visible in relation to current</text>
+  </g>
+
+  <g id="particles">
+    <circle cx="320" cy="170" r="2" fill="#8b949e" opacity="0.6"/>
+    <circle cx="380" cy="195" r="2" fill="#8b949e" opacity="0.55"/>
+    <circle cx="450" cy="175" r="2" fill="#8b949e" opacity="0.5"/>
+    <circle cx="530" cy="190" r="2" fill="#8b949e" opacity="0.6"/>
+    <circle cx="600" cy="165" r="2" fill="#8b949e" opacity="0.5"/>
+    <circle cx="650" cy="195" r="2" fill="#8b949e" opacity="0.55"/>
+    <circle cx="280" cy="210" r="2" fill="#8b949e" opacity="0.45"/>
+    <circle cx="340" cy="340" r="2" fill="#8b949e" opacity="0.4"/>
+    <circle cx="500" cy="360" r="2" fill="#8b949e" opacity="0.45"/>
+    <circle cx="660" cy="345" r="2" fill="#8b949e" opacity="0.4"/>
+    <text x="680" y="175" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">PARTICLES</text>
+    <text x="680" y="188" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#3d444d">dust · sediment · food</text>
+    <text x="680" y="201" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#3d444d">drift and settle</text>
+  </g>
+
+  <g id="fish-wake">
+    <ellipse cx="630" cy="300" rx="22" ry="9" fill="#d29922" opacity="0.45"/>
+    <path d="M608,300 Q590,295 572,300 Q560,303 550,300" fill="none" stroke="#d29922" stroke-width="1" stroke-dasharray="3,3" opacity="0.4"/>
+    <text x="550" y="316" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#d29922">FISH WAKE · displacement ripple</text>
+  </g>
+
+  <g id="substrate">
+    <rect x="60" y="490" width="700" height="22" fill="#1c1408" opacity="0.9"/>
+    <text x="410" y="505" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">SUBSTRATE — sediment settles after disturbance · disturbances produce temporary motion changes that dampen over time</text>
+  </g>
+
+  <defs>
+    <marker id="currarrow" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+      <polygon points="0 0, 6 2.5, 0 5" fill="#1f6feb" opacity="0.5"/>
+    </marker>
+  </defs>
+
+  <g id="footer-note">
+    <text x="410" y="565" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">Continuous motion · no jitter · scientific fluid accuracy out of scope</text>
+  </g>
+</svg>

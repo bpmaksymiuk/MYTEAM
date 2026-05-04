@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 580" width="820" height="580">
+  <title>CB-005 — Fish Species and Behaviours — Fish Tank Simulator Concept</title>
+  <rect width="820" height="580" fill="#0d1117"/>
+
+  <g id="title-bar">
+    <rect x="0" y="0" width="820" height="36" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+    <text x="16" y="23" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#e6edf3">CB-005 — FISH SPECIES AND BEHAVIOURS</text>
+    <text x="804" y="23" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="end">UC-005 · UC-007</text>
+  </g>
+
+  <g id="tank-bg">
+    <rect x="40" y="52" width="740" height="460" rx="4" fill="#071830" stroke="#3d444d" stroke-width="4"/>
+  </g>
+
+  <g id="species-a">
+    <ellipse cx="150" cy="160" rx="28" ry="11" fill="#f78166" opacity="0.7"/>
+    <ellipse cx="130" cy="160" rx="8" ry="6" fill="#b91c1c" opacity="0.5"/>
+    <text x="150" y="164" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#0d1117" text-anchor="middle">CLOWNFISH</text>
+    <path d="M180,160 Q230,145 270,160 Q310,175 350,165" fill="none" stroke="#f78166" stroke-width="1" stroke-dasharray="5,3" opacity="0.45"/>
+    <text x="200" y="140" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#f78166">SHOALING PATH</text>
+    <rect x="60" y="120" width="90" height="50" rx="6" fill="#161b22" stroke="#b91c1c" stroke-width="1" opacity="0.85"/>
+    <text x="105" y="138" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#f78166" text-anchor="middle">Clownfish</text>
+    <text x="105" y="150" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Shoaling · tropical</text>
+    <text x="105" y="163" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#3d444d" text-anchor="middle">avoids walls</text>
+  </g>
+
+  <g id="species-b">
+    <ellipse cx="490" cy="220" rx="32" ry="13" fill="#3fb950" opacity="0.65"/>
+    <ellipse cx="468" cy="218" rx="10" ry="7" fill="#2ea043" opacity="0.55"/>
+    <text x="490" y="225" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#0d1117" text-anchor="middle">ANGELFISH</text>
+    <path d="M524,220 Q560,240 590,225 Q620,210 650,230" fill="none" stroke="#3fb950" stroke-width="1" stroke-dasharray="5,3" opacity="0.45"/>
+    <text x="560" y="204" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#3fb950">GRACEFUL GLIDE PATH</text>
+    <rect x="420" y="168" width="100" height="50" rx="6" fill="#161b22" stroke="#2ea043" stroke-width="1" opacity="0.85"/>
+    <text x="470" y="186" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#3fb950" text-anchor="middle">Angelfish</text>
+    <text x="470" y="198" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Territorial · slow</text>
+    <text x="470" y="211" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#3d444d" text-anchor="middle">mid-column</text>
+  </g>
+
+  <g id="species-c">
+    <ellipse cx="280" cy="360" rx="24" ry="9" fill="#79c0ff" opacity="0.65"/>
+    <ellipse cx="260" cy="360" rx="7" ry="5" fill="#1f6feb" opacity="0.55"/>
+    <text x="280" y="364" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#0d1117" text-anchor="middle">TETRA</text>
+    <path d="M256,360 Q220,350 190,360 Q160,370 140,358 Q120,348 100,355" fill="none" stroke="#79c0ff" stroke-width="1" stroke-dasharray="4,3" opacity="0.45"/>
+    <text x="170" y="345" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#79c0ff">FAST DARTING PATH</text>
+    <rect x="230" y="396" width="90" height="50" rx="6" fill="#161b22" stroke="#1f6feb" stroke-width="1" opacity="0.85"/>
+    <text x="275" y="414" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#79c0ff" text-anchor="middle">Tetra</text>
+    <text x="275" y="426" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Shoaling · fast dart</text>
+    <text x="275" y="439" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#3d444d" text-anchor="middle">near surface</text>
+  </g>
+
+  <g id="species-d">
+    <ellipse cx="620" cy="400" rx="30" ry="12" fill="#d29922" opacity="0.6"/>
+    <ellipse cx="600" cy="398" rx="9" ry="7" fill="#9e6a03" opacity="0.55"/>
+    <text x="620" y="404" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#0d1117" text-anchor="middle">GOURAMI</text>
+    <path d="M650,400 Q680,415 700,402 Q720,390 740,402" fill="none" stroke="#d29922" stroke-width="1" stroke-dasharray="4,3" opacity="0.45"/>
+    <text x="690" y="388" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#d29922">BOTTOM-HUGGING PATH</text>
+    <rect x="558" y="438" width="100" height="50" rx="6" fill="#161b22" stroke="#9e6a03" stroke-width="1" opacity="0.85"/>
+    <text x="608" y="456" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#d29922" text-anchor="middle">Gourami</text>
+    <text x="608" y="468" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Solitary · bottom</text>
+    <text x="608" y="481" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#3d444d" text-anchor="middle">near substrate</text>
+  </g>
+
+  <g id="selection-highlight">
+    <ellipse cx="490" cy="220" rx="32" ry="13" fill="none" stroke="#e6edf3" stroke-width="2" stroke-dasharray="5,3" opacity="0.75"/>
+    <circle cx="490" cy="220" r="40" fill="none" stroke="#e6edf3" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="530" y1="208" x2="560" y2="186" stroke="#e6edf3" stroke-width="1" opacity="0.5"/>
+    <rect x="560" y="162" width="110" height="42" rx="6" fill="#1f6feb" opacity="0.15" stroke="#79c0ff" stroke-width="1"/>
+    <text x="615" y="178" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#79c0ff" text-anchor="middle">SELECTED</text>
+    <text x="615" y="192" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#e6edf3" text-anchor="middle">Angelfish — click to deselect</text>
+  </g>
+
+  <g id="legend">
+    <rect x="42" y="460" width="736" height="46" rx="4" fill="#161b22" opacity="0.75"/>
+    <text x="60" y="476" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">SPECIES REQUIREMENTS:</text>
+    <text x="60" y="490" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#3d444d">AC1: ≥ pop within configured limits · AC2: ≥3 distinct movement styles · AC3: obstacle avoidance · no incompatible predator-prey</text>
+  </g>
+
+  <g id="footer-note">
+    <text x="410" y="565" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">Species mix determined at session start · breeding and mortality out of scope</text>
+  </g>
+</svg>

@@ -1,111 +1,79 @@
----
-name: content-writing-authoring
-description: 'Produce 2-NARRATIVE-VISION.md (Stage 2), 7-TEXT-CONTENT.md (Stage 7), and ./build/text/ outputs from approved upstream artifacts with DI-to-TC traceability.'
-argument-hint: 'Describe the text scope, content category, and DI IDs to cover.'
----
+# Content Writing — SKILL.md
 
-# Content Writing Authoring
+> Stage 2 (narrative vision) and Stage 7 (text content, glossary, phrasebook).
+
+---
 
 ## When to Use
-- Stage 2: create or update `2-NARRATIVE-VISION.md`.
-- Stage 7: create or update `7-TEXT-CONTENT.md`.
-- Produce text files in `./build/text/**`.
-- Respond to Developer feedback on tone/content.
+
+- **Stage 2:** When writing the narrative vision document that establishes tone, themes, and world context for the product, drawing on research into comparable products. Upstream input: `1-USE-CASES.md`.
+- **Stage 7:** When producing all application text content, a glossary, and a writing phrasebook from approved design instructions. Upstream inputs: `1-USE-CASES.md`, `6-DESIGN-INSTRUCTIONS.md`.
+
+---
 
 ## Target Files
-- `2-NARRATIVE-VISION.md`
-- `7-TEXT-CONTENT.md`
-- `./build/text/utility/**`
-- `./build/text/narrative/**`
-- `./build/text/ui/**`
-- `./build/text/exploratory/**` (on-demand, non-DI work)
 
-## Stage 2 Schema
+| Stage | File(s) |
+|-------|---------|
+| 2 | `2-NARRATIVE-VISION.md` |
+| 7 | `7-TEXT-CONTENT.md`, `./build/text/**` |
 
-```markdown
-# Narrative / Thematic Vision
-## OVERVIEW
-## COMPETITIVE & CREATIVE RESEARCH
-## THEMES AND TONE
-## WORLD-BUILDING / CONCEPTS
 ---
+
+## Record Schema (Stage 7 — TC Records)
+
+```
+## TC-XXX : CONTENT TITLE
+
+- **SUMMARY:** One sentence describing the text content piece.
+- **FILE:** Relative path in ./build/text/
+- **CATEGORY:** `narrative` | `ui` | `utility` | `legal`
+- **TONE NOTES:** Key tone and style guidance (formal/casual, active/passive, length constraints).
+- **GLOSSARY REFERENCES:** GL-IDs used in this content piece.
+- **TRACEABILITY:** DI-IDs that motivated this content piece.
 ```
 
-## Stage 6 Required Sections
-
-### GLOSSARY
-
-```markdown
-### GLOSSARY
-| GL-ID | Term | Canonical Form | Definition | First Appears |
-|-------|------|----------------|------------|---------------|
-| GL-001 | [term] | [canonical form] | [definition] | DI-XXX |
-```
-
-### PHRASEBOOK
-
-```markdown
-### PHRASEBOOK
-| Category | Tone | Voice | Avoid | Example |
-|----------|------|-------|-------|---------|
-| Utility | Direct | Second person | Jargon | "Purchase complete." |
-```
-
-## TC Record Schema
-
-```markdown
-## TC-XXX : TEXT ITEM NAME
-- SUMMARY
-- FILE
-- CATEGORY
-- TONE NOTES
-- GLOSSARY REFERENCES
-- VARIANTS (if applicable)
-- SELECTED VARIANT
-- TRACEABILITY
-- RELATED
 ---
-```
 
-## Procedure (Stage 2)
-1. Read pipeline instructions.
-2. Read `1-USE-CASES.md`.
-3. Research similar products or narratives.
-4. Write `2-NARRATIVE-VISION.md` using the Stage 2 schema.
+## Procedure
 
-## Procedure (Stage 7)
-1. Read pipeline instructions.
-2. Read `6-DESIGN-INSTRUCTIONS.md` (and `2-NARRATIVE-VISION.md` if relevant).
-3. Draft GLOSSARY and PHRASEBOOK in `7-TEXT-CONTENT.md`.
-4. Get Developer approval before creating text files.
-5. Create one TC record per text output.
-6. For style-open narrative text, provide 2-3 variants and record selected variant.
-7. Write final outputs under `./build/text/**`.
-8. Keep TC records append-only with REVISION notes.
+1. Read `.github/instructions/pipeline.instructions.md`.
 
-## Naming Convention
-- Utility: `./build/text/utility/tc-{id}-{name}.md`
-- Narrative: `./build/text/narrative/tc-{id}-{name}.md`
-- UI: `./build/text/ui/tc-{id}-{name}.md`
-- Exploratory: `./build/text/exploratory/tc-{id}-{name}.md`
+**Stage 2:**
+2. Read `1-USE-CASES.md` in full.
+3. Write `2-NARRATIVE-VISION.md` with four required sections:
+   - `## OVERVIEW` — 2–3 paragraphs: what the product is, who it is for, what problem it solves.
+   - `## COMPETITIVE & CREATIVE RESEARCH` — reference 3–5 comparable products or approaches; draw relevant lessons.
+   - `## THEMES AND TONE` — identify 3–5 named themes; describe the desired voice and register.
+   - `## WORLD-BUILDING / CONCEPTS` — name and describe the key concepts, metaphors, or mental models that should permeate the product.
+4. Validate against Stage 2 exit gate.
+5. **Stop. State `GATE 2: PASS` or `GATE 2: FAIL` before taking any further pipeline action.**
 
-## Quality Rules
-- Every TC record must map to a real file.
-- Use canonical glossary spellings.
-- Do not create text for non-text DIs.
-- Keep utility copy concise and unambiguous.
-- Keep narrative copy consistent with approved lore and tone.
+**Stage 7:**
+1. Read `6-DESIGN-INSTRUCTIONS.md` in full to identify all text-bearing DIs.
+2. For each text-bearing DI, create a TC record in `7-TEXT-CONTENT.md`.
+3. Write the corresponding text file at the path specified in the TC record.
+4. Build a `## GLOSSARY` table in `7-TEXT-CONTENT.md` with columns: GL-ID | Term | Definition.
+5. Build a `## PHRASEBOOK` table with columns: Category | Correct Phrasing | Incorrect Phrasing | Notes.
+6. Validate against Stage 7 exit gate.
+7. **Stop. State `GATE 7: PASS` or `GATE 7: FAIL` before taking any further pipeline action.**
+
+---
 
 ## Exit Gate
-- GLOSSARY exists and is approved.
-- PHRASEBOOK exists and is approved.
-- Every text-bearing DI has a TC record.
-- Every TC has a non-empty file at its canonical path.
-- TRACEABILITY and GLOSSARY REFERENCES are valid.
-- Variant decisions are recorded.
 
-## Revision Note Format
+**Stage 2:**
+- [ ] `2-NARRATIVE-VISION.md` contains all four required sections.
+- [ ] OVERVIEW explains what the product does in plain language.
+- [ ] COMPETITIVE & CREATIVE RESEARCH cites specific references.
+- [ ] THEMES AND TONE names at least three distinct themes.
+- [ ] WORLD-BUILDING / CONCEPTS identifies at least two key mental models.
+- [ ] `PIPELINE-STATUS.md` is updated for Stage 2 with STATUS and STATUS UPDATED date.
 
-```markdown
-- REVISION [YYYY-MM-DD] — [what changed and why]
-```
+**Stage 7:**
+- [ ] `7-TEXT-CONTENT.md` contains a GLOSSARY table and a PHRASEBOOK table.
+- [ ] Every text-bearing DI has a corresponding TC record.
+- [ ] Every TC record has a FILE path that exists in `./build/text/`.
+- [ ] Every TC record includes TRACEABILITY to at least one DI-ID.
+- [ ] Glossary entries are consistent with phrasebook entries (no contradictions).
+- [ ] `PIPELINE-STATUS.md` is updated for Stage 7 with STATUS and STATUS UPDATED date.

@@ -1,0 +1,4 @@
+TEST ID: T-018
+TIMESTAMP: 2026-05-03T02:54:15.357Z
+RESULT: PASS
+DETAIL: ParticleSystem runs 9s after food drop without errors; food maxLife=8s expires

@@ -1,0 +1,4 @@
+TEST ID: T-037
+TIMESTAMP: 2026-05-03T02:54:44.615Z
+RESULT: PASS
+DETAIL: Canvas renders with SkinnedMesh fish after 3 s; scale texture applied via ScaleTextureShader

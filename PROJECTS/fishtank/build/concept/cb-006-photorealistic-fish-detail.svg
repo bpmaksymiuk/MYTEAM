@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>CB-006: Photorealistic Fish Detail View</title>
+  <rect width="900" height="500" fill="#071830"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="900" height="36" fill="#0d1117"/>
+  <text x="450" y="23" font-family="monospace" font-size="13" fill="#8b949e" text-anchor="middle">CB-006 · PHOTOREALISTIC FISH DETAIL · UC-013</text>
+
+  <!-- Column divider -->
+  <line x1="450" y1="36" x2="450" y2="464" stroke="#21262d" stroke-width="1"/>
+
+  <!-- LEFT FISH: full-lit, scales visible -->
+  <text x="225" y="58" font-family="monospace" font-size="11" fill="#3fb950" text-anchor="middle">FRONTLIT — SCALE DETAIL</text>
+
+  <!-- Fish body (elongated oval, reef fish shape) -->
+  <ellipse cx="225" cy="260" rx="100" ry="50" fill="#1a5c7a" stroke="#2a8fbb" stroke-width="1.5"/>
+
+  <!-- Scale texture — small overlapping arcs -->
+  <g stroke="#2a8fbb" stroke-width="0.8" fill="none" opacity="0.7">
+    <path d="M155,245 Q165,238 175,245"/>
+    <path d="M170,255 Q180,248 190,255"/>
+    <path d="M185,245 Q195,238 205,245"/>
+    <path d="M200,255 Q210,248 220,255"/>
+    <path d="M215,245 Q225,238 235,245"/>
+    <path d="M230,255 Q240,248 250,255"/>
+    <path d="M245,245 Q255,238 265,245"/>
+    <path d="M260,255 Q270,248 280,255"/>
+    <path d="M275,245 Q285,238 295,245"/>
+    <path d="M155,265 Q165,258 175,265"/>
+    <path d="M170,275 Q180,268 190,275"/>
+    <path d="M185,265 Q195,258 205,265"/>
+    <path d="M200,275 Q210,268 220,275"/>
+    <path d="M215,265 Q225,258 235,265"/>
+    <path d="M230,275 Q240,268 250,275"/>
+    <path d="M245,265 Q255,258 265,265"/>
+    <path d="M260,275 Q270,268 280,275"/>
+  </g>
+
+  <!-- Specular highlights on scales -->
+  <g fill="#c9a84c" opacity="0.6">
+    <circle cx="190" cy="248" r="2.5"/>
+    <circle cx="220" cy="258" r="2"/>
+    <circle cx="250" cy="248" r="2.5"/>
+    <circle cx="270" cy="258" r="2"/>
+    <circle cx="240" cy="268" r="2"/>
+  </g>
+
+  <!-- Dorsal fin — translucent -->
+  <path d="M175,210 Q200,185 250,195 Q260,210 225,215 Z" fill="#80d4e0" fill-opacity="0.35" stroke="#80d4e0" stroke-width="1" stroke-opacity="0.6"/>
+
+  <!-- Pectoral fin -->
+  <path d="M195,265 Q175,280 165,295 Q180,285 205,270 Z" fill="#80d4e0" fill-opacity="0.35" stroke="#80d4e0" stroke-width="1" stroke-opacity="0.6"/>
+
+  <!-- Tail fin -->
+  <path d="M320,230 Q345,220 355,260 Q345,300 320,290 Q335,260 320,230 Z" fill="#80d4e0" fill-opacity="0.4" stroke="#80d4e0" stroke-width="1" stroke-opacity="0.7"/>
+
+  <!-- Eye -->
+  <circle cx="165" cy="250" r="12" fill="#0a0a0a"/>
+  <circle cx="165" cy="250" r="8" fill="#1a2040"/>
+  <circle cx="163" cy="248" r="4" fill="#8b5cf6"/>
+  <!-- Eye specular -->
+  <circle cx="160" cy="245" r="3" fill="#ffffff"/>
+  <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <circle cx="160" cy="245" r="6" fill="url(#eyeGlow)"/>
+
+  <!-- Caustic light patches on body -->
+  <g fill="#c9a84c" opacity="0.18">
+    <path d="M200,245 Q210,240 220,248 Q215,254 205,252 Z"/>
+    <path d="M240,260 Q250,255 260,263 Q255,269 245,267 Z"/>
+    <path d="M270,250 Q278,246 285,253 Q280,258 272,257 Z"/>
+  </g>
+
+  <!-- Annotations -->
+  <line x1="195" y1="195" x2="175" y2="170" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="178" y="165" font-family="monospace" font-size="10" fill="#8b949e">dorsal fin</text>
+  <text x="147" y="175" font-family="monospace" font-size="9" fill="#80d4e0">(translucent membrane)</text>
+
+  <line x1="250" y1="248" x2="300" y2="225" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="305" y="222" font-family="monospace" font-size="10" fill="#c9a84c">scale specular</text>
+
+  <line x1="160" y1="245" x2="130" y2="220" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="90" y="218" font-family="monospace" font-size="10" fill="#ffffff">eye specular</text>
+
+  <line x1="215" y1="248" x2="215" y2="310" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="180" y="325" font-family="monospace" font-size="9" fill="#c9a84c">caustic overlay</text>
+
+  <!-- RIGHT FISH: profile, fin translucency focus -->
+  <text x="675" y="58" font-family="monospace" font-size="11" fill="#3fb950" text-anchor="middle">PROFILE — FIN TRANSLUCENCY</text>
+
+  <!-- Fish body profile (more elongated, subcarangiform) -->
+  <ellipse cx="675" cy="260" rx="110" ry="40" fill="#1a4a3a" stroke="#2a7a5a" stroke-width="1.5"/>
+
+  <!-- Lateral stripe -->
+  <path d="M575,260 Q625,255 740,260" stroke="#58a078" stroke-width="2" fill="none" stroke-dasharray="8,3"/>
+
+  <!-- Dorsal fin — prominent and translucent -->
+  <path d="M610,220 Q640,190 700,200 Q710,218 680,222 Q650,224 620,222 Z" fill="#3fb950" fill-opacity="0.25" stroke="#3fb950" stroke-width="1.2" stroke-opacity="0.7"/>
+
+  <!-- Fin ray lines in dorsal fin -->
+  <g stroke="#3fb950" stroke-width="0.8" stroke-opacity="0.5">
+    <line x1="622" y1="221" x2="618" y2="197"/>
+    <line x1="638" y1="220" x2="637" y2="193"/>
+    <line x1="654" y1="219" x2="655" y2="191"/>
+    <line x1="670" y1="218" x2="673" y2="193"/>
+    <line x1="686" y1="218" x2="693" y2="197"/>
+    <line x1="700" y1="219" x2="705" y2="203"/>
+  </g>
+
+  <!-- Anal fin -->
+  <path d="M640,298 Q665,315 700,305 Q695,296 660,296 Z" fill="#3fb950" fill-opacity="0.25" stroke="#3fb950" stroke-width="1" stroke-opacity="0.6"/>
+
+  <!-- Pectoral fin — fanned out -->
+  <path d="M615,260 Q590,248 578,270 Q590,283 615,272 Z" fill="#80d4e0" fill-opacity="0.3" stroke="#80d4e0" stroke-width="1" stroke-opacity="0.65"/>
+
+  <!-- Fin rays in pectoral -->
+  <g stroke="#80d4e0" stroke-width="0.8" stroke-opacity="0.55">
+    <line x1="615" y1="262" x2="582" y2="253"/>
+    <line x1="615" y1="264" x2="581" y2="264"/>
+    <line x1="615" y1="266" x2="582" y2="275"/>
+  </g>
+
+  <!-- Tail fin -->
+  <path d="M775,228 Q800,218 810,260 Q800,302 775,292 Q790,260 775,228 Z" fill="#3fb950" fill-opacity="0.3" stroke="#3fb950" stroke-width="1.2" stroke-opacity="0.7"/>
+
+  <!-- Eye profile -->
+  <circle cx="582" cy="255" r="11" fill="#0a0a0a"/>
+  <circle cx="582" cy="255" r="7" fill="#1a2820"/>
+  <circle cx="580" cy="253" r="3.5" fill="#22c55e"/>
+  <circle cx="578" cy="251" r="2.5" fill="#ffffff"/>
+
+  <!-- Fin translucency labels -->
+  <line x1="660" y1="193" x2="660" y2="158" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="620" y="153" font-family="monospace" font-size="10" fill="#3fb950">fin membrane</text>
+  <text x="605" y="143" font-family="monospace" font-size="9" fill="#8b949e">(25% opacity, ray lines)</text>
+
+  <line x1="590" y1="262" x2="555" y2="245" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="505" y="242" font-family="monospace" font-size="10" fill="#80d4e0">pectoral fin</text>
+  <text x="490" y="252" font-family="monospace" font-size="9" fill="#8b949e">(labriform row stroke)</text>
+
+  <line x1="668" y1="310" x2="668" y2="340" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="633" y="353" font-family="monospace" font-size="10" fill="#3fb950">anal fin</text>
+
+  <!-- Footer legend -->
+  <rect x="0" y="464" width="900" height="36" fill="#0d1117"/>
+  <text x="225" y="486" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">Material: THREE.MeshStandardMaterial · UV-mapped scale texture · translucent fin overlay</text>
+  <text x="675" y="486" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">Locomotion: Labriform (pectoral rowing) · fin rays visible at opacity 0.55</text>
+</svg>

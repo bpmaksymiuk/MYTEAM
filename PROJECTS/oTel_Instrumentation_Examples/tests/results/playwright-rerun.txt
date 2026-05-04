@@ -1,0 +1,97 @@
+[2m[WebServer] [22m[34m[90m[11ty][39m[34m Server at http://localhost:8080/[39m
+
+Running 11 tests using 1 worker
+
+  ✓   1 specs/cookbook.spec.mjs:12:3 › oTel Cookbook — UC coverage › T-001 home page presents cookbook and four languages above the fold (729ms)
+  ✓   2 specs/cookbook.spec.mjs:25:3 › oTel Cookbook — UC coverage › T-002 configuration panel persists selection and substitutes values (365ms)
+  ✓   3 specs/cookbook.spec.mjs:34:5 › oTel Cookbook — UC coverage › T-00x javascript quickstart renders with verification badge (453ms)
+  ✓   4 specs/cookbook.spec.mjs:34:5 › oTel Cookbook — UC coverage › T-00x python quickstart renders with verification badge (360ms)
+  ✓   5 specs/cookbook.spec.mjs:34:5 › oTel Cookbook — UC coverage › T-00x dotnet quickstart renders with verification badge (286ms)
+  ✓   6 specs/cookbook.spec.mjs:34:5 › oTel Cookbook — UC coverage › T-00x java quickstart renders with verification badge (333ms)
+  ✓   7 specs/cookbook.spec.mjs:42:3 › oTel Cookbook — UC coverage › T-009 navigation index links every recipe (210ms)
+  ✘   8 specs/cookbook.spec.mjs:49:3 › oTel Cookbook — UC coverage › T-010 cross-cutting topics index lists four topics (257ms)
+  ✘   9 specs/cookbook.spec.mjs:57:3 › oTel Cookbook — UC coverage › T-011 troubleshooting index lists symptom causes (729ms)
+  ✓  10 specs/cookbook.spec.mjs:64:3 › oTel Cookbook — UC coverage › T-012 release notes page lists v0.1.0 (665ms)
+  ✓  11 specs/cookbook.spec.mjs:70:3 › oTel Cookbook — UC coverage › T-013 sample directories exist and parity script passes (9ms)
+
+
+  1) specs/cookbook.spec.mjs:49:3 › oTel Cookbook — UC coverage › T-010 cross-cutting topics index lists four topics 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Resource Attributes')
+    Expected: visible
+    Error: strict mode violation: locator('text=Resource Attributes') resolved to 2 elements:
+        1) <a href="/topics/resource-attributes/">Resource attributes</a> aka getByLabel('Recipes').getByRole('link', { name: 'Resource attributes' })
+        2) <a href="/topics/resource-attributes/">Resource attributes</a> aka getByRole('main').getByRole('link', { name: 'Resource attributes' })
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('text=Resource Attributes')[22m
+
+
+      50 |     await page.goto('/topics/');
+      51 |     for (const topic of ['Resource Attributes', 'Sampling', 'Semantic Conventions', 'Batching']) {
+    > 52 |       await expect(page.locator(`text=${topic}`)).toBeVisible();
+         |                                                   ^
+      53 |     }
+      54 |     writeEvidence(RESULTS_DIR, 'T-010', { slug: 'topics', detail: 'All four cross-cutting topics listed.' });
+      55 |   });
+        at /home/danio/PROJECTS/MYTEAM/PROJECTS/oTel_Instrumentation_Examples/tests/specs/cookbook.spec.mjs:52:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/cookbook-oTel-Cookbook-—-U-a7e4d-ics-index-lists-four-topics/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/cookbook-oTel-Cookbook-—-U-a7e4d-ics-index-lists-four-topics/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/cookbook-oTel-Cookbook-—-U-a7e4d-ics-index-lists-four-topics/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/cookbook-oTel-Cookbook-—-U-a7e4d-ics-index-lists-four-topics/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) specs/cookbook.spec.mjs:57:3 › oTel Cookbook — UC coverage › T-011 troubleshooting index lists symptom causes 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=/4xx|5xx/')
+    Expected: visible
+    Error: strict mode violation: locator('text=/4xx|5xx/') resolved to 2 elements:
+        1) <h2>OTLP endpoint returns 4xx or 5xx</h2> aka getByRole('heading', { name: 'OTLP endpoint returns 4xx or' })
+        2) <h3>5xx — Receiver unreachable</h3> aka getByRole('heading', { name: '5xx — Receiver unreachable' })
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('text=/4xx|5xx/')[22m
+
+
+      57 |   test('T-011 troubleshooting index lists symptom causes', async ({ page }) => {
+      58 |     await page.goto('/troubleshooting/');
+    > 59 |     await expect(page.locator('text=/4xx|5xx/')).toBeVisible();
+         |                                                  ^
+      60 |     await expect(page.locator('text=/parent|child/i')).toBeVisible();
+      61 |     writeEvidence(RESULTS_DIR, 'T-011', { slug: 'trouble', detail: 'Troubleshooting symptoms present.' });
+      62 |   });
+        at /home/danio/PROJECTS/MYTEAM/PROJECTS/oTel_Instrumentation_Examples/tests/specs/cookbook.spec.mjs:59:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/cookbook-oTel-Cookbook-—-U-7ad87--index-lists-symptom-causes/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/cookbook-oTel-Cookbook-—-U-7ad87--index-lists-symptom-causes/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/cookbook-oTel-Cookbook-—-U-7ad87--index-lists-symptom-causes/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/cookbook-oTel-Cookbook-—-U-7ad87--index-lists-symptom-causes/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    specs/cookbook.spec.mjs:49:3 › oTel Cookbook — UC coverage › T-010 cross-cutting topics index lists four topics 
+    specs/cookbook.spec.mjs:57:3 › oTel Cookbook — UC coverage › T-011 troubleshooting index lists symptom causes 
+  9 passed (10.6s)

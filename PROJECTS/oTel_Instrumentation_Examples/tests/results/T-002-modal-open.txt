@@ -1,0 +1,4 @@
+TEST ID: T-002
+TIMESTAMP: 2026-05-04T03:23:11.113Z
+RESULT: PASS
+DETAIL: Configuration modal opened from topbar.

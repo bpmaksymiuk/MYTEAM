@@ -1,50 +1,70 @@
----
-name: bug-report-writing
-description: 'Write 11-BUG-REPORT.md entries for Stage 10 failures. Use for BUG IDs, severity, technical root cause analysis, fix-applied summaries, append-only defect tracking, and traceability back to T-PIPELINE runs and UC or BR failures.'
-argument-hint: 'Describe the defect or verification failure to document.'
----
+# Bug Report Writing — SKILL.md
 
-# Bug Report Writing
+> Stage 10 — document every test failure as a traceable BUG record.
+
+---
 
 ## When to Use
-- Creating or updating PROJECTS/**/11-BUG-REPORT.md
-- Recording a Stage 10 FAIL result
-- Documenting root cause and fix status after a rerun
 
-## Target File
-- 11-BUG-REPORT.md
-- Updated append-only, newest bugs at the top
+Invoke at Stage 10 (Tester) when recording defects. Use it to append BUG records to `10-BUG-REPORT.md` following the append-only convention for every FAIL result in `10-TEST-REPORT.md`. If no defects are found, a “no defects” BUG-001 entry is still required. Every BUG record must name an OWNING STAGE to enable Manager routing. One BUG record per distinct failure; multiple T-IDs may map to the same BUG if they share a root cause.
+
+---
+
+## Target Files
+
+- `10-BUG-REPORT.md`
+
+---
 
 ## Record Schema
 
-```markdown
-## BUG-<PROJECTABBR>-<NNN> — <Short Title>
+```
+## BUG-XXX : TITLE
 
-- **Severity:** CRITICAL / HIGH / MEDIUM / LOW
-- **Discovered:** T-PIPELINE-XXX Run N
-- **UC/BR:** UC-XXX, BR-XXX
-- **Description:** <what failed and what the test observed>
-- **Root Cause:** <why it failed; technical analysis>
-- **Fix Applied:** <what was changed and where>
-- **Status:** ✅ Fixed / ❌ Open
-
----
+- **SEVERITY:** Critical | High | Medium | Low
+- **STAGE:** The pipeline stage responsible for the fix (usually Stage 9 — Developer).
+- **DESCRIPTION:** Observed behaviour. Be specific: what happened, where, under what conditions.
+- **ROOT CAUSE:** The most likely technical cause. Identify the artifact, file, or function responsible.
+- **FIX APPLIED:** What was done to resolve this bug. Write "Pending" if not yet fixed.
+- **RELATED:** T-IDs that surfaced this bug; UC-IDs and BR-IDs it violates.
+- **STATUS:** Open | Fixed | Verified
 ```
 
-## Procedure
-1. Read the canonical pipeline file first.
-2. Create one bug section for every FAIL in 10-TEST-REPORT.md.
-3. Use a new sequential BUG ID; never reuse IDs.
-4. Write a technical root cause, including the failing mechanism and changed file when known.
-5. Update status only after re-verification confirms the fix.
-6. Prepend new bug entries at the top of the file.
+---
 
-## Quality Rules
-- Root Cause must be technical and specific.
-- Fix Applied must describe the real code change or justify why the bug remains open.
-- Every bug must link clearly to the T-PIPELINE run and UC/BR context.
+## Severity Guidelines
+
+| Severity | Meaning |
+|----------|---------|
+| Critical | The product cannot be used; core UC fails completely. |
+| High | A major UC or BR is broken; no workaround available. |
+| Medium | A UC or BR is impaired but a workaround exists. |
+| Low | Minor cosmetic or non-critical issue; does not block a UC. |
+
+---
+
+## Procedure
+
+1. Read `.github/instructions/pipeline.instructions.md`.
+2. Read `10-TEST-REPORT.md` and identify every FAIL entry.
+3. For each FAIL (or group of FAILs with the same root cause), write one BUG record.
+4. Assign BUG-IDs sequentially (BUG-001, BUG-002, …).
+5. Set STATUS to `Open` for all new records.
+6. Set FIX APPLIED to `Pending` until the Developer resolves it.
+7. After a fix is applied and re-verified by the Tester, update STATUS to `Fixed` then `Verified`.
+8. Append only — never delete BUG records, even after they are resolved.
+9. Report to Manager: list all open BUGs with severity and owning stage for routing.
+10. Validate against the exit gate.
+11. **Do not declare a separate stage gate from this sub-step. Stage completion remains `GATE 10: PASS` or `GATE 10: FAIL`.**
+
+---
 
 ## Exit Gate
-- Every FAIL in 10-TEST-REPORT.md has a corresponding bug entry.
-- All fixable bugs are marked fixed after rerun.
-- No bug IDs are reused.
+
+- [ ] Every FAIL in `10-TEST-REPORT.md` maps to at least one BUG record.
+- [ ] Every BUG record has a SEVERITY assigned.
+- [ ] Every BUG record has a STATUS (Open / Fixed / Verified).
+- [ ] Every BUG record's RELATED field references at least one T-ID and one UC-ID or BR-ID.
+- [ ] BUG-IDs are sequential and non-reused.
+- [ ] No BUG records have been deleted or overwritten.
+- [ ] `PIPELINE-STATUS.md` is updated for Stage 10 with STATUS and STATUS UPDATED date.

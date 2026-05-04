@@ -1,0 +1,4 @@
+TEST ID: T-031
+TIMESTAMP: 2026-05-03T02:56:37.884Z
+RESULT: PASS
+DETAIL: Synthetic pointerdown on canvas processed without errors

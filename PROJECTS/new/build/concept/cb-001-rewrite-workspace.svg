@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620">
+  <rect width="900" height="620" fill="#0d0f12"/>
+  <!-- Title bar -->
+  <rect x="0" y="0" width="900" height="40" fill="#1a1d23"/>
+  <text x="20" y="26" font-family="monospace" font-size="13" fill="#e8eaed">CB-001 — Rewrite Workspace (Core Flow)</text>
+  <text x="800" y="26" font-family="monospace" font-size="11" fill="#555">UC-001 UC-002 UC-004 UC-005 UC-006</text>
+
+  <!-- Input area -->
+  <rect x="30" y="55" width="840" height="30" fill="#1a1d23" rx="4"/>
+  <text x="40" y="75" font-family="monospace" font-size="11" fill="#888">STRATEGY CHIPS (toggleable)</text>
+  <!-- Strategy chips -->
+  <rect x="200" y="58" width="90" height="22" fill="#00e5a0" rx="11"/>
+  <text x="245" y="73" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Hook-First</text>
+  <rect x="298" y="58" width="112" height="22" fill="#00e5a0" rx="11"/>
+  <text x="354" y="73" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Controversy-Max</text>
+  <rect x="418" y="58" width="78" height="22" fill="#00e5a0" rx="11"/>
+  <text x="457" y="73" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Authority</text>
+  <rect x="504" y="58" width="86" height="22" fill="#00e5a0" rx="11"/>
+  <text x="547" y="73" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Story-Mode</text>
+  <rect x="598" y="58" width="82" height="22" fill="#00e5a0" rx="11"/>
+  <text x="639" y="73" font-family="monospace" font-size="10" fill="#0d0f12" text-anchor="middle">Minimalist</text>
+
+  <!-- Input textarea -->
+  <rect x="30" y="95" width="840" height="120" fill="#141720" rx="6" stroke="#2a2d35" stroke-width="1"/>
+  <text x="50" y="120" font-family="monospace" font-size="12" fill="#555">Paste anything. A tweet draft, a paragraph, a headline, a thought.</text>
+  <text x="780" y="205" font-family="monospace" font-size="10" fill="#555">0 / 10000</text>
+
+  <!-- Rewrite button -->
+  <rect x="370" y="228" width="160" height="36" fill="#00e5a0" rx="6"/>
+  <text x="450" y="251" font-family="monospace" font-size="13" fill="#0d0f12" text-anchor="middle" font-weight="bold">↻  Rewrite</text>
+
+  <!-- Output tiles label -->
+  <text x="30" y="290" font-family="monospace" font-size="11" fill="#888">OUTPUT TILES (one per selected strategy) — staggered fade-in</text>
+
+  <!-- Tile 1: Hook-First -->
+  <rect x="30" y="300" width="260" height="130" fill="#141720" rx="6" stroke="#00e5a0" stroke-width="1"/>
+  <rect x="38" y="308" width="70" height="16" fill="#00e5a0" rx="8"/>
+  <text x="73" y="320" font-family="monospace" font-size="9" fill="#0d0f12" text-anchor="middle">Hook-First</text>
+  <text x="50" y="345" font-family="monospace" font-size="10" fill="#e8eaed">Rewritten text output</text>
+  <text x="50" y="360" font-family="monospace" font-size="10" fill="#e8eaed">appears here...</text>
+  <text x="50" y="385" font-family="monospace" font-size="9" fill="#666">Why this works: curiosity gap</text>
+  <text x="50" y="400" font-family="monospace" font-size="9" fill="#666">in first line drives click-through.</text>
+  <text x="200" y="422" font-family="monospace" font-size="9" fill="#00e5a0">99%</text>
+  <rect x="230" y="412" width="50" height="18" fill="#00e5a0" rx="4"/>
+  <text x="255" y="424" font-family="monospace" font-size="9" fill="#0d0f12" text-anchor="middle">Copy</text>
+
+  <!-- Tile 2: Controversy-Max -->
+  <rect x="300" y="300" width="260" height="130" fill="#141720" rx="6" stroke="#2a2d35" stroke-width="1"/>
+  <rect x="308" y="308" width="112" height="16" fill="#1a1d23" rx="8" stroke="#444" stroke-width="1"/>
+  <text x="364" y="320" font-family="monospace" font-size="9" fill="#aaa" text-anchor="middle">Controversy-Max</text>
+  <text x="320" y="345" font-family="monospace" font-size="10" fill="#e8eaed">Rewritten text output</text>
+  <text x="320" y="360" font-family="monospace" font-size="10" fill="#e8eaed">appears here...</text>
+  <text x="320" y="385" font-family="monospace" font-size="9" fill="#666">Why this works: contrarian</text>
+  <text x="320" y="400" font-family="monospace" font-size="9" fill="#666">positioning triggers response.</text>
+  <!-- Fidelity warning amber -->
+  <text x="450" y="422" font-family="monospace" font-size="9" fill="#ffb347">93% ⚠</text>
+  <rect x="490" y="412" width="50" height="18" fill="#2a2d35" rx="4"/>
+  <text x="515" y="424" font-family="monospace" font-size="9" fill="#aaa" text-anchor="middle">Copy</text>
+
+  <!-- Tile 3: Authority -->
+  <rect x="570" y="300" width="260" height="130" fill="#141720" rx="6" stroke="#2a2d35" stroke-width="1"/>
+  <rect x="578" y="308" width="66" height="16" fill="#1a1d23" rx="8" stroke="#444" stroke-width="1"/>
+  <text x="611" y="320" font-family="monospace" font-size="9" fill="#aaa" text-anchor="middle">Authority</text>
+  <text x="590" y="345" font-family="monospace" font-size="10" fill="#e8eaed">Rewritten text output</text>
+  <text x="590" y="360" font-family="monospace" font-size="10" fill="#e8eaed">appears here...</text>
+  <text x="590" y="385" font-family="monospace" font-size="9" fill="#666">Why this works: data-first</text>
+  <text x="590" y="400" font-family="monospace" font-size="9" fill="#666">framing builds credibility.</text>
+  <text x="720" y="422" font-family="monospace" font-size="9" fill="#00e5a0">98%</text>
+  <rect x="750" y="412" width="50" height="18" fill="#2a2d35" rx="4"/>
+  <text x="775" y="424" font-family="monospace" font-size="9" fill="#aaa" text-anchor="middle">Copy</text>
+
+  <!-- Row 2 tiles -->
+  <rect x="30" y="445" width="260" height="130" fill="#141720" rx="6" stroke="#2a2d35" stroke-width="1"/>
+  <rect x="38" y="453" width="74" height="16" fill="#1a1d23" rx="8" stroke="#444" stroke-width="1"/>
+  <text x="75" y="465" font-family="monospace" font-size="9" fill="#aaa" text-anchor="middle">Story-Mode</text>
+  <text x="50" y="490" font-family="monospace" font-size="10" fill="#e8eaed">Rewritten text output</text>
+  <text x="50" y="505" font-family="monospace" font-size="10" fill="#e8eaed">appears here...</text>
+  <text x="50" y="530" font-family="monospace" font-size="9" fill="#666">Why this works: narrative arc</text>
+  <text x="50" y="545" font-family="monospace" font-size="9" fill="#666">sustains read-through.</text>
+  <text x="200" y="567" font-family="monospace" font-size="9" fill="#00e5a0">97%</text>
+  <rect x="230" y="557" width="50" height="18" fill="#2a2d35" rx="4"/>
+  <text x="255" y="569" font-family="monospace" font-size="9" fill="#aaa" text-anchor="middle">Copy</text>
+
+  <rect x="300" y="445" width="260" height="130" fill="#141720" rx="6" stroke="#2a2d35" stroke-width="1"/>
+  <rect x="308" y="453" width="72" height="16" fill="#1a1d23" rx="8" stroke="#444" stroke-width="1"/>
+  <text x="344" y="465" font-family="monospace" font-size="9" fill="#aaa" text-anchor="middle">Minimalist</text>
+  <text x="320" y="490" font-family="monospace" font-size="10" fill="#e8eaed">Rewritten text output</text>
+  <text x="320" y="505" font-family="monospace" font-size="10" fill="#e8eaed">appears here...</text>
+  <text x="320" y="530" font-family="monospace" font-size="9" fill="#666">Why this works: clean</text>
+  <text x="320" y="545" font-family="monospace" font-size="9" fill="#666">scannability maximises reach.</text>
+  <text x="470" y="567" font-family="monospace" font-size="9" fill="#00e5a0">100%</text>
+  <rect x="500" y="557" width="50" height="18" fill="#2a2d35" rx="4"/>
+  <text x="525" y="569" font-family="monospace" font-size="9" fill="#aaa" text-anchor="middle">Copy</text>
+
+  <!-- Annotations -->
+  <text x="30" y="608" font-family="monospace" font-size="10" fill="#444">Signal &amp; Noise — dark-mode — ≤3s response time — 280 char auto-thread trigger</text>
+</svg>

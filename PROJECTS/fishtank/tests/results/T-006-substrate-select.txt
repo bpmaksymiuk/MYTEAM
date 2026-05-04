@@ -1,0 +1,4 @@
+TEST ID: T-006
+TIMESTAMP: 2026-05-03T02:54:40.126Z
+RESULT: PASS
+DETAIL: Substrate dropdown accepts gravel and rock values
